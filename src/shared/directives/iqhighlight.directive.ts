@@ -11,7 +11,7 @@ import 'highlight.js/styles/googlecode.css'
 declare var hljs,window,document;
 
 @Directive({ selector: '[iqhighlight]'})
-export class TestDirective {
+export class Iqhighlight {
     constructor(
       private el: ElementRef,
       private renderer: Renderer

@@ -1,10 +1,10 @@
 
 import { Autoheight } from './autoheight.directive';
 import { StopParentClick } from './stopParentClick.directive';
-import { TestDirective } from './test.directive';
+import { Iqhighlight } from './iqhighlight.directive';
 
-export { Autoheight, StopParentClick, TestDirective};
-export let SHARED_DIRECTIVES = [Autoheight,StopParentClick, TestDirective];
+export { Autoheight, StopParentClick, Iqhighlight};
+export let SHARED_DIRECTIVES = [Autoheight,StopParentClick, Iqhighlight];
 
 // export {Autoheight};
 // export let SHARED_DIRECTIVES = [Autoheight];
