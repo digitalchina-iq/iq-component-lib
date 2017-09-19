@@ -1,16 +1,9 @@
+/*黑色提示泡*/
 .popovers{
   display: block;
   width: 70px;
-  i{
-    position: relative;
-    top: 6px;
-    /*left:50%;
-    transform:translateX(-50%);*/
-    left:45%;
-    opacity: 0.8;
-    color: #000;
-  }
   p{
+    position: relative;
     width: 70px;
     height: 25px;
     line-height: 25px;
@@ -20,5 +13,17 @@
     text-align: center;
     border-radius: 3px;
     background-color: #000;
+    &:before{
+      content:"";
+      position: absolute;
+      left: 50%;
+      top:-13px;
+      width: 0;
+      height: 0;
+      border: 7px solid transparent;
+      border-bottom:7px solid #000;
+      transform: translateX(-50%);
+
+    }
   }
 }

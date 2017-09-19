@@ -5,3 +5,38 @@
 @import "sass/base/index";
 @import "sass/component/index";
 @import "sass/layout/index";
+
+
+.showhow{
+
+  textarea, input[type=text], input[type=password], input[type=datetime], input[type=datetime-local], input[type=date], input[type=month], input[type=time], input[type=week], input[type=number], input[type=email], input[type=url], input[type=search], input[type=tel], input[type=color], .uneditable-input, select {
+      text-shadow: none;
+      color: #4a4a4a;
+      font-weight: 300!important;
+      font-family: "Open Sans",Arial,Helvetica,Sans-Serif;
+      font-size: 12px!important;
+      line-height: 20px;
+      border-radius: 2px;
+  }
+
+
+  .well, .well-small, .well-large, #top-nav .nav>li.divider-vertical, .pagination ul>li>a, .pagination ul>li>span, .pager .disabled>a, .pager .disabled>a:hover, .pager .disabled>a:focus, .pager .disabled>span, .pager li>a, .pager li>span, .widget .widget-footer, .media-post, code, textarea,
+  input[type=text], input[type=password], input[type=datetime], input[type=datetime-local], input[type=date], input[type=month], input[type=time], input[type=week], input[type=number], input[type=email], input[type=url], input[type=search], input[type=tel], input[type=color], .uneditable-input,
+  legend, thumbnail, ul.email-list>li .media-image, ul.email-list>li, .user-profile .profile-image, .user-profile .profile-info, .user-profile .profile-header, .user-profile .profile-footer, .user-profile .form-actions, .input-append .add-on, .input-prepend .add-on, .form-actions, .news-list .news-media, .news-list>li, .chats li .image, .chats li .message, .table.table-bordered,
+  .table.table-bordered th, .table.table-bordered td {
+      border-color: #323232!important;
+      border-color: rgba(0,0,0,.2)!important;
+  }
+
+
+  #sidebar, #sidebar>ul.nav>li.active>a, #sidebar>ul.nav>li.active>a:hover, #sidebar>ul.nav>li.active>a:focus, #sidebar>ul.nav>li.has-sub.active>.dropdown-menu>li.active>a, .dropdown-menu>li >a:hover, .dropdown-menu>li >a:focus, .dropdown-submenu:hover>a, .dropdown-submenu:focus>a,
+  .nav-tabs>li>a:hover, .nav-tabs>li>a:focus, .nav-pills>li>a:hover, .nav-pills>li>a:focus, .nav-tabs>.active>a, .nav-tabs>.active>a:hover, .nav-tabs>.active>a:focus, .tab-content, .pill-content, .accordion-group, .pagination ul>li>a, .pagination ul>li>span, .widget, code, .form-actions,
+  .uneditable-input, .thumbnail, .well, .well-small, .well-large, .pager .disabled>a, .pager .disabled>a:hover, .pager .disabled>a:focus, .pager .disabled>span, .pager li>a, .pager li>span, .news-list .news-media, .news-list>li>a:hover, .news-list>li>a:focus, .chats li .image,
+  .chats li .message, .widget.widget-tabs .slimScrollDiv, .email-list>li .media-image, textarea, select, input[type=text], input[type=month], input[type=password], input[type=datetime], input[type=datetime-local], input[type=date], input[type=time], input[type=week], input[type=number], input[type=email],
+  input[type=url], input[type=search], input[type=tel], input[type=color], input[disabled] {
+      background: #fff;
+      -webkit-filter: none;
+      filter: none;
+  }
+
+}

@@ -38,10 +38,15 @@
               </div>
               <div class="tab-pane fade" id="examples">
                 <div class="user-profile">
+
+
+
                   <form class="form-horizontal margin-bottom-0">
                     <div class="profile-header">
                       <i class="icon-picture"></i> Profile Examples
                     </div>
+
+                    <ng-content select=".stitempcon"></ng-content>
 
                     <div class="widget">
           						<div class="widget-header">
@@ -53,7 +58,7 @@
           								<ol>
           									<li>HTML</li>
           									<li>TS</li>
-          									<li>CSS</li>
+          									<li>SCSS</li>
           								</ol>
           								<div>
           									<ng-content select=".stitemphtml"></ng-content>
@@ -69,9 +74,6 @@
           						</div>
           					</div>
                   </form>
-
-                  <ng-content select=".stitempcon"></ng-content>
-
 
                 </div>
               </div>

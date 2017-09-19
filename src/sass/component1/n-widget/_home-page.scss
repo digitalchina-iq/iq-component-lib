@@ -1,4 +1,4 @@
-/*新增冲红首页新建*/
+//新增冲红首页新建
 .m-home-page{
 @import '../p-widget/buttons';//为了引入buttons的按钮变色方法
   .m-orange{
@@ -7,7 +7,7 @@
   .m-gry{
     color: #a2a2a2;
   }
-  /*左侧部分*/
+  //左侧部分
 .m-home-pageL {
   width: 240px;
   height: 100%;
@@ -20,7 +20,7 @@
     >.active::before{
       height:55px;
     }
-    /*有图标样式*/
+    //有图标样式
     .m-hasicon {
       font-size: 14px;
       a {
@@ -47,12 +47,12 @@
     }
   }
 }
-  /*右侧部分*/
+  //右侧部分
 .m-home-pageR {
   width: 100%;
   float: right;
   /*padding-left: 240px;*/
-  /*右侧头部*/
+  //右侧头部
   .m-boardtop {
     button.m-btn-main-2 {
       @include m-btn(#4cc9a6);//buttons的按钮变色方法
@@ -98,7 +98,7 @@
       }
     }
   }
-  /*右侧搜索*/
+  //右侧搜索
   .m-list-menu {
     margin: 12px 20px;
     .m-search-all >.alter {
@@ -123,14 +123,14 @@
       }
     }
   }
-  /*右侧表格*/
+  //右侧表格
   .m-table-right{
     margin: 15px 20px;
     padding: 0 15px;
     background: #fff;
     min-height: calc(100vh - 190px);
     position: relative;
-    /*table表格左右左右多出的表格*/
+    //table表格左右左右多出的表格
     &::before {
       content: '';
       width: 15px;
@@ -148,7 +148,7 @@
       right: 0px;
       top: 49px;
     }
-    /*除去操作部分的表格*/
+    //除去操作部分的表格
     .table-auto-content{
       width: 85%;
       overflow: auto;
@@ -178,7 +178,7 @@
         border-bottom: 1px solid #ddd;
       }
     }
-    /*操作部分表格*/
+    //操作部分表格
     .table-handle-content{
       width: 15%;
       position: absolute;
@@ -227,11 +227,11 @@
         }
       }
     }
-    /*页码*/
+    //页码
     .page{ margin-top: 20px;}
   }
 }
-  /*缺省右侧*/
+  //缺省右侧
 .m-scan-defaultup{
   i{
     font-size: 44px;

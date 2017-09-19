@@ -1,4 +1,206 @@
-<div style="width: 300px;float: left;">
-	<my-datepicker [(ngModel)]='date' PlaceHolder="-请选择日期"></my-datepicker>
-	<!-- <input type="text" name="" class="m-input"> -->
-</div>
+
+
+<showtem [stname]="'日期组件'" [stnamedel]="'一个有趣的组件'" >
+
+	<!-- overview -->
+	<ng-template [ngIf]="true" class='stview'>
+
+		<h3>概述</h3>
+		<p>
+			选择或输入日期，支持年、月、日期等类型，支持选择范围。
+		</p>
+		<!-- <ol>
+		<li>
+		Required = 'boolean'; 布尔值，true为必须，false非必选
+		[Required] = 'variable'; 布尔值变量
+		</li>
+		<li>Consectetur adipiscing elit</li>
+		<li>Integer molestie lorem at massa</li>
+		<li>Facilisis in pretium nisl aliquet</li>
+		<li>Nulla volutpat aliquam velit</li>
+		<li>Faucibus porta lacus fringilla vel</li>
+		<li>Aenean sit amet erat nunc</li>
+		<li>Eget porttitor lorem</li>
+		</ol> -->
+
+		<div style="margin-top:35px;">
+			<h3>Required</h3>
+			<div style="padding:0px 10px;">
+				<p>Required = "bool" bool为boolean值类型，如果为true，则日期必选，不选日期组件边框会变红</p>
+				<my-datepicker [(ngModel)]='date' Required='true' PlaceHolder="-请选择日期"></my-datepicker>
+				<showcode>
+					<div class="shows">
+					&lt;my-datepicker [(ngModel)]="startDate" [StartDate]="endDate"&gt;&lt;/my-datepicker&gt;
+					&lt;my-datepicker [(ngModel)]="endDate" [EndDate]="startDate"&gt;&lt;/my-datepicker&gt;
+					</div>
+				</showcode>
+			</div>
+		</div>
+
+		<div style="margin-top:35px;">
+			<h3>说明</h3>
+			<div style="padding:0px 10px;">
+				<p>Required = "bool" bool为boolean值类型，如果为true，则日期必选，不选日期组件边框会变红</p>
+				<my-datepicker [(ngModel)]='date' Required='true' PlaceHolder="-请选择日期"></my-datepicker>
+				<showcode>
+					<div class="shows">
+					&lt;my-datepicker [(ngModel)]="startDate" [StartDate]="endDate"&gt;&lt;/my-datepicker&gt;
+					&lt;my-datepicker [(ngModel)]="endDate" [EndDate]="startDate"&gt;&lt;/my-datepicker&gt;
+					</div>
+				</showcode>
+			</div>
+		</div>
+
+	</ng-template>
+
+<!-- API -->
+<ng-template [ngIf]="true" class='stitemo'>
+
+	<showitemo [sitemotitle]="'属性'">
+		<ng-template [ngIf]="true" class="sitemocon">
+
+			<table class="table">
+				<thead>
+					<tr>
+						<th>参数</th>
+						<th>说明</th>
+						<th>类型</th>
+						<th>可选值</th>
+						<th>默认值</th>
+						<th>是否必选</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>Required</td>
+						<td>是否必选</td>
+						<td>boolean</td>
+						<td>true,false</td>
+						<td>false</td>
+						<td>否</td>
+					</tr>
+					<tr>
+						<td>isDisabled</td>
+						<td>是否禁用</td>
+						<td>boolean</td>
+						<td>true,false</td>
+						<td>false</td>
+						<td>否</td>
+					</tr>
+					<tr>
+						<td>MinYear</td>
+						<td>最小年份</td>
+						<td>string,number</td>
+						<td></td>
+						<td>当年年份-70</td>
+						<td>否</td>
+					</tr>
+					<tr>
+						<td>MaxYear</td>
+						<td>最大年份</td>
+						<td>string,number</td>
+						<td></td>
+						<td>当年年份+30</td>
+						<td>否</td>
+					</tr>
+					<tr>
+						<td>PlaceHolder</td>
+						<td>设置默认文字</td>
+						<td>string</td>
+						<td></td>
+						<td></td>
+						<td>否</td>
+					</tr>
+					<tr>
+						<td>StartDate</td>
+						<td>开始日期</td>
+						<td>string,date,number</td>
+						<td></td>
+						<td></td>
+						<td>否</td>
+					</tr>
+					<tr>
+						<td>EndDate</td>
+						<td>结束日期</td>
+						<td>string,date,number</td>
+						<td></td>
+						<td></td>
+						<td>否</td>
+					</tr>
+					<tr>
+						<td>format</td>
+						<td>格式化（YYYY-MM-DD）</td>
+						<td>string</td>
+						<td></td>
+						<td></td>
+						<td>否</td>
+					</tr>
+				</tbody>
+			</table>
+
+		</ng-template>
+	</showitemo>
+
+	<!-- <showitemo [sitemotitle]="'方法'">
+		<ng-template [ngIf]="true" class="sitemocon">
+
+			<h3>click()</h3>
+			<p><strong>Pellentesque habitant morbi tristique</strong> senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. <em>Aenean ultricies mi vitae est.</em> Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, <code>commodo vitae</code>, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. <a href="#">Donec non enim</a> in turpis pulvinar facilisis. Ut felis.</p>
+
+		</ng-template>
+	</showitemo>
+
+	<showitemo [sitemotitle]="'其他'">
+		<ng-template [ngIf]="true" class="sitemocon">
+
+			<p><strong>Pellentesque habitant morbi tristique</strong> senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. <em>Aenean ultricies mi vitae est.</em> Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, <code>commodo vitae</code>, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. <a href="#">Donec non enim</a> in turpis pulvinar facilisis. Ut felis.</p>
+
+		</ng-template>
+	</showitemo> -->
+
+</ng-template>
+
+<ng-template [ngIf]="true" class="stitemphtml">
+
+	<pre iqhighlight>
+		<code class="html">
+			&lt;my-datepicker [(ngModel)]="startDate" [StartDate]="endDate"&gt;&lt;/my-datepicker&gt;
+		</code>
+	</pre>
+
+</ng-template>
+
+<ng-template [ngIf]="true" class="stitempts">
+	<pre iqhighlight>
+		<code  class="javascript">
+			import {{'{'}}
+
+
+		</code>
+	</pre>
+</ng-template>
+
+<ng-template [ngIf]="true" class="stitempcss">
+	<pre iqhighlight>
+		<code class="css">
+			%clearfix {{'{'}}
+			    &:before,
+			    &:after {{'{'}}
+			        content: "";
+			        display: table;
+			    {{'}'}}
+			    &:after {{'{'}}
+			        clear: both;
+			    {{'}'}}
+			{{'}'}}
+		</code>
+	</pre>
+</ng-template>
+
+<ng-template [ngIf]="true" class="stitempcon">
+	<div>
+		<iq-switcher [(ngModel)]="fromSwitcher2" [checked-value]="'a'" [unchecked-value]="'0'"></iq-switcher>
+	</div>
+</ng-template>
+
+</showtem>

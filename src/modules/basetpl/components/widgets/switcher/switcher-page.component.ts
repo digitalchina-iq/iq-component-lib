@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
 export class SwitcherPageComponent implements OnInit {
 
   fromSwitcher = true;
-
+date: string;
   fromSwitcher2 = 'a';
   ngOnInit() {
 
