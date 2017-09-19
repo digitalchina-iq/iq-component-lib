@@ -28,12 +28,41 @@
   <ul class="nav">
 
     <li [ngClass]="{'active':path=='/index'}"><a routerLink="/index"><i class="icon-home"></i> index</a></li>
-    <li [ngClass]="{'active':path=='/index/widget/t1'}"><a routerLink="/index/widget/t1"><i class="icon-bar-chart"></i> t1</a></li>
-    <li [ngClass]="{'active':path=='/index/widget/t2'}"><a routerLink="/index/widget/t2"><i class="icon-calendar"></i> t2</a></li>
-    <li [ngClass]="{'active':path=='/index/widget/switcher'}"><a routerLink="/index/widget/switcher"><i class="icon-bar-chart"></i>switcher</a></li>
 
-    <li class="has-sub" [ngClass]="{'active':path=='/index/widget/mydatepicker'}">
-      <a href="#"><i class="icon-briefcase"></i> components <span class="label">6</span></a>
+    <li class="has-sub" routerLinkActive="active">
+      <a href="#"><i class="icon-briefcase"></i> 组件 <span class="label">6</span></a>
+      <ul class="dropdown-menu">
+        <li routerLinkActive="active">
+          <a routerLink="/index/widget/iq-datepicker">日期组件</a>
+        </li>
+        <li routerLinkActive="active">
+          <a routerLink="/index/widget/iq-switcher">开关组件</a>
+        </li>
+        <li><a href="ui_modal_notification.html">Modal & Notification</a></li>
+        <li><a href="ui_widget_boxes.html">Widget Boxes</a></li>
+        <li><a href="ui_media_object.html">Media Object</a></li>
+        <li><a href="ui_predefined_css_classes.html">Predefined CSS Classes</a></li>
+      </ul>
+    </li>
+
+    <li class="has-sub" [ngClass]="{'active':path=='/index/widget/t1'}">
+      <a href="#"><i class="icon-briefcase"></i> 指令 <span class="label">6</span></a>
+      <ul class="dropdown-menu">
+        <li>
+          <a routerLink="/index/widget/mydatepicker">日期组件</a>
+        </li>
+        <li>
+          <a routerLink="/index/widget/switcher">开关组件</a>
+        </li>
+        <li><a href="ui_modal_notification.html">Modal & Notification</a></li>
+        <li><a href="ui_widget_boxes.html">Widget Boxes</a></li>
+        <li><a href="ui_media_object.html">Media Object</a></li>
+        <li><a href="ui_predefined_css_classes.html">Predefined CSS Classes</a></li>
+      </ul>
+    </li>
+
+    <li class="has-sub" [ngClass]="{'active':path=='/index/widget/t1'}">
+      <a href="#"><i class="icon-briefcase"></i> 管道 <span class="label">6</span></a>
       <ul class="dropdown-menu">
         <li [ngClass]="{'active':path=='/index/widget/mydatepicker'}">
           <a routerLink="/index/widget/mydatepicker">日期组件</a>
@@ -45,6 +74,39 @@
         <li><a href="ui_predefined_css_classes.html">Predefined CSS Classes</a></li>
       </ul>
     </li>
+
+    <li class="has-sub" [ngClass]="{'active':path=='/index/widget/t1'}">
+      <a href="#"><i class="icon-briefcase"></i> 服务 <span class="label">6</span></a>
+      <ul class="dropdown-menu">
+        <li [ngClass]="{'active':path=='/index/widget/mydatepicker'}">
+          <a routerLink="/index/widget/mydatepicker">日期组件</a>
+        </li>
+        <li><a href="ui_tabs_accordions.html">Tabs & Accordions</a></li>
+        <li><a href="ui_modal_notification.html">Modal & Notification</a></li>
+        <li><a href="ui_widget_boxes.html">Widget Boxes</a></li>
+        <li><a href="ui_media_object.html">Media Object</a></li>
+        <li><a href="ui_predefined_css_classes.html">Predefined CSS Classes</a></li>
+      </ul>
+    </li>
+
+    <li class="has-sub" [ngClass]="{'active':path=='/index/widget/t1'}">
+      <a href="#"><i class="icon-briefcase"></i> 模块 <span class="label">6</span></a>
+      <ul class="dropdown-menu">
+        <li [ngClass]="{'active':path=='/index/widget/mydatepicker'}">
+          <a routerLink="/index/widget/mydatepicker">日期组件</a>
+        </li>
+        <li><a href="ui_tabs_accordions.html">Tabs & Accordions</a></li>
+        <li><a href="ui_modal_notification.html">Modal & Notification</a></li>
+        <li><a href="ui_widget_boxes.html">Widget Boxes</a></li>
+        <li><a href="ui_media_object.html">Media Object</a></li>
+        <li><a href="ui_predefined_css_classes.html">Predefined CSS Classes</a></li>
+      </ul>
+    </li>
+
+    <!-- <li [ngClass]="{'active':path=='/index/widget/t1'}"><a routerLink="/index/widget/t1"><i class="icon-bar-chart"></i> t1</a></li>
+    <li [ngClass]="{'active':path=='/index/widget/t2'}"><a routerLink="/index/widget/t2"><i class="icon-calendar"></i> t2</a></li>
+    <li [ngClass]="{'active':path=='/index/widget/switcher'}"><a routerLink="/index/widget/switcher"><i class="icon-bar-chart"></i>switcher</a></li> -->
+
 
 
     <!-- <li><a href="index.html"><i class="icon-home"></i> Dashboard</a></li>
