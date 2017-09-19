@@ -1,5 +1,5 @@
 <div #myDatePicker class="my-datepicker">
-  <input type="text" name="" readonly [disabled]="isDisabled" (click)="showPicker()" [placeholder]="PlaceHolder" [value]="choosedDate" [ngClass]="{'m-input-warn': Required && !bindDate}" style="cursor: pointer;">
+  <input type="text" class="m-input" name="" readonly [disabled]="isDisabled" (click)="showPicker()" [placeholder]="PlaceHolder" [value]="choosedDate" [ngClass]="{'m-input-warn': Required && !bindDate}">
   <div class="picker-main" [ngClass]="{'hide': !show}">
     <div class="p-ym">
       <i class="iqon-angle-left" (click)="toPrevMonth()"></i>
