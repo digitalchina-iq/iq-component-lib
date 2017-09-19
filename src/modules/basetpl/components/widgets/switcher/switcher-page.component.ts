@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   templateUrl: 'switcher-page.component.html'
 })
-export class SwitcherPageComponent implements OnInit {
+export class IqSwitcherPageDemoComponent implements OnInit {
 
   fromSwitcher = true;
 date: string;

@@ -7,15 +7,15 @@ import { ControlValueAccessor,NG_VALUE_ACCESSOR, DefaultValueAccessor } from '@a
 
 @Component({
   selector:'iq-switcher',
-  templateUrl: 'switcher.component.html',
+  templateUrl: 'iq-switcher.component.html',
   providers:[{  //首先写一个 provide 扩展 NG_VALUE_ACCESSOR 让 ng 认识它 .
     provide:NG_VALUE_ACCESSOR,
-    useExisting:forwardRef(()=>SwitcherComponent),    //******************************************
+    useExisting:forwardRef(()=>IqSwitcherComponent),    //******************************************
     multi:true      //Multi providers让我们可以使用相同的Token去注册多个Provider,当我们使用对应的token去获取依赖项时，我们获取的是已注册的依赖对象列表。
   }]
 })
 
-export class SwitcherComponent implements ControlValueAccessor{
+export class IqSwitcherComponent implements ControlValueAccessor{
 
   switcher:any=false;
   private onChangeCallback:any={};

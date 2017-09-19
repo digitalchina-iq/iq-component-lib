@@ -7,29 +7,29 @@ import {PageErrorComponent} from "./page-components/page-error.component";
 import {PageNotFoundComponent} from "./page-components/page-not-found.component";
 
 /*组件添加*/
-import { SwitcherComponent } from "./widgets/switcher/switcher.component";
+import { IqSwitcherComponent } from "./widgets/iq-switcher/iq-switcher.component";
 import { ShowcodeComponent } from "./widgets/showcode/showcode.component";
 import { ShowtemComponent } from "./widgets/showtem/showtem.component";
 import { ShowitemoComponent } from "./widgets/showitemo/showitemo.component";
 
-import { MyDatePickerComponent } from "./widgets/my-datepicker/my-datepicker.component";
+import { IqDatePickerComponent } from "./widgets/iq-datepicker/iq-datepicker.component";
 
 
-// export { LoadingComponent, IqBreadCrumbComponent, IqDialogPersonSelectComponent, SwitcherComponent, ProgressBarComponent,
+// export { LoadingComponent, IqBreadCrumbComponent, IqDialogPersonSelectComponent, IqSwitcherComponent, ProgressBarComponent,
 // IqPersonSelectComponent, IqPopoverPersonSelectComponent, ImageUploadComponent, IqFileData, UserImageComponent, UserImageHeadComponent, UserImageHoverComponent,
 // DatePickerComponent, TimePickerComponent, DateTimeRelationComponent, DragComponent, HeaderComponent, IqTlrFrameComponent,
 // IqTbFrameComponent, IqRtWidgetComponent,
 // PageErrorComponent, PageNotFoundComponent,TestshowComponent,
-// PagerPageComponent, Pager, MyDatePickerComponent,FileUploadComponent};
+// PagerPageComponent, Pager, IqDatePickerComponent,FileUploadComponent};
 
 export {
   IqTlrFrameComponent,IqTbFrameComponent,HeaderComponent,
-    PageErrorComponent, PageNotFoundComponent,SwitcherComponent,ShowcodeComponent,ShowtemComponent,ShowitemoComponent,
-    MyDatePickerComponent
+    PageErrorComponent, PageNotFoundComponent,IqSwitcherComponent,ShowcodeComponent,ShowtemComponent,ShowitemoComponent,
+    IqDatePickerComponent
 }
 
 
 export let SHARED_COMPONENTS = [IqTlrFrameComponent,IqTbFrameComponent,HeaderComponent,
-  PageErrorComponent, PageNotFoundComponent,SwitcherComponent,ShowcodeComponent,ShowtemComponent,ShowitemoComponent,
-  MyDatePickerComponent
+  PageErrorComponent, PageNotFoundComponent,IqSwitcherComponent,ShowcodeComponent,ShowtemComponent,ShowitemoComponent,
+  IqDatePickerComponent
 ];

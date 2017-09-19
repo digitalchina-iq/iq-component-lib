@@ -4,7 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 //导入该模块所有的Component（组件）
 import { BasetplContainerComponent,
   BasetplRootComponent,PrepareT1Component,PrepareT2Component,
-  SwitcherPageComponent,MydatepickerComponent
+  IqSwitcherPageDemoComponent,IqDatepickerDemoComponent
 } from './index';
 
 const routes: Routes = [//定义路由
@@ -19,8 +19,8 @@ const routes: Routes = [//定义路由
       children: [
         { path: 't1', component: PrepareT1Component },
         { path: 't2', component: PrepareT2Component },
-        { path: 'switcher', component: SwitcherPageComponent },
-        { path: 'mydatepicker', component: MydatepickerComponent }
+        { path: 'iq-switcher', component: IqSwitcherPageDemoComponent },
+        { path: 'iq-datepicker', component: IqDatepickerDemoComponent }
       ]
     }
   ]

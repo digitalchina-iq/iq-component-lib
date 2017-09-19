@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Location} from '@angular/common';
 import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
-declare var $: any;
+
+declare var $;
 
 @Component({
   templateUrl: './basetpl-root.component.html'
