@@ -1,0 +1,21 @@
+<!--component html goes here -->
+<div>
+
+  <div class="showcode" (click)="show = !show">
+     {{ show ? '隐藏代码' : '展示代码' }}
+  </div>
+<!--
+  <div class="traffic-light"></div>
+
+  <button (click)="inactive()">inactive</button>
+  <button (click)="active()">active</button> -->
+
+  <div *ngIf="show" [@vani]>
+    <pre iqhighlight>
+      <code class="html">
+        <ng-content select=".shows"></ng-content>
+      </code>
+    </pre>
+  </div>
+
+</div>

@@ -1,0 +1,113 @@
+<!-- <ul class="m-usertree">
+
+ <li [ngClass]="{'open':path=='/index/widget/t1'}">
+    <a routerLink="/index/widget/t1">t1</a>
+  </li>
+
+  <li [ngClass]="{'open':path=='/index/widget/t2'}">
+    <a routerLink="/index/widget/t2">t2</a>
+  </li>
+
+
+-----{{textsuccess}}-----
+-----{{mm}}-----
+
+  <li [ngClass]="{'active': true}">
+    <a routerLink="/index/widget/t1">t1</a>
+  </li>
+
+  <li>
+    <a routerLink="/index/widget/t2">t2</a>
+  </li>
+
+</ul> -->
+
+<!-- Sidebar
+  ================================================== -->
+<div id="sidebar" class="nav-collapse collapse">
+  <ul class="nav">
+
+    <li [ngClass]="{'active':path=='/index'}"><a routerLink="/index"><i class="icon-home"></i> index</a></li>
+    <li [ngClass]="{'active':path=='/index/widget/t1'}"><a routerLink="/index/widget/t1"><i class="icon-bar-chart"></i> t1</a></li>
+    <li [ngClass]="{'active':path=='/index/widget/t2'}"><a routerLink="/index/widget/t2"><i class="icon-calendar"></i> t2</a></li>
+    <li [ngClass]="{'active':path=='/index/widget/switcher'}"><a routerLink="/index/widget/switcher"><i class="icon-bar-chart"></i>switcher</a></li>
+
+    <li class="has-sub" [ngClass]="{'active':path=='/index/widget/mydatepicker'}">
+      <a href="#"><i class="icon-briefcase"></i> components <span class="label">6</span></a>
+      <ul class="dropdown-menu">
+        <li [ngClass]="{'active':path=='/index/widget/mydatepicker'}">
+          <a routerLink="/index/widget/mydatepicker">日期选择</a>
+        </li>
+        <li><a href="ui_tabs_accordions.html">Tabs & Accordions</a></li>
+        <li><a href="ui_modal_notification.html">Modal & Notification</a></li>
+        <li><a href="ui_widget_boxes.html">Widget Boxes</a></li>
+        <li><a href="ui_media_object.html">Media Object</a></li>
+        <li><a href="ui_predefined_css_classes.html">Predefined CSS Classes</a></li>
+      </ul>
+    </li>
+
+
+    <!-- <li><a href="index.html"><i class="icon-home"></i> Dashboard</a></li>
+    <li class="has-sub">
+      <a routerLink="/index/widget/t1">
+        <i class="icon-briefcase"></i> UI Elements <span class="label">6</span>
+      </a>
+      <ul class="dropdown-menu">
+        <li><a href="ui_general.html">General</a></li>
+        <li><a href="ui_tabs_accordions.html">Tabs & Accordions</a></li>
+        <li><a href="ui_modal_notification.html">Modal & Notification</a></li>
+        <li><a href="ui_widget_boxes.html">Widget Boxes</a></li>
+        <li><a href="ui_media_object.html">Media Object</a></li>
+        <li><a href="ui_predefined_css_classes.html">Predefined CSS Classes</a></li>
+      </ul>
+    </li>
+    <li class="active">
+      <a routerLink="/index/widget/t2">
+        <i class="icon-hand-up"></i> Buttons
+      </a>
+    </li>
+    <li><a href="icons.html"><i class="icon-apple"></i> Icons</a></li>
+    <li><a href="typography.html"><i class="icon-font"></i> Typography</a></li>
+    <li class="has-sub">
+      <a href="#"><i class="icon-file-text"></i> Form Stuff <span class="label">5</span></a>
+      <ul class="dropdown-menu">
+        <li><a href="form_elements.html">Form Elements</a></li>
+        <li><a href="form_plugins.html">Form Plugins</a></li>
+        <li><a href="form_validation.html">Form Validation</a></li>
+        <li><a href="form_wizards.html">Wizards</a></li>
+        <li><a href="form_wysiwyg.html">WYSIWYG</a></li>
+      </ul>
+    </li>
+    <li class="has-sub">
+      <a href="#"><i class="icon-table"></i> Tables <span class="label">2</span></a>
+      <ul class="dropdown-menu">
+        <li><a href="table_basic.html">Basic Tables</a></li>
+        <li><a href="table_manage.html">Managed Tables</a></li>
+      </ul>
+    </li>
+    <li><a href="charts.html"><i class="icon-bar-chart"></i> Charts</a></li>
+    <li><a href="calendar.html"><i class="icon-calendar"></i> Calendar</a></li>
+    <li><a href="maps.html"><i class="icon-map-marker"></i> Maps</a></li>
+    <li><a href="gallery.html"><i class="icon-camera"></i> Gallery</a></li>
+    <li class="has-sub">
+      <a href="#"><i class="icon-file"></i> Pages <span class="label">2</span></a>
+      <ul class="dropdown-menu">
+        <li><a href="page_blank.html">Blank Page</a></li>
+        <li><a href="page_without_sidebar.html">Page Without Sidebar</a></li>
+      </ul>
+    </li>
+    <li class="has-sub">
+      <a href="#"><i class="icon-windows"></i> Layouts <span class="label">4</span></a>
+      <ul class="dropdown-menu">
+        <li><a href="layout_search_results.html">Search Results</a></li>
+        <li><a href="layout_invoice.html">Invoice</a></li>
+        <li><a href="layout_user_profile.html">User Profile</a></li>
+        <li><a href="layout_404_error.html">404 Error Page</a></li>
+      </ul>
+    </li>
+    <li><a href="login.html"><i class="icon-user"></i> Login</a></li> -->
+  </ul>
+</div><!-- end #sidebar -->
+
+<!--作为占位符，Angular将基于当前的路由器状态动态填充-->
+<router-outlet ></router-outlet>

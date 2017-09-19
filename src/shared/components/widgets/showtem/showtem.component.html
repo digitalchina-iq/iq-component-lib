@@ -1,0 +1,84 @@
+<!--component html goes here -->
+<!-- Content
+  ================================================== -->
+<div id="content">
+  <div class="container-fluid">
+    <h1 class="page-title">{{stName}}<small>{{stNameDel}}</small></h1>
+    <div class="row-fluid">
+      <div class="span12">
+        <div class="widget">
+          <div class="widget-header">
+          </div>
+          <div class="widget-content">
+            <ul class="nav nav-tabs">
+              <li class="active"><a href="#overview" data-toggle="tab"><i class="icon-desktop"></i> <span class="hidden-phone">OVERVIEW</span></a></li>
+              <li><a href="#api" data-toggle="tab"><i class="icon-edit"></i> <span class="hidden-phone">API</span></a></li>
+              <li><a href="#examples" data-toggle="tab"><i class="icon-picture"></i> <span class="hidden-phone">EXAMPLES</span></a></li>
+            </ul>
+            <div class="tab-content">
+              <div class="tab-pane fade active in" id="overview">
+                <div class="user-profile">
+                  <div class="profile-header">
+                    <i class="icon-info-sign"></i>Account Overview
+                  </div>
+                </div>
+                <div class="user-profile">
+                  <ng-content select=".stview"></ng-content>
+                </div>
+              </div>
+              <div class="tab-pane fade" id="api">
+                <div class="user-profile">
+                  <form class="form-horizontal margin-bottom-0">
+                    <div class="profile-header">
+                      <i class="icon-cogs"></i> Api
+                    </div>
+                    <ng-content select=".stitemo"></ng-content>
+                  </form>
+                </div>
+              </div>
+              <div class="tab-pane fade" id="examples">
+                <div class="user-profile">
+                  <form class="form-horizontal margin-bottom-0">
+                    <div class="profile-header">
+                      <i class="icon-picture"></i> Profile Examples
+                    </div>
+
+                    <div class="widget">
+          						<div class="widget-header">
+          							<h4>Explain</h4>
+          						</div>
+          						<div class="widget-content">
+          							<form class="form-horizontal">
+          							<div id="wizard">
+          								<ol>
+          									<li>HTML</li>
+          									<li>TS</li>
+          									<li>CSS</li>
+          								</ol>
+          								<div>
+          									<ng-content select=".stitemphtml"></ng-content>
+          								</div>
+          								<div>
+          									<ng-content select=".stitempts"></ng-content>
+          								</div>
+          								<div>
+                            <ng-content select=".stitempcss"></ng-content>
+          								</div>
+          							</div>
+          							</form>
+          						</div>
+          					</div>
+                  </form>
+
+                  <ng-content select=".stitempcon"></ng-content>
+
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div><!-- end span12 -->
+    </div><!-- end row-fluid -->
+  </div><!-- end container-fluid -->
+</div><!-- end #content -->

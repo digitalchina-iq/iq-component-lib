@@ -1,0 +1,52 @@
+/* You can add global styles to this file, and also import other style files */
+.input-block-level {
+    display: block;
+    width: 100%;
+    min-height: 30px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+
+element.style {
+}
+
+.navbar-search .search-query {
+    border: 0;
+    line-height: 20px;
+}
+
+.navbar-search .search-query, .btn.btn-navbar {
+    background: url(img/bg-transparent-0.45.png);
+    background: rgba(0,0,0,.45);
+}
+
+.navbar-search .search-query {
+    padding: 4px 14px;
+    margin-bottom: 0;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 13px;
+    font-weight: normal;
+    line-height: 1;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+}
+
+.shows{
+  padding: 0;
+  display: inline-block;
+}
+
+pre {
+  font-family: "Microsoft YaHei";
+  padding: 0;
+  border: 0;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  background: 0 0;
+  white-space: pre-wrap !important;
+  margin: 0;
+}
