@@ -51,7 +51,7 @@
 
 		<h3>概述</h3>
 		<p>
-			简易的开关滑块，可以双向绑定，默认为<code>true</code>，当不是<code>true</code>或<code>false</code>时可以自定义<code>checked-value</code>
+			简易的开关滑块，开关默认为关闭。可以双向绑定，默认为<code>true</code>，当不是<code>true</code>或<code>false</code>时可以自定义<code>checked-value</code>
 		</p>
 
     <h3>何时使用</h3>
@@ -167,12 +167,19 @@
 
   <showitemexample>
 
+    <ng-template [ngIf]="true" class="stitempcon">
+      <div class="showhow">
+        <p>无自定义，简单示例</p>
+        <iq-switcher [(ngModel)]="fromSwitcher"></iq-switcher>
+      </div>
+    </ng-template>
+
     <ng-template [ngIf]="true" class="stitemphtml">
 
     	<pre iqhighlight>
     		<code class="html">
-    			&lt;iq-datepicker [(ngModel)]="startDate" [StartDate]="endDate"&gt;&lt;/iq-datepicker&gt;
-    		</code>
+          &lt;iq-switcher [(ngModel)]="fromSwitcher"&gt;&lt;/iq-switcher&gt;
+        </code>
     	</pre>
 
     </ng-template>
@@ -181,8 +188,6 @@
     	<pre iqhighlight>
     		<code  class="javascript">
     			import {{'{'}}
-
-
     		</code>
     	</pre>
     </ng-template>
@@ -204,22 +209,34 @@
     	</pre>
     </ng-template>
 
-    <ng-template [ngIf]="true" class="stitempcon">
-    	<div class="showhow">
-        <p>无自定义，简单示例</p>
-    		<iq-switcher [(ngModel)]="fromSwitcher"></iq-switcher>
-      </div>
-    </ng-template>
-
   </showitemexample>
 
   <showitemexample>
 
     <ng-template [ngIf]="true" class="stitemphtml">
 
+      <ng-template [ngIf]="true" class="stitempcon">
+        <div class="showhow">
+          <p>有自定义</p>
+          <ol>
+            <li>checked-value:a
+            </li>
+            <li>unchecked-value:0
+            </li>
+            <li>
+              (ngModelChange):{{modelChangeText}}
+            </li>
+          </ol>
+          <div style="float:left;width:100%;">
+            <iq-switcher (ngModelChange)="modelChange($event)" [(ngModel)]="fromSwitcher2" [checked-value]="'a'" [unchecked-value]="'0'"></iq-switcher>
+          </div>
+          <input type="text" [(ngModel)]="fromSwitcher2" style="width:300px;margin-top:10px;" />
+        </div>
+      </ng-template>
+
       <pre iqhighlight>
         <code class="html">
-          &lt;iq-datepicker [(ngModel)]="startDate" [StartDate]="endDate"&gt;&lt;/iq-datepicker&gt;
+          &lt;iq-switcher [(ngModel)]="fromSwitcher2" [checked-value]="'a'" [unchecked-value]="'0'"&gt;&lt;/iq-switcher&gt;
         </code>
       </pre>
 
@@ -252,24 +269,8 @@
       </pre>
     </ng-template>
 
-    <ng-template [ngIf]="true" class="stitempcon">
-    	<div class="showhow">
-        <p>有自定义</p>
-    		<iq-switcher [(ngModel)]="fromSwitcher" [checked-value]="'a'" [unchecked-value]="'0'"></iq-switcher>
-        <input type="text" [(ngModel)]="fromSwitcher" style="width:300px;margin-top:30px;" />
-    	</div>
-    </ng-template>
-
   </showitemexample>
 
 </ng-template>
 
 </showtem>
-
-<!-- <ng-template [ngIf]="true" class="stitempcon">
-	<div class="showhow">
-    <p>有自定义</p>
-		<iq-switcher [(ngModel)]="fromSwitcher" [checked-value]="'a'" [unchecked-value]="'0'"></iq-switcher>
-    <input type="text" [(ngModel)]="fromSwitcher" style="width:300px;margin-top:30px;" />
-	</div>
-</ng-template> -->

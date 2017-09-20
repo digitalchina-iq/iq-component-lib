@@ -6,20 +6,14 @@ import { Component, OnInit } from '@angular/core';
 export class IqSwitcherPageDemoComponent implements OnInit {
 
   fromSwitcher = 'aaa';
-
+  fromSwitcher2 = 'bbb';
+  modelChangeText ='';
   ngOnInit() {
 
   }
 
   modelChange(e){
-    console.log("+++++");
-    console.log(e);
-    console.log("+++++");
+    this.modelChangeText="改变---"+e;
   }
-
-  // mm(e){
-  //   console.log("mm---"+this.fromSwitcher2);
-  //   console.log("mm---"+e);
-  // }
 
 }
