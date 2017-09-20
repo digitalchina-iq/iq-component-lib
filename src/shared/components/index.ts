@@ -11,6 +11,8 @@ import { IqSwitcherComponent } from "./widgets/iq-switcher/iq-switcher.component
 import { ShowcodeComponent } from "./widgets/showcode/showcode.component";
 import { ShowtemComponent } from "./widgets/showtem/showtem.component";
 import { ShowitemoComponent } from "./widgets/showitemo/showitemo.component";
+import { ShowitemexampleComponent } from "./widgets/showitemexample/showitemexample.component";
+
 
 import { IqDatePickerComponent } from "./widgets/iq-datepicker/iq-datepicker.component";
 
@@ -25,11 +27,11 @@ import { IqDatePickerComponent } from "./widgets/iq-datepicker/iq-datepicker.com
 export {
   IqTlrFrameComponent,IqTbFrameComponent,HeaderComponent,
     PageErrorComponent, PageNotFoundComponent,IqSwitcherComponent,ShowcodeComponent,ShowtemComponent,ShowitemoComponent,
-    IqDatePickerComponent
+    IqDatePickerComponent,ShowitemexampleComponent
 }
 
 
 export let SHARED_COMPONENTS = [IqTlrFrameComponent,IqTbFrameComponent,HeaderComponent,
   PageErrorComponent, PageNotFoundComponent,IqSwitcherComponent,ShowcodeComponent,ShowtemComponent,ShowitemoComponent,
-  IqDatePickerComponent
+  IqDatePickerComponent,ShowitemexampleComponent
 ];

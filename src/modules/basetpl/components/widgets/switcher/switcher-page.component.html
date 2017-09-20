@@ -36,13 +36,240 @@
 
  -->
 
-<div class="showhow">
-  <!-- <div style="width:300px;">
-    <my-datepicker [(ngModel)]='date' PlaceHolder="-请选择日期"></my-datepicker>
-    12312312312
-  </div> -->
-  afdsf
+<!-- <div class="showhow">
 
-  <!-- <input style="width:300px;" type="text" name="" class="m-input"> -->
-  <!-- <iq-switcher [(ngModel)]="fromSwitcher2" [checked-value]="'a'" [unchecked-value]="'0'"></iq-switcher> -->
-</div>
+</div> -->
+
+
+
+
+
+<showtem [stname]="'开关组件'" [stnamedel]="'一个有趣的组件'" >
+
+	<!-- overview -->
+	<ng-template [ngIf]="true" class='stview'>
+
+		<h3>概述</h3>
+		<p>
+			简易的开关滑块，可以双向绑定，默认为<code>true</code>，当不是<code>true</code>或<code>false</code>时可以自定义<code>checked-value</code>
+		</p>
+
+    <h3>何时使用</h3>
+    <ol>
+      <li>
+        <p>
+          需要表示开关状态/两种状态之间的切换时；
+        </p>
+      </li>
+      <li>
+        <p>
+          和 <code>checkbox</code>的区别是，切换 <code>switch</code> 会直接触发状态改变，
+          而 <code>checkbox</code> 一般用于状态标记，需要和提交操作配合。
+        </p>
+      </li>
+    </ol>
+
+		<div style="margin-top:35px;">
+			<h3>checked-value</h3>
+			<div style="padding:0px 10px;">
+				<p>[checked-value]为可自定义的值。跟ngModel双向绑定的值相等，则开关开启。</p>
+        <showcode>
+					<div class="shows">
+            &lt;iq-switcher [(ngModel)]="fromSwitcher" [checked-value]="'aaa'" &gt;&lt;/iq-switcher&gt;
+					</div>
+				</showcode>
+			</div>
+		</div>
+
+		<div style="margin-top:35px;">
+			<h3>unchecked-value</h3>
+			<div style="padding:0px 10px;">
+				<p>[unchecked-value]为可自定义的值。</p>
+				<showcode>
+					<div class="shows">
+            &lt;iq-switcher [(ngModel)]="fromSwitcher" [checked-value]="'aaa'" [unchecked-value]="'0'" &gt;&lt;/iq-switcher&gt;
+					</div>
+				</showcode>
+			</div>
+		</div>
+
+    <div style="margin-top:35px;">
+      <h3>(ngModelChange)</h3>
+      <div style="padding:0px 10px;">
+        <p>根据ngModelChange来实现改变后的事件</p>
+        <showcode>
+          <div class="shows">
+            &lt;iq-switcher (ngModelChange)="modelChange($event)" [(ngModel)]="fromSwitcher" [checked-value]="'aaa'" [unchecked-value]="'0'" &gt;&lt;/iq-switcher&gt;
+          </div>
+        </showcode>
+        <iq-switcher (ngModelChange)="modelChange($event)" [(ngModel)]="fromSwitcher" [checked-value]="'a'" [unchecked-value]="'0'"></iq-switcher>
+
+      </div>
+    </div>
+
+	</ng-template>
+
+<!-- API -->
+<ng-template [ngIf]="true" class='stitemo'>
+
+	<showitemo [sitemotitle]="'属性'">
+		<ng-template [ngIf]="true" class="sitemocon">
+
+			<table class="table">
+				<thead>
+					<tr>
+						<th>参数</th>
+						<th>说明</th>
+						<th>类型</th>
+						<th>可选值</th>
+						<th>默认值</th>
+						<th>是否必选</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>checked-value</td>
+						<td>绑定的值等于这个值，开关为开启状态</td>
+						<td>any</td>
+						<td></td>
+						<td>true</td>
+						<td>否</td>
+					</tr>
+					<tr>
+						<td>unchecked-value</td>
+						<td>绑定的值等于这个值，开关为关闭状态</td>
+						<td>any</td>
+						<td></td>
+						<td>false</td>
+						<td>否</td>
+					</tr>
+				</tbody>
+			</table>
+
+		</ng-template>
+	</showitemo>
+
+	<showitemo [sitemotitle]="'说明'">
+		<ng-template [ngIf]="true" class="sitemocon">
+
+			<h3>(ngModelChange)</h3>
+			<p>
+        模板语法，可监听双向绑定的值变化
+      </p>
+
+		</ng-template>
+	</showitemo>
+
+</ng-template>
+
+<!-- stitemexample -->
+<ng-template [ngIf]="true" class="stitemexample">
+
+  <showitemexample>
+
+    <ng-template [ngIf]="true" class="stitemphtml">
+
+    	<pre iqhighlight>
+    		<code class="html">
+    			&lt;iq-datepicker [(ngModel)]="startDate" [StartDate]="endDate"&gt;&lt;/iq-datepicker&gt;
+    		</code>
+    	</pre>
+
+    </ng-template>
+
+    <ng-template [ngIf]="true" class="stitempts">
+    	<pre iqhighlight>
+    		<code  class="javascript">
+    			import {{'{'}}
+
+
+    		</code>
+    	</pre>
+    </ng-template>
+
+    <ng-template [ngIf]="true" class="stitempcss">
+    	<pre iqhighlight>
+    		<code class="css">
+    			%clearfix {{'{'}}
+    			    &:before,
+    			    &:after {{'{'}}
+    			        content: "";
+    			        display: table;
+    			    {{'}'}}
+    			    &:after {{'{'}}
+    			        clear: both;
+    			    {{'}'}}
+    			{{'}'}}
+    		</code>
+    	</pre>
+    </ng-template>
+
+    <ng-template [ngIf]="true" class="stitempcon">
+    	<div class="showhow">
+        <p>无自定义，简单示例</p>
+    		<iq-switcher [(ngModel)]="fromSwitcher"></iq-switcher>
+      </div>
+    </ng-template>
+
+  </showitemexample>
+
+  <showitemexample>
+
+    <ng-template [ngIf]="true" class="stitemphtml">
+
+      <pre iqhighlight>
+        <code class="html">
+          &lt;iq-datepicker [(ngModel)]="startDate" [StartDate]="endDate"&gt;&lt;/iq-datepicker&gt;
+        </code>
+      </pre>
+
+    </ng-template>
+
+    <ng-template [ngIf]="true" class="stitempts">
+      <pre iqhighlight>
+        <code  class="javascript">
+          import {{'{'}}
+
+
+        </code>
+      </pre>
+    </ng-template>
+
+    <ng-template [ngIf]="true" class="stitempcss">
+      <pre iqhighlight>
+        <code class="css">
+          %clearfix {{'{'}}
+              &:before,
+              &:after {{'{'}}
+                  content: "";
+                  display: table;
+              {{'}'}}
+              &:after {{'{'}}
+                  clear: both;
+              {{'}'}}
+          {{'}'}}
+        </code>
+      </pre>
+    </ng-template>
+
+    <ng-template [ngIf]="true" class="stitempcon">
+    	<div class="showhow">
+        <p>有自定义</p>
+    		<iq-switcher [(ngModel)]="fromSwitcher" [checked-value]="'a'" [unchecked-value]="'0'"></iq-switcher>
+        <input type="text" [(ngModel)]="fromSwitcher" style="width:300px;margin-top:30px;" />
+    	</div>
+    </ng-template>
+
+  </showitemexample>
+
+</ng-template>
+
+</showtem>
+
+<!-- <ng-template [ngIf]="true" class="stitempcon">
+	<div class="showhow">
+    <p>有自定义</p>
+		<iq-switcher [(ngModel)]="fromSwitcher" [checked-value]="'a'" [unchecked-value]="'0'"></iq-switcher>
+    <input type="text" [(ngModel)]="fromSwitcher" style="width:300px;margin-top:30px;" />
+	</div>
+</ng-template> -->

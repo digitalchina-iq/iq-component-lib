@@ -26,22 +26,43 @@ export class IqSwitcherComponent implements ControlValueAccessor{
   @Output() onChange = new EventEmitter();
 
   clickSwitch = ()=> {
+
+    console.log("-----");
+    console.log(this.switcher);
+    console.log("-----");
+
+    console.log("-----");
+    console.log(this.checkedValue);
+    console.log("-----");
+
+    console.log("-----");
+    console.log(this.unCheckedValue);
+    console.log("-----");
+
     if(this.switcher == this.checkedValue){
       this.switcher = this.unCheckedValue;
     }else{
       this.switcher = this.checkedValue;
     }
+
+    console.log("之后");
+    console.log(this.switcher);
+    console.log("之后");
+
     this.onChangeCallback(this.switcher);
     this.onTouchedCallback();
-    this.onChange.emit(this.switcher);
+    this.onChange.emit("结束");
   }
 
+  //ngModel绑定的值,写入子组件
   writeValue(value: boolean) {   //writeValue是当外部数据修改时被调用来更新内部的
     this.switcher = value;  //调用时赋初值可以作用
+    console.log("xzczxc")
   }
 
   registerOnChange(fn) {   //把这个 fn 注册到内部方法上, 当内部值更新时调用它 this.onChangeCallback();
     this.onChangeCallback = fn;
+    console.log('ccvvv');
   }
 
   //From ControlValueAccessor interface

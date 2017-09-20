@@ -10,9 +10,7 @@ declare var $: any;
 export class ShowtemComponent implements OnInit {
   @Input('stname') stName: string;
   @Input('stnamedel') stNameDel: string;
-
   ngOnInit() {
-    $("#wizard").bwizard();
+  
   }
-
 }
