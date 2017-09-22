@@ -1,14 +1,13 @@
 import { Directive, ElementRef, Input,Renderer } from '@angular/core'
 //引入highlight高亮
-// import { hljs } from 'highlight.js'
-// import * as hljs from 'highlight.js/lib/index.js';
+ // import { hljs } from 'highlight.js'
+import * as hljs from 'highlight.js';
 
 // import { * } from 'bootstrap'
-// import hljs from 'highlight.js/lib/highlight.js';
-import 'highlight.js/lib/highlight.js';
-import 'highlight.js/styles/googlecode.css'
+// import  'highlight.js/lib/highlight.js';
+//import 'highlight.js/lib/highlight.js';
 
-declare var hljs,window,document;
+declare var window,document;
 
 @Directive({ selector: '[iqhighlight]'})
 export class Iqhighlight {
@@ -52,6 +51,7 @@ export class Iqhighlight {
 
     ngAfterViewInit() {
 
+      //  console.log(hljs);
       // console.dir(this);
 
 
@@ -61,6 +61,7 @@ export class Iqhighlight {
       blocks.forEach((block)=>{
         hljs.highlightBlock(block)
       })
+
       // this.renderer.setElementStyle(this.el.nativeElement, 'backgroundColor', 'red');
       // this.renderer.setText(this.el.nativeElement,"adsdasdasd")
 

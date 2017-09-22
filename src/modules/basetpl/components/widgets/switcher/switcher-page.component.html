@@ -167,7 +167,16 @@
 
     <ng-template [ngIf]="true" class="stitempcon">
       <div class="showhow">
+
         <p>无自定义，简单示例</p>
+        <span>
+           This is what {{ fromSwitcher }} rendered
+        </span>
+        -----
+        <span ngNonBindable>
+            This is what {{ fromSwitcher }} rendered
+        </span>
+
         <iq-switcher [(ngModel)]="fromSwitcher"></iq-switcher>
       </div>
     </ng-template>
@@ -243,8 +252,6 @@
     <ng-template [ngIf]="true" class="stitempts">
       <pre iqhighlight>
         <code  class="javascript">
-          import {{'{'}}
-
 
         </code>
       </pre>
