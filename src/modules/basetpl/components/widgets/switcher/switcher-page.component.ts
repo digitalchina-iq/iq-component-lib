@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { flyIn } from 'animations/fly-in';
 
 @Component({
-  templateUrl: 'switcher-page.component.html'
+  templateUrl: 'switcher-page.component.html',
+  animations: [
+    flyIn
+  ]
 })
 
 export class IqSwitcherPageDemoComponent implements OnInit {
