@@ -9,8 +9,9 @@ export class AppComponent implements OnInit {
   title = 'app works!';
 
   ngOnInit() {
-    console.log(AV);
-
+    const appId = 'FiwsYyo5ilGwbj1NJ1b2Ub3c-gzGzoHsz';
+    const appKey = 'ALC3hN40oHBH7Fke3RJXvvsO';
+    AV.init({ appId, appKey });
     //  console.log(this.av)
     // var TestObject = AV.Object.extend('TestObject');
     // var testObject = new TestObject();

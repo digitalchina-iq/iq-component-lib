@@ -1,42 +1,46 @@
 <div>
-  <!-- Body Cover Image
+	<!-- Body Cover Image
   	================================================== -->
 	<div class="body-cover"></div>
 	<!-- Login Container
   	================================================== -->
 	<div id="login">
 		<div class="brand">
-			<span class="color"><i class="icon-leaf"></i> AD</span>METRO
+			<span class="color"><i class="icon-leaf"></i> angular</span>组件库
 		</div>
 		<div class="login-container">
 			<div class="login-header">
-				<i class="icon-lock" id="login-signal"></i> SIGN IN
+				<i class="icon-lock" id="login-signal"></i> 登录
 			</div>
 			<div class="login-content">
 				<form class="margin-bottom-0" action="index">
-					<input type="text" class="input-block-level" placeholder="Email Address" /><br />
-					<input type="text" class="input-block-level" placeholder="Password" /><br />
-					<label class="checkbox">
+
+					<input type="text" [(ngModel)]="userInfo.username" name="username" placeholder="帐号" />
+					<input type="text" [(ngModel)]="userInfo.password" name="password" placeholder="密码" />
+
+					<!-- <label class="checkbox">
 						<input type="checkbox" /> Remember Me
-					</label>
+					</label> -->
 					<div class="login-buttons">
 						<!-- <a routerLink="/index"> -->
-							<button type="submit" class="btn btn-success"><i class="icon-signin"></i> Sign me in</button>
+							<button (click)="login()" type="submit" class="btn btn-success"><i class="icon-signin"></i>登录</button>
 						<!-- </a> -->
 						<!-- <a href="#" class="pull-right">Forgot Password?</a> -->
 					</div>
 				</form>
+				<!-- <button (click)="test()" class="btn btn-success"><i class="icon-signin"></i>测试</button> -->
+
 			</div>
 		</div>
 	</div><!-- end #login -->
 
-  <div id="footer">
+  <div id="footer" style="position:absolute;bottom:0;">
       <span id="scrollTop" class="pull-right">
       	<a href="#top-navigation" class="btn btn-inverse btn-small" data-toggle="tooltip" data-title="Back to Top" data-placement="top" data-original-title="" title="">
           	<i class="icon-chevron-up"></i>
           </a>
       </span>
-  	© 2013 Admetro Responsive Admin Template - Sean Ngu All Rights Reserved
+  	© 2017
   </div>
 
 </div>
