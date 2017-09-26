@@ -5,16 +5,17 @@
 import { HttpModule, ConnectionBackend, RequestOptions, XHRBackend} from '@angular/http';
 import { FactoryProvider } from "@angular/core";
 import { iqHttpService } from "./iq-http.service";
+import { WindowService } from "./window.service";
 
 
 export { URLSearchParams,RequestOptions } from "./iq-http.service";
 
-export function httpFactory(xhrBackend, requestOptions) {
-  return new iqHttpService(xhrBackend, requestOptions);
+export function httpFactory(xhrBackend, requestOptions, windowservice) {
+  return new iqHttpService(xhrBackend, requestOptions, windowservice);
 };
 export let iqHttpProvider: FactoryProvider =
-{ provide: iqHttpService, useFactory: httpFactory, deps: [XHRBackend, RequestOptions] };
+{ provide: iqHttpService, useFactory: httpFactory, deps: [XHRBackend, RequestOptions,WindowService ] };
 
-export { iqHttpService};
+export { iqHttpService, WindowService };
 
-export let CORE_PROVIDERS = [iqHttpProvider];
+export let CORE_PROVIDERS = [iqHttpProvider,WindowService];

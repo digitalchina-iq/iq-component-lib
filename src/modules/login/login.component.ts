@@ -1,25 +1,37 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit ,TemplateRef ,ViewChild } from '@angular/core';
 import { Headers, RequestOptionsArgs, URLSearchParams, Http, RequestOptions } from '@angular/http';
 import * as AV from 'leancloud-storage';
 import { environment } from 'environments/environment';
 import 'rxjs/Rx';
 
 
+
 import { iqHttpService } from 'core/services/iq-http.service'
+import { WindowService } from 'core/services/window.service'
+
 // import { Observable } from 'rxjs/Observable';
+
+// import { BsModalService } from 'ngx-bootstrap/modal';
+// import { BsModalRef } from 'ngx-bootstrap/modal/modal-options.class';
 
 @Component({
     templateUrl: 'login.component.html',
     styleUrls: ['login.component.scss']
+    // providers: [WindowService]
 })
 export class DefindexComponent implements OnInit  {
 
-
+  // public modalRef: BsModalRef;
 
   userInfo: any = {
     username: "",
     password: ""
   };
+
+
+  // public openModal(template: TemplateRef<any>) {
+  //   this.modalRef = this.modalService.show(template);
+  // }
 
   // headers = new Headers({
   //    'Content-Type': 'application/json',
@@ -35,11 +47,15 @@ export class DefindexComponent implements OnInit  {
   //   super(_backend,_defaultOptions);
   // }
 
-  constructor(private iqhttpservice: iqHttpService){
+  constructor(private iqhttpservice: iqHttpService,
+    // private modalService: BsModalService
+    private windowservice:WindowService
+  ){
 
   }
 
   ngOnInit() {
+
 
     // this.iqhttpservice.post(environment.server+"/login",
     //   {
@@ -78,6 +94,10 @@ export class DefindexComponent implements OnInit  {
 
   login(){
 
+    // console.log(this.windowservice);
+
+
+
     this.iqhttpservice.post(environment.server+"/login",
       {
         "username":this.userInfo.username,
@@ -85,7 +105,9 @@ export class DefindexComponent implements OnInit  {
       })
       .map(res => res.json())
       .subscribe(res => {
+          console.log("----");
           console.log(res)
+          console.log("++++");
       })
 
     // AV.User.logIn(this.userInfo.username, this.userInfo.password).then(function (loginedUser) {

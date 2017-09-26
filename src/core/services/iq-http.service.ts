@@ -5,6 +5,7 @@ import { Http,URLSearchParams,
 
 import 'rxjs/Rx';
 import { Observable } from 'rxjs/Observable';
+import { WindowService } from './window.service'
 
 export { URLSearchParams ,RequestOptions};
 
@@ -33,24 +34,24 @@ export class iqHttpService extends Http {
      "status.503": "服务不可用。服务器当前不可用(过载或故障)。"
    };
 
-  constructor(_backend: ConnectionBackend, _defaultOptions: RequestOptions){
+  constructor(_backend: ConnectionBackend, _defaultOptions: RequestOptions, private windowservice: WindowService){
     super(_backend,_defaultOptions);
   }
 
   intercept(observable) {
-
       return Observable.create((observer) => {
         observable.subscribe(res => {
-          console.log("11111")
           observer.next(res);
+          this.windowservice.alert({message:"success",type:"success"});
         }, (err) => {
-          console.log("222222")
-          console.log(err);
-          console.log(err.status);
-          console.log('网络错误:'+err.status+' - '+this.status['status.'+err.status]);
+          // console.log("222222")
+          // console.log(err);
+          // console.log(err.status);
+           console.log('网络错误:'+err.status+' - '+this.status['status.'+err.status]);
+          // console.log(this.windowservice);
+          this.windowservice.alert({message:this.status['status.'+err.status],type:"fail"});
           observer.error(err);
         }, () => {
-          console.log("33333");
           observer.complete();//注意添加这句，否则有可能一些第三方的包不能正常使用，如ng2-translate
         });
       })
@@ -59,16 +60,14 @@ export class iqHttpService extends Http {
 
   getRequestOptionArgs(options ? : RequestOptionsArgs): RequestOptionsArgs {
 
-      console.log("options");
-      console.log(options);
-      console.log("options");
+      // console.log("options");
+      // console.log(options);
+      // console.log("options");
 
         if (options == null) {
-          console.log("1")
             options = new RequestOptions();
         }
         if (options.headers == null) {
-          console.log("2");
             options.headers = new Headers();
         }
         options.headers.append('Content-Type', 'application/json');

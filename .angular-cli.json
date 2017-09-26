@@ -25,7 +25,8 @@
         "styles.css",
         "widstyles.scss",
         "../node_modules/highlight.js/styles/github.css",
-        "bootstrap/bootstrap-wizard/css/bwizard.min.css"
+        "bootstrap/bootstrap-wizard/css/bwizard.min.css",
+        "bootstrap/bootstrap.css"
 
       ],
       "scripts": [

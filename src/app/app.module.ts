@@ -9,6 +9,9 @@ import { AppRoutingModule } from '../routing/app-routing.module';
 
 import { AppComponent } from './app.component';
 
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { CoreModule } from 'core/core.module';
+
 @NgModule({
   declarations: [
     AppComponent
@@ -17,8 +20,10 @@ import { AppComponent } from './app.component';
     BrowserModule,
     FormsModule,
     HttpModule,
+    CoreModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ModalModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

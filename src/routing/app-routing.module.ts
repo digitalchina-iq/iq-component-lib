@@ -10,7 +10,8 @@ import { DefindexComponent } from 'modules/login/login.component';
 
 //必须在引入shared components之后 不知道为啥
 import { SharedModule } from 'shared/shared.module';
-import { CoreModule } from 'core/core.module';
+
+
 
 
 const routes: Routes = [
@@ -56,8 +57,7 @@ const routes: Routes = [
   imports: [
     RouterModule.forRoot(routes),
     SharedModule,
-    LoginModule,
-    CoreModule
+    LoginModule
   ],
   exports: [RouterModule]
 })

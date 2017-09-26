@@ -4,9 +4,10 @@ import { ModuleWithProviders, NgModule,
 import { CommonModule } from '@angular/common';
 
 import { HttpModule, ConnectionBackend, RequestOptions, XHRBackend } from '@angular/http';
-import { CORE_PROVIDERS } from './index'
+import { CORE_PROVIDERS,CORE_COMPONENTS } from './index'
 
 import { SharedModule } from 'shared/shared.module';
+import { ModalModule } from 'ngx-bootstrap/modal';
 //
 // import { XcModalModule } from 'app/core/components/xc-modal-components/index';
 
@@ -15,14 +16,15 @@ import { SharedModule } from 'shared/shared.module';
     // XcModalModule,
     CommonModule,
     HttpModule,
-    SharedModule
+    SharedModule,
+    ModalModule.forRoot()
   ],
   exports: [
-    // CORE_COMPONENTS,
+    CORE_COMPONENTS,
     SharedModule
   ],
   declarations: [
-    // CORE_COMPONENTS
+    CORE_COMPONENTS
   ],
   providers: [
     CORE_PROVIDERS
