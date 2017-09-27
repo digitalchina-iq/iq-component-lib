@@ -42,7 +42,7 @@ export class iqHttpService extends Http {
       return Observable.create((observer) => {
         observable.subscribe(res => {
           observer.next(res);
-          this.windowservice.alert({message:"success",type:"success"});
+          // this.windowservice.alert({message:"success",type:"success"});
         }, (err) => {
           // console.log("222222")
           // console.log(err);

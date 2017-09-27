@@ -8,11 +8,14 @@ import { Basetpl_COMPONENTS } from './index';
 
 import { BasetplService } from './services/basetpl.service';
 
+import { NgxChartsModule } from "@swimlane/ngx-charts";
+
 //@NgModule装饰器用来为模块定义元数据
 @NgModule({
   imports: [//导入其他module，其它module暴露的出的Components、Directives、Pipes等可以在本module的组件中被使用
     SharedModule,
-    BasetplRoutingModule
+    BasetplRoutingModule,
+    NgxChartsModule
   ],
   declarations: [//模块内部Components/Directives/Pipes的列表，声明一下这个模块内部成员
     Basetpl_COMPONENTS

@@ -1,4 +1,5 @@
 import { Component, OnInit ,TemplateRef ,ViewChild } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Headers, RequestOptionsArgs, URLSearchParams, Http, RequestOptions } from '@angular/http';
 import * as AV from 'leancloud-storage';
 import { environment } from 'environments/environment';
@@ -49,7 +50,8 @@ export class DefindexComponent implements OnInit  {
 
   constructor(private iqhttpservice: iqHttpService,
     // private modalService: BsModalService
-    private windowservice:WindowService
+    private windowservice:WindowService,
+    private router: Router
   ){
 
   }
@@ -105,9 +107,10 @@ export class DefindexComponent implements OnInit  {
       })
       .map(res => res.json())
       .subscribe(res => {
-          console.log("----");
-          console.log(res)
-          console.log("++++");
+          // console.log("----");
+          // console.log(res)
+          // console.log("++++");
+          this.router.navigate(["/index"]);
       })
 
     // AV.User.logIn(this.userInfo.username, this.userInfo.password).then(function (loginedUser) {

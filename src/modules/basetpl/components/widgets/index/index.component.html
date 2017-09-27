@@ -1,0 +1,52 @@
+
+  <div id="content">
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <h1 class="page-title">总体概述 <small>beautiful shuoming</small></h1>
+
+				<div class="widget" style="float:left;width:520px;">
+          <div class="widget-header">
+						<h4>知识点总数</h4>
+					</div>
+					<div class="widget-content">
+            <ngx-charts-number-card
+             [view]="view"
+             [scheme]="colorScheme"
+             [results]="single"
+             (select)="onSelect($event)">
+           </ngx-charts-number-card>
+					</div>
+				</div>
+
+        <div class="widget" style="float:left;width:520px;margin-left:30px;">
+          <div class="widget-header">
+            <h4>案例总数</h4>
+          </div>
+          <div class="widget-content">
+            <ngx-charts-pie-grid
+                [view]="view"
+                [scheme]="colorScheme"
+                [results]="single"
+                (select)="onSelect($event)">
+              </ngx-charts-pie-grid>
+          </div>
+        </div>
+
+        <div class="widget" style="float:left;width:100%;">
+          <div class="widget-header">
+            <h4>组件分布</h4>
+          </div>
+          <div class="widget-content">
+            <ngx-charts-advanced-pie-chart
+              [view]="view1"
+              [scheme]="colorScheme1"
+              [results]="single1"
+              [gradient]="gradient"
+              (select)="onSelect($event)">
+            </ngx-charts-advanced-pie-chart>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
