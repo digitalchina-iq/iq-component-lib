@@ -1,0 +1,238 @@
+<div [@flyIn]="active">
+  <showtem [stname]="'带搜索下拉组件'" [stnamedel]="'一个有趣的组件'" >
+
+    <!-- overview -->
+    <ng-template [ngIf]="true" class='stview'>
+
+      <h3>概述</h3>
+      <p>
+        下拉组件，根据搜索条件请求后台数据，获取下拉结果
+      </p>
+
+      <div style="margin-top:35px;">
+        <h3>listApi</h3>
+        <div style="padding:0px 10px;">
+          <p>listApi: string 下拉列表接口</p>
+          <iq-select listApi="api"></iq-select>
+          <showcode>
+            <div class="shows">&lt;iq-select listApi="api" &gt;&lt;/iq-select&gt;</div>
+          </showcode>
+        </div>
+      </div>
+
+
+      <div style="margin-top:35px;">
+        <h3>method</h3>
+        <div style="padding:0px 10px;">
+          <p>method: string 接口请求方式，默认为get</p>
+          <iq-select method="post"></iq-select>
+          <showcode>
+            <div class="shows">&lt;iq-select method="post"&gt;&lt;/iq-select&gt;</div>
+          </showcode>
+        </div>
+      </div>
+
+      <div style="margin-top:35px;">
+        <h3>placeHolder</h3>
+        <div style="padding:0px 10px;">
+          <p>placeHolder: string 默认提示文字</p>
+          <iq-select placeHolder="-请选择"></iq-select>
+          <showcode>
+            <div class="shows">&lt;iq-select placeHolder="-请选择"&gt;&lt;/iq-select&gt;</div>
+          </showcode>
+        </div>
+      </div>
+
+      <div style="margin-top:35px;">
+        <h3>noSearch</h3>
+        <div style="padding:0px 10px;">
+          <p>noSearch: boolean 隐藏搜索框</p>
+          <iq-select noSearch="true"></iq-select>
+          <showcode>
+            <div class="shows">&lt;iq-select noSearch="true"&gt;&lt;/iq-select&gt;</div>
+          </showcode>
+        </div>
+      </div>
+
+      <div style="margin-top:35px;">
+        <h3>disabled</h3>
+        <div style="padding:0px 10px;">
+          <p>disabled: boolean 禁用下拉框</p>
+          <iq-select disabled="true"></iq-select>
+          <showcode>
+            <div class="shows">&lt;iq-select disabled="true"&gt;&lt;/iq-select&gt;</div>
+          </showcode>
+        </div>
+      </div>
+
+      <div style="margin-top:35px;">
+        <h3>queryParams</h3>
+        <div style="padding:0px 10px;">
+          <p>queryParams: object 额外的查询参数，用于补充keyWord之外的其他查询参数</p>
+          <iq-select [queryParams]="{a:1,b:2}"></iq-select>
+          <showcode>
+            <div class="shows">&lt;iq-select [queryParams]="{{'{'}}a:1,b:2{{'}'}}"&gt;&lt;/iq-select&gt;</div>
+          </showcode>
+        </div>
+      </div>
+
+      <div style="margin-top:35px;">
+        <h3>keyWordAlias</h3>
+        <div style="padding:0px 10px;">
+          <p>keyWordAlias: string 默认的关键词字段为keyWord，如果后台接口搜索关键词字段不为keyWord，可通过该属性为keyWord指定一个别名</p>
+          <iq-select keyWordAlias="searchWord"></iq-select>
+          <showcode>
+            <div class="shows">&lt;iq-select keyWordAlias="searchWord"&gt;&lt;/iq-select&gt;</div>
+          </showcode>
+        </div>
+      </div>
+
+      <div style="margin-top:35px;">
+        <h3>required</h3>
+        <div style="padding:0px 10px;">
+          <p>required: boolean 如果为true，则必选，不选组件边框会变红</p>
+          <iq-select required="true"></iq-select>
+          <showcode>
+            <div class="shows">&lt;iq-select required="true"&gt;&lt;/iq-select&gt;</div>
+          </showcode>
+        </div>
+      </div>
+
+      <div style="margin-top:35px;">
+        <h3>itemValue</h3>
+        <div style="padding:0px 10px;">
+          <p>itemValue: string 如果每个下拉项有多个值，itemValue用来确定ngModel绑定的值</p>
+          <iq-select itemValue="0"></iq-select>
+          <showcode>
+            <div class="shows">&lt;iq-select itemValue="0"&gt;&lt;/iq-select&gt;</div>
+          </showcode>
+        </div>
+      </div>
+
+      <div style="margin-top:35px;">
+        <h3>handleData</h3>
+        <div style="padding:0px 10px;">
+          <p>handleData: function 传入一个方法，用来处理接口的返回数据，函数处理必须返回结果且必须是数组</p>
+          <iq-select handleData="fn"></iq-select>
+          <showcode>
+            <div class="shows">&lt;iq-select handleData="fn"&gt;&lt;/iq-select&gt;</div>
+          </showcode>
+        </div>
+      </div>
+
+      <div style="margin-top:35px;">
+        <h3>onSelect</h3>
+        <div style="padding:0px 10px;">
+          <p>选择下拉项之后触发</p>
+          <iq-select onSelect="doSomething($event)"></iq-select>
+          <showcode>
+            <div class="shows">&lt;iq-select onSelect="doSomething($event)"&gt;&lt;/iq-select&gt;</div>
+          </showcode>
+        </div>
+      </div>
+
+      <div style="margin-top:35px;">
+        <h3>getData</h3>
+        <div style="padding:0px 10px;">
+          <p>下拉列表接口返回数据时触发，$event为返回的数据</p>
+          <iq-select (getData)="doSomething($event)"></iq-select>
+          <showcode>
+            <div class="shows">&lt;iq-select (getData)="doSomething($event)"&gt;&lt;/iq-select&gt;</div>
+          </showcode>
+        </div>
+      </div>
+
+    </ng-template>
+
+  <!-- API -->
+  <ng-template [ngIf]="true" class='stitemo'>
+
+    <showitemo [sitemotitle]="'属性'">
+      <ng-template [ngIf]="true" class="sitemocon">
+
+        <table class="table">
+          <thead>
+            <tr>
+              <th>参数</th>
+              <th>说明</th>
+              <th>类型</th>
+              <th>可选值</th>
+              <th>默认值</th>
+              <th>是否必选</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>upType</td>
+              <td>组件类型</td>
+              <td>number</td>
+              <td>0,1</td>
+              <td>0</td>
+              <td>否</td>
+            </tr>
+            <tr>
+              <td>url</td>
+              <td>上传接口</td>
+              <td>string</td>
+              <td></td>
+              <td></td>
+              <td>是</td>
+            </tr>
+            <tr>
+              <td>method</td>
+              <td>上传方式</td>
+              <td>string</td>
+              <td>post, put</td>
+              <td>post</td>
+              <td>否</td>
+            </tr>
+            <tr>
+              <td>allowedFileType</td>
+              <td>允许上传的文件类型</td>
+              <td>string[]</td>
+              <td></td>
+              <td></td>
+              <td>否</td>
+            </tr>
+            <tr>
+              <td>maxFileSize</td>
+              <td>最大文件字节数</td>
+              <td>number</td>
+              <td></td>
+              <td></td>
+              <td>否</td>
+            </tr>
+            <tr>
+              <td>maxFileNum</td>
+              <td>最大文件数量</td>
+              <td>number</td>
+              <td></td>
+              <td></td>
+              <td>否</td>
+            </tr>
+            <tr>
+              <td>onSuccess</td>
+              <td>文件上传成功事件</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>否</td>
+            </tr>
+            <tr>
+              <td>onDeleteItem</td>
+              <td>删除队列中某个文件事件</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>否</td>
+            </tr>
+          </tbody>
+        </table>
+
+      </ng-template>
+    </showitemo>
+
+  </ng-template>
+
+  </showtem>
+</div>

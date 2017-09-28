@@ -9,6 +9,7 @@ import { IqSwitcherPageDemoComponent } from './widgets/switcher/switcher-page.co
 import { IqDatepickerDemoComponent } from './widgets/iq-datepicker/iq-datepicker.component';
 import { IndexComponent } from './widgets/index/index.component';
 import { IqFileUploadDemoComponent } from './widgets/iq-file-upload/iq-file-upload.component';
+import { IqSelectDemoComponent } from './widgets/iq-select/iq-select.component';
 
 //services
 import { WindowDemoComponent } from './services/window/window.component';
@@ -17,7 +18,8 @@ import { WindowDemoComponent } from './services/window/window.component';
 
 //暴露出所有Component
 export { BasetplContainerComponent,BasetplRootComponent,PrepareT1Component,PrepareT2Component,
-  IqSwitcherPageDemoComponent,IqDatepickerDemoComponent,IndexComponent,WindowDemoComponent,IqFileUploadDemoComponent
+  IqSwitcherPageDemoComponent,IqDatepickerDemoComponent,IndexComponent,WindowDemoComponent,IqFileUploadDemoComponent,
+  IqSelectDemoComponent
 };
 
 //模块内部Components列表
@@ -30,5 +32,6 @@ export let Basetpl_COMPONENTS =
   IqDatepickerDemoComponent,
   IndexComponent,
   WindowDemoComponent,
-  IqFileUploadDemoComponent
+  IqFileUploadDemoComponent,
+  IqSelectDemoComponent
 ];
