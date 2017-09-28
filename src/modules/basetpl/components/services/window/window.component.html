@@ -1,5 +1,5 @@
 <div [@flyIn]="active">
-	<showtem [stname]="'开关组件'" [stnamedel]="'一个有趣的组件'">
+	<showtem [stname]="'弹出提示框'" [stnamedel]="'一个有趣的服务'">
 		<!-- overview -->
 		<ng-template [ngIf]="true" class='stview'>
 
@@ -123,6 +123,13 @@
 	      <div class="showhow">
 
 	        <p>无自定义，简单示例</p>
+	        <span>
+	           This is what {{ fromSwitcher }} rendered
+	        </span>
+	        -----
+	        <span ngNonBindable>
+	            This is what {{ fromSwitcher }} rendered
+	        </span>
 
 	        <iq-switcher [(ngModel)]="fromSwitcher"></iq-switcher>
 	      </div>

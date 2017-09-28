@@ -9,11 +9,14 @@ import { IqSwitcherPageDemoComponent } from './widgets/switcher/switcher-page.co
 import { IqDatepickerDemoComponent } from './widgets/iq-datepicker/iq-datepicker.component';
 import { IndexComponent } from './widgets/index/index.component';
 
+//services
+import { WindowDemoComponent } from './services/window/window.component';
+
 
 
 //暴露出所有Component
 export { BasetplContainerComponent,BasetplRootComponent,PrepareT1Component,PrepareT2Component,
-  IqSwitcherPageDemoComponent,IqDatepickerDemoComponent,IndexComponent
+  IqSwitcherPageDemoComponent,IqDatepickerDemoComponent,IndexComponent,WindowDemoComponent
 };
 
 //模块内部Components列表
@@ -24,5 +27,6 @@ export let Basetpl_COMPONENTS =
   PrepareT2Component,
   IqSwitcherPageDemoComponent,
   IqDatepickerDemoComponent,
-  IndexComponent
+  IndexComponent,
+  WindowDemoComponent
 ];
