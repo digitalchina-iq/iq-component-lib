@@ -10,6 +10,6 @@ import { flyIn } from 'animations/fly-in';
 
 export class IqDatepickerDemoComponent {
 
-  date: string;
+  date: any[]=[];
 
 }

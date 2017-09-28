@@ -1,6 +1,9 @@
-import { Component, OnInit, Input, ViewChild, ElementRef, forwardRef } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, ElementRef, forwardRef, Renderer2 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR, DefaultValueAccessor } from '@angular/forms';
 import * as moment from 'moment';
+import { Moment } from 'moment';
+
+declare var window;
 
 @Component({
     selector:'iq-datepicker',
@@ -14,14 +17,14 @@ import * as moment from 'moment';
 })
 export class IqDatePickerComponent implements ControlValueAccessor,OnInit {
 
-  today: Date = new Date();//用于设置默认选择今天
+  today: Moment = moment();//用于设置默认选择今天
 
-  year: any = this.today.getFullYear();
-  month: any = this.today.getMonth();
-  day: any = this.today.getDate();//选择高亮的day
+  year: number = this.today.year();
+  month: number = this.today.month();
+  day: any = this.today.date();//选择高亮的day
   _day: any = '';//暂存被选择的day
 
-  choosedDate: any = "";//显示选择的日期
+  choosedDate: string = "";//显示选择的日期
   startday: any;//开始日期
   endday: any;//结束日期
   disabledStartDate: any = 0;//小于开始日期不能被选择
@@ -30,25 +33,26 @@ export class IqDatePickerComponent implements ControlValueAccessor,OnInit {
   disabledNextMonth: boolean = false;//禁用下个月
   bindDate: any;//双向绑定的日期
 
-  yearList:any = [];//年份列表
-  monthList:any = [];//月份列表
+  yearList: number[] = [];//年份列表
+  monthList: number[] = [];//月份列表
 
-  prevMonth: any[] = [];//前一个月
-  currentMonth: any[] = [];//当前月
-  nextMonth: any[] = [];//下个月
+  prevMonth: number[] = [];//前一个月
+  currentMonth: number[] = [];//当前月
+  nextMonth: number[] = [];//下个月
 
   show: boolean = false;//日期组件展示与否
-  isDisabled: boolean = false;//组件被禁用状态
   onChangeCallback: any;
   onTouchedCallback: any;
-  public clickClose;
+  /**取消监听事件*/
+  removeListen(): void{};
 
-  @Input() MinYear = this.today.getFullYear() - 80;//默认最小年份
-  @Input() MaxYear = this.today.getFullYear() + 20;//默认最大年份
-  @Input() PlaceHolder = "";
-  @Input() Required: boolean = false;//必填
+  @Input() minYear: number = this.today.year() - 80;//默认最小年份
+  @Input() maxYear: number = this.today.year() + 20;//默认最大年份
+  @Input() placeHolder = "";
+  @Input() required: boolean = false;//必填
+  @Input() isDisabled: boolean = false;//组件被禁用状态
   @Input() format: string;
-  @Input() set StartDate(v){
+  @Input() set startDate(v){
     if(!v){
       this.disabledStartDate = 0;
       this.startday = undefined;
@@ -58,7 +62,7 @@ export class IqDatePickerComponent implements ControlValueAccessor,OnInit {
     }
   };//起始日期
 
-  @Input() set EndDate(v){
+  @Input() set endDate(v){
     if(!v){
       this.disabledEndDate = 32;
       this.endday = undefined;
@@ -69,9 +73,9 @@ export class IqDatePickerComponent implements ControlValueAccessor,OnInit {
     }
   };//结束日期
 
-  @ViewChild("myDatePicker") myDatePicker: ElementRef;
+  @ViewChild("iqDatePicker") iqDatePicker: ElementRef;
 
-  constructor() {}
+  constructor(private renderer: Renderer2) {}
 
   checkStartDate(){//检查小于开始日期被禁用
     let _y = this.startday.getFullYear(),
@@ -117,18 +121,24 @@ export class IqDatePickerComponent implements ControlValueAccessor,OnInit {
     return Number(n) < 10 ? '0' + n : '' + n;
   }
 
+  /**获取连续数组*/
+  getArr(start: number, end: number): number[]{
+    return Array.from({length: end - start + 1}).map((v,i) => Number(i) + Number(start));
+  }
+
   writeValue(value: any){
     if(!value){
       this.bindDate = "";
       this.choosedDate = "";
     }else{
       this.bindDate = new Date(value);
+      let tmp = moment(value);
 
-      this._day = this.bindDate.getDate();//暂存当前存入的day
-      this.year = this.bindDate.getFullYear();
-      this.month = this.bindDate.getMonth();
+      this._day = tmp.date();//暂存当前存入的day
+      this.year = tmp.year();
+      this.month = tmp.month();
       
-      this.choosedDate = this.year + '-' + this.addZero(Number(this.month) + 1) + '-' + this.addZero(this._day);
+      this.choosedDate = tmp.format('YYYY-MM-DD');
     }
     
     this.getDate(this.year, this.month);
@@ -141,41 +151,37 @@ export class IqDatePickerComponent implements ControlValueAccessor,OnInit {
     this.onTouchedCallback = fn;
   }
 
-  setDisabledState(isDisabled: boolean){
-    this.isDisabled = isDisabled;
-  }
-
   ngOnInit(){
-    for(let i = this.MinYear; i <= this.MaxYear; i++){//获取年份列表
-      this.yearList.push(i);
-    }
-    for(let i = 0; i < 12; i++){//获取月份列表
-      this.monthList.push(i);
-    }
+    
+    this.yearList = this.getArr(this.minYear, this.maxYear);//获取年份列表
 
-    let _this = this;
-    let datePickerElement = _this.myDatePicker.nativeElement;
-    this.clickClose = function(e){
-      if(_this.show){
-        if(e.target != datePickerElement && !datePickerElement.contains(e.target)) {
-          _this.show = false;
-        }
-      }
-    }
-    document.addEventListener('mousedown',_this.clickClose);
+    this.monthList = this.getArr(0, 11);//获取月份列表
+
   }
 
-  ngOnDestroy(){
-    let _this = this;
-    document.removeEventListener('mousedown',_this.clickClose);
+  ngOnDestroy() {
+    this.removeListen();
   }
 
-  showPicker(){
+  /**打开选日期框，监听点击事件*/
+  showPicker() {
+    if(this.isDisabled){return};
+
     this.show = true;
+
+    this.removeListen();
+    let datePickerElement = this.iqDatePicker.nativeElement;
+    this.removeListen = this.renderer.listen(window, 'click', (e) => {
+      if(e.target != datePickerElement && !datePickerElement.contains(e.target)) {
+        this.hidePicker();
+      }
+    });
   }
 
-  hidePicker(){
+  /**关闭选日期框，并取消事件监听*/
+  hidePicker() {
     this.show = false;
+    this.removeListen();
   }
 
   //根据年份月份获得日期
@@ -191,42 +197,24 @@ export class IqDatePickerComponent implements ControlValueAccessor,OnInit {
     this.currentMonth.length = 0;
     this.nextMonth.length = 0;
 
-    this.year = Number(this.year);
-    this.month = Number(this.month);
+    let tmpday = moment();
+    let currentday = moment();
 
-    let monthLen: number;//当前月份长度
-    let tmpday = new Date();
-    let currentday = new Date();
+    tmpday.set({year: year, month: month});
 
-    tmpday.setFullYear(year);
-    tmpday.setMonth(month);
+    currentday.set({year: year, month: month});
 
-    currentday.setFullYear(year);
-    currentday.setMonth(month);
+    let prev = tmpday.set('date', 0);
+    let prevMonthMax = prev.date(),//上个月最大日期
+        prevMonthLen = prev.day();//上一个月长度
 
-    var prev = new Date(tmpday.setDate(0));
-    let prevMonthMax = prev.getDate(),//上个月最大日期
-        prevMonthLen = prev.getDay();//上一个月长度
-    for(let i = prevMonthMax; i > prevMonthMax - prevMonthLen; i--){
-      this.prevMonth.push(i);
-    }
-    this.prevMonth.reverse();
+    this.prevMonth = this.getArr(prevMonthMax - prevMonthLen + 1, prevMonthMax);
 
-    for(let i = 28; i <= 32; i++){
-      let tar = new Date(currentday.setDate(i));
-      if(tar.getDate() == 1){
-        monthLen = i - 1;
-        break;
-      };
-    }
+    let monthLen = currentday.daysInMonth();
 
-    for(let i = 1; i <= monthLen; i++){
-      this.currentMonth.push(i);
-    }
+    this.currentMonth = this.getArr(1, monthLen);
 
-    for(let i = 1; i <= 42 - prevMonthLen - monthLen; i++){
-      this.nextMonth.push(i);
-    }
+    this.nextMonth = this.getArr(1, 42 - prevMonthLen - monthLen)
 
     if(this.bindDate){
       this.day = this.bindDate.getFullYear() == this.year && this.bindDate.getMonth() == this.month ? this._day : "";
@@ -256,7 +244,7 @@ export class IqDatePickerComponent implements ControlValueAccessor,OnInit {
         this.disabledPrevMonth = false;
       }
     };
-    if(this.year <= this.MinYear && this.month == 0){//如果超出时间范围无效
+    if(this.year <= this.minYear && this.month == 0){//如果超出时间范围无效
       window.alert('超出最小时间范围');
       return false;
     }
@@ -280,7 +268,7 @@ export class IqDatePickerComponent implements ControlValueAccessor,OnInit {
         this.disabledNextMonth = false;
       }
     };
-    if(this.year >= this.MaxYear && this.month == 11){//如果超出时间范围无效
+    if(this.year >= this.maxYear && this.month == 11){//如果超出时间范围无效
       window.alert('超出最大时间范围');
       return false;
     }
