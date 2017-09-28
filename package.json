@@ -4,7 +4,7 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --proxy-config proxy.conf.json --port 4301",
+    "start": "ng serve --proxy-config proxy.conf.json --port 4300",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -31,6 +31,7 @@
     "jquery": "^3.2.1",
     "leancloud-storage": "^3.2.1",
     "moment": "^2.18.1",
+    "ng2-file-upload": "^1.2.1",
     "ngx-bootstrap": "^1.9.3",
     "rxjs": "^5.1.0",
     "zone.js": "^0.8.17"

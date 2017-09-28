@@ -1,0 +1,197 @@
+<div [@flyIn]="active">
+  <showtem [stname]="'日期组件'" [stnamedel]="'一个有趣的组件'" >
+
+    <!-- overview -->
+    <ng-template [ngIf]="true" class='stview'>
+
+      <h3>概述</h3>
+      <p>
+        上传文件组件，支持多文件上传，支持限定文件类型、大小和数量。
+      </p>
+
+      <div style="margin-top:35px;">
+        <h3>upType</h3>
+        <div style="padding:0px 10px;">
+          <p>upType = "0|1" 组件类型 0: 按钮上传，弹出框形式 1:附件上传，占用页面空间</p>
+          <p>upType = "0"</p>
+          <iq-file-upload upType="0" text="上传文件"></iq-file-upload>
+          <p>upType = "1"</p>
+          <iq-file-upload upType="1"></iq-file-upload>
+          <showcode>
+            <div class="shows">&lt;iq-file-upload upType="0" text="上传文件" &gt;&lt;/iq-file-upload&gt;
+&lt;iq-file-upload upType="1" &gt;&lt;/iq-file-upload&gt;</div>
+          </showcode>
+        </div>
+      </div>
+
+      <div style="margin-top:35px;">
+        <h3>url</h3>
+        <div style="padding:0px 10px;">
+          <p>url = "str" str为string值类型，表示文件上传接口api</p>
+          <iq-file-upload upType="1" url="api"></iq-file-upload>
+          <showcode>
+            <div class="shows">&lt;iq-file-upload upType="1" url="api"&gt;&lt;/iq-file-upload&gt;</div>
+          </showcode>
+        </div>
+      </div>
+
+      <div style="margin-top:35px;">
+        <h3>method</h3>
+        <div style="padding:0px 10px;">
+          <p>method = "post|put|..." 文件上传方式，默认为post</p>
+          <iq-file-upload upType="1" method="put"></iq-file-upload>
+          <showcode>
+            <div class="shows">&lt;iq-file-upload upType="1" method="put"&gt;&lt;/iq-file-upload&gt;</div>
+          </showcode>
+        </div>
+      </div>
+
+      <div style="margin-top:35px;">
+        <h3>allowedFileType</h3>
+        <div style="padding:0px 10px;">
+          <p>allowedFileType: string[] 允许上传的文件类型</p>
+          <iq-file-upload upType="1" [allowedFileType]="['xls']"></iq-file-upload>
+          <showcode>
+            <div class="shows">&lt;iq-file-upload upType="1" [allowedFileType]="['xls']"&gt;&lt;/iq-file-upload&gt;</div>
+          </showcode>
+        </div>
+      </div>
+
+      <div style="margin-top:35px;">
+        <h3>maxFileSize</h3>
+        <div style="padding:0px 10px;">
+          <p>maxFileSize: number 允许上传的文件的最大字节数</p>
+          <iq-file-upload upType="1" maxFileSize="102400"></iq-file-upload>
+          <showcode>
+            <div class="shows">&lt;iq-file-upload upType="1" maxFileSize="102400"&gt;&lt;/iq-file-upload&gt;</div>
+          </showcode>
+        </div>
+      </div>
+
+      <div style="margin-top:35px;">
+        <h3>maxFileNum</h3>
+        <div style="padding:0px 10px;">
+          <p>maxFileNum: number 允许上传的文件的最多数量</p>
+          <iq-file-upload upType="1" maxFileNum="3"></iq-file-upload>
+          <showcode>
+            <div class="shows">&lt;iq-file-upload upType="1" maxFileNum="3"&gt;&lt;/iq-file-upload&gt;</div>
+          </showcode>
+        </div>
+      </div>
+
+      <div style="margin-top:35px;">
+        <h3>onSuccess</h3>
+        <div style="padding:0px 10px;">
+          <p>文件上传成功的触发的事件，$event为服务器返回的数据</p>
+          <iq-file-upload upType="1" (onSuccess)="fileUploadSuccess($event)"></iq-file-upload>
+          <showcode>
+            <div class="shows">&lt;iq-file-upload upType="1" (onSuccess)="fileUploadSuccess($event)"&gt;&lt;/iq-file-upload&gt;</div>
+          </showcode>
+        </div>
+      </div>
+
+      <div style="margin-top:35px;">
+        <h3>onDeleteItem</h3>
+        <div style="padding:0px 10px;">
+          <p>删除上传队列中某个文件触发的事件，$event该文件在队列中的位置</p>
+          <iq-file-upload upType="1" (onDeleteItem)="deleteItem($event)"></iq-file-upload>
+          <showcode>
+            <div class="shows">&lt;iq-file-upload upType="1" (onDeleteItem)="deleteItem($event)"&gt;&lt;/iq-file-upload&gt;</div>
+          </showcode>
+        </div>
+      </div>
+
+    </ng-template>
+
+  <!-- API -->
+  <ng-template [ngIf]="true" class='stitemo'>
+
+    <showitemo [sitemotitle]="'属性'">
+      <ng-template [ngIf]="true" class="sitemocon">
+
+        <table class="table">
+          <thead>
+            <tr>
+              <th>参数</th>
+              <th>说明</th>
+              <th>类型</th>
+              <th>可选值</th>
+              <th>默认值</th>
+              <th>是否必选</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>upType</td>
+              <td>组件类型</td>
+              <td>number</td>
+              <td>0,1</td>
+              <td>0</td>
+              <td>否</td>
+            </tr>
+            <tr>
+              <td>url</td>
+              <td>上传接口</td>
+              <td>string</td>
+              <td></td>
+              <td></td>
+              <td>是</td>
+            </tr>
+            <tr>
+              <td>method</td>
+              <td>上传方式</td>
+              <td>string</td>
+              <td>post, put</td>
+              <td>post</td>
+              <td>否</td>
+            </tr>
+            <tr>
+              <td>allowedFileType</td>
+              <td>允许上传的文件类型</td>
+              <td>string[]</td>
+              <td></td>
+              <td></td>
+              <td>否</td>
+            </tr>
+            <tr>
+              <td>maxFileSize</td>
+              <td>最大文件字节数</td>
+              <td>number</td>
+              <td></td>
+              <td></td>
+              <td>否</td>
+            </tr>
+            <tr>
+              <td>maxFileNum</td>
+              <td>最大文件数量</td>
+              <td>number</td>
+              <td></td>
+              <td></td>
+              <td>否</td>
+            </tr>
+            <tr>
+              <td>onSuccess</td>
+              <td>文件上传成功事件</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>否</td>
+            </tr>
+            <tr>
+              <td>onDeleteItem</td>
+              <td>删除队列中某个文件事件</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>否</td>
+            </tr>
+          </tbody>
+        </table>
+
+      </ng-template>
+    </showitemo>
+
+  </ng-template>
+
+  </showtem>
+</div>
