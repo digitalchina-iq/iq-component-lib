@@ -28,9 +28,7 @@
 				<div style="padding:0px 10px;">
 					<p>[checked-value]为可自定义的值。跟ngModel双向绑定的值相等，则开关开启。</p>
 	        <showcode>
-						<div class="shows">
-	            &lt;iq-switcher [(ngModel)]="fromSwitcher" [checked-value]="'aaa'" &gt;&lt;/iq-switcher&gt;
-						</div>
+						<div class="shows">&lt;iq-switcher [(ngModel)]="fromSwitcher" [checked-value]="'aaa'" &gt;&lt;/iq-switcher&gt;</div>
 					</showcode>
 				</div>
 			</div>
@@ -40,9 +38,7 @@
 				<div style="padding:0px 10px;">
 					<p>[unchecked-value]为可自定义的值。</p>
 					<showcode>
-						<div class="shows">
-	            &lt;iq-switcher [(ngModel)]="fromSwitcher" [checked-value]="'aaa'" [unchecked-value]="'0'" &gt;&lt;/iq-switcher&gt;
-						</div>
+						<div class="shows">&lt;iq-switcher [(ngModel)]="fromSwitcher" [checked-value]="'aaa'" [unchecked-value]="'0'" &gt;&lt;/iq-switcher&gt;</div>
 					</showcode>
 				</div>
 			</div>
@@ -52,9 +48,7 @@
 	      <div style="padding:0px 10px;">
 	        <p>根据ngModelChange来实现改变后的事件</p>
 	        <showcode>
-	          <div class="shows">
-	            &lt;iq-switcher (ngModelChange)="modelChange($event)" [(ngModel)]="fromSwitcher" [checked-value]="'aaa'" [unchecked-value]="'0'" &gt;&lt;/iq-switcher&gt;
-	          </div>
+	          <div class="shows">&lt;iq-switcher (ngModelChange)="modelChange($event)" [(ngModel)]="fromSwitcher" [checked-value]="'aaa'" [unchecked-value]="'0'" &gt;&lt;/iq-switcher&gt;</div>
 	        </showcode>
 	      </div>
 	    </div>

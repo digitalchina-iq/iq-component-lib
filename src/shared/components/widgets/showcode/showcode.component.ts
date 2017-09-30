@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import {
   trigger,
   state,
@@ -32,6 +32,7 @@ import {
 
 export class ShowcodeComponent {
 
+  @Input('sttype') stType: string='html';
   public show: boolean = false;
 
 }

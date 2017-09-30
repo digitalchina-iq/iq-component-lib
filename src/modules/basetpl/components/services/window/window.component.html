@@ -5,59 +5,52 @@
 
 			<h3>概述</h3>
 			<p>
-				简易的开关滑块，开关默认为关闭。可以双向绑定，默认为<code>true</code>，当不是<code>true</code>或<code>false</code>时可以自定义<code>checked-value</code>
+				弹出提示警告框:alert
 			</p>
+			<ol>
+				<li>
+						<code>title</code>标题
+				</li>
+				<li>
+						<code>message</code>内容
+				</li>
+				<li>
+						<code>type</code>类型---（success，fail，warn）
+				</li>
+			</ol>
+			<p>
+				弹出提示警告框:confirm
+			</p>
+			<ol>
+				<li>
+						<code>message</code>内容
+				</li>
+			</ol>
 
 	    <h3>何时使用</h3>
-	    <ol>
-	      <li>
-	        <p>
-	          需要表示开关状态/两种状态之间的切换时；
-	        </p>
-	      </li>
-	      <li>
-	        <p>
-	          和 <code>checkbox</code>的区别是，切换 <code>switch</code> 会直接触发状态改变，
-	          而 <code>checkbox</code> 一般用于状态标记，需要和提交操作配合。
-	        </p>
-	      </li>
-	    </ol>
+			<p>
+				需要明确的给出提示信息时使用
+			</p>
 
 			<div style="margin-top:35px;">
-				<h3>checked-value</h3>
+				<h3>Alert</h3>
 				<div style="padding:0px 10px;">
-					<p>[checked-value]为可自定义的值。跟ngModel双向绑定的值相等，则开关开启。</p>
-	        <showcode>
-						<div class="shows">
-	            &lt;iq-switcher [(ngModel)]="fromSwitcher" [checked-value]="'aaa'" &gt;&lt;/iq-switcher&gt;
-						</div>
+					<p>弹出的Alert框</p>
+	        <showcode [sttype]="'typescript'" >
+						<div class="shows">this.windowservice.alert({{'{'}}message:"填写的信息",title:"标题",type:"fail"{{'}'}})</div>
 					</showcode>
 				</div>
 			</div>
 
 			<div style="margin-top:35px;">
-				<h3>unchecked-value</h3>
+				<h3>Confirm</h3>
 				<div style="padding:0px 10px;">
-					<p>[unchecked-value]为可自定义的值。</p>
-					<showcode>
-						<div class="shows">
-	            &lt;iq-switcher [(ngModel)]="fromSwitcher" [checked-value]="'aaa'" [unchecked-value]="'0'" &gt;&lt;/iq-switcher&gt;
-						</div>
+					<p>弹出的Confirm框</p>
+					<showcode [sttype]="'typescript'">
+						<div class="shows">this.windowservice.confirm({{'{'}}message:"填写的信息"{{'}'}})</div>
 					</showcode>
 				</div>
 			</div>
-
-	    <div style="margin-top:35px;">
-	      <h3>(ngModelChange)</h3>
-	      <div style="padding:0px 10px;">
-	        <p>根据ngModelChange来实现改变后的事件</p>
-	        <showcode>
-	          <div class="shows">
-	            &lt;iq-switcher (ngModelChange)="modelChange($event)" [(ngModel)]="fromSwitcher" [checked-value]="'aaa'" [unchecked-value]="'0'" &gt;&lt;/iq-switcher&gt;
-	          </div>
-	        </showcode>
-	      </div>
-	    </div>
 
 		</ng-template>
 
@@ -120,112 +113,57 @@
 	  <showitemexample>
 
 	    <ng-template [ngIf]="true" class="stitempcon">
-	      <div class="showhow">
+	      <div class="showhow" style="margin-buttom:30px;">
 
-	        <p>无自定义，简单示例</p>
-	        <span>
-	           This is what {{ fromSwitcher }} rendered
-	        </span>
-	        -----
-	        <span ngNonBindable>
-	            This is what {{ fromSwitcher }} rendered
-	        </span>
+	        <p>Alert简单示例</p>
+					<button (click)="testalerts()" class="btn btn-success">success</button>
+					<button (click)="testalertf()" class="btn btn-success">fail</button>
+					<button (click)="testalertw()" class="btn btn-success">warn</button>
 
-	        <iq-switcher [(ngModel)]="fromSwitcher"></iq-switcher>
 	      </div>
 	    </ng-template>
 
 	    <ng-template [ngIf]="true" class="stitemphtml">
-
-	    	<pre iqhighlight>
-	    		<code class="html">
-	          &lt;iq-switcher [(ngModel)]="fromSwitcher"&gt;&lt;/iq-switcher&gt;
-	        </code>
-	    	</pre>
-
 	    </ng-template>
 
 	    <ng-template [ngIf]="true" class="stitempts">
-	    	<pre iqhighlight>
-	    		<code  class="javascript">
-	    			import {{'{'}}
-	    		</code>
-	    	</pre>
+				<pre iqhighlight>
+	    		<code class="typescript">
+						this.windowservice.alert({{'{'}}message:"填写的信息",title:"标题",type:"success"{{'}'}})
+						this.windowservice.alert({{'{'}}message:"填写的信息",title:"标题",type:"fail"{{'}'}})
+						this.windowservice.alert({{'{'}}message:"填写的信息",title:"标题",type:"warn"{{'}'}})
+					</code>
+				</pre>
 	    </ng-template>
 
 	    <ng-template [ngIf]="true" class="stitempcss">
-	    	<pre iqhighlight>
-	    		<code class="css">
-	    			%clearfix {{'{'}}
-	    			    &:before,
-	    			    &:after {{'{'}}
-	    			        content: "";
-	    			        display: table;
-	    			    {{'}'}}
-	    			    &:after {{'{'}}
-	    			        clear: both;
-	    			    {{'}'}}
-	    			{{'}'}}
-	    		</code>
-	    	</pre>
 	    </ng-template>
 
 	  </showitemexample>
 
 	  <showitemexample>
 
+			<ng-template [ngIf]="true" class="stitempcon">
+				<div class="showhow" style="margin-buttom:30px;">
+
+					<p>Confirm简单示例</p>
+					<button (click)="testconfirm()" class="btn btn-success">confirm</button>
+
+				</div>
+			</ng-template>
+
 	    <ng-template [ngIf]="true" class="stitemphtml">
-
-	      <ng-template [ngIf]="true" class="stitempcon">
-	        <div class="showhow">
-	          <p>有自定义</p>
-	          <ol>
-	            <li>checked-value:a
-	            </li>
-	            <li>unchecked-value:0
-	            </li>
-	            <li>
-	              (ngModelChange):{{modelChangeText}}
-	            </li>
-	          </ol>
-	          <div style="float:left;width:100%;">
-	            <iq-switcher (ngModelChange)="modelChange($event)" [(ngModel)]="fromSwitcher2" [checked-value]="'a'" [unchecked-value]="'0'"></iq-switcher>
-	          </div>
-	          <input type="text" [(ngModel)]="fromSwitcher2" style="width:300px;margin-top:10px;" />
-	        </div>
-	      </ng-template>
-
-	      <pre iqhighlight>
-	        <code class="html">
-	          &lt;iq-switcher [(ngModel)]="fromSwitcher2" [checked-value]="'a'" [unchecked-value]="'0'"&gt;&lt;/iq-switcher&gt;
-	        </code>
-	      </pre>
-
 	    </ng-template>
 
 	    <ng-template [ngIf]="true" class="stitempts">
-	      <pre iqhighlight>
-	        <code  class="javascript">
-
-	        </code>
-	      </pre>
+				<pre iqhighlight>
+	    		<code class="typescript">
+						this.windowservice.confirm({{'{'}}message:"填写的信息"{{'}'}})
+					</code>
+				</pre>
 	    </ng-template>
 
 	    <ng-template [ngIf]="true" class="stitempcss">
-	      <pre iqhighlight>
-	        <code class="css">
-	          %clearfix {{'{'}}
-	              &:before,
-	              &:after {{'{'}}
-	                  content: "";
-	                  display: table;
-	              {{'}'}}
-	              &:after {{'{'}}
-	                  clear: both;
-	              {{'}'}}
-	          {{'}'}}
-	        </code>
-	      </pre>
 	    </ng-template>
 
 	  </showitemexample>

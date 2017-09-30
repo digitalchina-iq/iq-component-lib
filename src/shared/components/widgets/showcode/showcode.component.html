@@ -11,8 +11,9 @@
   <button (click)="active()">active</button> -->
 
   <div *ngIf="show" [@vani]>
+
     <pre iqhighlight>
-      <code class="html">
+      <code class={{stType}}>
         <ng-content select=".shows"></ng-content>
       </code>
     </pre>
