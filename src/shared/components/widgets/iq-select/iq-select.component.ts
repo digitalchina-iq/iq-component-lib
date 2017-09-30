@@ -1,6 +1,6 @@
 import { Component, forwardRef, ViewChild, OnInit, Input, Output, ElementRef, ComponentRef, EventEmitter } from '@angular/core';
 import { ControlValueAccessor,NG_VALUE_ACCESSOR, DefaultValueAccessor } from '@angular/forms';
-import { Http } from '@angular/http';
+import { iqHttpService } from 'core';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
 import 'rxjs/add/operator/switchMap';
@@ -23,7 +23,7 @@ declare var $;
   ]
 })
 export class IqSelectComponent implements OnInit, ControlValueAccessor {
-  constructor(private el: ElementRef, private http: Http) {}
+  constructor(private el: ElementRef, private http: iqHttpService) {}
 
   selectedItem: any;//被选项
   optionShow: boolean;//下拉框出现

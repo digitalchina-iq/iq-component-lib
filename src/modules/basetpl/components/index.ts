@@ -13,6 +13,10 @@ import { IqSelectDemoComponent } from './widgets/iq-select/iq-select.component';
 
 //directives
 import { AutoheightDemoComponent } from './directives/autoheight/autoheight.component';
+import { StopParentClickDemoComponent } from './directives/stopParentClick/stop-parent-click.component';
+
+//pipes
+import { IqRefactorDemoComponent } from './pipes/iq-refactor/iq-refactor.component';
 
 //services
 import { WindowDemoComponent } from './services/window/window.component';
@@ -22,7 +26,7 @@ import { WindowDemoComponent } from './services/window/window.component';
 //暴露出所有Component
 export { BasetplContainerComponent,BasetplRootComponent,PrepareT1Component,PrepareT2Component,
   IqSwitcherPageDemoComponent,IqDatepickerDemoComponent,IndexComponent,WindowDemoComponent,IqFileUploadDemoComponent,
-  IqSelectDemoComponent,AutoheightDemoComponent
+  IqSelectDemoComponent,AutoheightDemoComponent,StopParentClickDemoComponent,IqRefactorDemoComponent
 };
 
 //模块内部Components列表
@@ -37,5 +41,7 @@ export let Basetpl_COMPONENTS =
   WindowDemoComponent,
   IqFileUploadDemoComponent,
   IqSelectDemoComponent,
-  AutoheightDemoComponent
+  AutoheightDemoComponent,
+  StopParentClickDemoComponent,
+  IqRefactorDemoComponent
 ];

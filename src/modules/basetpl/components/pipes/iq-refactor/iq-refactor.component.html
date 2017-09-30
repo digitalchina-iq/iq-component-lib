@@ -1,22 +1,21 @@
 <div [@flyIn]="active">
-  <showtem [stname]="'阻止触发父级点击事件指令'" [stnamedel]="'一个有趣的指令'" >
+  <showtem [stname]="'工厂管道'" [stnamedel]="'一个有趣的管道'" >
 
     <!-- overview -->
     <ng-template [ngIf]="true" class='stview'>
 
       <h3>概述</h3>
       <p>
-        stopParentClick阻止触发父级点击事件
+        简单的管道转化
       </p>
 
-
       <div style="margin-top:35px;">
-        <h3>stopParentClick</h3>
+        <h3>iq_refactor</h3>
         <div style="padding:0px 10px;">
-          <p>阻止触发父级点击事件</p>
-          <div stopParentClick></div>
+          <p>表达式为："value,key;value,key"</p>
+          <div>{{true|iq_refactor:"男,true;女,false"}}</div>
           <showcode>
-            <div class="shows">&lt;div stopParentClick&gt;&lt;/div&gt;</div>
+            <div class="shows">{{'{'}}{{'{'}} true | iq_refactor:"男,true;女,false"{{'}'}}{{'}'}}</div>
           </showcode>
         </div>
       </div>

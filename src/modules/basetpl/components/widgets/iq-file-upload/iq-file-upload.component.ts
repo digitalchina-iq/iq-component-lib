@@ -15,6 +15,8 @@ export class IqFileUploadDemoComponent implements OnInit {
 
   uploadApi: string;
 
+  imgSrc: string;
+
   constructor(){}
 
   ngOnInit() {
@@ -22,7 +24,8 @@ export class IqFileUploadDemoComponent implements OnInit {
   }
 
   fileUploadSuccess(data){
-    console.log(data)
+    console.log(data);
+    this.imgSrc = data.url;
   }
 
   deleteItem(i){

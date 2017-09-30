@@ -2,12 +2,12 @@ import { Component} from '@angular/core';
 import { flyIn } from 'animations/fly-in';
 
 @Component({
-  templateUrl: './stop-parent-click.component.html',
+  templateUrl: './iq-refactor.component.html',
   animations: [
     flyIn
   ]
 })
-export class StopParentClickDemoComponent {
+export class IqRefactorDemoComponent {
 
   constructor(){}
 

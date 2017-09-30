@@ -201,74 +201,20 @@
       <ng-template [ngIf]="true" class="stitempcon">
         <div class="showhow">
 
-          <p>无自定义，简单示例</p>
+          <p>允许上传文件类型：图片，大小：200kb，数量：1</p>
 
-          <iq-file-upload [url]="uploadApi" (onSuccess)="fileUploadSuccess($event)" text="上传文件"></iq-file-upload>
+          <div style="width: 400px;height: 300px;">
+            <img [src]="imgSrc">
+          </div>
+
+          <iq-file-upload [url]="uploadApi" [allowedFileType]="['image']" maxFileSize="204800" maxFileNum="1" (onSuccess)="fileUploadSuccess($event)" text="上传图片"></iq-file-upload>
         </div>
       </ng-template>
 
       <ng-template [ngIf]="true" class="stitemphtml">
 
         <pre iqhighlight>
-          <code class="html">&lt;iq-file-upload [url]="uploadApi" (onSuccess)="fileUploadSuccess($event)" text="上传文件"&gt;&lt;/iq-file-upload&gt;</code>
-        </pre>
-
-      </ng-template>
-
-      <ng-template [ngIf]="true" class="stitempts">
-        <pre iqhighlight>
-          <code  class="javascript">
-            import {{'{'}}
-          </code>
-        </pre>
-      </ng-template>
-
-      <ng-template [ngIf]="true" class="stitempcss">
-        <pre iqhighlight>
-          <code class="css">
-            %clearfix {{'{'}}
-                &:before,
-                &:after {{'{'}}
-                    content: "";
-                    display: table;
-                {{'}'}}
-                &:after {{'{'}}
-                    clear: both;
-                {{'}'}}
-            {{'}'}}
-          </code>
-        </pre>
-      </ng-template>
-
-    </showitemexample>
-
-    <showitemexample>
-
-      <ng-template [ngIf]="true" class="stitemphtml">
-
-        <ng-template [ngIf]="true" class="stitempcon">
-          <div class="showhow">
-            <p>有自定义</p>
-            <ol>
-              <li>checked-value:a
-              </li>
-              <li>unchecked-value:0
-              </li>
-              <li>
-                (ngModelChange):{{modelChangeText}}
-              </li>
-            </ol>
-            <div style="float:left;width:100%;">
-              <iq-switcher (ngModelChange)="modelChange($event)" [(ngModel)]="fromSwitcher2" [checked-value]="'a'" [unchecked-value]="'0'"></iq-switcher>
-            </div>
-            <input type="text" [(ngModel)]="fromSwitcher2" style="width:300px;margin-top:10px;" />
-          </div>
-        </ng-template>
-
-        <pre iqhighlight>
-          <code class="html">
-            &lt;iq-switcher [(ngModel)]="fromSwitcher2" [checked-value]="'a'" [unchecked-value]="'0'"&gt;&lt;/iq-switcher&gt;
-          </code>
+          <code class="html">&lt;img [src]="imgSrc"&gt;&lt;iq-file-upload [url]="uploadApi" [allowedFileType]="['image']" maxFileNum="1" maxFileSize="204800" (onSuccess)="fileUploadSuccess($event)" text="上传文件"&gt;&lt;/iq-file-upload&gt;</code>
         </pre>
 
       </ng-template>
@@ -277,6 +223,15 @@
         <pre iqhighlight>
           <code  class="javascript">
 
+uploadApi: string = environment.server + 'files/upload';
+
+imgSrc: string;
+
+fileUploadSuccess(data){{'{'}}
+  console.log(data);
+  this.imgSrc = data.url;
+{{'}'}}
+
           </code>
         </pre>
       </ng-template>
@@ -284,16 +239,6 @@
       <ng-template [ngIf]="true" class="stitempcss">
         <pre iqhighlight>
           <code class="css">
-            %clearfix {{'{'}}
-                &:before,
-                &:after {{'{'}}
-                    content: "";
-                    display: table;
-                {{'}'}}
-                &:after {{'{'}}
-                    clear: both;
-                {{'}'}}
-            {{'}'}}
           </code>
         </pre>
       </ng-template>

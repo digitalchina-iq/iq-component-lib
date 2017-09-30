@@ -163,12 +163,12 @@
           </thead>
           <tbody>
             <tr>
-              <td>upType</td>
-              <td>组件类型</td>
-              <td>number</td>
-              <td>0,1</td>
-              <td>0</td>
-              <td>否</td>
+              <td>listApi</td>
+              <td>下拉列表接口</td>
+              <td>string</td>
+              <td></td>
+              <td></td>
+              <td>是</td>
             </tr>
             <tr>
               <td>url</td>
@@ -231,6 +231,56 @@
 
       </ng-template>
     </showitemo>
+
+  </ng-template>
+
+    <!-- stitemexample -->
+  <ng-template [ngIf]="true" class="stitemexample">
+
+    <showitemexample>
+
+      <ng-template [ngIf]="true" class="stitempcon">
+        <div class="showhow">
+
+          <p>{{bindData}}</p>
+
+          <iq-select [(ngModel)]="bindData" itemValue="0" [listApi]="optionApi" [handleData]="dealData" placeHolder="-请选择"></iq-select>
+        </div>
+      </ng-template>
+
+      <ng-template [ngIf]="true" class="stitemphtml">
+
+        <pre iqhighlight>
+          <code class="html">&lt;img [src]="imgSrc"&gt;&lt;iq-file-upload [url]="uploadApi" [allowedFileType]="['image']" maxFileNum="1" maxFileSize="204800" (onSuccess)="fileUploadSuccess($event)" text="上传文件"&gt;&lt;/iq-file-upload&gt;</code>
+        </pre>
+
+      </ng-template>
+
+      <ng-template [ngIf]="true" class="stitempts">
+        <pre iqhighlight>
+          <code  class="javascript">
+
+uploadApi: string = environment.server + 'files/upload';
+
+imgSrc: string;
+
+fileUploadSuccess(data){{'{'}}
+  console.log(data);
+  this.imgSrc = data.url;
+{{'}'}}
+
+          </code>
+        </pre>
+      </ng-template>
+
+      <ng-template [ngIf]="true" class="stitempcss">
+        <pre iqhighlight>
+          <code class="css">
+          </code>
+        </pre>
+      </ng-template>
+
+    </showitemexample>
 
   </ng-template>
 
