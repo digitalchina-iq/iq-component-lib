@@ -12,6 +12,7 @@ import { environment } from 'environments/environment';
 export class IqFileUploadDemoComponent implements OnInit {
 
   date: any[]=[];
+
   uploadApi: string;
 
   constructor(){}
