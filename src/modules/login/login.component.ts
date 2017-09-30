@@ -143,6 +143,16 @@ export class DefindexComponent implements OnInit  {
   test(){
     // username
 
+    this.iqhttpservice.get(environment.server+"/classes/Product")
+      .map(res => res.json())
+      .subscribe(res => {
+          console.log("+++++");
+          console.log(res)
+          console.log("+++++");
+          // this.router.navigate(["/index"]);
+      })
+
+
   }
 
 

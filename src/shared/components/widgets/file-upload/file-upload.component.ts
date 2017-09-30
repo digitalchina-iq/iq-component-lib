@@ -32,13 +32,20 @@ export class FileUploadComponent implements OnInit {
     private windowService: WindowService) {}
 
   ngOnInit(){
+
+    // console.log(this.item.file.name);
+
     this.uploader = new FileUploader({
-      url: this.url, 
-      method: this.method, 
+      url: this.url,
+      method: this.method,
       allowedFileType: this.allowedFileType,
-      maxFileSize: this.maxFileSize
+      maxFileSize: this.maxFileSize,
+      headers: [
+        { name: 'X-LC-Id', value: 'FiwsYyo5ilGwbj1NJ1b2Ub3c-gzGzoHsz' },
+        { name: 'X-LC-Key', value: 'ALC3hN40oHBH7Fke3RJXvvsO' }
+      ]
     })
-    
+
     //文件添加成功事件
     this.uploader.onAfterAddingAll = (data => {
       this.modalShow = true;
@@ -79,7 +86,7 @@ export class FileUploadComponent implements OnInit {
     this.speed[i] = '0kb/s';//初始速度
 
     item.upload();
-    
+
     item.onSuccess = (response, status, headers) => {
       this.speed[i] = 0;
       let data = response ? JSON.parse(response) : '';
@@ -99,7 +106,7 @@ export class FileUploadComponent implements OnInit {
         let tmpSpeed:any = (progress - _progress)/100*ITEM_SIZE;//这一秒内文件上传的大小
         let speed = (tmpSpeed + _speed)/2;
         this.speed[i] = speed > 1024 ? (speed/1024).toFixed(2) + 'MB/s' : (speed*1).toFixed(2) + 'Kb/s';
-        
+
         _progress = progress;
         _time = time;
         _speed = speed;

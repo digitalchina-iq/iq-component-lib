@@ -104,36 +104,37 @@ export class iqHttpService extends Http {
       return flag;
     }
 
-  // get(url: string, options?: RequestOptionsArgs){
-  //   let _options:RequestOptionsArgs;
-  //
-  //   if(options){
-  //     //复制出新对象进行修改参数值,添加请求时间戳
-  //     _options = options;
-  //     if(_options["search"]){
-  //       let searchParam = _options["search"];
-  //       if(typeof searchParam === 'string'){
-  //         _options["search"] = new URLSearchParams(searchParam);
-  //       }else if(searchParam instanceof URLSearchParams){
-  //         let t = new Date().getTime();
-  //         if(searchParam.has("m")){
-  //           searchParam.set("m"+t,""+t);
-  //         }else{
-  //           searchParam.set("m",""+t);
-  //         }
-  //       }
-  //     }else{
-  //       _options["search"] = new URLSearchParams("m="+new Date().getTime());
-  //     }
-  //   }else{
-  //     _options = new RequestOptions({
-  //       search: new URLSearchParams("m="+new Date().getTime())
-  //     });
-  //
-  //     // _options["search"] = JSON.parse(JSON.stringify({m:new Date().getTime()}));
-  //   }
-  //   return super.get(url,_options);
-  // }
+  get(url: string, options?: RequestOptionsArgs){
+    let _options:RequestOptionsArgs;
+
+    if(options){
+      //复制出新对象进行修改参数值,添加请求时间戳
+      _options = options;
+      if(_options["search"]){
+        let searchParam = _options["search"];
+        if(typeof searchParam === 'string'){
+          _options["search"] = new URLSearchParams(searchParam);
+        }else if(searchParam instanceof URLSearchParams){
+          let t = new Date().getTime();
+          if(searchParam.has("m")){
+            searchParam.set("m"+t,""+t);
+          }else{
+            searchParam.set("m",""+t);
+          }
+        }
+      }else{
+        _options["search"] = new URLSearchParams("m="+new Date().getTime());
+      }
+    }else{
+      _options = new RequestOptions({
+        search: new URLSearchParams("m="+new Date().getTime())
+      });
+
+      // _options["search"] = JSON.parse(JSON.stringify({m:new Date().getTime()}));
+    }
+    return this.intercept(super.get(url , this.getRequestOptionArgs(_options)));
+    // return super.get(url,_options);
+  }
 
 
     // post(url: string, body: any, options?: RequestOptionsArgs) {
