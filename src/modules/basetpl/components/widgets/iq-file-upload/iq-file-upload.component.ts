@@ -32,4 +32,9 @@ export class IqFileUploadDemoComponent implements OnInit {
     console.log(i);
   }
 
+  onDeleteItem(){
+    console.log("del");
+    this.imgSrc="";
+  }
+
 }

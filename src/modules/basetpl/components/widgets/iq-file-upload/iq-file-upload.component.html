@@ -203,11 +203,11 @@
 
           <p>允许上传文件类型：图片，大小：200kb，数量：1</p>
 
-          <div style="width: 400px;height: 300px;">
+          <div style="width: 400px;height: auto;">
             <img [src]="imgSrc">
           </div>
 
-          <iq-file-upload [url]="uploadApi" [allowedFileType]="['image']" maxFileSize="204800" maxFileNum="1" (onSuccess)="fileUploadSuccess($event)" text="上传图片"></iq-file-upload>
+          <iq-file-upload (onDeleteItem)="onDeleteItem()" [url]="uploadApi" [allowedFileType]="['image']" maxFileSize="204800" maxFileNum="1" (onSuccess)="fileUploadSuccess($event)" text="上传图片"></iq-file-upload>
         </div>
       </ng-template>
 
