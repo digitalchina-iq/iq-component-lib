@@ -25,7 +25,7 @@
 			<div style="margin-top:35px;">
 				<h3>required</h3>
 				<div style="padding:0px 10px;">
-					<p>required = "bool" bool为boolean值类型，如果为true，则日期必选，不选日期组件边框会变红</p>
+					<p><code>required:boolean</code>； 如果为<code>true</code>，则日期必选，不选日期组件边框会变红</p>
 					<iq-datepicker [(ngModel)]='date[0]' required='true'></iq-datepicker>
 					<showcode>
 						<div class="shows">&lt;iq-datepicker [(ngModel)]="date" [required]="true" &gt;&lt;/iq-datepicker&gt;</div>
@@ -36,7 +36,7 @@
 			<div style="margin-top:35px;">
 				<h3>isDisabled</h3>
 				<div style="padding:0px 10px;">
-					<p>isDisabled = "bool" bool为boolean值类型，如果为true，则组件被禁用</p>
+					<p><code>isDisabled:boolean</code>； 如果为<code>true</code>，则组件被禁用</p>
 					<iq-datepicker [(ngModel)]='date[1]' isDisabled='true'></iq-datepicker>
 					<showcode>
 						<div class="shows">&lt;iq-datepicker [(ngModel)]="date" [isDisabled]="true"&gt;&lt;/iq-datepicker&gt;</div>
@@ -47,7 +47,7 @@
 			<div style="margin-top:35px;">
 				<h3>minYear, maxYear</h3>
 				<div style="padding:0px 10px;">
-					<p>minYear = "num", maxYear = "num" num为number类型，minYear为组件可选用的最小年份，maxYear为组件可选用的最大年份</p>
+					<p><code>minYear:number, maxYear:number</code>； <code>minYear</code>为组件可选用的最小年份，<code>maxYear</code>为组件可选用的最大年份</p>
 					<iq-datepicker [(ngModel)]='date[2]' minYear='2000' maxYear="2020"></iq-datepicker>
 					<showcode>
 						<div class="shows">&lt;iq-datepicker [(ngModel)]="date" minYear="2000" maxYear="2020"&gt;&lt;/iq-datepicker&gt;</div>
@@ -58,7 +58,7 @@
 			<div style="margin-top:35px;">
 				<h3>placeHolder</h3>
 				<div style="padding:0px 10px;">
-					<p>placeHolder = "str" str为string类型，设置组件的默认提示文字</p>
+					<p><code>placeHolder:string</code>； 设置组件的默认提示文字</p>
 					<iq-datepicker [(ngModel)]='date[3]' placeHolder="-请选择日期"></iq-datepicker>
 					<showcode>
 						<div class="shows">&lt;iq-datepicker [(ngModel)]="date" placeHolder="-请选择日期"&gt;&lt;/iq-datepicker&gt;</div>
@@ -69,7 +69,7 @@
 			<div style="margin-top:35px;">
 				<h3>startDate, endDate</h3>
 				<div style="padding:0px 10px;">
-					<p>startDate = "date", endDate = "date" date为日期格式字符串或Date对象或毫秒数，设置组件的可选择的起始日期和结束日期</p>
+					<p><code>startDate:Date|string|number, endDate:Date|string|number</code>； 设置组件的可选择的起始日期和结束日期</p>
 						<div style="display: inline-block;width: 45%;">
 							<iq-datepicker [(ngModel)]='date[4]' [endDate]="date[5]"></iq-datepicker>
 						</div> ~
@@ -86,7 +86,7 @@
 			<div style="margin-top:35px;">
 				<h3>format</h3>
 				<div style="padding:0px 10px;">
-					<p>format = "str" str为string类型，format参考moment.js的format格式，设置组件的返回值的格式</p>
+					<p><code>format:string</code>；&nbsp;<code>format</code>参考moment.js的format格式，设置组件的返回值的格式</p>
 					<p>返回值：{{date[6]}}</p>
 					<iq-datepicker [(ngModel)]='date[6]' format="YYYY-MM-DD"></iq-datepicker>
 					<showcode>

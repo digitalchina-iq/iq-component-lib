@@ -5,7 +5,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { BasetplContainerComponent,
   BasetplRootComponent,PrepareT1Component,PrepareT2Component,
   IqSwitcherPageDemoComponent,IqDatepickerDemoComponent,IndexComponent,
-  WindowDemoComponent,IqFileUploadDemoComponent,IqSelectDemoComponent
+  WindowDemoComponent,IqFileUploadDemoComponent,IqSelectDemoComponent,
+  AutoheightDemoComponent
 } from './index';
 
 const routes: Routes = [//定义路由
@@ -23,6 +24,12 @@ const routes: Routes = [//定义路由
         { path: 'iq-datepicker', component: IqDatepickerDemoComponent },
         { path: 'iq-file-upload', component: IqFileUploadDemoComponent },
         { path: 'iq-select', component: IqSelectDemoComponent }
+      ]
+    },
+    {
+      path: "directives",
+      children: [
+        { path: 'autoheight', component: AutoheightDemoComponent }
       ]
     },
     {

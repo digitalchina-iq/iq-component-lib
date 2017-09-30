@@ -13,7 +13,7 @@ export class FileUploadComponent implements OnInit {
   @Input() method: string = 'POST';//默认post方法
   @Input() allowedFileType: string[];//可上传文件类型
   @Input() maxFileSize: number = Infinity;//默认最大文件大小
-  @Input() upType: number;//组件类型 0: 按钮上传，弹出框形式 1:附件上传，DOM节点形式
+  @Input() upType: number = 0;//组件类型 0: 按钮上传，弹出框形式 1:附件上传，DOM节点形式
   @Input() maxFileNum: number = Infinity;//最大可上传数量
   @Input() hasUploaded: any[] = [];//已经上传过的文件数组
   @Input() withCredentials = true;
