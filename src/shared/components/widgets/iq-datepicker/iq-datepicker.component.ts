@@ -50,7 +50,7 @@ export class IqDatePickerComponent implements ControlValueAccessor,OnInit {
   @Input() maxYear: number = this.today.year() + 20;//默认最大年份
   @Input() placeHolder = "";
   @Input() required: boolean = false;//必填
-  @Input() isDisabled: boolean = false;//组件被禁用状态
+  isDisabled: boolean = false;//组件被禁用状态
   @Input() format: string;
   @Input() set startDate(v){
     if(!v){
@@ -142,6 +142,10 @@ export class IqDatePickerComponent implements ControlValueAccessor,OnInit {
     }
     
     this.getDate(this.year, this.month);
+  }
+
+  setDisabledState(isDisabled: boolean){
+    this.isDisabled = isDisabled;
   }
 
   registerOnChange(fn) {
