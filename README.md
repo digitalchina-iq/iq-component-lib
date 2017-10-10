@@ -1,2 +1,2 @@
 # iq-component-lib
-iq公共组件库 
+前端功能库
