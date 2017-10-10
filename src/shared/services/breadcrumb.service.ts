@@ -7,7 +7,7 @@ import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
 @Injectable()
 export class BreadcrumbService {
   public breadcrumb = [
-    { "label": "", url: "/" }
+    { "label": "返回登录页", url: "/" }
   ];
   private generalBreadcrumb(x,path) {
     if (x) {
@@ -33,16 +33,15 @@ export class BreadcrumbService {
   }
 
   public constructor(router: Router, route: ActivatedRoute) {
-    console.log(2);
     router.events.subscribe(event => {
-      console.log(1);
-      // if (event instanceof NavigationEnd) {
-      //   let tmp = route.snapshot;
-      //   // firstChild()
-      //   this.breadcrumb.length = 1;
-      //   let path = "";
-      //   this.generalBreadcrumb(tmp,path);
-      // }
+      // console.log(1);
+      if (event instanceof NavigationEnd) {
+        let tmp = route.snapshot;
+        // firstChild()
+        this.breadcrumb.length = 1;
+        let path = "";
+        this.generalBreadcrumb(tmp,path);
+      }
     })
   }
 }

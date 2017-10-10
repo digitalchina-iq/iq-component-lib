@@ -9,9 +9,6 @@
 }
 
 
-element.style {
-}
-
 .navbar-search .search-query {
     border: 0;
     line-height: 20px;
@@ -49,4 +46,8 @@ pre {
   background: 0 0;
   white-space: pre-wrap !important;
   margin: 0;
+}
+
+ul, ol{
+    margin: 0;
 }
