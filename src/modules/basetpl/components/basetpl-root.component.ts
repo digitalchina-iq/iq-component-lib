@@ -26,6 +26,7 @@ export class BasetplRootComponent implements OnInit {
          _this.open = reg.test(_this.path);
        }
        this.router.events.subscribe(event => {
+         console.log("123123")
          if (event instanceof NavigationEnd) {
            resetPath();
          }

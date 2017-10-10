@@ -1,0 +1,60 @@
+<div [@flyIn]="active">
+  <showtem [stname]="'日期管道'" [stnamedel]="'一个有趣的管道'" >
+
+    <!-- overview -->
+    <ng-template [ngIf]="true" class='stview'>
+
+      <h3>概述</h3>
+      <p>
+        将日期转化为指定格式的日期
+      </p>
+
+      <div style="margin-top:35px;">
+        <h3>iqDate</h3>
+        <div style="padding:0px 10px;">
+          <p>格式字符串参考moment.js中指定的格式</p>
+          <div>{{1507598709376|iqDate:"YYYY-MM-DD"}}</div>
+          <showcode>
+            <div class="shows">{{'{'}}{{'{'}} 1507598709376 | iqDate:"YYYY-MM-DD" {{'}'}}{{'}'}}</div>
+          </showcode>
+        </div>
+      </div>
+
+    </ng-template>
+
+  <!-- API -->
+  <ng-template [ngIf]="true" class='stitemo'>
+
+    <showitemo [sitemotitle]="'属性'">
+      <ng-template [ngIf]="true" class="sitemocon">
+
+        <table class="table">
+          <thead>
+            <tr>
+              <th>参数</th>
+              <th>说明</th>
+              <th>类型</th>
+              <th>可选值</th>
+              <th>默认值</th>
+              <th>是否必选</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+
+      </ng-template>
+    </showitemo>
+
+  </ng-template>
+
+  </showtem>
+</div>

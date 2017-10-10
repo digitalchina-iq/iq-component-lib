@@ -7,7 +7,7 @@ import { FormsModule } from '@angular/forms';
 
 import { FileUploadModule } from 'ng2-file-upload';
 
-import { SHARED_PIPES,SHARED_DIRECTIVES,SHARED_COMPONENTS } from 'shared/index';
+import { SHARED_PIPES,SHARED_DIRECTIVES,SHARED_COMPONENTS,SHARED_PROVIDERS } from 'shared/index';
 
 
 @NgModule({
@@ -20,6 +20,6 @@ import { SHARED_PIPES,SHARED_DIRECTIVES,SHARED_COMPONENTS } from 'shared/index';
   //声明组件 属于该模块
   declarations: [SHARED_PIPES,SHARED_DIRECTIVES,SHARED_COMPONENTS],
   // entryComponents:[SHARED_ENTRY_COMPONENTS],
-  // providers: [SHARED_PROVIDERS]
+  providers: [SHARED_PROVIDERS]
 })
 export class SharedModule { }

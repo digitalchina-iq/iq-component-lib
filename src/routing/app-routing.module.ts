@@ -30,6 +30,7 @@ const routes: Routes = [
     children: [
       {
         path: 'index',
+        data: {breadcrumb: 'basetmp'},
         loadChildren: 'modules/basetpl/basetpl.module#BasetplModule'
       }
     ]

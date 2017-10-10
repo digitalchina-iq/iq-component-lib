@@ -52,7 +52,7 @@ export class IndexComponent implements OnInit {
   single1: any[];
   multi: any[];
 
-  view: any[] = [500, 300];
+  view: any[] = [450, 300];
   view1: any[] = [1000, 400];
   // options
 
