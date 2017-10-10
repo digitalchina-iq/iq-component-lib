@@ -17,7 +17,7 @@ import { ShowitemexampleComponent } from "./widgets/showitemexample/showitemexam
 import { IqDatePickerComponent } from "./widgets/iq-datepicker/iq-datepicker.component";
 import { FileUploadComponent } from './widgets/file-upload/file-upload.component';
 import { IqSelectComponent } from './widgets/iq-select/iq-select.component';
-
+import { IqBreadCrumbComponent } from './widgets/iq-breadcrumb/iq-breadcrumb.component';
 // export { LoadingComponent, IqBreadCrumbComponent, IqDialogPersonSelectComponent, IqSwitcherComponent, ProgressBarComponent,
 // IqPersonSelectComponent, IqPopoverPersonSelectComponent, ImageUploadComponent, IqFileData, UserImageComponent, UserImageHeadComponent, UserImageHoverComponent,
 // DatePickerComponent, TimePickerComponent, DateTimeRelationComponent, DragComponent, HeaderComponent, IqTlrFrameComponent,
@@ -28,11 +28,11 @@ import { IqSelectComponent } from './widgets/iq-select/iq-select.component';
 export {
   IqTlrFrameComponent,IqTbFrameComponent,HeaderComponent,
     PageErrorComponent, PageNotFoundComponent,IqSwitcherComponent,ShowcodeComponent,ShowtemComponent,ShowitemoComponent,
-    IqDatePickerComponent,ShowitemexampleComponent,FileUploadComponent,IqSelectComponent
+    IqDatePickerComponent,ShowitemexampleComponent,FileUploadComponent,IqSelectComponent,IqBreadCrumbComponent
 }
 
 
 export let SHARED_COMPONENTS = [IqTlrFrameComponent,IqTbFrameComponent,HeaderComponent,
   PageErrorComponent, PageNotFoundComponent,IqSwitcherComponent,ShowcodeComponent,ShowtemComponent,ShowitemoComponent,
-  IqDatePickerComponent,ShowitemexampleComponent,FileUploadComponent,IqSelectComponent
+  IqDatePickerComponent,ShowitemexampleComponent,FileUploadComponent,IqSelectComponent,IqBreadCrumbComponent
 ];

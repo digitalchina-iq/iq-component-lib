@@ -1,0 +1,9 @@
+<div class="m-crumbs">
+    <ul>
+      <ng-container *ngFor="let item of list">
+        <li *ngIf="item.label" >
+          <a [routerLink]="item.url">{{item.label}}</a>
+        </li>
+      </ng-container>
+    </ul>
+</div>

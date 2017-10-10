@@ -6,7 +6,8 @@ import { BasetplContainerComponent,
   BasetplRootComponent,PrepareT1Component,PrepareT2Component,
   IqSwitcherPageDemoComponent,IqDatepickerDemoComponent,IndexComponent,
   WindowDemoComponent,IqFileUploadDemoComponent,IqSelectDemoComponent,
-  AutoheightDemoComponent, StopParentClickDemoComponent,IqRefactorDemoComponent
+  AutoheightDemoComponent, StopParentClickDemoComponent,IqRefactorPipeComponent,
+  IqDatePipeComponent, IqFileSizePipeComponent, IqBreadcrumbDemoComponent
 } from './index';
 
 const routes: Routes = [//定义路由
@@ -14,7 +15,7 @@ const routes: Routes = [//定义路由
   { //右侧根据路径变化
   path: '', component: BasetplContainerComponent,
   children: [
-    { path: '', component: IndexComponent },
+    { path: '',data: {breadcrumb: '首页'}, component: IndexComponent },
     {
       path: "widget",
       children: [
@@ -23,7 +24,8 @@ const routes: Routes = [//定义路由
         { path: 'iq-switcher', component: IqSwitcherPageDemoComponent },
         { path: 'iq-datepicker', component: IqDatepickerDemoComponent },
         { path: 'iq-file-upload', component: IqFileUploadDemoComponent },
-        { path: 'iq-select', component: IqSelectDemoComponent }
+        { path: 'iq-select', component: IqSelectDemoComponent },
+        { path: 'iq-breadcrumb', data: {"breadcrumb": '面包屑导航组件'}, component: IqBreadcrumbDemoComponent }
       ]
     },
     {
@@ -36,7 +38,9 @@ const routes: Routes = [//定义路由
     {
       path: "pipes",
       children: [
-        { path: 'iq-refactor', component: IqRefactorDemoComponent }
+        { path: 'iq-refactor', component: IqRefactorPipeComponent },
+        { path: 'iq-date', component: IqDatePipeComponent },
+        { path: 'iq-filesize', component: IqFileSizePipeComponent }
       ]
     },
     {
