@@ -43,6 +43,7 @@ export class IqDatePickerComponent implements ControlValueAccessor,OnInit {
   show: boolean = false;//日期组件展示与否
   onChangeCallback: any;
   onTouchedCallback: any;
+  isDisabled: boolean = false;//组件被禁用状态
   /**取消监听事件*/
   removeListen(): void{};
 
@@ -50,12 +51,12 @@ export class IqDatePickerComponent implements ControlValueAccessor,OnInit {
   @Input() maxYear: number = this.today.year() + 20;//默认最大年份
   @Input() placeHolder = "";
   @Input() required: boolean = false;//必填
-  isDisabled: boolean = false;//组件被禁用状态
   @Input() format: string;
   @Input() set startDate(v){
     if(!v){
       this.disabledStartDate = 0;
       this.startday = undefined;
+      this.reset();
     }else{
       this.startday = new Date(v);
       this.checkStartDate();
@@ -66,7 +67,7 @@ export class IqDatePickerComponent implements ControlValueAccessor,OnInit {
     if(!v){
       this.disabledEndDate = 32;
       this.endday = undefined;
-      return;
+      this.reset();
     }else{
       this.endday = new Date(v);
       this.checkEndDate();
@@ -76,6 +77,11 @@ export class IqDatePickerComponent implements ControlValueAccessor,OnInit {
   @ViewChild("iqDatePicker") iqDatePicker: ElementRef;
 
   constructor(private renderer: Renderer2) {}
+
+  reset(){
+    this.year = this.today.year();
+    this.month = this.today.month();
+  }
 
   checkStartDate(){//检查小于开始日期被禁用
     let _y = this.startday.getFullYear(),
@@ -130,6 +136,7 @@ export class IqDatePickerComponent implements ControlValueAccessor,OnInit {
     if(!value){
       this.bindDate = "";
       this.choosedDate = "";
+      this.reset();
     }else{
       this.bindDate = new Date(value);
       let tmp = moment(value);

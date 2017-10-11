@@ -32,6 +32,7 @@
       "scripts": [
         "js/jquery-1.8.2.min.js",
         "js/bootstrap.min.js",
+        "../node_modules/icheck/icheck.min.js",
         "bootstrap/bootstrap-wizard/js/bwizard.js"
       ],
       "environmentSource": "environments/environment.ts",

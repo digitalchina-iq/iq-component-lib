@@ -1,0 +1,145 @@
+<div [@flyIn]="active">
+  <showtem [stname]="'icheck指令'" [stnamedel]="'一个有趣的指令'" >
+
+    <!-- overview -->
+    <ng-template [ngIf]="true" class='stview'>
+
+      <h3>概述</h3>
+      <p>
+        icheck美化单选框，复选框样式
+      </p>
+
+
+      <div style="margin-top:35px;">
+        <h3>icheck</h3>
+        <div style="padding:0px 10px;">
+          <p>icheck</p>
+          <input type="checkbox" name="" [(ngModel)]="a" icheck>
+          <input type="radio" name="" [(ngModel)]="b" icheck>
+          <showcode>
+            <div class="shows">&lt;input type="checkbox" name="" icheck&gt;
+&lt;input type="radio" name="" icheck&gt;</div>
+          </showcode>
+        </div>
+      </div>
+
+      <div style="margin-top:35px;">
+        <h3>disabled</h3>
+        <div style="padding:0px 10px;">
+          <p>[disabled] = "boolean"; 禁用状态，boolean为true时禁用</p>
+          <input type="checkbox" name="" [(ngModel)]="a" icheck [disabled]="true">
+          <input type="radio" name="" [(ngModel)]="b" icheck [disabled]="true">
+          <showcode>
+            <div class="shows">&lt;input type="checkbox" name="" icheck [disabled]="true"&gt;
+&lt;input type="radio" name="" icheck [disabled]="true"&gt;</div>
+          </showcode>
+        </div>
+      </div>
+
+      <div style="margin-top:35px;">
+        <h3>allcheck, allcheckChild</h3>
+        <div style="padding:0px 10px;">
+          <p>全选，由一个icheck，通过allcheck和allcheckChild属性，关联其他多个icheck。控制全选、全不选、半选状态</p>
+          <div>
+            <input type="checkbox" [(ngModel)]="d" icheck allcheck="demo" name="">
+            <ul>
+              <li>
+              <input type="checkbox" [(ngModel)]="e" icheck allcheckChild="demo" allcheck="demo1" name="">
+                <ul>
+                  <li><input type="checkbox" [(ngModel)]="f" icheck allcheckChild="demo1" name=""></li>
+                  <li><input type="checkbox" [(ngModel)]="g" icheck allcheckChild="demo1" name=""></li>
+                  <li><input type="checkbox" [(ngModel)]="h" icheck allcheckChild="demo1" name=""></li>
+                </ul>
+              </li>
+              <input type="checkbox" [(ngModel)]="o" allcheckChild="demo" allcheck="demo2" icheck name="">
+              <li>
+                <ul>
+                  <li><input type="checkbox" [(ngModel)]="i" icheck allcheckChild="demo2" name=""></li>
+                  <li><input type="checkbox" [(ngModel)]="j" icheck allcheckChild="demo2" name=""></li>
+                  <li><input type="checkbox" [(ngModel)]="k" icheck allcheckChild="demo2" name=""></li>
+                </ul>
+              </li>
+              <input type="checkbox" [(ngModel)]="p" allcheckChild="demo" allcheck="demo3" icheck name="">
+              <li>
+                <ul>
+                  <li><input type="checkbox" [(ngModel)]="l" icheck allcheckChild="demo3" name=""></li>
+                  <li><input type="checkbox" [(ngModel)]="m" icheck allcheckChild="demo3" name=""></li>
+                  <li><input type="checkbox" [(ngModel)]="n" icheck allcheckChild="demo3" name=""></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+          <showcode>
+            <div class="shows">
+&lt;div&gt;
+  &lt;input type="checkbox" icheck allcheck="demo" name=""&gt;
+  &lt;ul&gt;
+    &lt;li&gt;
+    &lt;input type="checkbox" icheck allcheckChild="demo" allcheck="demo1" name=""&gt;
+      &lt;ul&gt;
+        &lt;li&gt;&lt;input type="checkbox" icheck allcheckChild="demo1" name=""&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;input type="checkbox" icheck allcheckChild="demo1" name=""&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;input type="checkbox" icheck allcheckChild="demo1" name=""&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/li&gt;
+    &lt;input type="checkbox" icheck allcheckChild="demo" allcheck="demo2" name=""&gt;
+    &lt;li&gt;
+      &lt;ul&gt;
+        &lt;li&gt;&lt;input type="checkbox" icheck allcheckChild="demo2" name=""&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;input type="checkbox" icheck allcheckChild="demo2" name=""&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;input type="checkbox" icheck allcheckChild="demo2" name=""&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/li&gt;
+    &lt;input type="checkbox" icheck allcheckChild="demo" allcheck="demo3" name=""&gt;
+    &lt;li&gt;
+      &lt;ul&gt;
+        &lt;li&gt;&lt;input type="checkbox" icheck allcheckChild="demo3" name=""&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;input type="checkbox" icheck allcheckChild="demo3" name=""&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;input type="checkbox" icheck allcheckChild="demo3" name=""&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/div&gt;
+            </div>
+          </showcode>
+        </div>
+      </div>
+
+    </ng-template>
+
+  <!-- API -->
+  <ng-template [ngIf]="true" class='stitemo'>
+
+    <showitemo [sitemotitle]="'属性'">
+      <ng-template [ngIf]="true" class="sitemocon">
+
+        <table class="table">
+          <thead>
+            <tr>
+              <th>参数</th>
+              <th>说明</th>
+              <th>类型</th>
+              <th>可选值</th>
+              <th>默认值</th>
+              <th>是否必选</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+
+      </ng-template>
+    </showitemo>
+
+  </ng-template>
+
+  </showtem>
+</div>

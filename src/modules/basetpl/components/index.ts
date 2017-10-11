@@ -15,6 +15,7 @@ import { IqBreadcrumbDemoComponent } from './widgets/iq-breadcrumb/iq-breadcrumb
 //directives
 import { AutoheightDemoComponent } from './directives/autoheight/autoheight.component';
 import { StopParentClickDemoComponent } from './directives/stopParentClick/stop-parent-click.component';
+import { IcheckDemoComponent } from './directives/icheck/icheck.component';
 
 //pipes
 import { IqRefactorPipeComponent } from './pipes/iq-refactor/iq-refactor.component';
@@ -30,7 +31,7 @@ import { WindowDemoComponent } from './services/window/window.component';
 export { BasetplContainerComponent,BasetplRootComponent,PrepareT1Component,PrepareT2Component,
   IqSwitcherPageDemoComponent,IqDatepickerDemoComponent,IndexComponent,WindowDemoComponent,IqFileUploadDemoComponent,
   IqSelectDemoComponent,AutoheightDemoComponent,StopParentClickDemoComponent,IqRefactorPipeComponent,IqDatePipeComponent,
-  IqFileSizePipeComponent,IqBreadcrumbDemoComponent
+  IqFileSizePipeComponent,IqBreadcrumbDemoComponent,IcheckDemoComponent
 };
 
 //模块内部Components列表
@@ -50,5 +51,6 @@ export let Basetpl_COMPONENTS =
   IqRefactorPipeComponent,
   IqDatePipeComponent,
   IqFileSizePipeComponent,
-  IqBreadcrumbDemoComponent
+  IqBreadcrumbDemoComponent,
+  IcheckDemoComponent
 ];
