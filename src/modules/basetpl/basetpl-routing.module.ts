@@ -7,7 +7,8 @@ import { BasetplContainerComponent,
   IqSwitcherPageDemoComponent,IqDatepickerDemoComponent,IndexComponent,
   WindowDemoComponent,IqFileUploadDemoComponent,IqSelectDemoComponent,
   AutoheightDemoComponent, StopParentClickDemoComponent,IqRefactorPipeComponent,
-  IqDatePipeComponent, IqFileSizePipeComponent, IqBreadcrumbDemoComponent
+  IqDatePipeComponent, IqFileSizePipeComponent, IqBreadcrumbDemoComponent,
+  IcheckDemoComponent
 } from './index';
 
 const routes: Routes = [//定义路由
@@ -32,7 +33,8 @@ const routes: Routes = [//定义路由
       path: "directives",
       children: [
         { path: 'autoheight', component: AutoheightDemoComponent },
-        { path: 'stop-parent-click', component: StopParentClickDemoComponent }
+        { path: 'stop-parent-click', component: StopParentClickDemoComponent },
+        { path: 'icheck', component: IcheckDemoComponent }
       ]
     },
     {
