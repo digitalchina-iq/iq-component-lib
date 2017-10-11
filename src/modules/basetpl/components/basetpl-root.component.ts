@@ -19,19 +19,19 @@ export class BasetplRootComponent implements OnInit {
     mm="fffff";
 
     ngOnInit() {
-       let _this = this;
-       let reg = /demo\/widget\/page-style/;
-       var resetPath = function(){
-         _this.path=_this.location.path();
-         _this.open = reg.test(_this.path);
-       }
-       this.router.events.subscribe(event => {
-         console.log("123123")
-         if (event instanceof NavigationEnd) {
-           resetPath();
-         }
-       });
-       resetPath();
+      //  let _this = this;
+      //  let reg = /demo\/widget\/page-style/;
+      //  var resetPath = function(){
+      //    _this.path=_this.location.path();
+      //    _this.open = reg.test(_this.path);
+      //  }
+      //  this.router.events.subscribe(event => {
+      //    console.log("123123")
+      //    if (event instanceof NavigationEnd) {
+      //      resetPath();
+      //    }
+      //  });
+      //  resetPath();
 
        $('#sidebar ul li.has-sub > a').click(function(e) {
          e.preventDefault();
