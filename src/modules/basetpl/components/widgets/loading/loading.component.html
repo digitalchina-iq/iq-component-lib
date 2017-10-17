@@ -1,0 +1,111 @@
+<div [@flyIn]="active">
+  <showtem [stname]="'加载中组件'" [stnamedel]="'一个有趣的组件'" >
+
+    <!-- overview -->
+    <ng-template [ngIf]="true" class='stview'>
+
+      <h3>概述</h3>
+      <p>
+        加载中组件，显示加载中效果
+      </p>
+
+      <div style="margin-top:35px;">
+        <h3>show</h3>
+        <div style="padding:0px 10px;">
+          <p><code>show:boolean</code>； 如果为<code>true</code>显示加载中效果，如果为<code>false</code>组件消失</p>
+          <div style="position: relative;width: 200px;height: 90px;">
+            <loading [show]="true"></loading>
+          </div>
+          <showcode>
+            <div class="shows">&lt;loading [show]="true"&gt;&lt;/loading&gt;</div>
+          </showcode>
+        </div>
+      </div>
+
+      <div style="margin-top:35px;">
+        <h3>style</h3>
+        <div style="padding:0px 10px;">
+          <p><code>style:any</code>； 定义组件的额外样式</p>
+          <div style="position: relative;width: 200px;height: 90px;">
+            <loading [show]="true" [style]="{background:'red'}"></loading>
+          </div>
+          <showcode>
+            <div class="shows">&lt;loading [show]="true" [style]="{{'{'}}background:'red'{{'}'}}"&gt;&lt;/loading&gt;</div>
+          </showcode>
+        </div>
+      </div>
+
+    </ng-template>
+
+  <!-- API -->
+  <ng-template [ngIf]="true" class='stitemo'>
+
+    <showitemo [sitemotitle]="'属性'">
+      <ng-template [ngIf]="true" class="sitemocon">
+
+        <table class="table">
+          <thead>
+            <tr>
+              <th>参数</th>
+              <th>说明</th>
+              <th>类型</th>
+              <th>可选值</th>
+              <th>默认值</th>
+              <th>是否必选</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+
+      </ng-template>
+    </showitemo>
+
+  </ng-template>
+
+    <!-- stitemexample -->
+  <ng-template [ngIf]="true" class="stitemexample">
+
+    <showitemexample>
+
+      <ng-template [ngIf]="true" class="stitempcon">
+        <div class="showhow">
+          <p></p>
+        </div>
+      </ng-template>
+
+      <ng-template [ngIf]="true" class="stitemphtml">
+
+        <pre iqhighlight>
+          <code class="html"></code>
+        </pre>
+
+      </ng-template>
+
+      <ng-template [ngIf]="true" class="stitempts">
+        <pre iqhighlight>
+          <code  class="javascript"></code>
+        </pre>
+      </ng-template>
+
+      <ng-template [ngIf]="true" class="stitempcss">
+        <pre iqhighlight>
+          <code class="css">
+          </code>
+        </pre>
+      </ng-template>
+
+    </showitemexample>
+
+  </ng-template>
+
+  </showtem>
+</div>

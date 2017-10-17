@@ -16,6 +16,10 @@
 
     &.not-upload{
       position: relative;
+
+      &:hover{
+        color: $def-main-color!important;
+      }
       
       input[type=file]{
         width: 200px;
@@ -24,12 +28,13 @@
         left: 0;
         top: 0;
         opacity: 0;
-        font-size: 0;
+        font-size: 100px;
         cursor: pointer;
+        overflow: hidden;
       }
     }
 
-    &.not-upload:hover, &:hover .iqon-enclosure, &:hover .filename{
+    &:hover .iqon-enclosure, &:hover .filename{
       color: $def-main-color!important;
       cursor: pointer;
     }

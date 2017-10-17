@@ -78,6 +78,17 @@
           </showcode>
         </div>
       </div>
+      
+      <div style="margin-top:35px;">
+        <h3>hasUploaded</h3>
+        <div style="padding:0px 10px;">
+          <p>hasUploaded:{{'{'}}name: string, size?: number{{'}'}}[]，已经上传过的文件</p>
+          <iq-file-upload upType="1" [hasUploaded]="[{name:'已经上传过的第一个文件',size:213143},{name:'已经上传过的第二个文件',size:32523}]"></iq-file-upload>
+          <showcode>
+            <div class="shows">&lt;iq-file-upload upType="1" [hasUploaded]="[{{'{'}}name:'已经上传过的第一个文件',size:213143{{'}'}},{{'{'}}name:'已经上传过的第二个文件',size:32523{{'}'}}]"&gt;&lt;/iq-file-upload&gt;</div>
+          </showcode>
+        </div>
+      </div>
 
       <div style="margin-top:35px;">
         <h3>onSuccess</h3>
