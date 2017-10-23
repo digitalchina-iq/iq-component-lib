@@ -58,9 +58,9 @@
         <h3>disabled</h3>
         <div style="padding:0px 10px;">
           <p>disabled: boolean 禁用下拉框</p>
-          <iq-select disabled="true"></iq-select>
+          <iq-select [disabled]="true"></iq-select>
           <showcode>
-            <div class="shows">&lt;iq-select disabled="true"&gt;&lt;/iq-select&gt;</div>
+            <div class="shows">&lt;iq-select [disabled]="true"&gt;&lt;/iq-select&gt;</div>
           </showcode>
         </div>
       </div>
@@ -101,7 +101,7 @@
       <div style="margin-top:35px;">
         <h3>itemValue</h3>
         <div style="padding:0px 10px;">
-          <p>itemValue: string 如果每个下拉项有多个值，itemValue用来确定ngModel绑定的值</p>
+          <p>itemValue: string 下拉列表中选项的键，用于确定ngModel绑定哪个值</p>
           <iq-select itemValue="0"></iq-select>
           <showcode>
             <div class="shows">&lt;iq-select itemValue="0"&gt;&lt;/iq-select&gt;</div>
@@ -123,7 +123,7 @@
       <div style="margin-top:35px;">
         <h3>onSelect</h3>
         <div style="padding:0px 10px;">
-          <p>选择下拉项之后触发</p>
+          <p>选择下拉项之后触发，$event为{{'{'}}item: any, index: number{{'}'}}，item为绑定的值，index为下拉项所在位置</p>
           <iq-select onSelect="doSomething($event)"></iq-select>
           <showcode>
             <div class="shows">&lt;iq-select onSelect="doSomething($event)"&gt;&lt;/iq-select&gt;</div>
@@ -134,7 +134,7 @@
       <div style="margin-top:35px;">
         <h3>getData</h3>
         <div style="padding:0px 10px;">
-          <p>下拉列表接口返回数据时触发，$event为返回的数据</p>
+          <p>下拉列表接口返回数据时触发，$event为接口返回的数据</p>
           <iq-select (getData)="doSomething($event)"></iq-select>
           <showcode>
             <div class="shows">&lt;iq-select (getData)="doSomething($event)"&gt;&lt;/iq-select&gt;</div>
@@ -171,56 +171,88 @@
               <td>是</td>
             </tr>
             <tr>
-              <td>url</td>
-              <td>上传接口</td>
-              <td>string</td>
-              <td></td>
-              <td></td>
-              <td>是</td>
-            </tr>
-            <tr>
               <td>method</td>
-              <td>上传方式</td>
+              <td>请求接口方式</td>
               <td>string</td>
-              <td>post, put</td>
-              <td>post</td>
+              <td>get, post等</td>
+              <td>get</td>
               <td>否</td>
             </tr>
             <tr>
-              <td>allowedFileType</td>
-              <td>允许上传的文件类型</td>
-              <td>string[]</td>
-              <td></td>
-              <td></td>
-              <td>否</td>
-            </tr>
-            <tr>
-              <td>maxFileSize</td>
-              <td>最大文件字节数</td>
-              <td>number</td>
+              <td>placeHolder</td>
+              <td>提示文字</td>
+              <td>string</td>
               <td></td>
               <td></td>
               <td>否</td>
             </tr>
             <tr>
-              <td>maxFileNum</td>
-              <td>最大文件数量</td>
-              <td>number</td>
+              <td>noSearch</td>
+              <td>是否隐藏搜索框</td>
+              <td>boolean</td>
+              <td>true,false</td>
+              <td>false</td>
+              <td>否</td>
+            </tr>
+            <tr>
+              <td>disabled</td>
+              <td>是否禁用下拉框</td>
+              <td>boolean</td>
+              <td>true,false</td>
+              <td>false</td>
+              <td>否</td>
+            </tr>
+            <tr>
+              <td>queryParams</td>
+              <td>额外的查询参数</td>
+              <td>object</td>
               <td></td>
               <td></td>
               <td>否</td>
             </tr>
             <tr>
-              <td>onSuccess</td>
-              <td>文件上传成功事件</td>
+              <td>keyWordAlias</td>
+              <td>keyword的别名</td>
+              <td>string</td>
+              <td></td>
+              <td></td>
+              <td>否</td>
+            </tr>
+            <tr>
+              <td>required</td>
+              <td>是否必须</td>
+              <td>boolean</td>
+              <td>true,false</td>
+              <td>false</td>
+              <td>否</td>
+            </tr>
+            <tr>
+              <td>itemValue</td>
+              <td>下拉列表中选项的键，用于确定ngModel绑定哪个值</td>
+              <td>string</td>
+              <td></td>
+              <td></td>
+              <td>否</td>
+            </tr>
+            <tr>
+              <td>handleData</td>
+              <td>数据处理函数</td>
+              <td>function</td>
+              <td></td>
+              <td></td>
+              <td>否</td>
+            </tr>
+            <tr>
+              <td>onSelect</td>
+              <td>选择下拉项之后触发</td>
               <td></td>
               <td></td>
               <td></td>
               <td>否</td>
             </tr>
             <tr>
-              <td>onDeleteItem</td>
-              <td>删除队列中某个文件事件</td>
+              <td>getData</td>
+              <td>接口返回数据时触发</td>
               <td></td>
               <td></td>
               <td></td>

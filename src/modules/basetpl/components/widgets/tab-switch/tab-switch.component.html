@@ -1,0 +1,220 @@
+<div [@flyIn]="active">
+  <showtem [stname]="'tab切换组件'" [stnamedel]="'一个有趣的组件'" >
+
+    <!-- overview -->
+    <ng-template [ngIf]="true" class='stview'>
+
+      <h3>概述</h3>
+      <p>
+        tab切换组件
+      </p>
+
+      <div style="margin-top:35px;">
+        <h3>tabIndex, tabContent</h3>
+        <div style="padding:0px 10px;">
+          <p><code>tabIndex: string,  tabContent: string</code>； 定义组件的tab和content的对应关系</p>
+          <div style="position: relative;width: 200px;height: 90px;">
+            <iq-tab>
+              <ul class="tab-index clearfix">
+                <li tabIndex="abc">abc</li>
+                <li tabIndex="def">def</li>
+                <li tabIndex="ghi">ghi</li>
+              </ul>
+              <div class="tab-cont">
+                <div tabContent="abc">abc</div>
+                <div tabContent="def">def</div>
+                <div tabContent="ghi">ghi</div>
+              </div>
+            </iq-tab>
+          </div>
+          <showcode>
+            <div class="shows">
+&lt;iq-tab&gt;
+  &lt;ul class="tab-index clearfix"&gt;
+    &lt;li tabIndex="abc"&gt;abc&lt;/li&gt;
+    &lt;li tabIndex="def"&gt;def&lt;/li&gt;
+    &lt;li tabIndex="ghi"&gt;ghi&lt;/li&gt;
+  &lt;/ul&gt;
+  &lt;div class="tab-cont"&gt;
+    &lt;div tabContent="abc"&gt;abc&lt;/div&gt;
+    &lt;div tabContent="def"&gt;def&lt;/div&gt;
+    &lt;div tabContent="ghi"&gt;ghi&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/iq-tab&gt;
+            </div>
+          </showcode>
+        </div>
+      </div>
+
+      <div style="margin-top:35px;">
+        <h3>tabActiveClass</h3>
+        <div style="padding:0px 10px;">
+          <p><code>tabActiveClass: string</code>； 定义组件的tab激活时的className</p>
+          <div style="position: relative;width: 200px;height: 90px;">
+            <iq-tab tabActiveClass="active">
+              <ul class="tab-index clearfix">
+                <li tabIndex="abc">abc</li>
+                <li tabIndex="def">def</li>
+                <li tabIndex="ghi">ghi</li>
+              </ul>
+              <div class="tab-cont">
+                <div tabContent="abc">abc</div>
+                <div tabContent="def">def</div>
+                <div tabContent="ghi">ghi</div>
+              </div>
+            </iq-tab>
+          </div>
+          <showcode>
+            <div class="shows">
+&lt;iq-tab tabActiveClass="active"&gt;
+  &lt;ul class="tab-index clearfix"&gt;
+    &lt;li tabIndex="abc"&gt;abc&lt;/li&gt;
+    &lt;li tabIndex="def"&gt;def&lt;/li&gt;
+    &lt;li tabIndex="ghi"&gt;ghi&lt;/li&gt;
+  &lt;/ul&gt;
+  &lt;div class="tab-cont"&gt;
+    &lt;div tabContent="abc"&gt;abc&lt;/div&gt;
+    &lt;div tabContent="def"&gt;def&lt;/div&gt;
+    &lt;div tabContent="ghi"&gt;ghi&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/iq-tab&gt;
+            </div>
+          </showcode>
+        </div>
+      </div>
+
+      <div style="margin-top:35px;">
+        <h3>tabActiveIndex</h3>
+        <div style="padding:0px 10px;">
+          <p><code>tabActiveIndex: string</code>； 定义组件的被默认激活的tab</p>
+          <div style="position: relative;width: 200px;height: 90px;">
+            <iq-tab tabActiveClass="active" tabActiveIndex="def">
+              <ul class="tab-index clearfix">
+                <li tabIndex="abc">abc</li>
+                <li tabIndex="def">def</li>
+                <li tabIndex="ghi">ghi</li>
+              </ul>
+              <div class="tab-cont">
+                <div tabContent="abc">abc</div>
+                <div tabContent="def">def</div>
+                <div tabContent="ghi">ghi</div>
+              </div>
+            </iq-tab>
+          </div>
+          <showcode>
+            <div class="shows">
+&lt;iq-tab tabActiveClass="active" tabActiveIndex="def"&gt;
+  &lt;ul class="tab-index clearfix"&gt;
+    &lt;li tabIndex="abc"&gt;abc&lt;/li&gt;
+    &lt;li tabIndex="def"&gt;def&lt;/li&gt;
+    &lt;li tabIndex="ghi"&gt;ghi&lt;/li&gt;
+  &lt;/ul&gt;
+  &lt;div class="tab-cont"&gt;
+    &lt;div tabContent="abc"&gt;abc&lt;/div&gt;
+    &lt;div tabContent="def"&gt;def&lt;/div&gt;
+    &lt;div tabContent="ghi"&gt;ghi&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/iq-tab&gt;
+            </div>
+          </showcode>
+        </div>
+      </div>
+
+    </ng-template>
+
+  <!-- API -->
+  <ng-template [ngIf]="true" class='stitemo'>
+
+    <showitemo [sitemotitle]="'属性'">
+      <ng-template [ngIf]="true" class="sitemocon">
+
+        <table class="table">
+          <thead>
+            <tr>
+              <th>参数</th>
+              <th>说明</th>
+              <th>类型</th>
+              <th>可选值</th>
+              <th>默认值</th>
+              <th>是否必选</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>tabIndex</td>
+              <td>选项卡Id</td>
+              <td>string</td>
+              <td></td>
+              <td></td>
+              <td>是</td>
+            </tr>
+            <tr>
+              <td>tabContent</td>
+              <td>选项卡对应内容Id</td>
+              <td>string</td>
+              <td></td>
+              <td></td>
+              <td>是</td>
+            </tr>
+            <tr>
+              <td>tabActiveClass</td>
+              <td>选项卡被激活时添加的className</td>
+              <td>string</td>
+              <td></td>
+              <td></td>
+              <td>否</td>
+            </tr>
+            <tr>
+              <td>tabActiveIndex</td>
+              <td>选项卡默认被激活的项</td>
+              <td>string</td>
+              <td></td>
+              <td></td>
+              <td>否</td>
+            </tr>
+          </tbody>
+        </table>
+
+      </ng-template>
+    </showitemo>
+
+  </ng-template>
+
+    <!-- stitemexample -->
+  <ng-template [ngIf]="true" class="stitemexample">
+
+    <showitemexample>
+
+      <ng-template [ngIf]="true" class="stitempcon">
+        <div class="showhow">
+          <p></p>
+        </div>
+      </ng-template>
+
+      <ng-template [ngIf]="true" class="stitemphtml">
+
+        <pre iqhighlight>
+          <code class="html"></code>
+        </pre>
+
+      </ng-template>
+
+      <ng-template [ngIf]="true" class="stitempts">
+        <pre iqhighlight>
+          <code  class="javascript"></code>
+        </pre>
+      </ng-template>
+
+      <ng-template [ngIf]="true" class="stitempcss">
+        <pre iqhighlight>
+          <code class="css">
+          </code>
+        </pre>
+      </ng-template>
+
+    </showitemexample>
+
+  </ng-template>
+
+  </showtem>
+</div>

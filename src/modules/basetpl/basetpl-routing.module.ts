@@ -8,7 +8,8 @@ import { BasetplContainerComponent,
   WindowDemoComponent,IqFileUploadDemoComponent,IqSelectDemoComponent,
   AutoheightDemoComponent, StopParentClickDemoComponent,IqRefactorPipeComponent,
   IqDatePipeComponent, IqFileSizePipeComponent, IqBreadcrumbDemoComponent,
-  IcheckDemoComponent
+  IcheckDemoComponent, LoadingDemoComponent, IqPagerDemoComponent,
+  TrimDemoComponent, TabSwitchDemoComponent
 } from './index';
 
 const routes: Routes = [//定义路由
@@ -26,7 +27,10 @@ const routes: Routes = [//定义路由
         { path: 'iq-datepicker', component: IqDatepickerDemoComponent },
         { path: 'iq-file-upload', component: IqFileUploadDemoComponent },
         { path: 'iq-select', component: IqSelectDemoComponent },
-        { path: 'iq-breadcrumb', data: {"breadcrumb": '面包屑导航组件'}, component: IqBreadcrumbDemoComponent }
+        { path: 'iq-breadcrumb', data: {"breadcrumb": '面包屑导航组件'}, component: IqBreadcrumbDemoComponent },
+        { path: 'loading', component: LoadingDemoComponent },
+        { path: 'iq-pager', component: IqPagerDemoComponent },
+        { path: 'tab-switch', component: TabSwitchDemoComponent }
       ]
     },
     {
@@ -34,7 +38,8 @@ const routes: Routes = [//定义路由
       children: [
         { path: 'autoheight', component: AutoheightDemoComponent },
         { path: 'stop-parent-click', component: StopParentClickDemoComponent },
-        { path: 'icheck', component: IcheckDemoComponent }
+        { path: 'icheck', component: IcheckDemoComponent },
+        { path: 'trim', component: TrimDemoComponent }
       ]
     },
     {

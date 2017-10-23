@@ -1,0 +1,109 @@
+<div [@flyIn]="active">
+  <showtem [stname]="'分页组件'" [stnamedel]="'一个有趣的组件'" >
+
+    <!-- overview -->
+    <ng-template [ngIf]="true" class='stview'>
+
+      <h3>概述</h3>
+      <p>
+        分页器组件
+      </p>
+
+      <div style="margin-top:35px;">
+        <h3>data</h3>
+        <div style="padding:0px 10px;">
+          <p><code>data:Pager<{{'{'}}pageSize:number,pageNo:number,total:number,totalPages:number{{'}'}}></code>；data值为Pager对象，pageSize:每页数量，pageNo:页码，total:总数，totalPages:总页数</p>
+          <iq-pager [data]="pagerData" (onChange)="pageChange($event)"></iq-pager>
+          <showcode>
+            <div class="shows">&lt;iq-pager [data]="pagerData"&gt;&lt;/iq-pager&gt;
+pagerData = new Pager().set({{'{'}}pageSize:10,pageNo:2,total:123,totalPages:12{{'}'}})</div>
+          </showcode>
+        </div>
+      </div>
+
+      <div style="margin-top:35px;">
+        <h3>onChange</h3>
+        <div style="padding:0px 10px;">
+          <p>切换分页事件，参数$event为新的Pager对象</p>
+          <p>页面大小：{{pagerData.pageSize}}，页码：{{pagerData.pageNo}}</p>
+          <iq-pager [data]="pagerData" (onChange)="pageChange($event)"></iq-pager>
+          <showcode>
+            <div class="shows">&lt;iq-pager [data]="pagerData" (onChange)="pageChange($event)"&gt;&lt;/iq-pager&gt;</div>
+          </showcode>
+        </div>
+      </div>
+
+    </ng-template>
+
+  <!-- API -->
+  <ng-template [ngIf]="true" class='stitemo'>
+
+    <showitemo [sitemotitle]="'属性'">
+      <ng-template [ngIf]="true" class="sitemocon">
+
+        <table class="table">
+          <thead>
+            <tr>
+              <th>参数</th>
+              <th>说明</th>
+              <th>类型</th>
+              <th>可选值</th>
+              <th>默认值</th>
+              <th>是否必选</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+
+      </ng-template>
+    </showitemo>
+
+  </ng-template>
+
+    <!-- stitemexample -->
+  <ng-template [ngIf]="true" class="stitemexample">
+
+    <showitemexample>
+
+      <ng-template [ngIf]="true" class="stitempcon">
+        <div class="showhow">
+          <p></p>
+        </div>
+      </ng-template>
+
+      <ng-template [ngIf]="true" class="stitemphtml">
+
+        <pre iqhighlight>
+          <code class="html"></code>
+        </pre>
+
+      </ng-template>
+
+      <ng-template [ngIf]="true" class="stitempts">
+        <pre iqhighlight>
+          <code  class="javascript"></code>
+        </pre>
+      </ng-template>
+
+      <ng-template [ngIf]="true" class="stitempcss">
+        <pre iqhighlight>
+          <code class="css">
+          </code>
+        </pre>
+      </ng-template>
+
+    </showitemexample>
+
+  </ng-template>
+
+  </showtem>
+</div>

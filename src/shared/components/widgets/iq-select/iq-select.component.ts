@@ -1,14 +1,13 @@
-import { Component, forwardRef, ViewChild, OnInit, Input, Output, ElementRef, ComponentRef, EventEmitter } from '@angular/core';
+import { Component, forwardRef, ViewChild, OnInit, Input, Output, ElementRef, ComponentRef, EventEmitter, Renderer2 } from '@angular/core';
 import { ControlValueAccessor,NG_VALUE_ACCESSOR, DefaultValueAccessor } from '@angular/forms';
-import { iqHttpService } from 'core';
+import { Http } from '@angular/http';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
-import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/toPromise';
 import { Subject } from 'rxjs/Subject';
 import { Observable } from 'rxjs/Observable';
 
-declare var $;
+declare var window;
 
 @Component({
   selector: "iq-select",
@@ -23,18 +22,18 @@ declare var $;
   ]
 })
 export class IqSelectComponent implements OnInit, ControlValueAccessor {
-  constructor(private el: ElementRef, private http: iqHttpService) {}
+  constructor(private ref: ElementRef, private http: Http, private render: Renderer2) {}
 
   selectedItem: any;//被选项
   optionShow: boolean;//下拉框出现
-  resetEvent: any;//重置
   keyWord: string;
   optionList: any[] = [];
-  private _optionList: any[] = [];
-  itemString: boolean = false;
+  _optionList: any[] = [];
 
   searchStream = new Subject<string>();
 
+  /**取消监听事件*/
+  removeListen(): void{};
 
   private onChangeCallback:any={};
   private onTouchedCallback:any={};
@@ -47,7 +46,7 @@ export class IqSelectComponent implements OnInit, ControlValueAccessor {
   @Input() queryParams: any = {};//额外的查询参数
   @Input() keyWordAlias: string;//keyWord别名
   @Input() required: boolean = false;
-  @Input() itemValue: number = 0;//ngModel绑定值的位置
+  @Input() itemValue: string;//ngModel绑定值的键
   @Input() handleData: any = (arg)=>arg;
 
   @Output() onSelect = new EventEmitter();
@@ -58,17 +57,6 @@ export class IqSelectComponent implements OnInit, ControlValueAccessor {
     if(this.disabled){
       return;
     }
-
-    let $dom = $(this.el.nativeElement);//获得当前元素
-
-    this.resetEvent = () => this.resetSearch();
-
-    //阻止冒泡
-    $dom.on("mousedown",($event)=>{
-      $event.stopPropagation();
-    });
-
-    $("body").on("mousedown", this.resetEvent);
 
     this.searchStream
       .debounceTime(500)
@@ -99,17 +87,13 @@ export class IqSelectComponent implements OnInit, ControlValueAccessor {
     .then(this.handleData)
     .then((list: any[]) => {
       if(!(list instanceof Array)){console.error('函数处理返回结果必须是数组');return};
-
-      this.itemString = typeof list[0] == 'string';
-      this.optionList = list;
-      if(!this.itemString){
-        this._optionList = list.map(item =>  item.reduce((p,c) => p+' '+c));
-      }
+      this._optionList = list;
+      this.optionList = list.map(item => typeof item === 'string' ? item : Object.keys(item).map(i => item[i]).join(' '));
     });
   }
 
   ngOnDestroy(){
-    $("body").off("mousedown", this.resetEvent);
+    this.removeListen();
   }
 
   toggle(){
@@ -119,6 +103,16 @@ export class IqSelectComponent implements OnInit, ControlValueAccessor {
 
     if(this.optionShow){
       this.getOptionList();
+
+      this.removeListen();
+      let iqSelectElement = this.ref.nativeElement;
+      this.removeListen = this.render.listen(window, 'click', (e) => {
+        if(e.target != iqSelectElement && !iqSelectElement.contains(e.target)) {
+          this.optionShow = false;
+        }
+      });
+    }else{
+      this.removeListen();
     }
   }
 
@@ -134,18 +128,11 @@ export class IqSelectComponent implements OnInit, ControlValueAccessor {
     this.keyWord = '';
   }
 
-  chooseItem(item){//选择下拉选项
+  chooseItem(item, i){//选择下拉选项
     this.selectedItem = item;
-    this.onChangeCallback(item);
-    this.onSelect.emit(item);
-    this.resetSearch();
-  }
-
-  chooseIndex(i){
-    let choosedItem = this.optionList[i][this.itemValue];
-    this.selectedItem = this._optionList[i];
-    this.onChangeCallback(choosedItem);
-    this.onSelect.emit({item: choosedItem, index: i});
+    let callbackValue = this.itemValue === undefined ? this._optionList[i] : this._optionList[i][this.itemValue];
+    this.onChangeCallback(callbackValue);
+    this.onSelect.emit({item: item, index: i});
     this.resetSearch();
   }
 

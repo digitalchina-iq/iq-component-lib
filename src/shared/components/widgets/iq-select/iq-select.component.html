@@ -9,12 +9,7 @@
     </div>
     <div class="option-wrap">
       <ul class="option-list">
-        <ng-container *ngIf="itemString">
-          <li *ngFor="let item of optionList" (click)="chooseItem(item)">{{item}}</li>
-        </ng-container>
-        <ng-container *ngIf="!itemString">
-          <li *ngFor="let item of _optionList;index as i" (click)="chooseIndex(i)">{{item}}</li>
-        </ng-container>
+        <li *ngFor="let item of optionList;index as i" (click)="chooseItem(item, i)">{{item}}</li>
       </ul>
     </div>
   </div>

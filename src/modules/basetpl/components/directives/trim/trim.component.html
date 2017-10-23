@@ -1,0 +1,63 @@
+<div [@flyIn]="active">
+  <showtem [stname]="'去除空格输入指令'" [stnamedel]="'一个有趣的指令'" >
+
+    <!-- overview -->
+    <ng-template [ngIf]="true" class='stview'>
+
+      <h3>概述</h3>
+      <p>
+        trim，自动去除输入框中输入的空格
+      </p>
+
+
+      <div style="margin-top:35px;">
+        <h3>trim</h3>
+        <div style="padding:0px 10px;">
+          <p>去除空格</p>
+          <textarea trim></textarea>
+          <input type="text" trim name="">
+          <showcode>
+            <div class="shows">&lt;textarea trim&gt;&lt;/textarea&gt;
+&lt;input type="text" trim&gt;</div>
+          </showcode>
+        </div>
+      </div>
+
+    </ng-template>
+
+  <!-- API -->
+  <ng-template [ngIf]="true" class='stitemo'>
+
+    <showitemo [sitemotitle]="'属性'">
+      <ng-template [ngIf]="true" class="sitemocon">
+
+        <table class="table">
+          <thead>
+            <tr>
+              <th>参数</th>
+              <th>说明</th>
+              <th>类型</th>
+              <th>可选值</th>
+              <th>默认值</th>
+              <th>是否必选</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+
+      </ng-template>
+    </showitemo>
+
+  </ng-template>
+
+  </showtem>
+</div>
