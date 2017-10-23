@@ -14,6 +14,7 @@ import { WindowService } from 'core/services/window.service'
 
 // import { BsModalService } from 'ngx-bootstrap/modal';
 // import { BsModalRef } from 'ngx-bootstrap/modal/modal-options.class';
+declare var $;
 
 @Component({
     templateUrl: 'login.component.html',
@@ -49,6 +50,7 @@ export class DefindexComponent implements OnInit  {
   // }
 
   constructor(private iqhttpservice: iqHttpService,
+    private iqhttp: Http,
     // private modalService: BsModalService
     private windowservice:WindowService,
     private router: Router
@@ -143,18 +145,26 @@ export class DefindexComponent implements OnInit  {
   test(){
     // username
 
-    this.iqhttpservice.get(environment.server+"/classes/Product")
-      .map(res => res.json())
-      .subscribe(res => {
-          console.log("+++++");
-          console.log(res)
-          console.log("+++++");
-          // this.router.navigate(["/index"]);
-      })
+    // this.iqhttpservice.get(environment.server+"/classes/Product")
+    //   .map(res => res.json())
+    //   .subscribe(res => {
+    //       console.log("+++++");
+    //       console.log(res)
+    //       console.log("+++++");
+    //       // this.router.navigate(["/index"]);
+    //   })
+
+    this.iqhttp.get(environment.server+"/classes/Product")
+    .map(res => res.json())
+    .subscribe(res => {
+        console.log("+++++");
+        console.log(res)
+        console.log("+++++");
+        // this.router.navigate(["/index"]);
+    })
 
 
   }
-
 
 
 

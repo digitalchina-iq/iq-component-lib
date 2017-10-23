@@ -13,15 +13,43 @@
 				<ul class="nav pull-right">
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-							<i class="icon-refresh"></i><span class="label label-info">5</span>
+							<i class="iqon-record"></i>
+							<span class="label label-info">5</span>
 						</a>
 						<ul class="dropdown-menu ">
-							<li><a href="#"><span class="label label-success"><i class="icon-plus-sign"></i></span> Lorem ipsum dolor sit amet, consectetur adipiscing elit.</a></li>
+							<!-- <li>
+								<a href="#">
+								<span class="label label-success">
+									<i class="iqon-colplates"></i>
+								</span> Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+								</a>
+							</li>
 							<li><a href="#"><span class="label label-warning"><i class="icon-exclamation-sign"></i></span> Duis aliquet pharetra dapibus.</a></li>
 							<li><a href="#"><span class="label label-important"><i class="icon-shopping-cart"></i></span> Proin rhoncus ipsum a iaculis rutrum.</a></li>
 							<li><a href="#"><span class="label label-info"><i class="icon-hdd"></i></span> Pellentesque sollicitudin mi tellus, eget posuere metus rhoncus sed.</a></li>
 							<li class="divider"></li>
-							<li class="dropdown-footer"><a href="#"><span class="label"><i class="icon-circle-arrow-right"></i></span> View all updates</a></li>
+							<li class="dropdown-footer"><a href="#"><span class="label"><i class="icon-circle-arrow-right"></i></span> View all updates</a></li> -->
+
+							<li>
+								<!-- <a href="javascript:void(0);">
+								<span class="label label-info">
+									<i class="iqon-colplates"></i>
+								</span> 前景色				
+								
+								</a> -->
+								
+							</li>
+
+							<li>
+								<a href="javascript:void(0);">
+								<span class="label label-info">
+									<i class="iqon-colplates"></i>
+								</span> 后景色
+								<input [(colorPicker)]="color1" (colorPickerChange)="ms1($event)" [style.background]="color1"/>
+								</a>
+							</li>
+
+
 						</ul>
 					</li>
 					<li>
@@ -45,8 +73,14 @@
 				</ul>
 				<form class="navbar-search pull-right hidden-phone">
 				  	<input type="text" class="search-query" placeholder="Search" />
-  					<button type="submit" class="btn"><i class="icon-search"></i></button>
+  					<button type="submit" class="btn"><i class="iqon-search"></i></button>
 				</form>
+
+				<div style="float: right;line-height: 45px;margin-right: 30px;">
+					<input style="width:100px;" [(colorPicker)]="scolor" (colorPickerChange)="scolorm($event)" [style.background]="scolor"/>
+					<input style="width:100px;" [(colorPicker)]="ecolor" (colorPickerChange)="ecolorm($event)" [style.background]="ecolor"/>
+				</div>
+
 		  	</div><!-- end navbar inner -->
 		</div><!-- end navbar -->
   	</div><!-- end #top-navigation -->
