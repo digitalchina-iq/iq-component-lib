@@ -36,6 +36,10 @@
   display: inline-block;
 }
 
+.showhow{
+  margin: 20px 0;
+}
+
 pre {
   font-family: "Microsoft YaHei";
   padding: 0;

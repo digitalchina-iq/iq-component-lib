@@ -17,6 +17,8 @@ export class IqFileUploadDemoComponent implements OnInit {
 
   imgSrc: string;
 
+  hasUploadedFile: {name: string, size?: number}[] = [{name: 'abc', size: 12321}, {name: 'def', size: 352322}];
+
   constructor(){}
 
   ngOnInit() {
@@ -30,11 +32,6 @@ export class IqFileUploadDemoComponent implements OnInit {
 
   deleteItem(i){
     console.log(i);
-  }
-
-  onDeleteItem(){
-    console.log("del");
-    this.imgSrc="";
   }
 
 }

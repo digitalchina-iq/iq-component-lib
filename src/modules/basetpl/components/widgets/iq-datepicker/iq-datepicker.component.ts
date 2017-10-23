@@ -9,7 +9,21 @@ import { flyIn } from 'animations/fly-in';
 })
 
 export class IqDatepickerDemoComponent {
+  startDate: Date;
+  endDate: Date;
+  isSubmit: boolean = false;
 
   date: any[]=[];
+
+  someDate: Date;
+
+  submitSomething() {
+    this.isSubmit = true;
+  }
+
+  reset() {
+    this.someDate = undefined;
+    this.isSubmit = false;
+  }
 
 }

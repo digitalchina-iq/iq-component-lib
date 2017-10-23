@@ -223,20 +223,24 @@
       <ng-template [ngIf]="true" class="stitempcon">
         <div class="showhow">
 
+          <p>简单示例：上传图片</p>
           <p>允许上传文件类型：图片，大小：200kb，数量：1</p>
 
           <div style="width: 400px;height: auto;">
             <img [src]="imgSrc">
           </div>
-
-          <iq-file-upload (onDeleteItem)="onDeleteItem()" [url]="uploadApi" [allowedFileType]="['image']" maxFileSize="204800" maxFileNum="1" (onSuccess)="fileUploadSuccess($event)" text="上传图片"></iq-file-upload>
+          <iq-file-upload [url]="uploadApi" [allowedFileType]="['image']" maxFileSize="204800" maxFileNum="1" (onSuccess)="fileUploadSuccess($event)" text="上传图片"></iq-file-upload>
         </div>
       </ng-template>
 
       <ng-template [ngIf]="true" class="stitemphtml">
 
         <pre iqhighlight>
-          <code class="html">&lt;img [src]="imgSrc"&gt;&lt;iq-file-upload [url]="uploadApi" [allowedFileType]="['image']" maxFileNum="1" maxFileSize="204800" (onSuccess)="fileUploadSuccess($event)" text="上传文件"&gt;&lt;/iq-file-upload&gt;</code>
+          <code class="html">
+&lt;div style="width: 400px;height: auto;"&gt;
+  &lt;img [src]="imgSrc"&gt;
+&lt;/div&gt;
+&lt;iq-file-upload [url]="uploadApi" [allowedFileType]="['image']" maxFileNum="1" maxFileSize="204800" (onSuccess)="fileUploadSuccess($event)" text="上传图片"&gt;&lt;/iq-file-upload&gt;</code>
         </pre>
 
       </ng-template>
@@ -244,16 +248,59 @@
       <ng-template [ngIf]="true" class="stitempts">
         <pre iqhighlight>
           <code  class="javascript">
+import {{'{'}} environment {{'}'}} from 'environments/environment';
 
 uploadApi: string = environment.server + 'files/upload';
 
 imgSrc: string;
 
 fileUploadSuccess(data){{'{'}}
-  console.log(data);
   this.imgSrc = data.url;
 {{'}'}}
 
+          </code>
+        </pre>
+      </ng-template>
+
+      <ng-template [ngIf]="true" class="stitempcss">
+        <pre iqhighlight>
+          <code class="css">
+          </code>
+        </pre>
+      </ng-template>
+
+    </showitemexample>
+
+    <showitemexample>
+
+      <ng-template [ngIf]="true" class="stitempcon">
+        <div class="showhow">
+
+          <p>简单示例：已上传过的文件</p>
+          <p>hasUploaded属性是一个数组，数组项为一个文件对象，必须要有name属性</p>
+
+          <iq-file-upload upType="1" [hasUploaded]="hasUploadedFile" (onDeleteItem)="deleteItem($event)" [url]="uploadApi"></iq-file-upload>
+        </div>
+      </ng-template>
+
+      <ng-template [ngIf]="true" class="stitemphtml">
+
+        <pre iqhighlight>
+          <code class="html">
+&lt;iq-file-upload upType="1" [hasUploaded]="hasUploadedFile" (onDeleteItem)="deleteItem($event)" [url]="uploadApi"&gt;&lt;/iq-file-upload&gt;
+          </code>
+        </pre>
+
+      </ng-template>
+
+      <ng-template [ngIf]="true" class="stitempts">
+        <pre iqhighlight>
+          <code  class="javascript">
+hasUploadedFile = [{{'{'}}name: 'abc', size: 12321{{'}'}}, {{'{'}}name: 'def', size: 352322{{'}'}}];
+
+deleteItem(i){{'{'}}
+  console.log(i);
+{{'}'}}
           </code>
         </pre>
       </ng-template>

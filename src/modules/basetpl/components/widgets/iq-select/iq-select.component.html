@@ -273,8 +273,8 @@
 
       <ng-template [ngIf]="true" class="stitempcon">
         <div class="showhow">
-
-          <p>{{bindData}}</p>
+          <p>下拉列表示例</p>
+          <p>ngModel绑定值：{{bindData}}</p>
 
           <iq-select [(ngModel)]="bindData" itemValue="0" [listApi]="optionApi" [handleData]="dealData" placeHolder="-请选择"></iq-select>
         </div>
@@ -283,7 +283,7 @@
       <ng-template [ngIf]="true" class="stitemphtml">
 
         <pre iqhighlight>
-          <code class="html">&lt;img [src]="imgSrc"&gt;&lt;iq-file-upload [url]="uploadApi" [allowedFileType]="['image']" maxFileNum="1" maxFileSize="204800" (onSuccess)="fileUploadSuccess($event)" text="上传文件"&gt;&lt;/iq-file-upload&gt;</code>
+          <code class="html">&lt;iq-select [(ngModel)]="bindData" itemValue="0" [listApi]="optionApi" [handleData]="dealData" placeHolder="-请选择"&gt;&lt;/iq-select&gt;</code>
         </pre>
 
       </ng-template>
@@ -291,14 +291,14 @@
       <ng-template [ngIf]="true" class="stitempts">
         <pre iqhighlight>
           <code  class="javascript">
+import {{'{'}} environment {{'}'}} from 'environments/environment';
 
-uploadApi: string = environment.server + 'files/upload';
+bindData: string;
+  
+optionApi: string = environment.server + 'classes/Product';
 
-imgSrc: string;
-
-fileUploadSuccess(data){{'{'}}
-  console.log(data);
-  this.imgSrc = data.url;
+dealData(data){{'{'}}
+  return data.results.map(item => [item.title, item.objectId, item.description, item.price]);
 {{'}'}}
 
           </code>
