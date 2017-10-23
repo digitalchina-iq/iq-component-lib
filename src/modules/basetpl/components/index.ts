@@ -12,11 +12,14 @@ import { IqFileUploadDemoComponent } from './widgets/iq-file-upload/iq-file-uplo
 import { IqSelectDemoComponent } from './widgets/iq-select/iq-select.component';
 import { IqBreadcrumbDemoComponent } from './widgets/iq-breadcrumb/iq-breadcrumb.component';
 import { LoadingDemoComponent } from './widgets/loading/loading.component';
+import { IqPagerDemoComponent } from './widgets/iq-pager/iq-pager.component';
+import { TabSwitchDemoComponent } from './widgets/tab-switch/tab-switch.component';
 
 //directives
 import { AutoheightDemoComponent } from './directives/autoheight/autoheight.component';
 import { StopParentClickDemoComponent } from './directives/stopParentClick/stop-parent-click.component';
 import { IcheckDemoComponent } from './directives/icheck/icheck.component';
+import { TrimDemoComponent } from './directives/trim/trim.component';
 
 //pipes
 import { IqRefactorPipeComponent } from './pipes/iq-refactor/iq-refactor.component';
@@ -29,10 +32,28 @@ import { WindowDemoComponent } from './services/window/window.component';
 
 
 //暴露出所有Component
-export { BasetplContainerComponent,BasetplRootComponent,PrepareT1Component,PrepareT2Component,
-  IqSwitcherPageDemoComponent,IqDatepickerDemoComponent,IndexComponent,WindowDemoComponent,IqFileUploadDemoComponent,
-  IqSelectDemoComponent,AutoheightDemoComponent,StopParentClickDemoComponent,IqRefactorPipeComponent,IqDatePipeComponent,
-  IqFileSizePipeComponent,IqBreadcrumbDemoComponent,IcheckDemoComponent,LoadingDemoComponent
+export { 
+  BasetplContainerComponent,
+  BasetplRootComponent,
+  PrepareT1Component,
+  PrepareT2Component,
+  IqSwitcherPageDemoComponent,
+  IqDatepickerDemoComponent,
+  IndexComponent,
+  WindowDemoComponent,
+  IqFileUploadDemoComponent,
+  IqSelectDemoComponent,
+  AutoheightDemoComponent,
+  StopParentClickDemoComponent,
+  IqRefactorPipeComponent,
+  IqDatePipeComponent,
+  IqFileSizePipeComponent,
+  IqBreadcrumbDemoComponent,
+  IcheckDemoComponent,
+  LoadingDemoComponent,
+  IqPagerDemoComponent,
+  TrimDemoComponent,
+  TabSwitchDemoComponent
 };
 
 //模块内部Components列表
@@ -54,5 +75,8 @@ export let Basetpl_COMPONENTS =
   IqFileSizePipeComponent,
   IqBreadcrumbDemoComponent,
   IcheckDemoComponent,
-  LoadingDemoComponent
+  LoadingDemoComponent,
+  IqPagerDemoComponent,
+  TrimDemoComponent,
+  TabSwitchDemoComponent
 ];
