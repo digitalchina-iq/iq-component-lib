@@ -13,13 +13,13 @@ export class IqSelectDemoComponent {
 
   bindData: string;
   
-  optionApi: string = environment.server + 'classes/Product';
+  optionApi: string = environment.server + 'classes/Work';
 
   constructor(){}
 
   dealData(data){
     console.log(data);
-    return data.results.map(item=>[item.title, item.objectId, item.description, item.price]);
+    return data.results.map(item=>[item.objectId, item.name]);
   }
 
 }

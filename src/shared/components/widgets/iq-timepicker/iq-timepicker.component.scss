@@ -1,0 +1,25 @@
+.m-timepicker{
+  position: relative;
+
+  >input{
+    margin: 0;
+    color: #000;
+    background: #fff;
+  }
+
+  .timepicker-main{
+    position: absolute;
+    padding: 10px;
+    width: 233px;
+    color: #000;
+    background: #f4f4f4;
+    border: 1px solid #ccc;
+    z-index: 999;
+
+    >select{
+      color: #4a4a4a;
+      background: #fff;
+      width: 52px;
+    }
+  }
+}

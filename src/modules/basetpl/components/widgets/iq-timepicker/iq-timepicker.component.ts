@@ -2,17 +2,18 @@ import { Component} from '@angular/core';
 import { flyIn } from 'animations/fly-in';
 
 @Component({
-  templateUrl: './icheck.component.html',
+  templateUrl: './iq-timepicker.component.html',
   animations: [
     flyIn
   ]
 })
 
-export class IcheckDemoComponent {
-  a;
-  b;
-  c;
+export class IqTimepickerDemoComponent {
 
+  time = []
+
+  bindTime: string;
+  
   constructor(){}
 
 }
