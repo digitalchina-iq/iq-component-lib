@@ -57,5 +57,98 @@
 
   </ng-template>
 
+  <!-- stitemexample -->
+  <ng-template [ngIf]="true" class="stitemexample">
+
+    <showitemexample>
+
+      <ng-template [ngIf]="true" class="stitempcon">
+        <div class="showhow">
+          <p>阻止父级触发点击事件</p>
+          <div class="clearfix">
+            <div class="parent-box" (click)="parentClick()">
+              <div class="child-box" stopParentClick  (click)="childClick()">有stopParentClick</div>
+            </div>
+            <div class="parent-box" (click)="parentClick()">
+              <div class="child-box" (click)="childClick()">无stopParentClick</div>
+            </div>
+            <ul class="event-list">
+              <li *ngFor="let item of eventList">{{item}}</li>
+            </ul>
+          </div>
+        </div>
+      </ng-template>
+
+      <ng-template [ngIf]="true" class="stitemphtml">
+
+        <pre iqhighlight>
+          <code class="html">
+&lt;div class="clearfix"&gt;
+  &lt;div class="parent-box" (click)="parentClick()"&gt;
+    &lt;div class="child-box" stopParentClick  (click)="childClick()"&gt;有stopParentClick&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="parent-box" (click)="parentClick()"&gt;
+    &lt;div class="child-box" (click)="childClick()"&gt;无stopParentClick&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;ul class="event-list"&gt;
+    &lt;li *ngFor="let item of eventList"&gt;{{'{'}}{{'{'}}item{{'}'}}{{'}'}}&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/div&gt;
+          </code>
+        </pre>
+
+      </ng-template>
+
+      <ng-template [ngIf]="true" class="stitempts">
+        <pre iqhighlight>
+          <code  class="javascript">
+eventList: string[] = [];
+
+parentClick() {{'{'}}
+  this.eventList.push('父级事件被触发了');
+  setTimeout(()=>{{'{'}}this.eventList.shift(){{'}'}}, 2000);
+{{'}'}}
+
+childClick() {{'{'}}
+  this.eventList.push('子级事件被触发了');
+  setTimeout(()=>{{'{'}}this.eventList.shift(){{'}'}}, 2000);
+{{'}'}}
+          </code>
+        </pre>
+      </ng-template>
+
+      <ng-template [ngIf]="true" class="stitempcss">
+        <pre iqhighlight>
+          <code class="css">
+.parent-box {{'{'}}
+  float:left;
+  margin: 10px 50px;
+  width: 300px;
+  height: 150px;
+  background: red;
+  overflow: hidden;
+{{'}'}}
+
+.child-box {{'{'}}
+  margin: 25px auto;
+  width: 180px;
+  height: 100px;
+  background: green;
+{{'}'}}
+
+.event-list {{'{'}}
+  float: left;
+  width: 120px;
+  height: 180px;
+  overflow: auto;
+{{'}'}}
+          </code>
+        </pre>
+      </ng-template>
+
+    </showitemexample>
+
+  </ng-template>
+
   </showtem>
 </div>
