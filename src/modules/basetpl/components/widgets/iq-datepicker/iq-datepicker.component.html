@@ -8,19 +8,6 @@
 			<p>
 				选择或输入日期，支持年、月、日期等类型，支持选择范围。
 			</p>
-			<!-- <ol>
-			<li>
-			Required = 'boolean'; 布尔值，true为必须，false非必选
-			[Required] = 'variable'; 布尔值变量
-			</li>
-			<li>Consectetur adipiscing elit</li>
-			<li>Integer molestie lorem at massa</li>
-			<li>Facilisis in pretium nisl aliquet</li>
-			<li>Nulla volutpat aliquam velit</li>
-			<li>Faucibus porta lacus fringilla vel</li>
-			<li>Aenean sit amet erat nunc</li>
-			<li>Eget porttitor lorem</li>
-			</ol> -->
 
 			<div style="margin-top:35px;">
 				<h3>required</h3>
@@ -185,66 +172,107 @@
 			</ng-template>
 		</showitemo>
 
-		<!-- <showitemo [sitemotitle]="'方法'">
-			<ng-template [ngIf]="true" class="sitemocon">
-
-				<h3>click()</h3>
-				<p><strong>Pellentesque habitant morbi tristique</strong> senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. <em>Aenean ultricies mi vitae est.</em> Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, <code>commodo vitae</code>, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. <a href="#">Donec non enim</a> in turpis pulvinar facilisis. Ut felis.</p>
-
-			</ng-template>
-		</showitemo>
-
-		<showitemo [sitemotitle]="'其他'">
-			<ng-template [ngIf]="true" class="sitemocon">
-
-				<p><strong>Pellentesque habitant morbi tristique</strong> senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. <em>Aenean ultricies mi vitae est.</em> Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, <code>commodo vitae</code>, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. <a href="#">Donec non enim</a> in turpis pulvinar facilisis. Ut felis.</p>
-
-			</ng-template>
-		</showitemo> -->
-
 	</ng-template>
 
-	<ng-template [ngIf]="true" class="stitemphtml">
+	<!-- stitemexample -->
+	<ng-template [ngIf]="true" class="stitemexample">
 
-		<pre iqhighlight>
-			<code class="html">
-				&lt;iq-datepicker [(ngModel)]="startDate" [StartDate]="endDate"&gt;&lt;/iq-datepicker&gt;
-			</code>
-		</pre>
+	  <showitemexample>
 
-	</ng-template>
+	    <ng-template [ngIf]="true" class="stitempcon">
+	      <div class="showhow">
 
-	<ng-template [ngIf]="true" class="stitempts">
-		<pre iqhighlight>
-			<code  class="javascript">
-				import {{'{'}}
+	        <p>简单示例：选择日期区间</p>
+	        <div style="display: inline-block;width: 250px;">
+	        	<iq-datepicker [(ngModel)]="startDate" [endDate]="endDate" placeHolder="-请选择开始日期"></iq-datepicker>
+	        </div>~
+	        <div style="display: inline-block;width: 250px;">
+	        	<iq-datepicker [(ngModel)]="endDate" [startDate]="startDate" placeHolder="-请选择结束日期"></iq-datepicker>
+	        </div>
+	      </div>
+	    </ng-template>
 
+	    <ng-template [ngIf]="true" class="stitemphtml">
 
-			</code>
-		</pre>
-	</ng-template>
+	    	<pre iqhighlight>
+	    		<code class="html">
+&lt;div style="display: inline-block;width: 250px;"&gt;
+ &lt;iq-datepicker [(ngModel)]="startDate" [endDate]="endDate" placeHolder="-请选择开始日期"&gt;&lt;/iq-datepicker&gt;
+&lt;/div&gt;
+~
+&lt;div style="display: inline-block;width: 250px;"&gt;
+ &lt;iq-datepicker [(ngModel)]="endDate" [startDate]="startDate" placeHolder="-请选择结束日期"&gt;&lt;/iq-datepicker&gt;
+&lt;/div&gt;
+	        </code>
+	    	</pre>
 
-	<ng-template [ngIf]="true" class="stitempcss">
-		<pre iqhighlight>
-			<code class="css">
-				%clearfix {{'{'}}
-				    &:before,
-				    &:after {{'{'}}
-				        content: "";
-				        display: table;
-				    {{'}'}}
-				    &:after {{'{'}}
-				        clear: both;
-				    {{'}'}}
-				{{'}'}}
-			</code>
-		</pre>
-	</ng-template>
+	    </ng-template>
 
-	<ng-template [ngIf]="true" class="stitempcon">
-		<div>
-			<iq-switcher [(ngModel)]="fromSwitcher2" [checked-value]="'a'" [unchecked-value]="'0'"></iq-switcher>
-		</div>
+	    <ng-template [ngIf]="true" class="stitempts">
+	    	<pre iqhighlight>
+	    		<code  class="javascript">
+startDate: Date;
+endDate: Date;
+	    		</code>
+	    	</pre>
+	    </ng-template>
+
+	    <ng-template [ngIf]="true" class="stitempcss">
+	    	<pre iqhighlight>
+	    		<code class="css">
+	    		</code>
+	    	</pre>
+	    </ng-template>
+
+	  </showitemexample>
+
+	  <showitemexample>
+
+	    <ng-template [ngIf]="true" class="stitempcon">
+	      <div class="showhow">
+	        <p>必选校验</p>
+	        <iq-datepicker [(ngModel)]="someDate" [required]="isSubmit" placeHolder="-请选择日期"></iq-datepicker>
+	        <button class="m-btn-success" (click)="submitSomething()">提交</button>
+	        <button class="m-btn-cancel" (click)="reset()">重置</button>
+	      </div>
+	    </ng-template>
+
+	    <ng-template [ngIf]="true" class="stitemphtml">
+
+	    	<pre iqhighlight>
+	    		<code class="html">
+&lt;iq-datepicker [(ngModel)]="someDate" [required]="isSubmit" placeHolder="-请选择日期"&gt;&lt;/iq-datepicker&gt;
+&lt;button class="m-btn-success" (click)="submitSomething()"&gt;提交&lt;/button&gt;
+&lt;button class="m-btn-cancel" (click)="reset()"&gt;重置&lt;/button&gt;
+	        </code>
+	    	</pre>
+
+	    </ng-template>
+
+	    <ng-template [ngIf]="true" class="stitempts">
+	    	<pre iqhighlight>
+	    		<code  class="javascript">
+someDate: Date;
+submitSomething() {{'{'}}
+ this.isSubmit = true;
+{{'}'}}
+reset() {{'{'}}
+ this.someDate = undefined;
+ this.isSubmit = false;
+{{'}'}}
+	    		</code>
+	    	</pre>
+	    </ng-template>
+
+	    <ng-template [ngIf]="true" class="stitempcss">
+	    	<pre iqhighlight>
+	    		<code class="css">
+	    		</code>
+	    	</pre>
+	    </ng-template>
+
+	  </showitemexample>
+
 	</ng-template>
 
 	</showtem>

@@ -2,7 +2,7 @@
 /**
 导出为core里面所有资源
 */
-import { HttpModule, ConnectionBackend, RequestOptions, XHRBackend} from '@angular/http';
+import { Http, HttpModule, ConnectionBackend, RequestOptions, XHRBackend} from '@angular/http';
 import { FactoryProvider } from "@angular/core";
 import { iqHttpService } from "./iq-http.service";
 import { WindowService } from "./window.service";
@@ -15,7 +15,7 @@ export function httpFactory(xhrBackend, requestOptions, windowservice) {
   return new iqHttpService(xhrBackend, requestOptions, windowservice);
 };
 export let iqHttpProvider: FactoryProvider =
-{ provide: iqHttpService, useFactory: httpFactory, deps: [XHRBackend, RequestOptions,WindowService ] };
+{ provide: Http, useFactory: httpFactory, deps: [XHRBackend, RequestOptions,WindowService ] };
 
 export { iqHttpService, WindowService, CustomSettingService };
 

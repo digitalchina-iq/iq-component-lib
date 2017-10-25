@@ -1,0 +1,14 @@
+<div #iqTimePicker class="m-timepicker">
+  <input type="text" (click)="showPicker()" [disabled]="isDisabled" [value]="bindTime" readonly name="time" [placeholder]="placeHolder" [ngClass]="{'m-input-warn': required && !bindTime}" style="cursor: pointer;">
+  <div class="timepicker-main" [hidden]="!show">
+    <select [(ngModel)]="timeArr[0]" (ngModelChange)="getTime()">
+      <option *ngFor="let i of hourList" [value]="i">{{i}}</option>
+    </select>时
+    <select [(ngModel)]="timeArr[1]" (ngModelChange)="getTime()">
+      <option *ngFor="let i of minuteList" [value]="i">{{i}}</option>
+    </select>分
+    <select [(ngModel)]="timeArr[2]" (ngModelChange)="getTime()">
+      <option *ngFor="let i of secondList" [value]="i">{{i}}</option>
+    </select>秒
+  </div>
+</div>

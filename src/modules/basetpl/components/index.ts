@@ -7,6 +7,7 @@ import { PrepareT1Component } from './widgets/prepare-t1/prepare-t1.component';
 import { PrepareT2Component } from './widgets/prepare-t2/prepare-t2.component';
 import { IqSwitcherPageDemoComponent } from './widgets/switcher/switcher-page.component';
 import { IqDatepickerDemoComponent } from './widgets/iq-datepicker/iq-datepicker.component';
+import { IqTimepickerDemoComponent } from './widgets/iq-timepicker/iq-timepicker.component';
 import { IndexComponent } from './widgets/index/index.component';
 import { IqFileUploadDemoComponent } from './widgets/iq-file-upload/iq-file-upload.component';
 import { IqSelectDemoComponent } from './widgets/iq-select/iq-select.component';
@@ -53,7 +54,8 @@ export {
   LoadingDemoComponent,
   IqPagerDemoComponent,
   TrimDemoComponent,
-  TabSwitchDemoComponent
+  TabSwitchDemoComponent,
+  IqTimepickerDemoComponent
 };
 
 //模块内部Components列表
@@ -78,5 +80,6 @@ export let Basetpl_COMPONENTS =
   LoadingDemoComponent,
   IqPagerDemoComponent,
   TrimDemoComponent,
-  TabSwitchDemoComponent
+  TabSwitchDemoComponent,
+  IqTimepickerDemoComponent
 ];

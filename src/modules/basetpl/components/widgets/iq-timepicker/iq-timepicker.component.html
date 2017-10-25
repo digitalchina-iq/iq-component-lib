@@ -1,0 +1,187 @@
+<div [@flyIn]="active">
+  <showtem [stname]="'时间选择组件'" [stnamedel]="'一个有趣的组件'" >
+
+    <!-- overview -->
+    <ng-template [ngIf]="true" class='stview'>
+
+      <h3>概述</h3>
+      <p>
+        选择时间，选择时间范围
+      </p>
+
+      <div style="margin-top:35px;">
+        <h3>required</h3>
+        <div style="padding:0px 10px;">
+          <p><code>required:boolean</code>； 如果为<code>true</code>，则时间必选，不选时间组件边框会变红</p>
+          <iq-timepicker [(ngModel)]='time[0]' required='true'></iq-timepicker>
+          <showcode>
+            <div class="shows">&lt;iq-timepicker [(ngModel)]="time" [required]="true" &gt;&lt;/iq-timepicker&gt;</div>
+          </showcode>
+        </div>
+      </div>
+
+      <div style="margin-top:35px;">
+        <h3>disabled</h3>
+        <div style="padding:0px 10px;">
+          <p><code>disabled:boolean</code>； 如果为<code>true</code>，则组件被禁用</p>
+          <iq-timepicker [(ngModel)]='time[1]' disabled></iq-timepicker>
+          <showcode>
+            <div class="shows">&lt;iq-timepicker [(ngModel)]='time' disabled&gt;&lt;/iq-timepicker&gt;</div>
+          </showcode>
+        </div>
+      </div>
+
+      <div style="margin-top:35px;">
+        <h3>startTime, endTime</h3>
+        <div style="padding:0px 10px;">
+          <p><code>startTime:Date|string|number, endTime:Date|string|number</code>； <code>startTime</code>为组件可选用的开始时间，<code>endTime</code>为组件可选用的结束时间</p>
+          <div style="margin: 10px 0;">
+            <iq-timepicker [(ngModel)]='time[2]' startTime='10:00:00' endTime="20:00:00"></iq-timepicker>
+          </div>
+          <div style="display: inline-block;width: 45%;">
+            <iq-timepicker [(ngModel)]='time[3]' [endTime]="time[4]"></iq-timepicker>
+          </div> ~
+          <div style="display: inline-block;width: 45%;">
+            <iq-timepicker [(ngModel)]='time[4]' [startTime]="time[3]"></iq-timepicker>
+          </div>
+          <showcode>
+            <div class="shows">&lt;iq-timepicker [(ngModel)]="time" startTime="10:00:00" endTime="20:00:00"&gt;&lt;/iq-timepicker&gt;
+&lt;div style="display: inline-block;width: 45%;"&gt;
+  &lt;iq-timepicker [(ngModel)]='startTime' [endTime]="endTime"&gt;&lt;/iq-timepicker&gt;
+&lt;/div&gt; ~
+&lt;div style="display: inline-block;width: 45%;"&gt;
+  &lt;iq-timepicker [(ngModel)]='endTime' [startTime]="startTime"&gt;&lt;/iq-timepicker&gt;
+&lt;/div&gt;
+          </div>
+          </showcode>
+        </div>
+      </div>
+
+      <div style="margin-top:35px;">
+        <h3>placeHolder</h3>
+        <div style="padding:0px 10px;">
+          <p><code>placeHolder:string</code>； 设置组件的默认提示文字</p>
+          <iq-timepicker [(ngModel)]='time[5]' placeHolder="-请选择时间"></iq-timepicker>
+          <showcode>
+            <div class="shows">&lt;iq-timepicker [(ngModel)]="time" placeHolder="-请选择时间"&gt;&lt;/iq-timepicker&gt;</div>
+          </showcode>
+        </div>
+      </div>
+
+      <div style="margin-top:35px;">
+        <h3>defaultTime</h3>
+        <div style="padding:0px 10px;">
+          <p><code>defaultTime:string</code>； 设置组件下拉项的默认时间</p>
+          <iq-timepicker [(ngModel)]="time[6]" defaultTime="10:10:10"></iq-timepicker>
+          <showcode>
+            <div class="shows">&lt;iq-timepicker [(ngModel)]="time" defaultTime="10:10:10"&gt;&lt;/iq-timepicker&gt;</div>
+          </showcode>
+        </div>
+      </div>
+
+      <div style="margin-top:35px;">
+        <h3>format</h3>
+        <div style="padding:0px 10px;">
+          <p><code>format:string</code>；&nbsp;<code>format</code>参考moment.js的format格式，设置组件的返回值的格式</p>
+          <p>返回值：{{time[6]}}</p>
+          <iq-timepicker [(ngModel)]='time[6]' format="HH:mm:ss"></iq-timepicker>
+          <showcode>
+            <div class="shows">&lt;iq-timepicker [(ngModel)]="time" format="HH:mm:ss"&gt;&lt;/iq-timepicker&gt;</div>
+          </showcode>
+        </div>
+      </div>
+
+    </ng-template>
+
+  <!-- API -->
+  <ng-template [ngIf]="true" class='stitemo'>
+
+    <showitemo [sitemotitle]="'属性'">
+      <ng-template [ngIf]="true" class="sitemocon">
+
+        <table class="table">
+          <thead>
+            <tr>
+              <th>参数</th>
+              <th>说明</th>
+              <th>类型</th>
+              <th>可选值</th>
+              <th>默认值</th>
+              <th>是否必选</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>required</td>
+              <td>是否必选</td>
+              <td>boolean</td>
+              <td>true,false</td>
+              <td>false</td>
+              <td>否</td>
+            </tr>
+            <tr>
+              <td>disabled</td>
+              <td>是否禁用</td>
+              <td>boolean</td>
+              <td>true,false</td>
+              <td></td>
+              <td>否</td>
+            </tr>
+            <tr>
+              <td>minYear</td>
+              <td>最小年份</td>
+              <td>string,number</td>
+              <td></td>
+              <td>当年年份-70</td>
+              <td>否</td>
+            </tr>
+            <tr>
+              <td>maxYear</td>
+              <td>最大年份</td>
+              <td>string,number</td>
+              <td></td>
+              <td>当年年份+30</td>
+              <td>否</td>
+            </tr>
+            <tr>
+              <td>placeHolder</td>
+              <td>设置默认文字</td>
+              <td>string</td>
+              <td></td>
+              <td></td>
+              <td>否</td>
+            </tr>
+            <tr>
+              <td>startDate</td>
+              <td>开始日期</td>
+              <td>string,date,number</td>
+              <td></td>
+              <td></td>
+              <td>否</td>
+            </tr>
+            <tr>
+              <td>endDate</td>
+              <td>结束日期</td>
+              <td>string,date,number</td>
+              <td></td>
+              <td></td>
+              <td>否</td>
+            </tr>
+            <tr>
+              <td>format</td>
+              <td>格式化（YYYY-MM-DD）</td>
+              <td>string</td>
+              <td></td>
+              <td></td>
+              <td>否</td>
+            </tr>
+          </tbody>
+        </table>
+
+      </ng-template>
+    </showitemo>
+
+  </ng-template>
+
+  </showtem>
+</div>

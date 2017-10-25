@@ -14,11 +14,21 @@
         <h3>icheck</h3>
         <div style="padding:0px 10px;">
           <p>icheck</p>
-          <input type="checkbox" name="" [(ngModel)]="a" icheck>
-          <input type="radio" name="" [(ngModel)]="b" icheck>
+          <input type="checkbox" name="a" [(ngModel)]="a" icheck>
+          <input type="radio" name="b" [(ngModel)]="b" icheck>
           <showcode>
             <div class="shows">&lt;input type="checkbox" name="" icheck&gt;
 &lt;input type="radio" name="" icheck&gt;</div>
+          </showcode>
+        </div>
+      </div>
+
+      <div style="margin-top:35px;">
+        <h3>indeterminate</h3>
+        <div style="padding:0px 10px;">
+          <p>[indeterminate] = "boolean"; 半选状态，boolean为true时半选</p>
+          <showcode>
+            <div class="shows">&lt;input type="checkbox" name="" icheck [indeterminate]="true"&gt;</div>
           </showcode>
         </div>
       </div>
@@ -42,10 +52,10 @@
           <p>全选，由一个icheck，通过allcheck和allcheckChild属性，关联其他多个icheck。控制全选、全不选、半选状态</p>
           <div>
             <input type="checkbox" [(ngModel)]="d" icheck allcheck="demo" name="">
-            <ul>
+            <ul style="margin: 5px 20px;">
               <li>
               <input type="checkbox" [(ngModel)]="e" icheck allcheckChild="demo" allcheck="demo1" name="">
-                <ul>
+                <ul style="margin: 5px 20px;">
                   <li><input type="checkbox" [(ngModel)]="f" icheck allcheckChild="demo1" name=""></li>
                   <li><input type="checkbox" [(ngModel)]="g" icheck allcheckChild="demo1" name=""></li>
                   <li><input type="checkbox" [(ngModel)]="h" icheck allcheckChild="demo1" name=""></li>
@@ -53,7 +63,7 @@
               </li>
               <input type="checkbox" [(ngModel)]="o" allcheckChild="demo" allcheck="demo2" icheck name="">
               <li>
-                <ul>
+                <ul style="margin: 5px 20px;">
                   <li><input type="checkbox" [(ngModel)]="i" icheck allcheckChild="demo2" name=""></li>
                   <li><input type="checkbox" [(ngModel)]="j" icheck allcheckChild="demo2" name=""></li>
                   <li><input type="checkbox" [(ngModel)]="k" icheck allcheckChild="demo2" name=""></li>
@@ -61,7 +71,7 @@
               </li>
               <input type="checkbox" [(ngModel)]="p" allcheckChild="demo" allcheck="demo3" icheck name="">
               <li>
-                <ul>
+                <ul style="margin: 5px 20px;">
                   <li><input type="checkbox" [(ngModel)]="l" icheck allcheckChild="demo3" name=""></li>
                   <li><input type="checkbox" [(ngModel)]="m" icheck allcheckChild="demo3" name=""></li>
                   <li><input type="checkbox" [(ngModel)]="n" icheck allcheckChild="demo3" name=""></li>
@@ -101,6 +111,46 @@
   &lt;/ul&gt;
 &lt;/div&gt;
             </div>
+          </showcode>
+        </div>
+      </div>
+
+      <div style="margin-top:35px;">
+        <h3>onClick</h3>
+        <div style="padding:0px 10px;">
+          <p>(onClick) = "doSomething($event)"; 单选框复选框，点击事件，$event为单选框复选框的value值</p>
+          <showcode>
+            <div class="shows">&lt;input type="checkbox" name="" icheck (onClick) = "doSomething($event)";&gt;</div>
+          </showcode>
+        </div>
+      </div>
+
+      <div style="margin-top:35px;">
+        <h3>onChange</h3>
+        <div style="padding:0px 10px;">
+          <p>(onChange) = "doSomething($event)"; 单选框复选框，值改变事件，$event为单选框复选框的value值</p>
+          <showcode>
+            <div class="shows">&lt;input type="checkbox" name="" icheck (onChange) = "doSomething($event)";&gt;</div>
+          </showcode>
+        </div>
+      </div>
+
+      <div style="margin-top:35px;">
+        <h3>onIndeterminate</h3>
+        <div style="padding:0px 10px;">
+          <p>(onIndeterminate) = "doSomething($event)"; 单选框复选框，半选状态改变事件，$event为半选状态布尔值</p>
+          <showcode>
+            <div class="shows">&lt;input type="checkbox" name="" icheck (onIndeterminate) = "doSomething($event)";&gt;</div>
+          </showcode>
+        </div>
+      </div>
+
+      <div style="margin-top:35px;">
+        <h3>onCount</h3>
+        <div style="padding:0px 10px;">
+          <p>(onCount) = "doSomething($event)"; 单选框复选框，子项选中计数，$event为子项选中的个数</p>
+          <showcode>
+            <div class="shows">&lt;input type="checkbox" name="" icheck (onCount) = "doSomething($event)";&gt;</div>
           </showcode>
         </div>
       </div>

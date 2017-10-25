@@ -9,7 +9,7 @@ import { BasetplContainerComponent,
   AutoheightDemoComponent, StopParentClickDemoComponent,IqRefactorPipeComponent,
   IqDatePipeComponent, IqFileSizePipeComponent, IqBreadcrumbDemoComponent,
   IcheckDemoComponent, LoadingDemoComponent, IqPagerDemoComponent,
-  TrimDemoComponent, TabSwitchDemoComponent
+  TrimDemoComponent, TabSwitchDemoComponent, IqTimepickerDemoComponent
 } from './index';
 
 const routes: Routes = [//定义路由
@@ -25,6 +25,7 @@ const routes: Routes = [//定义路由
         { path: 't2', component: PrepareT2Component },
         { path: 'iq-switcher', component: IqSwitcherPageDemoComponent },
         { path: 'iq-datepicker', component: IqDatepickerDemoComponent },
+        { path: 'iq-timepicker', component: IqTimepickerDemoComponent },
         { path: 'iq-file-upload', component: IqFileUploadDemoComponent },
         { path: 'iq-select', component: IqSelectDemoComponent },
         { path: 'iq-breadcrumb', data: {"breadcrumb": '面包屑导航组件'}, component: IqBreadcrumbDemoComponent },
