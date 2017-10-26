@@ -85,10 +85,4 @@ export class IqTabComponent implements OnInit {
     }
   }
 
-  ngOnDestory() {
-    this.indexList.forEach(item => {
-      item.onChoose.unsubscribe();
-    });
-  }
-
 }
