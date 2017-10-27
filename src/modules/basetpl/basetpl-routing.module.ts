@@ -9,7 +9,8 @@ import { BasetplContainerComponent,
   AutoheightDemoComponent, StopParentClickDemoComponent,IqRefactorPipeComponent,
   IqDatePipeComponent, IqFileSizePipeComponent, IqBreadcrumbDemoComponent,
   IcheckDemoComponent, LoadingDemoComponent, IqPagerDemoComponent,
-  TrimDemoComponent, TabSwitchDemoComponent, IqTimepickerDemoComponent
+  TrimDemoComponent, TabSwitchDemoComponent, IqTimepickerDemoComponent,
+  AngularSelectorComponent, IqNum2ChinesePipeComponent
 } from './index';
 
 const routes: Routes = [//定义路由
@@ -48,13 +49,20 @@ const routes: Routes = [//定义路由
       children: [
         { path: 'iq-refactor', component: IqRefactorPipeComponent },
         { path: 'iq-date', component: IqDatePipeComponent },
-        { path: 'iq-filesize', component: IqFileSizePipeComponent }
+        { path: 'iq-filesize', component: IqFileSizePipeComponent },
+        { path: 'iq-num-chinese', component: IqNum2ChinesePipeComponent }
       ]
     },
     {
       path: "services",
       children: [
         { path: 'window', component: WindowDemoComponent }
+      ]
+    },
+    {
+      path: "piece",
+      children: [
+        { path: 'angular-selector', component: AngularSelectorComponent }
       ]
     }
   ]

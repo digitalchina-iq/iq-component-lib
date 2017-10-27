@@ -1,20 +1,36 @@
 <div [@flyIn]="active">
-  <showtem [stname]="'文件大小管道'" [stnamedel]="'一个有趣的管道'" >
+  <showtem [stname]="'数字转大写中文管道'" [stnamedel]="'一个有趣的管道'" >
 
     <!-- overview -->
     <ng-template [ngIf]="true" class='stview'>
 
       <h3>概述</h3>
       <p>
-        将字节数转自动换成文件大小，单位为'b','Kb','Mb','Gb','Tb'，保留两位小数
+        简单的管道转化
       </p>
 
       <div style="margin-top:35px;">
-        <h3>iqFileSize</h3>
+        <h3>iqNum2Chinese</h3>
         <div style="padding:0px 10px;">
-          <div>{{150759|iqFileSize}}</div>
+          <p>两种格式：“一”或“壹”，默认格式为“一”，有效数字位数不能超过16位</p>
+          <input [(ngModel)]="num" type="text" name="num">
+          <div>格式“一”：{{num|iqNum2Chinese}}</div>
+          <div>格式“壹”：{{num|iqNum2Chinese:'壹'}}</div>
           <showcode>
-            <div class="shows">{{'{'}}{{'{'}} 150759 | iqFileSize {{'}'}}{{'}'}}</div>
+            <div class="shows">{{'{'}}{{'{'}} num | iqNum2Chinese{{'}'}}{{'}'}}
+{{'{'}}{{'{'}} num | iqNum2Chinese:'壹'{{'}'}}{{'}'}}</div>
+          </showcode>
+        </div>
+      </div>
+
+      <div style="margin-top:35px;">
+        <h3>iqChinaCurrency</h3>
+        <div style="padding:0px 10px;">
+          <p>将数字转化为大写中文货币，最小单位支持到厘</p>
+          <input [(ngModel)]="num2" type="text" name="num">
+          <div>金额：{{num2|iqChinaCurrency}}</div>
+          <showcode>
+            <div class="shows">{{'{'}}{{'{'}} num | iqChinaCurrency{{'}'}}{{'}'}}</div>
           </showcode>
         </div>
       </div>

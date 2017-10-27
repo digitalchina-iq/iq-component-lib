@@ -1,0 +1,76 @@
+<div [@flyIn]="active">
+  <showtem [stname]="'angular选择器'" [stnamedel]="'大河向东流啊'" >
+
+    <!-- overview -->
+    <ng-template [ngIf]="true" class='stview'>
+
+      <h3>概述</h3>
+      <p>
+        angular选择器
+      </p>
+
+
+      <div style="margin-top:35px;">
+        <h3>:host</h3>
+        <div style="padding:0px 10px;">
+          <p>选择器应用样式到宿主元素</p>
+        </div>
+      </div>
+
+      <div style="margin-top:35px;">
+        <h3>/deep/</h3>
+        <div style="padding:0px 10px;">
+          <p>选择器应用样式到本身及子组件</p>
+        </div>
+      </div>
+
+    </ng-template>
+
+    <!-- stitemexample -->
+    <ng-template [ngIf]="true" class="stitemexample">
+
+      <showitemexample>
+
+        <ng-template [ngIf]="true" class="stitempcon">
+          <div class="showhow">
+
+            <p>/deep/ 简单示例，改变开关滑块颜色</p>
+
+            <iq-switcher [(ngModel)]="fromSwitcher"></iq-switcher>
+          </div>
+        </ng-template>
+
+        <ng-template [ngIf]="true" class="stitemphtml">
+
+          <pre iqhighlight>
+            <code class="html">
+              &lt;iq-switcher [(ngModel)]="fromSwitcher"&gt;&lt;/iq-switcher&gt;
+            </code>
+          </pre>
+
+        </ng-template>
+
+        <ng-template [ngIf]="true" class="stitempts">
+          <pre iqhighlight>
+            <code  class="javascript">
+              fromSwitcher: boolean;
+            </code>
+          </pre>
+        </ng-template>
+
+        <ng-template [ngIf]="true" class="stitempcss">
+          <pre iqhighlight>
+            <code class="css">
+              /deep/ .m-switch .switch-ball{{'{'}}
+                background: red;
+              {{'}'}}
+            </code>
+          </pre>
+        </ng-template>
+
+      </showitemexample>
+
+    </ng-template>
+
+  </showtem>
+</div>
