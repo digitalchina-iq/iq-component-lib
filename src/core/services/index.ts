@@ -15,7 +15,7 @@ export function httpFactory(xhrBackend, requestOptions, windowservice) {
   return new iqHttpService(xhrBackend, requestOptions, windowservice);
 };
 export let iqHttpProvider: FactoryProvider =
-{ provide: Http, useFactory: httpFactory, deps: [XHRBackend, RequestOptions,WindowService ] };
+{ provide: iqHttpService, useFactory: httpFactory, deps: [XHRBackend, RequestOptions,WindowService ] };
 
 export { iqHttpService, WindowService, CustomSettingService };
 
