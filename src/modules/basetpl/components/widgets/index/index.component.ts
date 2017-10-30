@@ -57,7 +57,7 @@ export class IndexComponent implements OnInit {
   // options
 
   colorScheme = {
-    domain: ['#618fb0', 'red', '#C7B42C']
+    domain: ['#618fb0', 'pink', '#C7B42C']
   };
   colorScheme1 = {
     domain: ['green', 'red', '#C7B42C', 'pink' , '#618fb0']
