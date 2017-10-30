@@ -6,10 +6,6 @@ import { environment } from 'environments/environment';
 import 'rxjs/Rx';
 
 
-
-import { iqHttpService } from 'core/services/iq-http.service'
-import { WindowService } from 'core/services/window.service'
-
 // import { Observable } from 'rxjs/Observable';
 
 // import { BsModalService } from 'ngx-bootstrap/modal';
@@ -49,10 +45,10 @@ export class DefindexComponent implements OnInit  {
   //   super(_backend,_defaultOptions);
   // }
 
-  constructor(private iqhttpservice: iqHttpService,
+
+  constructor(
     private iqhttp: Http,
     // private modalService: BsModalService
-    private windowservice:WindowService,
     private router: Router
   ){
 
@@ -102,7 +98,7 @@ export class DefindexComponent implements OnInit  {
 
 
 
-    this.iqhttpservice.post(environment.server+"/login",
+    this.iqhttp.post(environment.server+"/login",
       {
         "username":this.userInfo.username,
         "password":this.userInfo.password
