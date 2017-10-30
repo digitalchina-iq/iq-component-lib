@@ -26,10 +26,13 @@ import { TrimDemoComponent } from './directives/trim/trim.component';
 import { IqRefactorPipeComponent } from './pipes/iq-refactor/iq-refactor.component';
 import { IqDatePipeComponent } from './pipes/iq-date/iq-date.component';
 import { IqFileSizePipeComponent } from './pipes/iq-filesize/iq-filesize.component';
+import { IqNum2ChinesePipeComponent } from './pipes/iq-num-chinese/iq-num-chinese.component';
 
 //services
 import { WindowDemoComponent } from './services/window/window.component';
 
+//piece
+import { AngularSelectorComponent } from './piece/angular-selector/angular-selector.component';
 
 
 //暴露出所有Component
@@ -55,7 +58,9 @@ export {
   IqPagerDemoComponent,
   TrimDemoComponent,
   TabSwitchDemoComponent,
-  IqTimepickerDemoComponent
+  IqTimepickerDemoComponent,
+  AngularSelectorComponent,
+  IqNum2ChinesePipeComponent
 };
 
 //模块内部Components列表
@@ -81,5 +86,7 @@ export let Basetpl_COMPONENTS =
   IqPagerDemoComponent,
   TrimDemoComponent,
   TabSwitchDemoComponent,
-  IqTimepickerDemoComponent
+  IqTimepickerDemoComponent,
+  AngularSelectorComponent,
+  IqNum2ChinesePipeComponent
 ];
