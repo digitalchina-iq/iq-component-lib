@@ -120,6 +120,43 @@
         </div>
       </div>
 
+      <div style="margin-top:35px;">
+        <h3>onTab</h3>
+        <div style="padding:0px 10px;">
+          <p><code>(onTab)="doSomething($event)"</code>；tab切换事件，$event为tab的Id</p>
+          <div class="tab-demo">
+            <iq-tab tabActiveClass="active" (onTab)="print($event)">
+              <ul class="tab-index clearfix">
+                <li tabIndex="abc">abc</li>
+                <li tabIndex="def">def</li>
+                <li tabIndex="ghi">ghi</li>
+              </ul>
+              <div class="tab-cont">
+                <div tabContent="abc">abc</div>
+                <div tabContent="def">def</div>
+                <div tabContent="ghi">ghi</div>
+              </div>
+            </iq-tab>
+          </div>
+          <showcode>
+            <div class="shows">
+&lt;iq-tab tabActiveClass="active" (onTab)="print($event)"&gt;
+  &lt;ul class="tab-index clearfix"&gt;
+    &lt;li tabIndex="abc"&gt;abc&lt;/li&gt;
+    &lt;li tabIndex="def"&gt;def&lt;/li&gt;
+    &lt;li tabIndex="ghi"&gt;ghi&lt;/li&gt;
+  &lt;/ul&gt;
+  &lt;div class="tab-cont"&gt;
+    &lt;div tabContent="abc"&gt;abc&lt;/div&gt;
+    &lt;div tabContent="def"&gt;def&lt;/div&gt;
+    &lt;div tabContent="ghi"&gt;ghi&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/iq-tab&gt;
+            </div>
+          </showcode>
+        </div>
+      </div>
+
     </ng-template>
 
   <!-- API -->

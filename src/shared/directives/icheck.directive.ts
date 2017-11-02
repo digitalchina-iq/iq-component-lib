@@ -105,6 +105,8 @@ export class IcheckDirective implements ControlValueAccessor, OnInit, OnDestroy 
         //使用字符串匹配
         if (this.$dom.val() == value || this.$dom.val() == value + "") {
           this.$dom.iCheck('check');
+        }else{
+          this.$dom.iCheck('uncheck');
         }
         break;
       case "checkbox":
