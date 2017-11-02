@@ -1,21 +1,24 @@
 <div [@flyIn]="active">
-  <showtem [stname]="'数组方法'" [stnamedel]="'时光一去不复回'" >
+  <showtem [stname]="'对象方法'" [stnamedel]="'往事只能回味'" >
 
     <!-- overview -->
     <ng-template [ngIf]="true" class='stview'>
 
       <h3>概述</h3>
       <p>
-        数组的一些方法
+        对象的一些方法
       </p>
 
       <div style="margin-top:35px;">
-        <h3>数组去重</h3>
+        <h3>复制JSON格式的对象</h3>
         <div style="padding:0px 10px;">
           <showcode>
             <div class="shows">
-uniqueArr(arr: any[]) {{'{'}}
-  return Array.from(new Set(arr));
+方法1：copyObj(obj: object) {{'{'}}
+  return JSON.parse(JSON.stringify(obj));
+{{'}'}}
+方法2：copyObj(obj: object) {{'{'}}
+  return Object.assign(obj instanceof Array ? [] : {{'{'}}{{'}'}}, obj);
 {{'}'}}
             </div>
           </showcode>
@@ -23,12 +26,12 @@ uniqueArr(arr: any[]) {{'{'}}
       </div>
 
       <div style="margin-top:35px;">
-        <h3>数组排序</h3>
+        <h3>判断是否为非数组对象</h3>
         <div style="padding:0px 10px;">
           <showcode>
             <div class="shows">
-sortArr(arr: number[]) {{'{'}}
-  return arr.sort((a,b)=> a - b);
+isObj(param: any) {{'{'}}
+  return typeof param === 'object' && param !== null;
 {{'}'}}
             </div>
           </showcode>
@@ -36,38 +39,12 @@ sortArr(arr: number[]) {{'{'}}
       </div>
 
       <div style="margin-top:35px;">
-        <h3>获取连续数组</h3>
+        <h3>判断一个对象是否为空对象</h3>
         <div style="padding:0px 10px;">
           <showcode>
             <div class="shows">
-sequenceArr(start: number, end: number) {{'{'}}
-  return Array.from({{'{'}}length: end - start + 1{{'}'}}).map((v,i) => i + start)
-{{'}'}}
-            </div>
-          </showcode>
-        </div>
-      </div>
-
-      <div style="margin-top:35px;">
-        <h3>去除B数组中在A数组里存在的项</h3>
-        <div style="padding:0px 10px;">
-          <showcode>
-            <div class="shows">
-uniqueBbyA(b: any[], a: any[]) {{'{'}}
-  return b.filter(item => !a.some(v => v === item));
-{{'}'}}
-            </div>
-          </showcode>
-        </div>
-      </div>
-
-      <div style="margin-top:35px;">
-        <h3>数组项某属性求和</h3>
-        <div style="padding:0px 10px;">
-          <showcode>
-            <div class="shows">
-addItem(arr: any[], item: string) {{'{'}}
-  return arr.reduce((p,c)=>{{'{'}}return {{'{'}}[item]: p[item]+c[item]{{'}'}}{{'}'}})[item];
+isEmptyObj(obj: object) {{'{'}}
+  return !Object.keys(obj).length
 {{'}'}}
             </div>
           </showcode>

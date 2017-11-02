@@ -13,7 +13,7 @@ export class ArrJsComponent {
     return Array.from(new Set(arr));
   }
 
-  sortArr(arr: any[]): any[] {
+  sortArr(arr: number[]): number[] {
     return arr.sort((a,b)=> a - b);
   }
 

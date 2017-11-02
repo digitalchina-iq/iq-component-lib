@@ -37,6 +37,7 @@ import { InterfaceVsClassComponent } from './piece/interface-vs-class/interface-
 
 //js
 import { ArrJsComponent } from './js/arr/arr.component';
+import { ObjJsComponent } from './js/obj/obj.component';
 
 //暴露出所有Component
 export { 
@@ -65,7 +66,8 @@ export {
   AngularSelectorComponent,
   IqNum2ChinesePipeComponent,
   InterfaceVsClassComponent,
-  ArrJsComponent
+  ArrJsComponent,
+  ObjJsComponent
 };
 
 //模块内部Components列表
@@ -95,5 +97,6 @@ export let Basetpl_COMPONENTS =
   AngularSelectorComponent,
   IqNum2ChinesePipeComponent,
   InterfaceVsClassComponent,
-  ArrJsComponent
+  ArrJsComponent,
+  ObjJsComponent
 ];

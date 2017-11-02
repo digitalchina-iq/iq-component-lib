@@ -11,7 +11,7 @@ import { BasetplContainerComponent,
   IcheckDemoComponent, LoadingDemoComponent, IqPagerDemoComponent,
   TrimDemoComponent, TabSwitchDemoComponent, IqTimepickerDemoComponent,
   AngularSelectorComponent, IqNum2ChinesePipeComponent, InterfaceVsClassComponent,
-  ArrJsComponent
+  ArrJsComponent, ObjJsComponent
 } from './index';
 
 const routes: Routes = [//定义路由
@@ -70,7 +70,8 @@ const routes: Routes = [//定义路由
     {
       path: "js",
       children: [
-        { path: 'arr', component: ArrJsComponent }
+        { path: 'arr', component: ArrJsComponent },
+        { path: 'obj', component: ObjJsComponent }
       ]
     }
   ]
