@@ -1,0 +1,109 @@
+<div [@flyIn]="active">
+  <showtem [stname]="'interface-vs-class'" [stnamedel]="'天上的星星参北斗啊'" >
+
+    <!-- overview -->
+    <ng-template [ngIf]="true" class='stview'>
+
+      <h3>概述</h3>
+      <p>
+        interface 接口 和 class 类的区别
+      </p>
+
+
+      <div style="margin-top:35px;">
+        <h3>interface</h3>
+        <div style="padding:0px 10px;">
+          <p>接口，可以理解为一种特殊的类</p>
+        </div>
+      </div>
+
+      <div style="margin-top:35px;">
+        <h3>class</h3>
+        <div style="padding:0px 10px;">
+          <p>类</p>
+        </div>
+      </div>
+
+    </ng-template>
+
+    <!-- stitemexample -->
+    <ng-template [ngIf]="true" class="stitemexample">
+
+      <showitemexample>
+
+        <ng-template [ngIf]="true" class="stitempcon">
+          <div class="showhow">
+
+            <p>interface 接口 和 class 类的区别，简单示例</p>
+
+            <ul>
+              <li>接口可以理解成一种特殊的类，由常量和抽象方法组成的特殊类。</li>
+              <li>接口不能实例化</li>
+              <li>接口只声明成员方法，不做实现，方法没有方法体{{'{'}}{{'}'}};</li>
+              <li>继承接口的类一定要实现接口中定义的方法；</li>
+              <li>类可以实例化，可以定义自己的字段，属性，方法等等；</li>
+              <li>类可以继承多个接口，但只能继承一个类！</li>
+              <li>类声明并实现方法。</li>
+            </ul>
+          </div>
+        </ng-template>
+
+        <ng-template [ngIf]="true" class="stitemphtml">
+
+          <pre iqhighlight>
+            <code class="html">
+            </code>
+          </pre>
+
+        </ng-template>
+
+        <ng-template [ngIf]="true" class="stitempts">
+          <pre iqhighlight>
+            <code  class="javascript">
+interface Person {{'{'}}
+  name: string;
+  speak(): void;
+{{'}'}}
+
+class Student {{'{'}}
+  name: string;
+  gender: boolean;
+  speak() {{'{'}}
+    console.log('Hello, I\'m a student');
+  {{'}'}}
+{{'}'}}
+
+class Teacher {{'{'}}
+  name: string;
+  age: number;
+  speak() {{'{'}}
+    console.log('Hello, I\'m a teacher');
+  {{'}'}}
+{{'}'}}
+
+function sayHello(one: Person) {{'{'}}
+  one.speak()
+{{'}'}}
+
+var s = new Student(),
+    t = new Teacher();
+
+sayHello(s);
+sayHello(t);
+            </code>
+          </pre>
+        </ng-template>
+
+        <ng-template [ngIf]="true" class="stitempcss">
+          <pre iqhighlight>
+            <code class="css">
+            </code>
+          </pre>
+        </ng-template>
+
+      </showitemexample>
+
+    </ng-template>
+
+  </showtem>
+</div>

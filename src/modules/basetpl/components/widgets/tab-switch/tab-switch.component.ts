@@ -31,4 +31,8 @@ export class TabSwitchDemoComponent implements OnInit {
     this.contList.push({content: `newContent${this.count}`, id: `newId${this.count}`});
   }
 
+  print(e) {
+    console.log(e);
+  }
+
 }

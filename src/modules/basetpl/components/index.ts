@@ -33,7 +33,11 @@ import { WindowDemoComponent } from './services/window/window.component';
 
 //piece
 import { AngularSelectorComponent } from './piece/angular-selector/angular-selector.component';
+import { InterfaceVsClassComponent } from './piece/interface-vs-class/interface-vs-class.component';
 
+//js
+import { ArrJsComponent } from './js/arr/arr.component';
+import { ObjJsComponent } from './js/obj/obj.component';
 
 //暴露出所有Component
 export { 
@@ -60,7 +64,10 @@ export {
   TabSwitchDemoComponent,
   IqTimepickerDemoComponent,
   AngularSelectorComponent,
-  IqNum2ChinesePipeComponent
+  IqNum2ChinesePipeComponent,
+  InterfaceVsClassComponent,
+  ArrJsComponent,
+  ObjJsComponent
 };
 
 //模块内部Components列表
@@ -88,5 +95,8 @@ export let Basetpl_COMPONENTS =
   TabSwitchDemoComponent,
   IqTimepickerDemoComponent,
   AngularSelectorComponent,
-  IqNum2ChinesePipeComponent
+  IqNum2ChinesePipeComponent,
+  InterfaceVsClassComponent,
+  ArrJsComponent,
+  ObjJsComponent
 ];

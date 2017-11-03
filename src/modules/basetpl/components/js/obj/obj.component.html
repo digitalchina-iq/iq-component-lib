@@ -1,0 +1,103 @@
+<div [@flyIn]="active">
+  <showtem [stname]="'对象方法'" [stnamedel]="'往事只能回味'" >
+
+    <!-- overview -->
+    <ng-template [ngIf]="true" class='stview'>
+
+      <h3>概述</h3>
+      <p>
+        对象的一些方法
+      </p>
+
+      <div style="margin-top:35px;">
+        <h3>复制JSON格式的对象</h3>
+        <div style="padding:0px 10px;">
+          <showcode>
+            <div class="shows">
+方法1：copyObj(obj: object) {{'{'}}
+  return JSON.parse(JSON.stringify(obj));
+{{'}'}}
+方法2：copyObj(obj: object) {{'{'}}
+  return Object.assign(obj instanceof Array ? [] : {{'{'}}{{'}'}}, obj);
+{{'}'}}
+            </div>
+          </showcode>
+        </div>
+      </div>
+
+      <div style="margin-top:35px;">
+        <h3>判断是否为非数组对象</h3>
+        <div style="padding:0px 10px;">
+          <showcode>
+            <div class="shows">
+isObj(param: any) {{'{'}}
+  return typeof param === 'object' && param !== null;
+{{'}'}}
+            </div>
+          </showcode>
+        </div>
+      </div>
+
+      <div style="margin-top:35px;">
+        <h3>判断一个对象是否为空对象</h3>
+        <div style="padding:0px 10px;">
+          <showcode>
+            <div class="shows">
+isEmptyObj(obj: object) {{'{'}}
+  return !Object.keys(obj).length
+{{'}'}}
+            </div>
+          </showcode>
+        </div>
+      </div>
+
+    </ng-template>
+
+    <!-- stitemexample -->
+    <ng-template [ngIf]="true" class="stitemexample">
+
+      <showitemexample>
+
+        <ng-template [ngIf]="true" class="stitempcon">
+          <div class="showhow">
+
+            <p>/deep/ 简单示例，改变开关滑块颜色</p>
+
+            <iq-switcher [(ngModel)]="fromSwitcher"></iq-switcher>
+          </div>
+        </ng-template>
+
+        <ng-template [ngIf]="true" class="stitemphtml">
+
+          <pre iqhighlight>
+            <code class="html">
+              &lt;iq-switcher [(ngModel)]="fromSwitcher"&gt;&lt;/iq-switcher&gt;
+            </code>
+          </pre>
+
+        </ng-template>
+
+        <ng-template [ngIf]="true" class="stitempts">
+          <pre iqhighlight>
+            <code  class="javascript">
+              fromSwitcher: boolean;
+            </code>
+          </pre>
+        </ng-template>
+
+        <ng-template [ngIf]="true" class="stitempcss">
+          <pre iqhighlight>
+            <code class="css">
+              /deep/ .m-switch .switch-ball{{'{'}}
+                background: red;
+              {{'}'}}
+            </code>
+          </pre>
+        </ng-template>
+
+      </showitemexample>
+
+    </ng-template>
+
+  </showtem>
+</div>
