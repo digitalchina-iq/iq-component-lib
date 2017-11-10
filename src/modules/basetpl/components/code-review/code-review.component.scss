@@ -1,0 +1,15 @@
+$border: 1px solid #fff;
+
+.table-wrapper{
+  width: calc(100% - 240px);
+  overflow: auto;
+}
+
+table{
+  thead>tr>th{
+    border: $border;
+  }
+  tbody>tr>td{
+    border: $border;
+  }
+}

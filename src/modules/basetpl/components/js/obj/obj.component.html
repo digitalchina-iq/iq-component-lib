@@ -14,10 +14,10 @@
         <div style="padding:0px 10px;">
           <showcode>
             <div class="shows">
-方法1：copyObj(obj: object) {{'{'}}
+方法1：function copyObj(obj) {{'{'}}
   return JSON.parse(JSON.stringify(obj));
 {{'}'}}
-方法2：copyObj(obj: object) {{'{'}}
+方法2：function copyObj(obj) {{'{'}}
   return Object.assign(obj instanceof Array ? [] : {{'{'}}{{'}'}}, obj);
 {{'}'}}
             </div>
@@ -30,7 +30,7 @@
         <div style="padding:0px 10px;">
           <showcode>
             <div class="shows">
-isObj(param: any) {{'{'}}
+function isObj(param) {{'{'}}
   return typeof param === 'object' && param !== null;
 {{'}'}}
             </div>
@@ -43,7 +43,7 @@ isObj(param: any) {{'{'}}
         <div style="padding:0px 10px;">
           <showcode>
             <div class="shows">
-isEmptyObj(obj: object) {{'{'}}
+function isEmptyObj(obj) {{'{'}}
   return !Object.keys(obj).length
 {{'}'}}
             </div>

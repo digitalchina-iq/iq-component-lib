@@ -1,0 +1,60 @@
+<div [@flyIn]="active">
+  <div class="table-wrapper">
+    <form>
+      <table>
+        <thead>
+          <tr>
+            <th rowspan="2" style="padding: 0 30px">日期</th>
+            <th rowspan="2" style="padding: 0 30px">人员</th>
+            <th>单一职责</th>
+            <th>可读性</th>
+            <th colspan="6">可维护性</th>
+            <th colspan="2">高效性</th>
+          </tr>
+          <tr>
+            <th>文件是否500行内，小函数是否100行内</th>
+            <th>注释是否齐全，命名是否规范</th>
+            <th>是否第三方导入和应用导入留一个空行</th>
+            <th>是否成员排列顺序规范</th>
+            <th>是否Input和output在一起</th>
+            <th>是否输出有别名</th>
+            <th>是否业务逻辑分离</th>
+            <th>是否用const声明变量</th>
+            <th>constructor 是否合理</th>
+            <th>是否判断合理</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of recordList;">
+            <td>{{item.date | iqDate: "YYYY-MM-DD"}}</td>
+            <td>{{item.name}}</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>{{today | iqDate: "YYYY-MM-DD"}}</td>
+            <td>{{DC_FES[recordList.length % DC_FES.length]}}</td>
+            <td><textarea autoheight></textarea></td>
+            <td><textarea autoheight></textarea></td>
+            <td><textarea autoheight></textarea></td>
+            <td><textarea autoheight></textarea></td>
+            <td><textarea autoheight></textarea></td>
+            <td><textarea autoheight></textarea></td>
+            <td><textarea autoheight></textarea></td>
+            <td><textarea autoheight></textarea></td>
+            <td><textarea autoheight></textarea></td>
+            <td><textarea autoheight></textarea></td>
+          </tr>
+        </tbody>
+      </table>
+    </form>
+  </div>
+</div>

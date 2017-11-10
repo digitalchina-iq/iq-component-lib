@@ -38,6 +38,10 @@ import { InterfaceVsClassComponent } from './piece/interface-vs-class/interface-
 //js
 import { ArrJsComponent } from './js/arr/arr.component';
 import { ObjJsComponent } from './js/obj/obj.component';
+import { StrJsComponent } from './js/str/str.component';
+
+//code-review
+import { CodeReviewComponent } from './code-review/code-review.component';
 
 //暴露出所有Component
 export { 
@@ -67,7 +71,9 @@ export {
   IqNum2ChinesePipeComponent,
   InterfaceVsClassComponent,
   ArrJsComponent,
-  ObjJsComponent
+  ObjJsComponent,
+  StrJsComponent,
+  CodeReviewComponent
 };
 
 //模块内部Components列表
@@ -98,5 +104,7 @@ export let Basetpl_COMPONENTS =
   IqNum2ChinesePipeComponent,
   InterfaceVsClassComponent,
   ArrJsComponent,
-  ObjJsComponent
+  ObjJsComponent,
+  StrJsComponent,
+  CodeReviewComponent
 ];

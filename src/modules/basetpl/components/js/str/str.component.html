@@ -1,21 +1,28 @@
 <div [@flyIn]="active">
-  <showtem [stname]="'数组方法'" [stnamedel]="'时光一去不复回'" >
+  <showtem [stname]="'字符串方法'" [stnamedel]="'忆童年时竹马青梅'" >
 
     <!-- overview -->
     <ng-template [ngIf]="true" class='stview'>
 
       <h3>概述</h3>
       <p>
-        数组的一些方法
+        字符串的一些方法
       </p>
 
       <div style="margin-top:35px;">
-        <h3>数组去重</h3>
+        <h3>左侧补位指定字符到指定长度</h3>
         <div style="padding:0px 10px;">
           <showcode>
             <div class="shows">
-function uniqueArr(arr) {{'{'}}
-  return Array.from(new Set(arr));
+function leftpad(str, len, ch) {{'{'}}
+  str = String(str);
+  var i = -1;
+  if(!ch && ch !== 0) {{'{'}}ch = ' '{{'}'}};
+  len = len - str.length;
+  while(++i < len) {{'{'}}
+    str = ch + str;
+  {{'}'}}
+  return str;
 {{'}'}}
             </div>
           </showcode>
@@ -23,12 +30,12 @@ function uniqueArr(arr) {{'{'}}
       </div>
 
       <div style="margin-top:35px;">
-        <h3>数组排序</h3>
+        <h3>字符串反转</h3>
         <div style="padding:0px 10px;">
           <showcode>
             <div class="shows">
-function sortArr(arr) {{'{'}}
-  return arr.sort((a,b)=> a - b);
+function reverseStr(str) {{'{'}}
+  return str.split('').reverse().join('');
 {{'}'}}
             </div>
           </showcode>
@@ -36,38 +43,21 @@ function sortArr(arr) {{'{'}}
       </div>
 
       <div style="margin-top:35px;">
-        <h3>获取连续数组</h3>
+        <h3>将字符串中连续相同的字符只保留一个</h3>
         <div style="padding:0px 10px;">
           <showcode>
             <div class="shows">
-function sequenceArr(start, end) {{'{'}}
-  return Array.from({{'{'}}length: end - start + 1{{'}'}}).map((v,i) => i + start)
-{{'}'}}
-            </div>
-          </showcode>
-        </div>
-      </div>
-
-      <div style="margin-top:35px;">
-        <h3>去除B数组中在A数组里存在的项</h3>
-        <div style="padding:0px 10px;">
-          <showcode>
-            <div class="shows">
-function uniqueBbyA(b, a) {{'{'}}
-  return b.filter(item => !a.some(v => v === item));
-{{'}'}}
-            </div>
-          </showcode>
-        </div>
-      </div>
-
-      <div style="margin-top:35px;">
-        <h3>数组项某属性求和</h3>
-        <div style="padding:0px 10px;">
-          <showcode>
-            <div class="shows">
-function addItem(arr, item) {{'{'}}
-  return arr.reduce((p,c)=>{{'{'}}return {{'{'}}[item]: p[item]+c[item]{{'}'}}{{'}'}})[item];
+function noSeqChar(str) {{'{'}}
+  str = String(str);
+  let ch = '';
+  let arr = [];
+  str.split('').forEach(item => {{'{'}}
+    if(item !== ch) {{'{'}}
+      arr.push(item);
+      ch = item;
+    {{'}'}}
+  {{'}'}})
+  return arr.join('');
 {{'}'}}
             </div>
           </showcode>
