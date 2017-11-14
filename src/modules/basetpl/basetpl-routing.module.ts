@@ -10,12 +10,8 @@ import { BasetplContainerComponent,
   IqDatePipeComponent, IqFileSizePipeComponent, IqBreadcrumbDemoComponent,
   IcheckDemoComponent, LoadingDemoComponent, IqPagerDemoComponent,
   TrimDemoComponent, TabSwitchDemoComponent, IqTimepickerDemoComponent,
-<<<<<<< HEAD
-  AngularSelectorComponent, IqNum2ChinesePipeComponent,IeCompatibilityComponent
-=======
   AngularSelectorComponent, IqNum2ChinesePipeComponent, InterfaceVsClassComponent,
   ArrJsComponent, ObjJsComponent, StrJsComponent, CodeReviewComponent
->>>>>>> ccc9b2b6f2219b26b24c231d22778ffe7e157c24
 } from './index';
 
 const routes: Routes = [//定义路由
@@ -72,12 +68,6 @@ const routes: Routes = [//定义路由
       ]
     },
     {
-<<<<<<< HEAD
-      path: "css",
-      children: [
-        { path: 'ie-compatibility', component: IeCompatibilityComponent }
-      ]
-=======
       path: "js",
       children: [
         { path: 'arr', component: ArrJsComponent },
@@ -87,7 +77,6 @@ const routes: Routes = [//定义路由
     },
     {
       path: "code-review", component: CodeReviewComponent
->>>>>>> ccc9b2b6f2219b26b24c231d22778ffe7e157c24
     }
   ]
 }
