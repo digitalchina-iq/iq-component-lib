@@ -34,6 +34,9 @@ import { WindowDemoComponent } from './services/window/window.component';
 //piece
 import { AngularSelectorComponent } from './piece/angular-selector/angular-selector.component';
 
+//css
+import { IeCompatibilityComponent } from './css/ie-compatibility/ie-compatibility.component';
+
 
 //暴露出所有Component
 export { 
@@ -60,7 +63,8 @@ export {
   TabSwitchDemoComponent,
   IqTimepickerDemoComponent,
   AngularSelectorComponent,
-  IqNum2ChinesePipeComponent
+  IqNum2ChinesePipeComponent,
+  IeCompatibilityComponent
 };
 
 //模块内部Components列表
@@ -88,5 +92,6 @@ export let Basetpl_COMPONENTS =
   TabSwitchDemoComponent,
   IqTimepickerDemoComponent,
   AngularSelectorComponent,
-  IqNum2ChinesePipeComponent
+  IqNum2ChinesePipeComponent,
+  IeCompatibilityComponent
 ];

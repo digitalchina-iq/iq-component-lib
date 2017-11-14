@@ -10,7 +10,7 @@ import { BasetplContainerComponent,
   IqDatePipeComponent, IqFileSizePipeComponent, IqBreadcrumbDemoComponent,
   IcheckDemoComponent, LoadingDemoComponent, IqPagerDemoComponent,
   TrimDemoComponent, TabSwitchDemoComponent, IqTimepickerDemoComponent,
-  AngularSelectorComponent, IqNum2ChinesePipeComponent
+  AngularSelectorComponent, IqNum2ChinesePipeComponent,IeCompatibilityComponent
 } from './index';
 
 const routes: Routes = [//定义路由
@@ -63,6 +63,12 @@ const routes: Routes = [//定义路由
       path: "piece",
       children: [
         { path: 'angular-selector', component: AngularSelectorComponent }
+      ]
+    },
+    {
+      path: "css",
+      children: [
+        { path: 'ie-compatibility', component: IeCompatibilityComponent }
       ]
     }
   ]
