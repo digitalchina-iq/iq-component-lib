@@ -33,10 +33,18 @@ import { WindowDemoComponent } from './services/window/window.component';
 
 //piece
 import { AngularSelectorComponent } from './piece/angular-selector/angular-selector.component';
+import { InterfaceVsClassComponent } from './piece/interface-vs-class/interface-vs-class.component';
 
 //css
 import { IeCompatibilityComponent } from './css/ie-compatibility/ie-compatibility.component';
 
+//js
+import { ArrJsComponent } from './js/arr/arr.component';
+import { ObjJsComponent } from './js/obj/obj.component';
+import { StrJsComponent } from './js/str/str.component';
+
+//code-review
+import { CodeReviewComponent } from './code-review/code-review.component';
 
 //暴露出所有Component
 export { 
@@ -64,7 +72,12 @@ export {
   IqTimepickerDemoComponent,
   AngularSelectorComponent,
   IqNum2ChinesePipeComponent,
-  IeCompatibilityComponent
+  IeCompatibilityComponent,
+  InterfaceVsClassComponent,
+  ArrJsComponent,
+  ObjJsComponent,
+  StrJsComponent,
+  CodeReviewComponent
 };
 
 //模块内部Components列表
@@ -93,5 +106,10 @@ export let Basetpl_COMPONENTS =
   IqTimepickerDemoComponent,
   AngularSelectorComponent,
   IqNum2ChinesePipeComponent,
-  IeCompatibilityComponent
+  IeCompatibilityComponent,
+  InterfaceVsClassComponent,
+  ArrJsComponent,
+  ObjJsComponent,
+  StrJsComponent,
+  CodeReviewComponent
 ];

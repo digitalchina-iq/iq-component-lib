@@ -31,7 +31,7 @@ export class WindowDemoComponent implements OnInit {
   }
 
   testalerts() {
-    this.windowservice.alert({title:"标题",message:"填写的信息",type:"success"})
+    this.windowservice.alert({title:"标题",message:"填写的信息",type:"success",timer:"3000"})
   }
 
   testalertf() {
