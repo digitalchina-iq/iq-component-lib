@@ -15,16 +15,25 @@ import { SharedModule } from 'shared/shared.module';
 
 
 const routes: Routes = [
-  // { path: '', component: DefindexComponent},
-  {
-    path: '', component: DefindexComponent,
-    children: [
-      {
-        path :'login',
-        loadChildren: 'modules/login/login.module#LoginModule'
-      }
-    ]
-  },
+    { path: '', component: DefindexComponent},
+  // // {
+	// // 	path:'',
+	// // 	redirectTo:'login',
+	// // 	pathMatch:'full'
+  // // },   
+  // {
+  //   path:'login',
+  //   loadChildren: 'modules/login/login.module#LoginModule'
+  // },
+  // // {
+  // //   path: '', component: DefindexComponent,
+  // //   children: [
+  // //     {
+  // //       path :'login',
+  // //       loadChildren: 'modules/login/login.module#LoginModule'
+  // //     }
+  // //   ]
+  // // },
   {
     path: '', component: IqTlrFrameComponent,
     children: [

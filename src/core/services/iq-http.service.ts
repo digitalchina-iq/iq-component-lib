@@ -152,6 +152,14 @@ export class iqHttpService extends Http {
       return this.intercept(super.post(url, body, this.getRequestOptionArgs(options)));
     }
 
+    put(url: string, body: any, options ? : RequestOptionsArgs){
+      return this.intercept(super.put(url, body, this.getRequestOptionArgs(options)));
+    }
+
+    delete(url: string, body: any, options ? : RequestOptionsArgs){
+      return this.intercept(super.delete(url, this.getRequestOptionArgs(options)));
+    }
+
     // put(url: string, body: any, options?: RequestOptionsArgs) {
     //   return super.put(url,body,options);
     // }

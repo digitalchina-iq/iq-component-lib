@@ -105,10 +105,10 @@ export class DefindexComponent implements OnInit  {
       })
       .map(res => res.json())
       .subscribe(res => {
-          // console.log("----");
+           console.log("----");
           // console.log(res)
           // console.log("++++");
-          this.router.navigate(["/index"]);
+           this.router.navigate(["/index"]);
       })
 
     // AV.User.logIn(this.userInfo.username, this.userInfo.password).then(function (loginedUser) {
@@ -150,7 +150,26 @@ export class DefindexComponent implements OnInit  {
     //       // this.router.navigate(["/index"]);
     //   })
 
-    this.iqhttp.get(environment.server+"/classes/Product")
+    // this.iqhttp.get(environment.server+"/classes/Product")
+    // .map(res => res.json())
+    // .subscribe(res => {
+    //     console.log("+++++");
+    //     console.log(res)
+    //     console.log("+++++");
+    //     // this.router.navigate(["/index"]);
+    // })
+
+
+      //   // this.http.post(environment.server+"/login",
+  //   //   {
+  //   //     "username":"admin",
+  //   //     "password":"123456"
+  //   //   },this.options)
+    this.iqhttp.put(environment.server+"/classes/Product/59cf01dd67f356003a61f9a1",
+    {
+            "price":78
+          },
+    )
     .map(res => res.json())
     .subscribe(res => {
         console.log("+++++");
@@ -158,6 +177,7 @@ export class DefindexComponent implements OnInit  {
         console.log("+++++");
         // this.router.navigate(["/index"]);
     })
+
 
 
   }
