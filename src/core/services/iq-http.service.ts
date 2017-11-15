@@ -72,7 +72,7 @@ export class iqHttpService extends Http {
         if (options.headers == null) {
             options.headers = new Headers();
         }
-        if(JSON.parse(localStorage.getItem("userinfo")).sessionToken!=null){
+        if(JSON.parse(localStorage.getItem("userinfo"))!=null){
           
           // if(options.headers.get("X-LC-Session")==null){
 
