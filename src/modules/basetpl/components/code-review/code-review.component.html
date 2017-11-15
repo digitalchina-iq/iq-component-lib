@@ -1,5 +1,8 @@
 <div [@flyIn]="active">
   <div class="table-wrapper">
+    <loading [show]="loading"></loading>
+    <button *ngIf="!objId" class="m-btn-success" type="button" (click)="postData()">提交</button>
+    <button *ngIf="objId" class="m-btn-success" type="button" (click)="putData()">重新提交今日记录</button>
     <form>
       <table>
         <thead>
@@ -26,9 +29,13 @@
         </thead>
         <tbody>
           <tr *ngFor="let item of recordList;">
-            <td>{{item.date | iqDate: "YYYY-MM-DD"}}</td>
-            <td>{{item.name}}</td>
-            <td></td>
+            <td>{{item.createdAt | iqDate: "YYYY-MM-DD"}}</td>
+            <td>{{item.username}}</td>
+            <td>
+              <ul>
+                <li *ngFor="let row of item.isrows">{{row.filename}} - {{row.username}}</li>
+              </ul>
+            </td>
             <td></td>
             <td></td>
             <td></td>
@@ -40,9 +47,30 @@
             <td></td>
           </tr>
           <tr>
-            <td>{{today | iqDate: "YYYY-MM-DD"}}</td>
-            <td>{{DC_FES[recordList.length % DC_FES.length]}}</td>
-            <td><textarea autoheight></textarea></td>
+            <td>{{today}}</td>
+            <td>
+              <div class="m-select">
+                <i class="iqon-xia"></i>
+                <select [(ngModel)]="recordItem.userid" name="userid" required>
+                  <option *ngFor="let user of users" [ngValue]="user.objectId">{{user.nickname}}</option>
+                </select>
+              </div>
+            </td>
+            <td>
+              <ul>
+                <li *ngFor="let row of recordItem.isrows;index as i">
+                  <input type="text" [(ngModel)]="row.filename" name="filename">
+                  <div class="m-select">
+                    <i class="iqon-xia"></i>
+                    <select [(ngModel)]="row.userid" (ngModelChange)="chooseUser()" name="userid" required>
+                      <option *ngFor="let user of users" [ngValue]="user.objectId">{{user.nickname}}</option>
+                    </select>
+                  </div>
+                  <i class="iqon-jian" (click)="deleteIsRows(i)" *ngIf="i !== 0"></i>
+                  <i class="iqon-add" (click)="addIsRows()" *ngIf="i === 0"></i>
+                </li>
+              </ul>
+            </td>
             <td><textarea autoheight></textarea></td>
             <td><textarea autoheight></textarea></td>
             <td><textarea autoheight></textarea></td>
