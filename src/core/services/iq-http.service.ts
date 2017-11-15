@@ -9,6 +9,8 @@ import { WindowService } from './window.service'
 
 export { URLSearchParams ,RequestOptions};
 
+declare var window;
+
 @Injectable()
 export class iqHttpService extends Http {
 
@@ -70,9 +72,19 @@ export class iqHttpService extends Http {
         if (options.headers == null) {
             options.headers = new Headers();
         }
+        if(JSON.parse(localStorage.getItem("userinfo")).sessionToken!=null){
+          
+          // if(options.headers.get("X-LC-Session")==null){
+
+             options.headers.append("X-LC-Session", JSON.parse(localStorage.getItem("userinfo")).sessionToken);
+            
+          // }
+          
+        }
         options.headers.append('Content-Type', 'application/json');
         options.headers.append("X-LC-Id", "FiwsYyo5ilGwbj1NJ1b2Ub3c-gzGzoHsz");
         options.headers.append("X-LC-Key", "ALC3hN40oHBH7Fke3RJXvvsO");
+        // options.headers.append("X-LC-Session", "hbppb5hnfdk1imnj2s05e4ho5");
 
         return options;
     }

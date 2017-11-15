@@ -9,7 +9,7 @@ export class HeaderComponent implements OnInit {
 
   scolor: string= window.localStorage.getItem("scolor")==null?"#444":window.localStorage.getItem("scolor");
   ecolor: string= window.localStorage.getItem("ecolor")==null?"#20A8E8":window.localStorage.getItem("ecolor");
-  
+  nickname: string= window.localStorage.getItem("nickname")==null?"未知":window.localStorage.getItem("nickname");
 
   constructor() {
   }
