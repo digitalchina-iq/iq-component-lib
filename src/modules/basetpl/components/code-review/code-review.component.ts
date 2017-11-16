@@ -49,11 +49,7 @@ export class CodeReviewComponent implements OnInit {
 
   ngOnInit() {
     this.recordItem = new Record();
-    let userInfo = JSON.parse(window.localStorage.getItem('userinfo'));
-
-    this.recordItem.userid = userInfo ? userInfo.objectId : '';
-    this.recordItem.username = userInfo ? userInfo.nickname : '请先登录';
-    this.initForm();
+    this.getUser();
 
     this.today = moment().format('YYYY-MM-DD');
     this.http.get(environment.server + 'users').toPromise().then(response => response.json()).then(data => {
@@ -63,31 +59,32 @@ export class CodeReviewComponent implements OnInit {
     this.getData();
   }
 
-  initForm() {
-    this.recordItem = new Record();
+  /**获取登录人信息*/
+  getUser() {
     let userInfo = JSON.parse(window.localStorage.getItem('userinfo'));
 
     this.recordItem.userid = userInfo ? userInfo.objectId : '';
     this.recordItem.username = userInfo ? userInfo.nickname : '请先登录';
   }
 
+  /**获取记录数据列表*/
   getData() {
     this.loading = true;
     this.http.get(environment.server + 'classes/Cr').toPromise().then(response => response.json()).then(data => {
-      console.log(data);
       this.loading = false;
       this.recordList = data.results;
-      this.initForm();
 
       let lastRecord = this.recordList[this.recordList.length - 1];
       if(moment(lastRecord.createdAt).format('YYYY-MM-DD') === this.today) {
         this.objId = lastRecord.objectId;
         Object.assign(this.recordItem, JSON.parse(JSON.stringify(lastRecord)));
         this.getNotBlankList();
+        this.getUser();
       }
     })
   }
 
+  //获取并设置非空列表
   getNotBlankList() {
     let arr = ['isrows','isnotes','isindent','isline','isorder','isalias','isseparate','isconst','isconstructor','isbasic'];
     
@@ -99,6 +96,7 @@ export class CodeReviewComponent implements OnInit {
     this.recordItem.createdAt = undefined;
   }
 
+  //提交数据
   postData() {
     this.getNotBlankList();
 
@@ -107,6 +105,7 @@ export class CodeReviewComponent implements OnInit {
     })
   }
 
+  //更新数据
   putData() {
     this.getNotBlankList();
 
