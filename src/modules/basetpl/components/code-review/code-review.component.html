@@ -1,6 +1,6 @@
 <div [@flyIn]="active">
   <div class="table-wrapper">
-    <loading [show]="loading"></loading>
+    <ngx-loading [show]="loading"></ngx-loading>
     <button *ngIf="!objId" class="m-btn-success" type="button" (click)="postData()">提交</button>
     <button *ngIf="objId" class="m-btn-success" type="button" (click)="putData()">重新提交今日记录</button>
     <table>
@@ -84,14 +84,7 @@
 
         <tr>
           <td>{{today}}</td>
-          <td>
-            <div class="m-select">
-              <i class="iqon-xia"></i>
-              <select [(ngModel)]="recordItem.userid" name="userid">
-                <option *ngFor="let user of users" [ngValue]="user.objectId">{{user.nickname}}</option>
-              </select>
-            </div>
-          </td>
+          <td>{{recordItem.username}}</td>
           <td>
             <ul>
               <li *ngFor="let item of recordItem.isrows;index as i">
