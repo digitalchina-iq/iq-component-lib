@@ -5,7 +5,7 @@ import * as moment from 'moment';
 
 import { environment } from 'environments/environment';
 
-class IsRows {
+class RecordItem {
   filename:string;
   userid:string;
   username:string;
@@ -15,7 +15,16 @@ class Record {
   createdAt: string;
   objectId: string;
   userid: string;
-  isrows: IsRows[];
+  isrows: RecordItem[] = [new RecordItem()];
+  isnotes: RecordItem[] = [new RecordItem()];
+  isindent: RecordItem[] = [new RecordItem()];
+  isline: RecordItem[] = [new RecordItem()];
+  isorder: RecordItem[] = [new RecordItem()];
+  isalias: RecordItem[] = [new RecordItem()];
+  isseparate: RecordItem[] = [new RecordItem()];
+  isconst: RecordItem[] = [new RecordItem()];
+  isconstructor: RecordItem[] = [new RecordItem()];
+  isbasic: RecordItem[] = [new RecordItem()];
 }
 
 @Component({
@@ -30,14 +39,15 @@ export class CodeReviewComponent implements OnInit {
   loading: boolean;
   objId: string;
   recordList: Record[];
-  recordItem: Record = new Record();
+  recordItem: Record;
   users: any[];
 
   constructor(private http: Http){}
 
   ngOnInit() {
+    this.recordItem = new Record();
+
     this.today = moment().format('YYYY-MM-DD');
-    this.recordItem.isrows = [new IsRows()];
     this.http.get(environment.server + 'users').toPromise().then(response => response.json()).then(data => {
       this.users = data.results;
     })
@@ -69,17 +79,15 @@ console.log(data)
     })
   }
 
-  chooseUser() {
-    this.recordItem.isrows.forEach(item => {
-      item.username = this.users.filter(p => p.objectId === item.userid)[0].nickname;
-    })
+  chooseUser(item) {
+    item.username = this.users.filter(p => p.objectId === item.userid)[0].nickname;
   }
 
-  deleteIsRows(i) {
-    this.recordItem.isrows.splice(i,1);
+  deleteItem(list, i) {
+    list.splice(i,1);
   }
 
-  addIsRows() {
-    this.recordItem.isrows.push(new IsRows());
+  addItem(list) {
+    list.push(new RecordItem());
   }
 }
