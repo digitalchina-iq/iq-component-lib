@@ -9,6 +9,8 @@ import { WindowService } from './window.service'
 
 export { URLSearchParams ,RequestOptions};
 
+declare var window;
+
 @Injectable()
 export class iqHttpService extends Http {
 
@@ -45,11 +47,21 @@ export class iqHttpService extends Http {
           // this.windowservice.alert({message:"success",type:"success"});
         }, (err) => {
           // console.log("222222")
+          
           // console.log(err);
+          // console.log(err._body);
+          // console.log(JSON.parse(err._body).code);
           // console.log(err.status);
-           console.log('网络错误:'+err.status+' - '+this.status['status.'+err.status]);
+          // console.log('网络错误:'+err.status+' - '+this.status['status.'+err.status]);
+
+          if(err.status==400){
+            this.windowservice.alert({message:JSON.parse(err._body).error,type:"fail"});
+          }else{
+            this.windowservice.alert({message:this.status['status.'+err.status],type:"fail"});
+          }
+
           // console.log(this.windowservice);
-          this.windowservice.alert({message:this.status['status.'+err.status],type:"fail"});
+          
           observer.error(err);
         }, () => {
           observer.complete();//注意添加这句，否则有可能一些第三方的包不能正常使用，如ng2-translate
@@ -70,9 +82,19 @@ export class iqHttpService extends Http {
         if (options.headers == null) {
             options.headers = new Headers();
         }
+        if(JSON.parse(localStorage.getItem("userinfo"))!=null){
+          
+          // if(options.headers.get("X-LC-Session")==null){
+
+             options.headers.append("X-LC-Session", JSON.parse(localStorage.getItem("userinfo")).sessionToken);
+            
+          // }
+          
+        }
         options.headers.append('Content-Type', 'application/json');
         options.headers.append("X-LC-Id", "FiwsYyo5ilGwbj1NJ1b2Ub3c-gzGzoHsz");
         options.headers.append("X-LC-Key", "ALC3hN40oHBH7Fke3RJXvvsO");
+        // options.headers.append("X-LC-Session", "hbppb5hnfdk1imnj2s05e4ho5");
 
         return options;
     }
@@ -150,6 +172,14 @@ export class iqHttpService extends Http {
 
     post(url: string, body: any, options ? : RequestOptionsArgs){
       return this.intercept(super.post(url, body, this.getRequestOptionArgs(options)));
+    }
+
+    put(url: string, body: any, options ? : RequestOptionsArgs){
+      return this.intercept(super.put(url, body, this.getRequestOptionArgs(options)));
+    }
+
+    delete(url: string, body: any, options ? : RequestOptionsArgs){
+      return this.intercept(super.delete(url, this.getRequestOptionArgs(options)));
     }
 
     // put(url: string, body: any, options?: RequestOptionsArgs) {

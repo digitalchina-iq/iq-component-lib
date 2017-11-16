@@ -1,4 +1,6 @@
 import { Component, OnInit} from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+
 declare var window,$;
 @Component({
   selector: 'iq-header',
@@ -9,9 +11,10 @@ export class HeaderComponent implements OnInit {
 
   scolor: string= window.localStorage.getItem("scolor")==null?"#444":window.localStorage.getItem("scolor");
   ecolor: string= window.localStorage.getItem("ecolor")==null?"#20A8E8":window.localStorage.getItem("ecolor");
-  
+  nickname: string= JSON.parse(localStorage.getItem("userinfo"))==null?"未知":JSON.parse(localStorage.getItem("userinfo")).nickname;
 
-  constructor() {
+  constructor(private router: Router) {
+    
   }
 
   ngOnInit() {
@@ -26,6 +29,11 @@ export class HeaderComponent implements OnInit {
   ecolorm(e){
     window.localStorage.setItem("ecolor",this.ecolor);
     $("body").css("background","linear-gradient(135deg,"+this.scolor+" 0,"+this.ecolor+" 100%)");
+  }
+
+  logout(){
+    window.localStorage.removeItem('userinfo');
+    this.router.navigate(["/"]);
   }
 
 }

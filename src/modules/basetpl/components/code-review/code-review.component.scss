@@ -1,8 +1,13 @@
 $border: 1px solid #fff;
 
 .table-wrapper{
+  position: relative;
   width: calc(100% - 240px);
   overflow: auto;
+
+  button{
+    margin-bottom: 20px;
+  }
 }
 
 table{
@@ -11,5 +16,28 @@ table{
   }
   tbody>tr>td{
     border: $border;
+
+    .m-select{
+      width: 70px;
+      display: inline-block;
+      background: none;
+      select{
+        margin: 0;
+        padding: 0 4px;
+      }
+    }
+
+    >ul{
+      width: 320px;
+      list-style: none;
+      >li{
+        margin: 5px 0;
+        
+        input{
+          margin: 0;
+          width: 225px;
+        }
+      }
+    }
   }
 }

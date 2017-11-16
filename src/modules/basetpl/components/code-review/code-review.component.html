@@ -1,60 +1,249 @@
 <div [@flyIn]="active">
   <div class="table-wrapper">
-    <form>
-      <table>
-        <thead>
-          <tr>
-            <th rowspan="2" style="padding: 0 30px">日期</th>
-            <th rowspan="2" style="padding: 0 30px">人员</th>
-            <th>单一职责</th>
-            <th>可读性</th>
-            <th colspan="6">可维护性</th>
-            <th colspan="2">高效性</th>
-          </tr>
-          <tr>
-            <th>文件是否500行内，小函数是否100行内</th>
-            <th>注释是否齐全，命名是否规范</th>
-            <th>是否第三方导入和应用导入留一个空行</th>
-            <th>是否成员排列顺序规范</th>
-            <th>是否Input和output在一起</th>
-            <th>是否输出有别名</th>
-            <th>是否业务逻辑分离</th>
-            <th>是否用const声明变量</th>
-            <th>constructor 是否合理</th>
-            <th>是否判断合理</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let item of recordList;">
-            <td>{{item.date | iqDate: "YYYY-MM-DD"}}</td>
-            <td>{{item.name}}</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td>{{today | iqDate: "YYYY-MM-DD"}}</td>
-            <td>{{DC_FES[recordList.length % DC_FES.length]}}</td>
-            <td><textarea autoheight></textarea></td>
-            <td><textarea autoheight></textarea></td>
-            <td><textarea autoheight></textarea></td>
-            <td><textarea autoheight></textarea></td>
-            <td><textarea autoheight></textarea></td>
-            <td><textarea autoheight></textarea></td>
-            <td><textarea autoheight></textarea></td>
-            <td><textarea autoheight></textarea></td>
-            <td><textarea autoheight></textarea></td>
-            <td><textarea autoheight></textarea></td>
-          </tr>
-        </tbody>
-      </table>
-    </form>
+    <loading [show]="loading"></loading>
+    <button *ngIf="!objId" class="m-btn-success" type="button" (click)="postData()">提交</button>
+    <button *ngIf="objId" class="m-btn-success" type="button" (click)="putData()">重新提交今日记录</button>
+    <table>
+      <thead>
+        <tr>
+          <th rowspan="2" style="padding: 0 30px">日期</th>
+          <th rowspan="2" style="padding: 0 30px">人员</th>
+          <th>单一职责</th>
+          <th colspan="2">可读性</th>
+          <th colspan="5">可维护性</th>
+          <th colspan="2">高效性</th>
+        </tr>
+        <tr>
+          <th>文件是否500行内，小函数是否100行内</th>
+          <th>注释是否齐全，命名是否规范</th>
+          <th>缩进是否正确</th>
+          <th>是否第三方导入和应用导入留一个空行</th>
+          <th>是否成员排列顺序规范</th>
+          <th>是否输出有别名</th>
+          <th>是否业务逻辑分离</th>
+          <th>是否用const声明变量</th>
+          <th>constructor 是否合理</th>
+          <th>是否判断合理</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of recordList;">
+          <td>{{item.createdAt | iqDate: "YYYY-MM-DD"}}</td>
+          <td>{{item.username}}</td>
+          <td>
+            <ul>
+              <li *ngFor="let row of item.isrows">{{row.filename ? row.filename + '-' + row.username : '是'}}</li>
+            </ul>
+          </td>
+          <td>
+            <ul>
+              <li *ngFor="let row of item.isnotes">{{row.filename ? row.filename + '-' + row.username : '是'}}</li>
+            </ul>
+          </td>
+          <td>
+            <ul>
+              <li *ngFor="let row of item.isindent">{{row.filename ? row.filename + '-' + row.username : '是'}}</li>
+            </ul>
+          </td>
+          <td>
+            <ul>
+              <li *ngFor="let row of item.isline">{{row.filename ? row.filename + '-' + row.username : '是'}}</li>
+            </ul>
+          </td>
+          <td>
+            <ul>
+              <li *ngFor="let row of item.isorder">{{row.filename ? row.filename + '-' + row.username : '是'}}</li>
+            </ul>
+          </td>
+          <td>
+            <ul>
+              <li *ngFor="let row of item.isalias">{{row.filename ? row.filename + '-' + row.username : '是'}}</li>
+            </ul>
+          </td>
+          <td>
+            <ul>
+              <li *ngFor="let row of item.isseparate">{{row.filename ? row.filename + '-' + row.username : '是'}}</li>
+            </ul>
+          </td>
+          <td>
+            <ul>
+              <li *ngFor="let row of item.isconst">{{row.filename ? row.filename + '-' + row.username : '是'}}</li>
+            </ul>
+          </td>
+          <td>
+            <ul>
+              <li *ngFor="let row of item.isconstructor">{{row.filename ? row.filename + '-' + row.username : '是'}}</li>
+            </ul>
+          </td>
+          <td>
+            <ul>
+              <li *ngFor="let row of item.isbasic">{{row.filename ? row.filename + '-' + row.username : '是'}}</li>
+            </ul>
+          </td>
+        </tr>
+
+        <tr>
+          <td>{{today}}</td>
+          <td>
+            <div class="m-select">
+              <i class="iqon-xia"></i>
+              <select [(ngModel)]="recordItem.userid" name="userid">
+                <option *ngFor="let user of users" [ngValue]="user.objectId">{{user.nickname}}</option>
+              </select>
+            </div>
+          </td>
+          <td>
+            <ul>
+              <li *ngFor="let item of recordItem.isrows;index as i">
+                <input type="text" [(ngModel)]="item.filename" name="filename">
+                <div class="m-select">
+                  <i class="iqon-xia"></i>
+                  <select [(ngModel)]="item.userid" (ngModelChange)="chooseUser(item)" name="userid">
+                    <option *ngFor="let user of users" [ngValue]="user.objectId">{{user.nickname}}</option>
+                  </select>
+                </div>
+                <i class="iqon-jian" (click)="deleteItem(recordItem.isrows, i)" *ngIf="i !== 0"></i>
+                <i class="iqon-add" (click)="addItem(recordItem.isrows)" *ngIf="i === 0"></i>
+              </li>
+            </ul>
+          </td>
+          <td>
+            <ul>
+              <li *ngFor="let item of recordItem.isnotes;index as i">
+                <input type="text" [(ngModel)]="item.filename" name="filename">
+                <div class="m-select">
+                  <i class="iqon-xia"></i>
+                  <select [(ngModel)]="item.userid" (ngModelChange)="chooseUser(item)" name="userid">
+                    <option *ngFor="let user of users" [ngValue]="user.objectId">{{user.nickname}}</option>
+                  </select>
+                </div>
+                <i class="iqon-jian" (click)="deleteItem(recordItem.isnotes, i)" *ngIf="i !== 0"></i>
+                <i class="iqon-add" (click)="addItem(recordItem.isnotes)" *ngIf="i === 0"></i>
+              </li>
+            </ul>
+          </td>
+          <td>
+            <ul>
+              <li *ngFor="let item of recordItem.isindent;index as i">
+                <input type="text" [(ngModel)]="item.filename" name="filename">
+                <div class="m-select">
+                  <i class="iqon-xia"></i>
+                  <select [(ngModel)]="item.userid" (ngModelChange)="chooseUser(item)" name="userid">
+                    <option *ngFor="let user of users" [ngValue]="user.objectId">{{user.nickname}}</option>
+                  </select>
+                </div>
+                <i class="iqon-jian" (click)="deleteItem(recordItem.isindent, i)" *ngIf="i !== 0"></i>
+                <i class="iqon-add" (click)="addItem(recordItem.isindent)" *ngIf="i === 0"></i>
+              </li>
+            </ul>
+          </td>
+          <td>
+            <ul>
+              <li *ngFor="let item of recordItem.isline;index as i">
+                <input type="text" [(ngModel)]="item.filename" name="filename">
+                <div class="m-select">
+                  <i class="iqon-xia"></i>
+                  <select [(ngModel)]="item.userid" (ngModelChange)="chooseUser(item)" name="userid">
+                    <option *ngFor="let user of users" [ngValue]="user.objectId">{{user.nickname}}</option>
+                  </select>
+                </div>
+                <i class="iqon-jian" (click)="deleteItem(recordItem.isline, i)" *ngIf="i !== 0"></i>
+                <i class="iqon-add" (click)="addItem(recordItem.isline)" *ngIf="i === 0"></i>
+              </li>
+            </ul>
+          </td>
+          <td>
+            <ul>
+              <li *ngFor="let item of recordItem.isorder;index as i">
+                <input type="text" [(ngModel)]="item.filename" name="filename">
+                <div class="m-select">
+                  <i class="iqon-xia"></i>
+                  <select [(ngModel)]="item.userid" (ngModelChange)="chooseUser(item)" name="userid">
+                    <option *ngFor="let user of users" [ngValue]="user.objectId">{{user.nickname}}</option>
+                  </select>
+                </div>
+                <i class="iqon-jian" (click)="deleteItem(recordItem.isorder, i)" *ngIf="i !== 0"></i>
+                <i class="iqon-add" (click)="addItem(recordItem.isorder)" *ngIf="i === 0"></i>
+              </li>
+            </ul>
+          </td>
+          <td>
+            <ul>
+              <li *ngFor="let item of recordItem.isalias;index as i">
+                <input type="text" [(ngModel)]="item.filename" name="filename">
+                <div class="m-select">
+                  <i class="iqon-xia"></i>
+                  <select [(ngModel)]="item.userid" (ngModelChange)="chooseUser(item)" name="userid">
+                    <option *ngFor="let user of users" [ngValue]="user.objectId">{{user.nickname}}</option>
+                  </select>
+                </div>
+                <i class="iqon-jian" (click)="deleteItem(recordItem.isalias, i)" *ngIf="i !== 0"></i>
+                <i class="iqon-add" (click)="addItem(recordItem.isalias)" *ngIf="i === 0"></i>
+              </li>
+            </ul>
+          </td>
+          <td>
+            <ul>
+              <li *ngFor="let item of recordItem.isseparate;index as i">
+                <input type="text" [(ngModel)]="item.filename" name="filename">
+                <div class="m-select">
+                  <i class="iqon-xia"></i>
+                  <select [(ngModel)]="item.userid" (ngModelChange)="chooseUser(item)" name="userid">
+                    <option *ngFor="let user of users" [ngValue]="user.objectId">{{user.nickname}}</option>
+                  </select>
+                </div>
+                <i class="iqon-jian" (click)="deleteItem(recordItem.isseparate, i)" *ngIf="i !== 0"></i>
+                <i class="iqon-add" (click)="addItem(recordItem.isseparate)" *ngIf="i === 0"></i>
+              </li>
+            </ul>
+          </td>
+          <td>
+            <ul>
+              <li *ngFor="let item of recordItem.isconst;index as i">
+                <input type="text" [(ngModel)]="item.filename" name="filename">
+                <div class="m-select">
+                  <i class="iqon-xia"></i>
+                  <select [(ngModel)]="item.userid" (ngModelChange)="chooseUser(item)" name="userid">
+                    <option *ngFor="let user of users" [ngValue]="user.objectId">{{user.nickname}}</option>
+                  </select>
+                </div>
+                <i class="iqon-jian" (click)="deleteItem(recordItem.isconst, i)" *ngIf="i !== 0"></i>
+                <i class="iqon-add" (click)="addItem(recordItem.isconst)" *ngIf="i === 0"></i>
+              </li>
+            </ul>
+          </td>
+          <td>
+            <ul>
+              <li *ngFor="let item of recordItem.isconstructor;index as i">
+                <input type="text" [(ngModel)]="item.filename" name="filename">
+                <div class="m-select">
+                  <i class="iqon-xia"></i>
+                  <select [(ngModel)]="item.userid" (ngModelChange)="chooseUser(item)" name="userid">
+                    <option *ngFor="let user of users" [ngValue]="user.objectId">{{user.nickname}}</option>
+                  </select>
+                </div>
+                <i class="iqon-jian" (click)="deleteItem(recordItem.isconstructor, i)" *ngIf="i !== 0"></i>
+                <i class="iqon-add" (click)="addItem(recordItem.isconstructor)" *ngIf="i === 0"></i>
+              </li>
+            </ul>
+          </td>
+          <td>
+            <ul>
+              <li *ngFor="let item of recordItem.isbasic;index as i">
+                <input type="text" [(ngModel)]="item.filename" name="filename">
+                <div class="m-select">
+                  <i class="iqon-xia"></i>
+                  <select [(ngModel)]="item.userid" (ngModelChange)="chooseUser(item)" name="userid">
+                    <option *ngFor="let user of users" [ngValue]="user.objectId">{{user.nickname}}</option>
+                  </select>
+                </div>
+                <i class="iqon-jian" (click)="deleteItem(recordItem.isbasic, i)" *ngIf="i !== 0"></i>
+                <i class="iqon-add" (click)="addItem(recordItem.isbasic)" *ngIf="i === 0"></i>
+              </li>
+            </ul>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </div>

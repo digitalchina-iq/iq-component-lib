@@ -16,7 +16,7 @@
 				<form class="margin-bottom-0" action="index">
 
 					<input type="text" [(ngModel)]="userInfo.username" name="username" placeholder="帐号" />
-					<input type="text" [(ngModel)]="userInfo.password" name="password" placeholder="密码" />
+					<input type="password" [(ngModel)]="userInfo.password" name="password" placeholder="密码" />
 
 					<!-- <label class="checkbox">
 						<input type="checkbox" /> Remember Me
@@ -26,14 +26,21 @@
 							<button (click)="login()" type="submit" class="btn btn-success">
 								<i class="iqon-employee" style="margin-right:10px;"></i>登录
 							</button>
+							<!-- <button (click)="test()" type="submit" class="btn btn-success">
+								<i class="iqon-employee" style="margin-right:10px;"></i>test
+							</button> -->
 						<!-- </a> -->
 						<!-- <a href="#" class="pull-right">Forgot Password?</a> -->
 					</div>
 				</form>
 
+
+
 			</div>
 		</div>
 	</div><!-- end #login -->
+	<ngx-loading [show]="loading" ></ngx-loading>
+	<!-- <div class="loading"></div> -->
 
   <div id="footer" style="position:absolute;bottom:0;">
       <span id="scrollTop" class="pull-right">

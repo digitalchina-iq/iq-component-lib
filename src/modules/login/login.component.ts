@@ -10,7 +10,7 @@ import 'rxjs/Rx';
 
 // import { BsModalService } from 'ngx-bootstrap/modal';
 // import { BsModalRef } from 'ngx-bootstrap/modal/modal-options.class';
-declare var $;
+declare var $,window;
 
 @Component({
     templateUrl: 'login.component.html',
@@ -20,7 +20,7 @@ declare var $;
 export class DefindexComponent implements OnInit  {
 
   // public modalRef: BsModalRef;
-
+  loading = false;
   userInfo: any = {
     username: "",
     password: ""
@@ -96,7 +96,7 @@ export class DefindexComponent implements OnInit  {
 
     // console.log(this.windowservice);
 
-
+    this.loading = true;
 
     this.iqhttp.post(environment.server+"/login",
       {
@@ -105,10 +105,28 @@ export class DefindexComponent implements OnInit  {
       })
       .map(res => res.json())
       .subscribe(res => {
-          // console.log("----");
-          // console.log(res)
+          console.log("----");
+          console.log(res)
+          // var session=JSON.stringify(res.sessionToken);
+          
+            // var session=res.sessionToken;
+            // var nickname=res.nickname;
+            // window.localStorage.setItem('session',session);
+            // window.localStorage.setItem('nickname',nickname);
+
+          var userinfo = JSON.stringify(res);
+          window.localStorage.setItem('userinfo',userinfo);
+
+          console.log(JSON.parse(localStorage.getItem("userinfo")))
+          console.log(JSON.parse(localStorage.getItem("userinfo")).sessionToken)
+
+
           // console.log("++++");
-          this.router.navigate(["/index"]);
+           this.router.navigate(["/index"]);
+          //  this.loading = false;
+      },err => {
+        this.loading = false;
+        //...
       })
 
     // AV.User.logIn(this.userInfo.username, this.userInfo.password).then(function (loginedUser) {
@@ -150,7 +168,48 @@ export class DefindexComponent implements OnInit  {
     //       // this.router.navigate(["/index"]);
     //   })
 
-    this.iqhttp.get(environment.server+"/classes/Product")
+    // this.iqhttp.get(environment.server+"/classes/Product")
+    // .map(res => res.json())
+    // .subscribe(res => {
+    //     console.log("+++++");
+    //     console.log(res)
+    //     console.log("+++++");
+    //     // this.router.navigate(["/index"]);
+    // })
+
+
+      //   // this.http.post(environment.server+"/login",
+  //   //   {
+  //   //     "username":"admin",
+  //   //     "password":"123456"
+  //   //   },this.options)
+
+
+    // this.iqhttp.put(environment.server+"/classes/Product/59cf01dd67f356003a61f9a1",
+    // {
+    //         "price":78
+    //       },
+    // )
+    // .map(res => res.json())
+    // .subscribe(res => {
+    //     console.log("+++++");
+    //     console.log(res)
+    //     console.log("+++++");
+    //     // this.router.navigate(["/index"]);
+    // })
+
+
+    // this.iqhttp.get(environment.server+"/users")
+    //   .map(res => res.json())
+    //   .subscribe(res => {
+    //       console.log("+++++");
+    //       console.log(res)
+    //       console.log("+++++");
+    //       // this.router.navigate(["/index"]);
+    //   })
+
+
+    this.iqhttp.get(environment.server+"/cloudQuery?cql=select * from Product")
     .map(res => res.json())
     .subscribe(res => {
         console.log("+++++");
