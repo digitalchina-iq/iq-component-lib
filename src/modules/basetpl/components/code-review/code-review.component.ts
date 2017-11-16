@@ -48,6 +48,11 @@ export class CodeReviewComponent implements OnInit {
   constructor(private http: Http){}
 
   ngOnInit() {
+    this.recordItem = new Record();
+    let userInfo = JSON.parse(window.localStorage.getItem('userinfo'));
+
+    this.recordItem.userid = userInfo ? userInfo.objectId : '';
+    this.recordItem.username = userInfo ? userInfo.nickname : '请先登录';
     this.initForm();
 
     this.today = moment().format('YYYY-MM-DD');
