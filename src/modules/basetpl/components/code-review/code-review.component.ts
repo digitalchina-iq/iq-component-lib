@@ -5,6 +5,8 @@ import * as moment from 'moment';
 
 import { environment } from 'environments/environment';
 
+declare var window;
+
 class RecordItem {
   filename:string;
   userid:string;
@@ -15,6 +17,7 @@ class Record {
   createdAt: string;
   objectId: string;
   userid: string;
+  username: string;
   isrows: RecordItem[] = [new RecordItem()];
   isnotes: RecordItem[] = [new RecordItem()];
   isindent: RecordItem[] = [new RecordItem()];
@@ -46,6 +49,10 @@ export class CodeReviewComponent implements OnInit {
 
   ngOnInit() {
     this.recordItem = new Record();
+    let userInfo = JSON.parse(window.localStorage.getItem('userinfo'));
+
+    this.recordItem.userid = userInfo ? userInfo.objectId : '';
+    this.recordItem.username = userInfo ? userInfo.nickname : '请先登录';
 
     this.today = moment().format('YYYY-MM-DD');
     this.http.get(environment.server + 'users').toPromise().then(response => response.json()).then(data => {
@@ -59,7 +66,7 @@ export class CodeReviewComponent implements OnInit {
     this.http.get(environment.server + 'classes/Cr').toPromise().then(response => response.json()).then(data => {
       this.loading = false;
       this.recordList = data.results;
-console.log(data)
+
       let lastRecord = this.recordList[this.recordList.length - 1];
       if(moment(lastRecord.createdAt).format('YYYY-MM-DD') === this.today) {
         this.objId = lastRecord.objectId;
