@@ -14,7 +14,7 @@ class RecordItem {
 }
 
 class Record {
-  createdAt: string;
+  createdAt: Date;
   objectId: string;
   userid: string;
   username: string;
@@ -54,7 +54,7 @@ export class CodeReviewComponent implements OnInit {
     this.http.get(environment.server + 'users').toPromise().then(response => response.json()).then(data => {
       this.users = data.results;
     })
-    
+
     this.getData();
   }
 
@@ -69,6 +69,7 @@ export class CodeReviewComponent implements OnInit {
   getData() {
     this.loading = true;
     this.http.get(environment.server + 'classes/Cr').toPromise().then(response => response.json()).then(data => {
+      console.log(data);
       this.loading = false;
       this.recordList = data.results;
       this.initForm();
@@ -76,6 +77,8 @@ export class CodeReviewComponent implements OnInit {
       let lastRecord = this.recordList[this.recordList.length - 1];
       if(moment(lastRecord.createdAt).format('YYYY-MM-DD') === this.today) {
         this.objId = lastRecord.objectId;
+        Object.assign(this.recordItem, JSON.parse(JSON.stringify(lastRecord)));
+        this.getNotBlankList();
       }
     })
   }
@@ -84,8 +87,11 @@ export class CodeReviewComponent implements OnInit {
     let arr = ['isrows','isnotes','isindent','isline','isorder','isalias','isseparate','isconst','isconstructor','isbasic'];
     
     arr.forEach(item => {
-      this.recordItem[item] = this.recordItem[item].filter(p => p.filename);
+      let tempArr = this.recordItem[item].filter(p => p.filename);
+      this.recordItem[item] = tempArr.length ? tempArr : [new RecordItem()];
     });
+
+    this.recordItem.createdAt = undefined;
   }
 
   postData() {
