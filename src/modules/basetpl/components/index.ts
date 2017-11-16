@@ -37,6 +37,7 @@ import { InterfaceVsClassComponent } from './piece/interface-vs-class/interface-
 
 //css
 import { IeCompatibilityComponent } from './css/ie-compatibility/ie-compatibility.component';
+import { BasicLayoutComponent } from './css/basic-layout/basic-layout.component';
 
 //js
 import { ArrJsComponent } from './js/arr/arr.component';
@@ -73,6 +74,7 @@ export {
   AngularSelectorComponent,
   IqNum2ChinesePipeComponent,
   IeCompatibilityComponent,
+  BasicLayoutComponent,
   InterfaceVsClassComponent,
   ArrJsComponent,
   ObjJsComponent,
@@ -107,6 +109,7 @@ export let Basetpl_COMPONENTS =
   AngularSelectorComponent,
   IqNum2ChinesePipeComponent,
   IeCompatibilityComponent,
+  BasicLayoutComponent,
   InterfaceVsClassComponent,
   ArrJsComponent,
   ObjJsComponent,
