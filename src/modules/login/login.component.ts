@@ -20,7 +20,7 @@ declare var $,window;
 export class DefindexComponent implements OnInit  {
 
   // public modalRef: BsModalRef;
-
+  loading = false;
   userInfo: any = {
     username: "",
     password: ""
@@ -96,7 +96,7 @@ export class DefindexComponent implements OnInit  {
 
     // console.log(this.windowservice);
 
-
+    this.loading = true;
 
     this.iqhttp.post(environment.server+"/login",
       {
@@ -105,6 +105,7 @@ export class DefindexComponent implements OnInit  {
       })
       .map(res => res.json())
       .subscribe(res => {
+        this.loading = false;
           console.log("----");
           console.log(res)
           // var session=JSON.stringify(res.sessionToken);
@@ -122,7 +123,10 @@ export class DefindexComponent implements OnInit  {
 
 
           // console.log("++++");
-           //this.router.navigate(["/index"]);
+           this.router.navigate(["/index"]);
+      },err => {
+        this.loading = false;
+        //...
       })
 
     // AV.User.logIn(this.userInfo.username, this.userInfo.password).then(function (loginedUser) {

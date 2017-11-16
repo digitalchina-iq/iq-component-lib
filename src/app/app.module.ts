@@ -12,6 +12,8 @@ import { AppComponent } from './app.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { CoreModule } from 'core/core.module';
 
+import { LoadingModule } from 'ngx-loading';
+
 @NgModule({
   declarations: [
     AppComponent
@@ -23,6 +25,7 @@ import { CoreModule } from 'core/core.module';
     CoreModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    LoadingModule,
     ModalModule.forRoot()
   ],
   providers: [],
