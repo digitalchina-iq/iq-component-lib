@@ -20,7 +20,7 @@ import { DefindexComponent } from './login.component';
         // animationType: ANIMATION_TYPES.threeBounce,
         // backdropBorderRadius: '10px',
         // primaryColour: '#ffffff', secondaryColour: '#ffffff', tertiaryColour: '#ffffff'
-            backdropBackgroundColour: 'rgba(255,255,255,0.2)'
+           backdropBackgroundColour: 'rgba(255,255,255,0.2)'
       })
     ],
     declarations: [
