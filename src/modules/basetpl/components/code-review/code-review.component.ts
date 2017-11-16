@@ -75,6 +75,7 @@ export class CodeReviewComponent implements OnInit {
       this.recordList = data.results;
 
       let lastRecord = this.recordList[this.recordList.length - 1];
+      if(!lastRecord){return};
       if(moment(lastRecord.createdAt).format('YYYY-MM-DD') === this.today) {
         this.objId = lastRecord.objectId;
         Object.assign(this.recordItem, JSON.parse(JSON.stringify(lastRecord)));
