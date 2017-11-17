@@ -1,3 +1,5 @@
 export const environment = {
-  production: true
+  production: true,
+  debounceTime:500,
+  server:'/api/'
 };
