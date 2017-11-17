@@ -20,5 +20,8 @@ export class LoadingComponent implements OnInit {
     return this._show;
   }
 
+  //加载效果类型，目前六种：circle1,circle2,square1,round1,round2,various1
+  @Input() type: string = 'circle1';
+  
   ngOnInit() {}
 }

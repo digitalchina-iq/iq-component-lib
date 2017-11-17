@@ -1,22 +1,66 @@
-<div class="loading-container" [ngClass]="{'hide': !show}">
-  <svg class="loading-svg" viewBox="0 0 120 120" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <g id="circle" class="g-circles">
-      <circle id="12" cx="35" cy="16.6987298" r="10"></circle>
-      <circle id="11" cx="16.6987298" cy="35" r="10"></circle>
-      <circle id="10" cx="10" cy="60" r="10"></circle>
-      <circle id="9" cx="16.6987298" cy="85" r="10"></circle>
-      <circle id="8" cx="35" cy="103.30127" r="10"></circle>
-      <circle id="7" cx="60" cy="110" r="10"></circle>
-      <circle id="6" cx="85" cy="103.30127" r="10"></circle>
-      <circle id="5" cx="103.30127" cy="85" r="10"></circle>
-      <circle id="4" cx="110" cy="60" r="10"></circle>
-      <circle id="3" cx="103.30127" cy="35" r="10"></circle>
-      <circle id="2" cx="85" cy="16.6987298" r="10"></circle>
-      <circle id="1" cx="60" cy="10" r="10"></circle>
-    </g>
-    <use xlink:href="#circle" class="use"></use>
-  </svg>
-  <div class="loading-backdrop" [ngStyle]="style">
-
+<div class="loading-container" [ngStyle]="style" [ngClass]="{'hide': !show}">
+  <div class="loading-center-absolute" style="width: auto;height: auto;">
+    <ng-content></ng-content>
   </div>
+  
+  <ng-container *ngIf="type === 'circle1'">
+    <svg class="loading-center-absolute circle1" viewBox="0 0 120 120" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+      <g id="circle" class="g-circles">
+        <circle id="12" cx="35" cy="16.6987298" r="10"></circle>
+        <circle id="11" cx="16.6987298" cy="35" r="10"></circle>
+        <circle id="10" cx="10" cy="60" r="10"></circle>
+        <circle id="9" cx="16.6987298" cy="85" r="10"></circle>
+        <circle id="8" cx="35" cy="103.30127" r="10"></circle>
+        <circle id="7" cx="60" cy="110" r="10"></circle>
+        <circle id="6" cx="85" cy="103.30127" r="10"></circle>
+        <circle id="5" cx="103.30127" cy="85" r="10"></circle>
+        <circle id="4" cx="110" cy="60" r="10"></circle>
+        <circle id="3" cx="103.30127" cy="35" r="10"></circle>
+        <circle id="2" cx="85" cy="16.6987298" r="10"></circle>
+        <circle id="1" cx="60" cy="10" r="10"></circle>
+      </g>
+    </svg>
+  </ng-container>
+
+  <ul class="loading-center-absolute circle2" *ngIf="type === 'circle2'">
+    <li class="object object-one"></li>
+    <li class="object object-two"></li>
+    <li class="object object-three"></li>
+    <li class="object object-four"></li>
+    <li class="object object-five"></li>
+    <li class="object object-six"></li>
+    <li class="object object-seven"></li>
+    <li class="object object-eight"></li>
+  </ul>
+
+  <div class="loading-center-absolute square1" *ngIf="type === 'square1'">
+    <div class="object"></div>
+  </div>
+
+  <div class="loading-center-absolute round1" *ngIf="type === 'round1'">
+    <div class="object object-one"></div>
+    <div class="object object-two"></div>
+    <div class="object object-three"></div>
+  </div>
+
+  <div class="loading-center-absolute round2" *ngIf="type === 'round2'">
+    <div class="object object-one"></div>
+    <div class="object object-two"></div>
+    <div class="object object-three"></div>
+    <div class="object object-four"></div>
+  </div>
+
+  <div class="loading-center-absolute various1" *ngIf="type === 'various1'">
+    <div class="object"></div>
+    <div class="object"></div>
+    <div class="object"></div>
+    <div class="object"></div>
+    <div class="object"></div>
+    <div class="object"></div>
+    <div class="object"></div>
+    <div class="object"></div>
+    <div class="object"></div>
+    <div class="object"></div>
+  </div>
+
 </div>

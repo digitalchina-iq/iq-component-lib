@@ -1,43 +1,27 @@
 .loading-container{
+  position: absolute;
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+  background-color: #eee;
+  width:100%;
+  height:100%;
+  z-index: 1038;
 
-  .loading-backdrop{
+  .loading-center-absolute {
     position: absolute;
-    top:0;
-    left:0;
-    right:0;
-    bottom:0;
-    background-color: #eee;
-    width:100%;
-    height:100%;
-    z-index: 1038;
-  }
-  svg {
-    position: absolute;
-    top: 50%;
     left: 50%;
-    transform: translate(-50%,-50%);
+    top: 50%;
+    transform: translate(-50%, -50%);
     height:60px;
     width:60px;
-    overflow:visible;
-    z-index: 1039;
-  }
-  .g-circles{
-    -webkit-transform:scale(0.9) translate(7px, 7px);
-    -ms-transform:scale(0.9) translate(7px, 7px);
-    transform:scale(0.9) translate(7px, 7px);
   }
 
-  @-webkit-keyframes opacity{
-    3%{
-      fill-opacity:1;
-    }
+}
 
-    75%{
-      fill-opacity:0;
-    }
-  }
-
-  @keyframes opacity{
+.circle1{
+  @keyframes circle1{
     3%{
       fill-opacity:1;
     }
@@ -50,55 +34,193 @@
   circle{
     fill:dodgerblue;
     fill-opacity:0;
-    -webkit-animation:opacity 1.2s linear infinite;
-    animation:opacity 1.2s linear infinite;
+    animation:circle1 1.2s linear infinite;
   }
-  circle:nth-child(12n + 1){
-    -webkit-animation-delay:-0.1s;
-    animation-delay:-0.1s;
+
+  @for $i from 1 through 12 {
+    circle:nth-child(12n + #{$i}) {
+      animation-delay: -0.1s * $i;
+    }
   }
-  circle:nth-child(12n + 2){
-    -webkit-animation-delay:-0.2s;
-    animation-delay:-0.2s;
+}
+
+.circle2{
+  list-style: none;
+  
+  @keyframes circle2 {
+    50% {transform: scale(1.5,1.5);}
+    100% {transform: scale(1,1);}
   }
-  circle:nth-child(12n + 3){
-    -webkit-animation-delay:-0.3s;
-    animation-delay:-0.3s;
+  .object{
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: #57b9f8;
+    border-radius: 50%;
+    animation: circle2 0.8s infinite;
   }
-  circle:nth-child(12n + 4){
-    -webkit-animation-delay:-0.4s;
-    animation-delay:-0.4s;
+
+  .object-one {
+    top: 9px;
+    left: 9px; 
   }
-  circle:nth-child(12n + 5){
-    -webkit-animation-delay:-0.5s;
-    animation-delay:-0.5s;
+  .object-two {
+    top: 0px;
+    left: 30px; 
+    animation-delay: 0.1s;
   }
-  circle:nth-child(12n + 6){
-    -webkit-animation-delay:-0.6s;
-    animation-delay:-0.6s;
+  .object-three {
+    top: 9px;
+    left: 51px;  
+    animation-delay: 0.2s; 
   }
-  circle:nth-child(12n + 7){
-    -webkit-animation-delay:-0.7s;
-    animation-delay:-0.7s;
+  .object-four {
+    top: 30px;
+    left: 60px; 
+    animation-delay: 0.3s; 
   }
-  circle:nth-child(12n + 8){
-    -webkit-animation-delay:-0.8s;
-    animation-delay:-0.8s;
+  .object-five {
+    top: 51px;
+    left: 51px; 
+    animation-delay: 0.4s; 
   }
-  circle:nth-child(12n + 9){
-    -webkit-animation-delay:-0.9s;
-    animation-delay:-0.9s;
+  .object-six {
+    top: 60px;
+    left: 30px;
+    animation-delay: 0.5s; 
   }
-  circle:nth-child(12n + 10){
-    -webkit-animation-delay:-1s;
-    animation-delay:-1s;
+  .object-seven {
+    top: 51px;
+    left: 9px;
+    animation-delay: 0.6s; 
   }
-  circle:nth-child(12n + 11){
-    -webkit-animation-delay:-1.1s;
-    animation-delay:-1.1s;
+  .object-eight {
+    top: 30px;
+    left: 0px;
+    animation-delay: 0.7s; 
   }
-  circle:nth-child(12n + 12){
-    -webkit-animation-delay:-1.2s;
-    animation-delay:-1.2s;
+}
+
+.square1{
+  .object{
+    width: 60px;
+    height: 60px;
+    background-color: #57b9f8;
+    animation: square1 1s infinite ease-in-out;
+  }
+
+  @keyframes square1 {
+    0% { 
+      transform: perspective(160px) rotateX(0deg) rotateY(0deg);
+      -webkit-transform: perspective(160px) rotateX(0deg) rotateY(0deg); 
+    } 50% { 
+      transform: perspective(160px) rotateX(-180deg) rotateY(0deg);
+      -webkit-transform: perspective(160px) rotateX(-180deg) rotateY(0deg) ;
+    } 100% { 
+      transform: perspective(160px) rotateX(-180deg) rotateY(-180deg);
+      -webkit-transform: perspective(160px) rotateX(-180deg) rotateY(-180deg);
+    }
+  }
+}
+
+.round1{
+  width: 120px!important;
+  .object{
+    width: 20px;
+    height: 20px;
+    background-color: #57b9f8;
+    float: left;
+    margin-right: 20px;
+    margin-top: 20px;
+    border-radius: 50%;
+    animation: round1 1.5s infinite;
+  }
+  .object-two {
+    animation-delay: 0.25s;
+  }
+  .object-three {
+    animation-delay: 0.5s;
+  }
+
+  @keyframes round1 {
+    75% {transform: scale(0);}
+  }
+}
+
+.round2{
+  transform-origin: 0 0;
+  animation: round2_loading-center-absolute 1s infinite;
+  .object{
+    width: 20px;
+    height: 20px;
+    background-color: #57b9f8;
+    float: left;
+    border-radius: 50%;
+    margin-right: 20px;
+    margin-bottom: 20px;  
+  }
+  .object:nth-child(2n+0) {
+    margin-right: 0px;
+
+  }
+  .object-one{
+    animation: round2_one 1s infinite;
+    }
+  .object-two{
+    animation: round2_two 1s infinite;
+    } 
+  .object-three{
+    animation: round2_three 1s infinite;
+    }   
+  .object-four{
+    animation: round2_four 1s infinite;
+    }   
+      
+  @keyframes round2_loading-center-absolute{
+    0%{transform: rotate(0deg) translate(-50%,-50%);}
+    100% {transform: rotate(360deg) translate(-50%,-50%);}
+  } 
+
+  @keyframes round2_one{
+    50% {transform: translate(20px,20px);}
+  }
+
+  @keyframes round2_two{
+    50% {transform: translate(-20px,20px);}
+  }
+
+  @keyframes round2_three{
+    50% {transform: translate(20px,-20px);}
+  }
+
+  @keyframes round2_four{
+    50% {transform: translate(-20px,-20px);}
+  }
+}
+
+.various1{
+  width: 125px!important;
+  
+  .object{
+    width: 8px;
+    height: 50px;
+    margin-right:5px;
+    background-color: #57b9f8;
+    animation: various1 1s infinite;
+    float: left;
+  }
+
+  .object:last-child {
+    margin-right: 0px;
+  }
+
+  @for $i from 1 through 10 {
+    .object:nth-child(#{$i}){
+      animation-delay: 0.1s * $i - 0.1s;
+    }
+  }
+
+  @keyframes various1 {
+    50% {transform: scaleY(0);}
   }
 }
