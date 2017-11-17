@@ -1,4 +1,4 @@
-<div [@flyIn]="active">
+<div [@flyIn]="'in'">
   <showtem [stname]="'加载中组件'" [stnamedel]="'一个有趣的组件'" >
 
     <!-- overview -->
@@ -18,6 +18,71 @@
           </div>
           <showcode>
             <div class="shows">&lt;loading [show]="true"&gt;&lt;/loading&gt;</div>
+          </showcode>
+        </div>
+      </div>
+
+      <div style="margin-top:35px;">
+        <h3>type</h3>
+        <div style="padding:0px 10px;">
+          <p><code>type:string</code>； 加载效果类型，目前六种：circle1,circle2,square1,round1,round2,various1，默认为circle1</p>
+          <p>如果设置<code>[type]="'none'"</code>，可以在组件里自定义加载中效果</p>
+          <ul style="display: flex;justify-content: space-between;flex-wrap: wrap;">
+            <li style="margin-top: 10px;width: 260px;list-style: none;">
+              <span style="display: inline-block;width: 50px;">circle1</span>
+              <div style="display: inline-block;vertical-align: middle;position: relative;width: 200px;height: 90px;">
+                <loading [show]="true" type="circle1"></loading>
+              </div>
+            </li>
+            <li style="margin-top: 10px;width: 260px;list-style: none;">
+              <span style="display: inline-block;width: 50px;">circle2</span>
+              <div style="display: inline-block;vertical-align: middle;position: relative;width: 200px;height: 90px;">
+                <loading [show]="true" type="circle2"></loading>
+              </div>
+            </li>
+            <li style="margin-top: 10px;width: 260px;list-style: none;">
+              <span style="display: inline-block;width: 50px;">square1</span>
+              <div style="display: inline-block;vertical-align: middle;position: relative;width: 200px;height: 90px;">
+                <loading [show]="true" type="square1"></loading>
+              </div>
+            </li>
+            <li style="margin-top: 10px;width: 260px;list-style: none;">
+              <span style="display: inline-block;width: 50px;">round1</span>
+              <div style="display: inline-block;vertical-align: middle;position: relative;width: 200px;height: 90px;">
+                <loading [show]="true" type="round1"></loading>
+              </div>
+            </li>
+            <li style="margin-top: 10px;width: 260px;list-style: none;">
+              <span style="display: inline-block;width: 50px;">round2</span>
+              <div style="display: inline-block;vertical-align: middle;position: relative;width: 200px;height: 90px;">
+                <loading [show]="true" type="round2"></loading>
+              </div>
+            </li>
+            <li style="margin-top: 10px;width: 260px;list-style: none;">
+              <span style="display: inline-block;width: 50px;">various1</span>
+              <div style="display: inline-block;vertical-align: middle;position: relative;width: 200px;height: 90px;">
+                <loading [show]="true" type="various1"></loading>
+              </div>
+            </li>
+            <li style="margin-top: 10px;width: 260px;list-style: none;">
+              <span style="display: inline-block;width: 50px;">none</span>
+              <div style="display: inline-block;vertical-align: middle;position: relative;width: 200px;height: 90px;">
+                <loading [show]="true" type="none">
+                  <p style="margin: 0;color: red;">loading...</p>
+                </loading>
+              </div>
+            </li>
+          </ul>
+          <showcode>
+            <div class="shows">&lt;loading [show]="true" type="circle1"&gt;&lt;/loading&gt;
+&lt;loading [show]="true" type="circle2"&gt;&lt;/loading&gt;
+&lt;loading [show]="true" type="square1"&gt;&lt;/loading&gt;
+&lt;loading [show]="true" type="round1"&gt;&lt;/loading&gt;
+&lt;loading [show]="true" type="round2"&gt;&lt;/loading&gt;
+&lt;loading [show]="true" type="various1"&gt;&lt;/loading&gt;
+&lt;loading [show]="true" type="none"&gt;
+  &lt;p style="margin: 0;color: red;"&gt;loading...&lt;/p&gt;
+&lt;/loading&gt;</div>
           </showcode>
         </div>
       </div>

@@ -1,4 +1,4 @@
-<div [@flyIn]="active">
+<div [@flyIn]="'in'">
   <div class="table-wrapper">
     <ngx-loading [show]="loading"></ngx-loading>
     <button *ngIf="!objId" class="m-btn-success" type="button" (click)="postData()">提交</button>
