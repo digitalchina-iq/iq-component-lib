@@ -12,7 +12,8 @@ import { BasetplContainerComponent,
   TrimDemoComponent, TabSwitchDemoComponent, IqTimepickerDemoComponent,
   IeCompatibilityComponent,BasicLayoutComponent,
   AngularSelectorComponent, IqNum2ChinesePipeComponent, InterfaceVsClassComponent,
-  ArrJsComponent, ObjJsComponent, StrJsComponent, CodeReviewComponent,SettingComponent
+  ArrJsComponent, ObjJsComponent, StrJsComponent, CodeReviewComponent,SettingComponent,
+  IqPersonSelectDemoComponent
 } from './index';
 
 const routes: Routes = [//定义路由
@@ -25,7 +26,7 @@ const routes: Routes = [//定义路由
       path: "widget",
       children: [
         { path: 't1', component: PrepareT1Component },
-        { path: 't2', component: PrepareT2Component },
+        { path: 'iq-person-select', component: IqPersonSelectDemoComponent },
         { path: 'iq-switcher', component: IqSwitcherPageDemoComponent },
         { path: 'iq-datepicker', component: IqDatepickerDemoComponent },
         { path: 'iq-timepicker', component: IqTimepickerDemoComponent },
