@@ -1,7 +1,13 @@
 export const environment = {
+<<<<<<< HEAD
   debounceTime:500,
   server:'/api/',
   production: true
+=======
+  production: true,
+  debounceTime:500,
+  server:'/cloudapi/'
+>>>>>>> 64cf5e2f25226588b50a3600bfd7ac5c14939cb6
 };
 
 export const PersonAPIConfig = {
