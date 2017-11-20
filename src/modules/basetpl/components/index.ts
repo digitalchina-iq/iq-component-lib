@@ -15,6 +15,7 @@ import { IqBreadcrumbDemoComponent } from './widgets/iq-breadcrumb/iq-breadcrumb
 import { LoadingDemoComponent } from './widgets/loading/loading.component';
 import { IqPagerDemoComponent } from './widgets/iq-pager/iq-pager.component';
 import { TabSwitchDemoComponent } from './widgets/tab-switch/tab-switch.component';
+import { IqPersonSelectDemoComponent } from './widgets/iq-person-select/iq-person-select.component';
 
 //directives
 import { AutoheightDemoComponent } from './directives/autoheight/autoheight.component';
@@ -79,7 +80,8 @@ export {
   ArrJsComponent,
   ObjJsComponent,
   StrJsComponent,
-  CodeReviewComponent
+  CodeReviewComponent,
+  IqPersonSelectDemoComponent
 };
 
 //模块内部Components列表
@@ -114,5 +116,6 @@ export let Basetpl_COMPONENTS =
   ArrJsComponent,
   ObjJsComponent,
   StrJsComponent,
-  CodeReviewComponent
+  CodeReviewComponent,
+  IqPersonSelectDemoComponent
 ];

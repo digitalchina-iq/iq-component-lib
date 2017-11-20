@@ -23,25 +23,25 @@ import { IqSelectComponent } from './widgets/iq-select/iq-select.component';
 import { IqBreadCrumbComponent } from './widgets/iq-breadcrumb/iq-breadcrumb.component';
 import { LoadingComponent } from './widgets/loading/loading.component';
 import { PagerPageComponent, Pager } from './widgets/iq-pager/iq-pager.component';
-// export { LoadingComponent, IqBreadCrumbComponent, IqDialogPersonSelectComponent, IqSwitcherComponent, ProgressBarComponent,
-// IqPersonSelectComponent, IqPopoverPersonSelectComponent, ImageUploadComponent, IqFileData, UserImageComponent, UserImageHeadComponent, UserImageHoverComponent,
-// DatePickerComponent, TimePickerComponent, DateTimeRelationComponent, DragComponent, HeaderComponent, IqTlrFrameComponent,
-// IqTbFrameComponent, IqRtWidgetComponent,
-// PageErrorComponent, PageNotFoundComponent,TestshowComponent,
-// PagerPageComponent, Pager, IqDatePickerComponent,FileUploadComponent};
+import { UserImageHeadComponent } from './widgets/user-image/user-image-head.component';
+import { UserImageComponent } from './widgets/user-image/user-image.component';
+import { IqPersonSelectComponent } from './widgets/iq-person-select/iq-person-select.component';
+import { IqDialogPersonSelectComponent } from './widgets/iq-person-select/iq-dialog-person-select.component';
+import { IqPopoverPersonSelectComponent } from './widgets/iq-person-select/iq-popover-person-select.component';
 
 export {
   IqTlrFrameComponent,IqTbFrameComponent,HeaderComponent,
     PageErrorComponent, PageNotFoundComponent,IqSwitcherComponent,ShowcodeComponent,ShowtemComponent,ShowitemoComponent,
     IqDatePickerComponent,ShowitemexampleComponent,FileUploadComponent,IqSelectComponent,IqBreadCrumbComponent,
     LoadingComponent,PagerPageComponent,Pager, IqTabComponent, IqTabIndexComponent, IqTabContentComponent,
-    IqTimePickerComponent
+    IqTimePickerComponent,UserImageHeadComponent,UserImageComponent,IqPersonSelectComponent,IqDialogPersonSelectComponent,IqPopoverPersonSelectComponent
 }
 
+export let SHARED_ENTRY_COMPONENTS = [IqDialogPersonSelectComponent];
 
 export let SHARED_COMPONENTS = [IqTlrFrameComponent,IqTbFrameComponent,HeaderComponent,
   PageErrorComponent, PageNotFoundComponent,IqSwitcherComponent,ShowcodeComponent,ShowtemComponent,ShowitemoComponent,
   IqDatePickerComponent,ShowitemexampleComponent,FileUploadComponent,IqSelectComponent,IqBreadCrumbComponent,
   LoadingComponent,PagerPageComponent, IqTabComponent, IqTabIndexComponent, IqTabContentComponent,
-  IqTimePickerComponent
+  IqTimePickerComponent,UserImageHeadComponent,UserImageComponent,IqPersonSelectComponent,IqDialogPersonSelectComponent,IqPopoverPersonSelectComponent
 ];

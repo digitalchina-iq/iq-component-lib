@@ -55,6 +55,7 @@ export class IndexComponent implements OnInit {
   view: any[] = [450, 300];
   view1: any[] = [1000, 400];
   // options
+  gradient: any;
 
   colorScheme = {
     domain: ['#618fb0', 'pink', '#C7B42C']

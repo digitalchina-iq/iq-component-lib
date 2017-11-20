@@ -61,42 +61,42 @@
   }
 
   .object-one {
-    top: 9px;
-    left: 9px; 
+    top: 4px;
+    left: 4px; 
   }
   .object-two {
-    top: 0px;
-    left: 30px; 
+    top: -5px;
+    left: 25px; 
     animation-delay: 0.1s;
   }
   .object-three {
-    top: 9px;
-    left: 51px;  
+    top: 4px;
+    left: 46px;  
     animation-delay: 0.2s; 
   }
   .object-four {
-    top: 30px;
-    left: 60px; 
+    top: 25px;
+    left: 55px; 
     animation-delay: 0.3s; 
   }
   .object-five {
-    top: 51px;
-    left: 51px; 
+    top: 46px;
+    left: 46px; 
     animation-delay: 0.4s; 
   }
   .object-six {
-    top: 60px;
-    left: 30px;
+    top: 55px;
+    left: 25px;
     animation-delay: 0.5s; 
   }
   .object-seven {
-    top: 51px;
-    left: 9px;
+    top: 46px;
+    left: 4px;
     animation-delay: 0.6s; 
   }
   .object-eight {
-    top: 30px;
-    left: 0px;
+    top: 25px;
+    left: -5px;
     animation-delay: 0.7s; 
   }
 }
@@ -124,21 +124,23 @@
 }
 
 .round1{
-  width: 120px!important;
+  width: 90px!important;
+  height: 20px!important;
   .object{
+    position: absolute;
+    top: 0;
     width: 20px;
     height: 20px;
     background-color: #57b9f8;
-    float: left;
-    margin-right: 20px;
-    margin-top: 20px;
     border-radius: 50%;
     animation: round1 1.5s infinite;
   }
   .object-two {
+    left: 35px;
     animation-delay: 0.25s;
   }
   .object-three {
+    left: 70px;
     animation-delay: 0.5s;
   }
 
