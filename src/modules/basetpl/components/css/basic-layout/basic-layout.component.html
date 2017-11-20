@@ -187,7 +187,8 @@
            <p style="margin-left:40px;"><img src="./assets/img/6.png" alt="" width="693px"></p>
           <p>● 实现的方式：</p>
           <p style="margin-left:40px;">
-            <span>① float+margin（两侧定宽，中间自适应）</span>
+            <span>① float+margin（两侧定宽，中间自适应）</span><br/>
+            <span style="margin-left: 11px;">缺点：1. 当宽度小于左右两边宽度之和时，右侧栏会被挤下去；2. html的结构不正确</span>
             <showcode>
                 <div class="shows" style="margin-left:-130px;">
                   &lt;body&gt;
@@ -216,7 +217,9 @@
                   ]
                 </div>
             </showcode>
-            <span style="display:inline-block;padding-top:10px">② position+margin（两侧定宽，中间自适应）</span>
+            <span style="display:inline-block;padding-top:10px">② position+margin（两侧定宽，中间自适应）,左右两栏使用position进行定位，中间栏使用margin进行定位</span><br>
+            <span style="margin-left: 11px;">优点：html结构正常。</span><br/>
+            <span style="margin-left: 11px;">缺点：当父元素有内外边距时，会导致中间栏的位置出现偏差</span>
             <showcode>
                 <div class="shows" style="margin-left:-130px;">
                   &lt;body&gt;
@@ -249,7 +252,34 @@
                   ]
                 </div>
             </showcode>
-            
+            <span style="display:inline-block;padding-top:10px">③  flex布局</span>
+             <showcode>
+                <div class="shows" style="margin-left:-130px;">
+                  &lt;div class="wrapper"&gt;
+                  &lt;div class="left"&gt;左&lt;/div&gt;
+                  &lt;div class="right"&gt;右&lt;/div&gt;
+                  &lt;div class="center"&gt;中&lt;/div&gt;
+                  &lt;/div&gt;
+                  .wrapper[
+                      display: flex;
+                  ]
+                  .left[
+                      width: 200px;
+                      height: 300px;
+                      background: green;
+                  ]
+                  .center[
+                      width: 100%;
+                      background: red;
+                      marign: 0 200px;
+                  ]
+                  .right[
+                      width: 200px;
+                      height: 300px;
+                      background: yellow;
+                  ]   
+                </div>
+            </showcode>
             <span style="display:inline-block;padding-top:10px">③ position+margin（两侧自动，中间定宽）</span><br/>
             <showcode>
               <div class="shows" style="margin-left:-130px;">

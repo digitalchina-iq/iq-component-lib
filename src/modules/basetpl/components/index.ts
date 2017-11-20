@@ -47,6 +47,8 @@ import { StrJsComponent } from './js/str/str.component';
 //code-review
 import { CodeReviewComponent } from './code-review/code-review.component';
 
+//setting
+import { SettingComponent } from './setting/setting.component';
 //暴露出所有Component
 export { 
   BasetplContainerComponent,
@@ -79,7 +81,8 @@ export {
   ArrJsComponent,
   ObjJsComponent,
   StrJsComponent,
-  CodeReviewComponent
+  CodeReviewComponent,
+  SettingComponent
 };
 
 //模块内部Components列表
@@ -114,5 +117,6 @@ export let Basetpl_COMPONENTS =
   ArrJsComponent,
   ObjJsComponent,
   StrJsComponent,
-  CodeReviewComponent
+  CodeReviewComponent,
+  SettingComponent
 ];
