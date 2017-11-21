@@ -10,7 +10,7 @@
       </p>
 
       <div style="margin-top:35px;">
-        <h3>左侧补位指定字符到指定长度</h3>
+        <h3>补位指定字符到指定长度</h3>
         <div style="padding:0px 10px;">
           <showcode>
             <div class="shows">
@@ -24,6 +24,9 @@ function leftpad(str, len, ch) {{'{'}}
   {{'}'}}
   return str;
 {{'}'}}
+
+String.prototype.padStart(len, str);//es7
+String.prototype.padEnd(len, str);//es7
             </div>
           </showcode>
         </div>
