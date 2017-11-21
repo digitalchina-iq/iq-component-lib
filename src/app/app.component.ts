@@ -20,6 +20,9 @@ export class AppComponent implements OnInit {
 
 
     $("body").css("background","linear-gradient(135deg,"+scolor+" 0,"+ecolor+" 100%)");
+
+
+
     //  console.log(this.av)
     // var TestObject = AV.Object.extend('TestObject');
     // var testObject = new TestObject();
@@ -28,5 +31,7 @@ export class AppComponent implements OnInit {
     // }).then(function(object) {
     //   alert('LeanCloud Rocks!');
     // })
+
+    
   }
 }
