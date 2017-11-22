@@ -19,7 +19,7 @@ export class AppComponent implements OnInit {
 
 
 
-    $("body").css("background","linear-gradient(135deg,"+scolor+" 0,"+ecolor+" 100%)");
+    $("body").css("background","linear-gradient(to right,"+scolor+" 0,"+ecolor+" 100%)");
 
 
 
@@ -32,6 +32,6 @@ export class AppComponent implements OnInit {
     //   alert('LeanCloud Rocks!');
     // })
 
-    
+
   }
 }

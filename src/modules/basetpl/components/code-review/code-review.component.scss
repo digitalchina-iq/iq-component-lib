@@ -2,7 +2,8 @@ $border: 1px solid #fff;
 
 .table-wrapper{
   position: relative;
-  width: calc(100% - 240px);
+  // width: calc(100% - 240px);
+  width:calc(100%);
   overflow: auto;
 
   button{

@@ -50,16 +50,16 @@
 						<a href="#"><i class="iqon-info-circle-o"></i></a>
 					</li>
 					<li class="divider-vertical"></li>
-			  		<li class="dropdown" routerLinkActive="active">
-			  			<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+			  		<li class="dropdown">
+			  			<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
 							  <img style="height:30px;" alt="" src="assets/img/user-profile-pic-0.png" />
 							  <span style="font-size:14px;" class="hidden-phone">{{nickname}}</span>
 			  			</a>
 			  			<ul class="dropdown-menu">
-							<li><a href="layout_user_profile.html"><i class="iqon-tag-q"></i> My Profile</a></li>
-							<li routerLinkActive="active"><a routerLink="/index/setting"><i class="iqon-tag-q"></i> Setting</a></li>
+							<li><a href="javaScript:void(0)"><i class="iqon-tag-q"></i>&nbsp;&nbsp;我的基本信息</a></li>
+							<li ><a routerLink="/index/setting"><i class="iqon-tag-q"></i>&nbsp;&nbsp;设置</a></li>
 							<li class="divider"></li>
-							<li (click)="logout()"><a href="javaScript:void(0);"><i class="iqon-tag-q"></i> Logout</a></li>
+							<li (click)="logout()"><a href="javaScript:void(0);"><i class="iqon-tag-q"></i>&nbsp;&nbsp;退出</a></li>
 						</ul>
 			  		</li>
 				</ul>
