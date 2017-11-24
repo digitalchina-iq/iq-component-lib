@@ -15,7 +15,7 @@
         <div style="padding:0px 10px;">
           <p>原因: &nbsp;&nbsp;<code>table</code>宽度不够或者未设置宽度导致其出现错位</p>
           <p>解决: &nbsp;&nbsp;为<code>table</code>增加宽度</p>
-          
+          <img src="./assets/img/11.png">
           <showcode>
             <img src="./assets/img/1.jpg" alt="">
           </showcode>
@@ -29,6 +29,7 @@
           <p>解决: &nbsp;&nbsp;使子元素宽度之和等于父元素的宽度.</p>
           <p>过短原因: &nbsp;&nbsp;ie10无法识别自定义指令标签是否为块元素标签,默认为行元素标签.</p>
           <p>解决: &nbsp;&nbsp;将自定义指令标签设置为:  <code>display:inline-block;</code></p>
+          <img src="./assets/img/10.png">
           <showcode>
             <div class="shows"></div>
           </showcode>
@@ -39,6 +40,7 @@
         <h3>Input输入框添加,placeholder内容后颜色显示问题</h3>
         <div style="padding:0px 10px;">
           <p>解决: <code>input:-ms-input-placeholder color:#888;</code>    //IE</p>
+          <img src="./assets/img/12.png">
           <showcode>
             <div class="shows"></div>
           </showcode>
@@ -50,6 +52,7 @@
         <div style="padding:0px 10px;">
           <p>原因:&nbsp;&nbsp;<code>boder-collapse:collapse</code>此时如果可能,边框会合并为一个单一的边框。会忽略 <code>border-spacing</code> 和 <code>empty-cells</code> 属性.</p>
           <p>解决:&nbsp;&nbsp;<code>border-collapse: separate</code>此时边框会被分开。不会忽略 <code>border-spacing</code> 和 <code>empty-cells</code> 属性.</p>
+          <img src="./assets/img/13.png">
           <showcode>
             <div class="shows">
             </div>
@@ -57,24 +60,15 @@
         </div>
       </div>
       <div style="margin-top:35px;">
-        <h3>浮动ie产生的双倍距离</h3>
-        <div style="padding:0px 10px;">
-          <p>原因: FF 和 IE 对 BOX 理解的差异导致设为浮动float的div在ie下margin加倍.</p>
-          <p>解决: &nbsp;&nbsp;对浮动元素添加 display:inline.</p>
-          <showcode>
-              <div class="shows" style="margin-left:-130px;">
-                  <span>#box{{{float:left; width:100px; margin:0 0 0 100px; //这种情况之下IE会产生200px的距离</span>
-                  <span>display:inline; //使浮动忽略}}}</span>
-              </div>
-          </showcode>
-        </div>
-      </div>
-      <div style="margin-top:35px;">
         <h3>IE8以及IE8以上的版本的Hack写法</h3>
         <div style="padding:0px 10px;">
           <p>问题:&nbsp;&nbsp;ie浏览器显示有时会与谷歌等浏览器显示不一致(如滚动条宽度),此时需要针对ie浏览器设置特殊的css样式.</p>
-          <p>解决:&nbsp;&nbsp;在css属性值后添加\0,写出只能ie8以上版本才能识别的css代码.</p>
-          <p style="padding-left:35px">Selector[property: value\0;]</p>
+          <p>解决:&nbsp;&nbsp;在css属性值后添加<code>\0</code>,写出只能ie8以上版本才能识别的css代码.</p>
+          <p style="padding-left:35px">Selector {{'{'}} property: value\0; {{'}'}} </p>
+          <p style="display: flex;justify-content: space-between;height: 250px;">
+            <img src="./assets/img/14.png" width="46%">
+            <img src="./assets/img/15.png" width="46%">
+          </p>
           <showcode>
             <div class="shows"></div>
           </showcode>

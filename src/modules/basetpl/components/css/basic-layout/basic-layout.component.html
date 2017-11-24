@@ -14,14 +14,13 @@
         <h3>定位(position)</h3>
         <div style="padding:0px 10px;">
           <p>六大属性值:</p>
-          <p>● static：默认值。没有定位，元素出现在正常的流中（忽略 top, bottom, left, right 或者 z-index 声明）。</p>
-          <p>● relative: 相对定位。元素框相对于之前正常文档流中的位置发生偏移，并且原先的位置仍然被占据。发生偏移的时候，可能会覆盖其他元素。</p>
-          <p>● absolute: 绝对定位。元素框不再占有文档流位置，并且相对于最近一级外层元素position不为static的元素进行偏移.</p>
-          <p>● fixed：固定定位。元素框不再占有文档流位置，并且相对于视窗进行定位.</p>
-          <p>● sticky：粘性定位,css3新属性,它相当于relative和fixed混合。在目标区域在屏幕中时,会被当作是relative，相对于原来的位置进行偏移；而当页面滚动超出目标区域时，会被当成fixed定位，
-            <span style="margin-left:52px;">相对于视口进行定位。现在只有webkit nightly版本和chrome 开发版(Chrome 23.0.1247.0+ Canary)才开始支持它。</span>
+          <p>● <code>static</code>：默认值。没有定位，元素出现在正常的流中.</p>
+          <p>● <code>relative</code>: 相对定位。元素框相对于之前正常文档流中的位置发生偏移，并且原先的位置仍然被占据。发生偏移的时候，可能会覆盖其他元素。</p>
+          <p>● <code>absolute</code>: 绝对定位。元素框不再占有文档流位置，并且相对于最近一级外层元素position不为static的元素进行偏移.</p>
+          <p>● <code>fixed</code>：固定定位。元素框不再占有文档流位置，并且相对于视窗进行定位.</p>
+          <p style="display: flex;">● <code style="height: 22px;">sticky</code>：<span>粘性定位,css3新属性,它相当于relative和fixed混合。在目标区域在屏幕中时,会被当作是relative，相对于原来的位置进行偏移；而当页面滚动超出目标区域时，会被当成fixed定位,相对于视口进行定位。现在只有webkit nightly版本和chrome 开发版(Chrome 23.0.1247.0+ Canary)才开始支持它。</span>
           </p>
-          <p>● inherit : 规定应该从父元素继承 position 属性的值。</p>
+          <p>● <code>inherit</code> : 规定应该从父元素继承 position 属性的值。</p>
           <showcode>
             <div class="shows" style="margin-left:-130px;">
                   <span>.sticky [position: -webkit-sticky; position:sticky; top: 15px;  ]</span>
@@ -34,10 +33,10 @@
       <div style="margin-top:35px;">
         <h3>尺寸（size）</h3>
         <div style="padding:0px 10px;">
-          <p>● px: CSS像素是Web编程的概念，指的是CSS样式代码中使用的逻辑像素。</p>
-          <p>● 百分比：百分比的参照物是父元素，50%相当于父元素width的50%</p>
-          <p>● rem: 这个对于复杂的设计图相当有用，它是相对于html的font-size的大小</p>
-          <p>● em：是一个相对的单位，相对于父元素的font-size，但并不常用</p>
+          <p>● <code>px</code>: CSS像素是Web编程的概念，指的是CSS样式代码中使用的逻辑像素。</p>
+          <p>● <code>百分比</code>：百分比的参照物是父元素，50%相当于父元素width的50%</p>
+          <p>● <code>rem</code>: 这个对于复杂的设计图相当有用，它是相对于html的font-size的大小</p>
+          <p>● <code>em</code>：是一个相对的单位，相对于父元素的font-size，但并不常用</p>
           <showcode>
             <div class="shows"></div>
           </showcode>
@@ -53,13 +52,12 @@
           <p style="margin-left:40px;"><img src="./assets/img/1.jpg" alt=""></p>
           <p>● 属性: </p>
           <p style="margin-left:40px">
-              <span>① left ：元素向左浮动。</span><br>
-              <span>② right ：元素向右浮动。</span><br>
-              <span>③ none ：默认值。</span><br>
-              <span>④ inherit ：从父元素继承float属性。</span>
+              <span>① <code>left</code> ：元素向左浮动。</span><br>
+              <span>② <code>right</code> ：元素向右浮动。</span><br>
+              <span>③ <code>none</code> ：默认值。</span><br>
+              <span>④ <code>inherit</code> ：从父元素继承float属性。</span>
           </p>
           <p>● 清除浮动: 浮动元素对于布局来说，是特别危险的。因为你可能这一块做过浮动，但未做清除，那么将会造成高度塌陷的问题。</p>
-          <!--<p>对于CSS的清除浮动(clear)，一定要牢记：这个规则只能影响使用清除的元素本身，不能影响其他元素。</p>-->
           <p style="margin-left: 11px;">我们希望看到是这样的</p>
           <p style="margin-left:40px;"><img src="./assets/img/2.png" alt=""></p>
           <p style="margin-left: 11px;">但结果却是这样的</p>
@@ -92,13 +90,13 @@
               
               <span>③ 父元素添加高度。</span><br>
               <span style="margin-left: 15px;">弊端：工作中很多都是自适应的。父元素添加高度往往不可行。</span><br>
-              <span>④ 父元素设置overflow:hidden</span><br>
+              <span>④ 父元素设置<code>overflow:hidden</code></span><br>
               <span style="margin-left: 15px;">弊端：当内容过多时导致内容被隐藏，无法显示需要溢出的元素。</span><br>
-              <span>⑤ 父元素也设overflow:auto;</span><br>
+              <span>⑤ 父元素也设<code>overflow:auto</code>;</span><br>
               <span style="margin-left: 15px;">弊端：多个嵌套后，firefox某些情况会造成内容全选；IE中 mouseover 造成宽度改变时会出现最外层模块有滚动条等，firefox早期版本会无故产生focus等,</span><br>
               <span>⑥ 父元素也设置浮动</span><br>
               <span style="margin-left: 15px;">弊端：一定会因为父元素也发生了浮动，从而产生新的问题。</span><br>
-              <span>⑦ 父元素设置display:table</span><br>
+              <span>⑦ 父元素设置<code>display:table</code></span><br>
               <span style="margin-left: 15px;">弊端：盒模型被改变，会因此造成一系列问题。得不偿失</span><br>
           </p>
         </div>
@@ -111,68 +109,68 @@
           <p style="margin-left:40px;"><img src="./assets/img/4.png" alt="" width="693px"></p>
           <p>● 实现的方式：</p>
           <p style="margin-left:40px;">
-            <span>① float+margin（一侧定宽，一侧自动）</span>
+            <span>① <code>float+margin</code>（一侧定宽，一侧自动）</span>
             <showcode>
               <div class="shows" style="margin-left:-130px;">
                 &lt;body&gt;
                   &lt;div class="left"&gt;定宽&lt;/div&gt;
                   &lt;div class="right"&gt;自适应&lt;/div&gt;
                 &lt;/body&gt;
-                .left[
+                .left{{'{'}}
                     width: 200px;
                     height: 600px;
                     background: yellow;
                     float: left;
                     text-align: center;
                     line-height: 600px;
-                  ]
-                .right[
+                  {{'}'}}
+                .right{{'{'}}
                   margin-left: 210px;
                   height: 600px;
                   background: red;
                   text-align: center;
                   line-height: 600px;
-                ]
+                {{'}'}}
               </div>
             </showcode>
-            <span style="display:inline-block;padding-top:10px">② position+margin（一侧定宽，一侧自动）</span><br/>
+            <span style="display:inline-block;padding-top:10px">② <code>position+margin</code>（一侧定宽，一侧自动）</span><br/>
             <showcode>
               <div class="shows" style="margin-left:-130px;">
                 &lt;body&gt;
                   &lt;div class="left"&gt;定宽&lt;/div&gt;
                   &lt;div class="right"&gt;自适应&lt;/div&gt;
                 &lt;/body&gt;
-                .left[
+                .left{{'{'}}
                     width: 200px;
                     height:600px;
                     background: yellow;
                     position: absolute;
-                  ]
-                .right[
+                  {{'}'}}
+                .right{{'{'}}
                     margin-left: 210px;
                     height: 600px;
                     background: red;
-                ]
+                {{'}'}}
               </div>
             </showcode>
-            <span style="display:inline-block;padding-top:10px">③ float+overflow:hidden（一侧定宽，一侧自动）</span><br/>
+            <span style="display:inline-block;padding-top:10px">③ <code>float+overflow:hidden</code>（一侧定宽，一侧自动）</span><br/>
             <showcode>
               <div class="shows" style="margin-left:-130px;">
                 &lt;body&gt;
                   &lt;div class="left"&gt;定宽&lt;/div&gt;
                   &lt;div class="right"&gt;自适应&lt;/div&gt;
                 &lt;/body&gt;
-                .left[
+                .left{{'{'}}
                     width: 200px;
                     height:600px;
                     background: yellow;
                     float:left;
-                  ]
-                .right[
+                  {{'}'}}
+                .right{{'{'}}
                     overflow: hidden;
                     height: 600px;
                     background: red;
-                ]
+                {{'}'}}
               </div>
             </showcode>
             <span style="display:inline-block;padding:10px 0">实现结果:</span><br/>
@@ -187,7 +185,7 @@
            <p style="margin-left:40px;"><img src="./assets/img/6.png" alt="" width="693px"></p>
           <p>● 实现的方式：</p>
           <p style="margin-left:40px;">
-            <span>① float+margin（两侧定宽，中间自适应）</span><br/>
+            <span>① <code>float+margin</code>（两侧定宽，中间自适应）</span><br/>
             <span style="margin-left: 11px;">缺点：1. 当宽度小于左右两边宽度之和时，右侧栏会被挤下去；2. html的结构不正确</span>
             <showcode>
                 <div class="shows" style="margin-left:-130px;">
@@ -196,28 +194,28 @@
                   &lt;div class="right"&gt;右&lt;/div&gt;
                   &lt;div class="center"&gt;中&lt;/div&gt;
                   &lt;/body&gt;
-                  .left,.right,.center [
+                  .left,.right,.center {{'{'}}
                       height: 200px; 
                       line-height:200px; 
                       text-align:center; 
-                  ]
-                  .left [
+                  {{'}'}}
+                  .left {{'{'}}
                       float:left; 
                       width: 200px; 
                       background-color: yellow;
-                  ]
-                  .right [
+                  {{'}'}}
+                  .right {{'{'}}
                       float:right; 
                       width: 200px; 
                       background-color: yellow;
-                  ]
-                  .center [
+                  {{'}'}}
+                  .center {{'{'}}
                       margin: 0 210px; 
                       background-color: red;
-                  ]
+                  {{'}'}}
                 </div>
             </showcode>
-            <span style="display:inline-block;padding-top:10px">② position+margin（两侧定宽，中间自适应）,左右两栏使用position进行定位，中间栏使用margin进行定位</span><br>
+            <span style="display:inline-block;padding-top:10px">② <code>position+margin</code>（两侧定宽，中间自适应）,左右两栏使用position进行定位，中间栏使用margin进行定位</span><br>
             <span style="margin-left: 11px;">优点：html结构正常。</span><br/>
             <span style="margin-left: 11px;">缺点：当父元素有内外边距时，会导致中间栏的位置出现偏差</span>
             <showcode>
@@ -227,32 +225,32 @@
                   &lt;div class="right"&gt;右&lt;/div&gt;
                   &lt;div class="center"&gt;中&lt;/div&gt;
                   &lt;/body&gt;
-                  .left,.right,.center [
+                  .left,.right,.center {{'{'}}
                       height: 200px; 
                       line-height:200px; 
                       text-align:center; 
-                  ]
-                  .left [
+                  {{'}'}}
+                  .left {{'{'}}
                       position:absolute; 
                       top:0; 
                       left:0; 
                       width: 200px; 
                       background-color: yellow;
-                  ]
-                  .right [
+                  {{'}'}}
+                  .right {{'{'}}
                       position:absolute;
                       top:0; 
                       right:0;
                       width: 200px; 
                       background-color: yellow;
-                  ]
-                  .center [
+                  {{'}'}}
+                  .center {{'{'}}
                       margin: 0 210px; 
                       background-color: red;
-                  ]
+                  {{'}'}}
                 </div>
             </showcode>
-            <span style="display:inline-block;padding-top:10px">③  flex布局</span>
+            <span style="display:inline-block;padding-top:10px">③  <code>flex</code>布局</span>
              <showcode>
                 <div class="shows" style="margin-left:-130px;">
                   &lt;div class="wrapper"&gt;
@@ -260,27 +258,27 @@
                   &lt;div class="right"&gt;右&lt;/div&gt;
                   &lt;div class="center"&gt;中&lt;/div&gt;
                   &lt;/div&gt;
-                  .wrapper[
+                  .wrapper{{'{'}}
                       display: flex;
-                  ]
-                  .left[
+                  {{'}'}}
+                  .left{{'{'}}
                       width: 200px;
                       height: 300px;
                       background: green;
-                  ]
-                  .center[
+                  {{'}'}}
+                  .center{{'{'}}
                       width: 100%;
                       background: red;
                       marign: 0 200px;
-                  ]
-                  .right[
+                  {{'}'}}
+                  .right{{'{'}}
                       width: 200px;
                       height: 300px;
                       background: yellow;
-                  ]   
+                  {{'}'}}   
                 </div>
             </showcode>
-            <span style="display:inline-block;padding-top:10px">③ position+margin（两侧自动，中间定宽）</span><br/>
+            <span style="display:inline-block;padding-top:10px">③ <code>position+margin</code>（两侧自动，中间定宽）</span><br/>
             <showcode>
               <div class="shows" style="margin-left:-130px;">
                 &lt;div class="m-center"&gt;中&lt;/div&gt;
@@ -290,7 +288,7 @@
                 &lt;div class="right"&gt;
                     &lt;div class="main"&gt;右&lt;/div&gt;
                 &lt;/div&gt;
-                .m-center [ 
+                .m-center {{'{'}} 
                   z-index: 2; 
                   background-color: #666; 
                   width: 500px; 
@@ -298,26 +296,26 @@
                   position: absolute;
                   top: 0; 
                   left: 50%; 
-                ]
-                .left, .right [ 
+                {{'}'}}
+                .left, .right {{'{'}} 
                   z-index: 1; 
                   position: absolute; 
                   top: 0; 
                   width: 50%; 
-                ]
-                .left [ left: 0; ]
-                .left .main [ 
+                {{'}'}}
+                .left {{'{'}} left: 0; {{'}'}}
+                .left .main {{'{'}} 
                   margin-right: 250px; 
                   background-color: #ccc;
-                ]
-                .right [ right: 0; ]
-                .right .main [ 
+                {{'}'}}
+                .right {{'{'}} right: 0; {{'}'}}
+                .right .main {{'{'}} 
                   margin-left: 250px; 
                   background-color: #ccc; 
-                ]
+                {{'}'}}
               </div>
             </showcode>
-            <span style="display:inline-block;padding-top:10px">④ float+position+margin（两侧自动，中间定宽）</span>
+            <span style="display:inline-block;padding-top:10px">④ <code>float+position+margin</code>（两侧自动，中间定宽）</span>
             <showcode>
                 <div class="shows" style="margin-left:-130px;">
                   &lt;div class="warp1"&gt;
@@ -327,30 +325,30 @@
                       &lt;div class="m-box m-box2"&gt;右&lt;/div&gt;
                   &lt;/div&gt;
                   &lt;div class="m-box m-box3"&gt;中&lt;/div&gt;
-                  .left,.right,.center [
+                  .left,.right,.center {{'{'}}
                       height: 200px; 
                       line-height:200px; 
                       text-align:center; 
                       background:yellow;
-                  ]
-                  .warp1[
+                  {{'}'}}
+                  .warp1{{'{'}}
                     float:left; 
                     width:50%;
                     margin-right:-3px;
-                  ]
-                  .warp2[
+                  {{'}'}}
+                  .warp2{{'{'}}
                     margin-left:50%; 
                     text-align:right; 
                     margin-left:0; 
                     zoom:1;
-                  ]
-                  .m-box1[
+                  {{'}'}}
+                  .m-box1{{'{'}}
                     margin-right:100px;
-                  ]
-                  .m-box2[
+                  {{'}'}}
+                  .m-box2{{'{'}}
                     margin-left:100px;
-                  ]
-                  .m-box3[
+                  {{'}'}}
+                  .m-box3{{'{'}}
                     background:red;
                     width:200px; 
                     position:absolute; 
@@ -358,7 +356,7 @@
                     margin-left:-100px; 
                     top:0; 
                     z-index:2;
-                  ]
+                  {{'}'}}
                 </div>
             </showcode>
             <span style="display:inline-block;padding:10px 0">实现结果:</span><br/>
@@ -400,6 +398,104 @@
       </ng-template>
     </showitemo>
 
+  </ng-template>
+  <!-- stitemexample -->
+  <ng-template [ngIf]="true" class="stitemexample">
+
+    <showitemexample>
+
+      <ng-template [ngIf]="true" class="stitempcon">
+        <div class="showhow">
+
+          <p>简单示例：两栏布局,左侧固定,右侧自适应.</p>
+          <div style="width: 70%">
+            <img src="./assets/img/8.png">
+          </div>
+        </div>
+      </ng-template>
+
+      <ng-template [ngIf]="true" class="stitemphtml">
+
+        <pre iqhighlight>
+          <code class="html">
+            &lt;div class="wrap"&gt;
+              &lt;div class="g-hd"&gt;DBOMS头部&lt;/div&gt;
+              &lt;div class="g-hdp"&gt;
+                &lt;div class="g-list"&gt;左侧导航&lt;/div&gt;
+                &lt;div class="g-right"&gt;
+                  &lt;div class="m-boardtop"&gt;面包屑导航&lt;/div&gt;
+                  &lt;div class="m-overclass"&gt;主要内容&lt;/div&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          </code>
+        </pre>
+
+      </ng-template>
+
+      <ng-template [ngIf]="true" class="stitempts">
+        <pre iqhighlight>
+          <code  class="javascript">
+          </code>
+        </pre>
+      </ng-template>
+
+      <ng-template [ngIf]="true" class="stitempcss">
+        <pre iqhighlight>
+          <code class="css">
+            .g-hd{{'{'}}
+              position: absolute;
+              top: 0;
+              width: 100%;
+              min-width: 1200px;
+              height: 61.5px;
+              line-height: 61.5px;
+              padding: 0 25px;
+              background-color: #57b9f8;
+            {{'}'}}
+
+            .g-hdp{{'{'}}
+              position: absolute;
+              top: 61.5px;
+              width: 100%;
+              min-width: 1200px;
+              height: calc(100vh - 61.5px);
+              .g-list{{'{'}}
+                  float: left;
+                  width: 240px;
+                  height: 100%;
+                  min-height: 395px;
+                  background: #fff none repeat scroll 0 0;
+                  border-right: 1px solid #e2e2e2;
+                  background: crimson;
+              {{'}'}}
+              .g-right{{'{'}}
+                  margin-left: 240px;
+                  height: 100%;
+                  min-width: 915px;
+                  overflow: auto;
+                  .m-boardtop{{'{'}}
+                      width: 100%;
+                      height: 50px;
+                      line-height: 50px;
+                      padding: 0 20px 0 25px;
+                      background: #f5f8fb none repeat scroll 0 0;
+                      border-bottom: 1px solid #e2e2e2;
+                  {{'}'}}
+                  .m-overclass{{'{'}}
+                      min-height: calc(100vh - 155px);
+                      padding: 10px 20px;
+                      margin: 20px;
+                      background: blueviolet;
+                  {{'}'}}
+              {{'}'}}
+            {{'}'}}
+
+          </code>
+        </pre>
+      </ng-template>
+
+    </showitemexample>
   </ng-template>
 
   </showtem>
