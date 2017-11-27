@@ -12,8 +12,6 @@ import { AppComponent } from './app.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { CoreModule } from 'core/core.module';
 
-import { LoadingModule,ANIMATION_TYPES } from 'ngx-loading';
-
 @NgModule({
   declarations: [
     AppComponent
@@ -25,12 +23,6 @@ import { LoadingModule,ANIMATION_TYPES } from 'ngx-loading';
     CoreModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    LoadingModule.forRoot({
-      // animationType: ANIMATION_TYPES.threeBounce,
-      // backdropBorderRadius: '10px',
-      // primaryColour: '#ffffff', secondaryColour: '#ffffff', tertiaryColour: '#ffffff'
-         backdropBackgroundColour: 'rgba(255,255,255,0.2)'
-    }),
     ModalModule.forRoot()
   ],
   providers: [],
