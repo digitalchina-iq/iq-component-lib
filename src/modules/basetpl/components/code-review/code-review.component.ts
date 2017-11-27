@@ -4,6 +4,7 @@ import { flyIn } from 'animations/fly-in';
 import * as moment from 'moment';
 
 import { environment } from 'environments/environment';
+import { WindowService } from 'core';
 
 declare var window;
 
@@ -45,7 +46,7 @@ export class CodeReviewComponent implements OnInit {
   recordItem: Record;
   users: any[];
 
-  constructor(private http: Http){}
+  constructor(private http: Http, private windowService: WindowService){}
 
   ngOnInit() {
     this.recordItem = new Record();
@@ -88,18 +89,25 @@ export class CodeReviewComponent implements OnInit {
   //获取并设置非空列表
   getNotBlankList() {
     let arr = ['isrows','isnotes','isindent','isline','isorder','isalias','isseparate','isconst','isconstructor','isbasic'];
-    
+    let validArr = [];
     arr.forEach(item => {
-      let tempArr = this.recordItem[item].filter(p => p.filename);
+      let tempArr = this.recordItem[item].filter(p => p.filename && p.filename !== '是');
+      validArr.push(tempArr.some(v => v.filename && !v.userid));
       this.recordItem[item] = tempArr.length ? tempArr : [new RecordItem()];
     });
-
+    
     this.recordItem.createdAt = undefined;
+
+    return !validArr.some(item => item);
+
   }
 
   //提交数据
   postData() {
-    this.getNotBlankList();
+    if(!this.getNotBlankList()){
+      this.windowService.alert({message: '请选择文件对应的人员', type: 'fail'});
+      return;
+    }
 
     this.http.post(environment.server + 'classes/Cr', this.recordItem).toPromise().then(response => response.json()).then(data => {
       this.getData();
@@ -108,7 +116,10 @@ export class CodeReviewComponent implements OnInit {
 
   //更新数据
   putData() {
-    this.getNotBlankList();
+    if(!this.getNotBlankList()){
+      this.windowService.alert({message: '请选择文件对应的人员', type: 'fail'});
+      return;
+    }
 
     this.http.put(environment.server + 'classes/Cr/' + this.objId, this.recordItem).toPromise().then(response => response.json()).then(data => {
       this.getData();
