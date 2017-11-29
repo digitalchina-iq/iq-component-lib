@@ -1,0 +1,147 @@
+$border: 1px solid #fff;
+
+ul>li{
+  list-style: none;
+}
+
+ol>li{
+  margin-left: 20px;
+}
+
+.row-fluid{
+  position: relative;
+  min-height: 300px;
+}
+
+.tab-index{
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  align-items: flex-end;
+  padding: 0 10px;
+  height: 40px;
+
+  li{
+    position: relative;
+    flex-grow: 1;
+    flex-basis: 1000px;
+    margin: 0 10px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    background: #f1f1f1;
+    color: #4a4a4a;
+    text-overflow: ellipsis;
+    cursor: pointer;
+    transition: all .5s;
+    z-index: 2;
+
+    &::after, &::before{
+      content: '';
+      display: block;
+      position: absolute;
+      top: 0;
+      width: 30px;
+      height: 30px;
+      background: #f1f1f1;
+      transition: all .5s;
+      z-index: -1;
+    }
+
+    &::before{
+      left: -12px;
+      transform: skew(-30deg);
+      border-left: 2px solid #000;
+    }
+
+    &::after{
+      right: -12px;
+      transform: skew(30deg);
+    }
+
+    &.active{
+      height: 40px;
+      background: #9ac847;
+      color: #fff;
+      line-height: 40px;
+      font-weight: bold;
+      z-index: 3;
+
+      &::before,&::after{
+        height: 40px;
+        background: #9ac847;
+        border: none;
+      }
+    }
+  }
+}
+
+.tab-content{
+  margin: 0;
+  padding: 0;
+}
+
+table{
+  width: 100%;
+
+  thead>tr>th{
+    border: $border;
+  }
+  tbody>tr>td{
+    border: $border;
+  }
+}
+
+.new-record{
+  padding: 20px;
+  border: $border;
+
+  >div{
+    margin: 10px 0;
+
+    label{
+      cursor: default;
+    }
+    input{
+      border: $border!important;
+    }
+  }
+
+  >div.date{
+
+    /deep/ .my-datepicker {
+      margin-left: 20px;
+      width: 300px;
+
+      .m-input{
+        color: #fff;
+        background: rgba(0,0,0,.2);
+        border: $border!important;
+      }
+    }
+  }
+
+  >div.record-plan{
+
+    .content{
+      width: 400px;
+    }
+
+    .progress{
+      width: 60px;
+    }
+  }
+
+  >div.degree{
+    width: 100px;
+
+    >input{
+      margin-left: 20px;
+    }
+  }
+
+  .submit-button{
+    text-align: center;
+    margin-bottom: 20px;
+  }
+}

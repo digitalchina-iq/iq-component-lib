@@ -1,0 +1,90 @@
+<div [@flyIn]="'in'">
+  <div id="content">
+    <div class="container-fluid">
+        <h1 class="page-title">计划跟踪<small>一次有趣的跟踪</small></h1>
+        <div class="row-fluid">
+          <loading [show]="loading" type="round2" [style]="{background:'rgba(0,0,0,0)'}"></loading>
+          <div class="widget" *ngIf="planList.length">
+            <iq-tab tabActiveClass="active" (onTab)="getUserId($event)">
+              <ul class="tab-index">
+                <li *ngFor="let item of planList" [tabIndex]="item.objectId">{{item.username}}</li>
+              </ul>
+              <div class="tab-content">
+                <div *ngFor="let item of planList" [tabContent]="item.objectId">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>日期</th>
+                        <th>上次任务</th>
+                        <th>完成情况</th>
+                        <th>本次计划</th>
+                        <th>预计完成</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let plan of item.file">
+                        <td width="6%">{{plan.time}}</td>
+                        <td width="44%">
+                          <ol>
+                            <li *ngFor="let pre of plan.thisrecord">{{pre.content}}{{pre.progress?'('+pre.progress+')':''}}</li>
+                          </ol>
+                        </td>
+                        <td width="3%">{{plan.degree}}</td>
+                        <td width="44%">
+                          <ol>
+                            <li *ngFor="let next of plan.nextrecord">{{next.content}}{{next.progress?'('+next.progress+')':''}}</li>
+                          </ol>
+                        </td>
+                        <td width="3%">{{plan.ndegree}}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </iq-tab>
+            <div class="new-record">
+              <div class="date">
+                <label>日期：</label>
+                <iq-datepicker [(ngModel)]="newRecord.time" format="YYYY-MM-DD"></iq-datepicker>
+              </div>
+              <div class="record-plan">
+                <label>上次任务：</label>
+                <ol>
+                  <li *ngFor="let record of newRecord.thisrecord;index as i">
+                    <input class="content" type="text" [(ngModel)]="record.content" name="content">
+                    <input class="progress" type="text" [(ngModel)]="record.progress" name="progress">
+                    <i class="iqon-jian" (click)="deleteItem(newRecord.thisrecord, i)" *ngIf="i !== 0"></i>
+                    <i class="iqon-add" (click)="addItem(newRecord.thisrecord)" *ngIf="i === 0"></i>
+                  </li>
+                </ol>
+              </div>
+              <div class="degree">
+                <label>完成情况：</label>
+                <input type="text" [(ngModel)]="newRecord.degree" name="">
+              </div>
+              <div class="record-plan">
+                <label>本次计划：</label>
+                <ol>
+                  <li *ngFor="let record of newRecord.nextrecord;index as i">
+                    <input class="content" type="text" [(ngModel)]="record.content" name="content">
+                    <input class="progress" type="text" [(ngModel)]="record.progress" name="progress">
+                    <i class="iqon-jian" (click)="deleteItem(newRecord.nextrecord, i)" *ngIf="i !== 0"></i>
+                    <i class="iqon-add" (click)="addItem(newRecord.nextrecord)" *ngIf="i === 0"></i>
+                  </li>
+                </ol>
+              </div>
+              <div class="degree">
+                <label>预计完成：</label>
+                <input type="text" [(ngModel)]="newRecord.ndegree" name="">
+              </div>
+              <div class="submit-button">
+                <button class="m-btn-success" (click)="save()">{{hasSubmitted?'重新提交今日记录':'提交'}}</button>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+
+
+</div>

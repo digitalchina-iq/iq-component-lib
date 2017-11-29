@@ -49,6 +49,9 @@ import { StrJsComponent } from './js/str/str.component';
 //code-review
 import { CodeReviewComponent } from './code-review/code-review.component';
 
+//plan-tracking
+import { PlanTrackingComponent } from './plan-tracking/plan-tracking.component';
+
 //setting
 import { SettingComponent } from './setting/setting.component';
 //暴露出所有Component
@@ -86,7 +89,8 @@ export {
   StrJsComponent,
   CodeReviewComponent,
   SettingComponent,
-  IqPersonSelectDemoComponent
+  IqPersonSelectDemoComponent,
+  PlanTrackingComponent
 };
 
 //模块内部Components列表
@@ -124,5 +128,6 @@ export let Basetpl_COMPONENTS =
   StrJsComponent,
   CodeReviewComponent,
   SettingComponent,
-  IqPersonSelectDemoComponent
+  IqPersonSelectDemoComponent,
+  PlanTrackingComponent
 ];
