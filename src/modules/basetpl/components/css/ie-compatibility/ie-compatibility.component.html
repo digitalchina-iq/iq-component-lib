@@ -15,9 +15,20 @@
         <div style="padding:0px 10px;">
           <p>原因: &nbsp;&nbsp;<code>table</code>宽度不够或者未设置宽度导致其出现错位</p>
           <p>解决: &nbsp;&nbsp;为<code>table</code>增加宽度</p>
-          <img src="./assets/img/11.png">
+          <img src="./assets/img/11a.png" width="70%">
           <showcode>
-            <img src="./assets/img/1.jpg" alt="">
+               <div class="shows" style="margin-left:-130px;">
+                  .m-option{{'{'}}
+                      position: absolute;
+                      top: 10%;
+                      left: 50%;
+                      width: 51%;     //为弹出框增加宽度!
+                      transform: translateX(-50%);
+                      min-width: 300px;
+                      background: #fff;
+                      z-index: 9999;
+                  {{'}'}}
+               </div>
           </showcode>
         </div>
       </div>
@@ -29,9 +40,16 @@
           <p>解决: &nbsp;&nbsp;使子元素宽度之和等于父元素的宽度.</p>
           <p>过短原因: &nbsp;&nbsp;ie10无法识别自定义指令标签是否为块元素标签,默认为行元素标签.</p>
           <p>解决: &nbsp;&nbsp;将自定义指令标签设置为:  <code>display:inline-block;</code></p>
-          <img src="./assets/img/10.png">
+          <img src="./assets/img/10.png" width="70%">
           <showcode>
-            <div class="shows"></div>
+            <div class="shows">
+              &lt;iq-select&gt;&lt;/iq-select&gt;
+              .iqSelect {{'{'}}
+                  display: inline-block;
+                  width: 83%;
+                  margin-left: 10px;
+              {{'}'}}
+            </div>
           </showcode>
         </div>
       </div>
@@ -40,7 +58,7 @@
         <h3>Input输入框添加,placeholder内容后颜色显示问题</h3>
         <div style="padding:0px 10px;">
           <p>解决: <code>input:-ms-input-placeholder color:#888;</code>    //IE</p>
-          <img src="./assets/img/12.png">
+          <img src="./assets/img/12.png" width="70%">
           <showcode>
             <div class="shows"></div>
           </showcode>
@@ -52,7 +70,7 @@
         <div style="padding:0px 10px;">
           <p>原因:&nbsp;&nbsp;<code>boder-collapse:collapse</code>此时如果可能,边框会合并为一个单一的边框。会忽略 <code>border-spacing</code> 和 <code>empty-cells</code> 属性.</p>
           <p>解决:&nbsp;&nbsp;<code>border-collapse: separate</code>此时边框会被分开。不会忽略 <code>border-spacing</code> 和 <code>empty-cells</code> 属性.</p>
-          <img src="./assets/img/13.png">
+          <img src="./assets/img/13.png" width="70%">
           <showcode>
             <div class="shows">
             </div>
