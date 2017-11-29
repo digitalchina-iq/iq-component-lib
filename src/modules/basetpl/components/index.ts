@@ -39,6 +39,7 @@ import { InterfaceVsClassComponent } from './piece/interface-vs-class/interface-
 //css
 import { IeCompatibilityComponent } from './css/ie-compatibility/ie-compatibility.component';
 import { BasicLayoutComponent } from './css/basic-layout/basic-layout.component';
+import {  FlexComponent } from './css/flex/flex.component';
 
 //js
 import { ArrJsComponent } from './js/arr/arr.component';
@@ -81,6 +82,7 @@ export {
   IqNum2ChinesePipeComponent,
   IeCompatibilityComponent,
   BasicLayoutComponent,
+  FlexComponent,
   InterfaceVsClassComponent,
   ArrJsComponent,
   ObjJsComponent,
@@ -119,6 +121,7 @@ export let Basetpl_COMPONENTS =
   IqNum2ChinesePipeComponent,
   IeCompatibilityComponent,
   BasicLayoutComponent,
+  FlexComponent,
   InterfaceVsClassComponent,
   ArrJsComponent,
   ObjJsComponent,
