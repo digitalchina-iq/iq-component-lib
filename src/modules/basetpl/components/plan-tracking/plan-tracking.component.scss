@@ -1,7 +1,11 @@
 $border: 1px solid #fff;
 
-li{
+ul>li{
   list-style: none;
+}
+
+ol>li{
+  margin-left: 20px;
 }
 
 .row-fluid{
@@ -106,6 +110,7 @@ table{
   >div.date{
 
     /deep/ .my-datepicker {
+      margin-left: 20px;
       width: 300px;
 
       .m-input{
@@ -129,6 +134,10 @@ table{
 
   >div.degree{
     width: 100px;
+
+    >input{
+      margin-left: 20px;
+    }
   }
 
   .submit-button{
