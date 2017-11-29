@@ -119,11 +119,9 @@ export class DefindexComponent implements OnInit  {
 
           console.log(JSON.parse(localStorage.getItem("userinfo")))
           console.log(JSON.parse(localStorage.getItem("userinfo")).sessionToken)
-
-
+          
           // console.log("++++");
            this.router.navigate(["/index"]);
-          //  this.loading = false;
       },err => {
         this.loading = false;
         //...
