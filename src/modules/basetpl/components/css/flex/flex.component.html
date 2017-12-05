@@ -265,9 +265,10 @@
       <ng-template [ngIf]="true" class="stitempcon">
         <div class="showhow">
 
-          <p>简单示例：两栏布局,左侧固定,右侧自适应.</p>
+          <p>简单示例：圣杯布局</p>
+          <p>(页面从上到下，分成三个部分：头部（header），躯干（body），尾部（footer）。其中躯干又水平分成三栏，从左到右为：导航、主栏、副栏。)</p>
           <div style="width: 70%">
-            <img src="./assets/img/8.png">
+            <img src="./assets/img/30.png">
           </div>
         </div>
       </ng-template>
@@ -275,15 +276,14 @@
       <ng-template [ngIf]="true" class="stitemphtml">
         <pre iqhighlight>
           <code class="html">
-            &lt;div class="wrap"&gt;
-              &lt;div class="g-hd"&gt;DBOMS头部&lt;/div&gt;
-              &lt;div class="g-hdp"&gt;
-                &lt;div class="g-list"&gt;左侧导航&lt;/div&gt;
-                &lt;div class="g-right"&gt;
-                  &lt;div class="m-boardtop"&gt;面包屑导航&lt;/div&gt;
-                  &lt;div class="m-overclass"&gt;主要内容&lt;/div&gt;
-                &lt;/div&gt;
+            &lt;div class="HolyGrail"&gt;
+              &lt;header&gt;...&lt;/header&gt;
+              &lt;div class="body"&gt;
+                &lt;nav class="nav"&gt;...&lt;/nav&gt;
+                &lt;main class="content"&gt;...&lt;/main&gt;
+                &lt;aside class="ads"&gt;...&lt;/aside&gt;
               &lt;/div&gt;
+              &lt;footer&gt;...&lt;/footer&gt;
             &lt;/div&gt;
           </code>
         </pre>
@@ -300,244 +300,29 @@
       <ng-template [ngIf]="true" class="stitempcss">
         <pre iqhighlight>
           <code class="css">
-            body{{'{'}}
-              overflow:hidden;   //消除最外部滚动条
-            {{'}'}}
-            .g-hd{{'{'}}
-              position: absolute;  //头部固定
-              top: 0;
-              width: 100%;
-              min-width: 1200px;
-              height: 61.5px;
-              line-height: 61.5px;
-              padding: 0 25px;
-              background-color: #57b9f8;
+            .HolyGrail {{'{'}}
+              display: flex;
+              min-height: 100vh;
+              flex-direction: column;
             {{'}'}}
 
-            .g-hdp{{'{'}}
-              position: absolute;
-              top: 61.5px;
-              width: 100%;
-              min-width: 1200px;
-              height: calc(100vh - 61.5px);   //高度自适应屏幕大小,且减去头部的高度
-              .g-list{{'{'}}
-                  float: left;
-                  width: 240px;
-                  height: 100%;   
-                  min-height: 395px; 
-                  background: #fff none repeat scroll 0 0;
-                  border-right: 1px solid #e2e2e2;
-              {{'}'}}
-              .g-right{{'{'}}
-                  margin-left: 240px;
-                  height: 100%;
-                  min-width: 915px;
-                  overflow: auto;   //内容区域出现滚动条
-                  .m-boardtop{{'{'}}
-                      width: 100%;
-                      height: 50px;
-                      line-height: 50px;
-                      padding: 0 20px 0 25px;
-                      background: #f5f8fb none repeat scroll 0 0;
-                      border-bottom: 1px solid #e2e2e2;
-                  {{'}'}}
-                  .m-overclass{{'{'}}
-                      min-height: calc(100vh - 155px);
-                      padding: 10px 20px;
-                      margin: 20px;
-                      background: blueviolet;
-                  {{'}'}}
-              {{'}'}}
+            header,
+            footer {{'{'}}
+              flex: 1;
             {{'}'}}
 
-          </code>
-        </pre>
-      </ng-template>
-    </showitemexample>
-    <showitemexample>
-      <ng-template [ngIf]="true" class="stitempcon">
-        <div class="showhow">
-
-          <p>简单示例：父与子两个div,父元素右浮动,子元素绝对定位.</p>
-          <p>此时,子元素不会随着父元素的移动而移动,而是相对于body去定位.</p>
-          <div style="width: 70%">
-              <img src="./assets/img/17.png">
-          </div>
-        </div>
-      </ng-template>
-
-      <ng-template [ngIf]="true" class="stitemphtml">
-        <pre iqhighlight>
-          <code class="html">
-              &lt;div class="parent"&gt;
-                &lt;div class="child"&gt;&lt;/div&gt;
-              &lt;/div&gt;
-          </code>
-        </pre>
-
-      </ng-template>
-
-      <ng-template [ngIf]="true" class="stitempts">
-        <pre iqhighlight>
-          <code  class="javascript">
-          </code>
-        </pre>
-      </ng-template>
-
-      <ng-template [ngIf]="true" class="stitempcss">
-        <pre iqhighlight>
-          <code class="css">
-            .parent{{'{'}}
-              float: right;
-              width: 200px;
-              height: 200px;
-              background: blueviolet;
+            .body {{'{'}}
+              display: flex;
+              flex: 1;
             {{'}'}}
-            .child{{'{'}}
-              position:absolute;
-              left:100px;
-              top:100px;
-              background:#57b9f8;
+
+            .content {{'{'}}
+              flex: 1;
             {{'}'}}
-          </code>
-        </pre>
-      </ng-template>
-    </showitemexample>
-    <showitemexample>
-      <ng-template [ngIf]="true" class="stitempcon">
-        <div class="showhow">
 
-          <p>简单示例：父与子两个div,父元素右浮动+相对定位,子元素绝对定位.</p>
-          <p>此时,子元素会随着父元素右浮动,且会相对于父元素去定位.</p>
-          <div style="width: 70%">
-              <img src="./assets/img/18.png">
-          </div>
-        </div>
-      </ng-template>
-
-      <ng-template [ngIf]="true" class="stitemphtml">
-        <pre iqhighlight>
-          <code class="html">
-              &lt;div class="parent"&gt;
-                &lt;div class="child"&gt;&lt;/div&gt;
-              &lt;/div&gt;
-          </code>
-        </pre>
-
-      </ng-template>
-
-      <ng-template [ngIf]="true" class="stitempts">
-        <pre iqhighlight>
-          <code  class="javascript">
-          </code>
-        </pre>
-      </ng-template>
-
-      <ng-template [ngIf]="true" class="stitempcss">
-        <pre iqhighlight>
-          <code class="css">
-            .parent{{'{'}}
-              position:relative;
-              float: right;
-              width: 200px;
-              height: 200px;
-              background: blueviolet;
-            {{'}'}}
-            .child{{'{'}}
-              position:absolute;
-              left:100px;
-              top:100px;
-              background:#57b9f8;
-            {{'}'}}
-          </code>
-        </pre>
-      </ng-template>
-    </showitemexample>
-    <showitemexample>
-      <ng-template [ngIf]="true" class="stitempcon">
-        <div class="showhow">
-
-          <p>简单示例：div同时右浮动 + 绝对定位 + margin.</p>
-          <p>此时,元素的浮动不会生效,定位+margin会同时生效.</p>
-          <div style="width: 70%">
-              <img src="./assets/img/19.png">
-          </div>
-        </div>
-      </ng-template>
-
-      <ng-template [ngIf]="true" class="stitemphtml">
-        <pre iqhighlight>
-          <code class="html">
-              &lt;div class="parent"&gt;&lt;/div&gt;
-          </code>
-        </pre>
-
-      </ng-template>
-
-      <ng-template [ngIf]="true" class="stitempts">
-        <pre iqhighlight>
-          <code  class="javascript">
-          </code>
-        </pre>
-      </ng-template>
-
-      <ng-template [ngIf]="true" class="stitempcss">
-        <pre iqhighlight>
-          <code class="css">
-            .parent{{'{'}}
-              position:absolute;
-              left:100px;
-              margin-left:100px;
-              float: right;
-              width: 200px;
-              height: 200px;
-              background: blueviolet;
-            {{'}'}}
-          </code>
-        </pre>
-      </ng-template>
-    </showitemexample>
-    <showitemexample>
-      <ng-template [ngIf]="true" class="stitempcon">
-        <div class="showhow">
-
-          <p>简单示例：div同时右浮动 + 相对定位 + margin.</p>
-          <p>此时,元素的 <code>margin-left</code>不会生效,右浮动 + 相对定位会同时生效.</p>
-          <div style="width: 70%">
-              <img src="./assets/img/20.png">
-          </div>
-        </div>
-      </ng-template>
-
-      <ng-template [ngIf]="true" class="stitemphtml">
-        <pre iqhighlight>
-          <code class="html">
-              &lt;div class="parent"&gt;&lt;/div&gt;
-          </code>
-        </pre>
-
-      </ng-template>
-
-      <ng-template [ngIf]="true" class="stitempts">
-        <pre iqhighlight>
-          <code  class="javascript">
-          </code>
-        </pre>
-      </ng-template>
-
-      <ng-template [ngIf]="true" class="stitempcss">
-        <pre iqhighlight>
-          <code class="css">
-            .parent{{'{'}}
-              position: relative;
-              left: 50px;
-              top: 100px;
-              margin-left: 200px;
-              margin-top: 100px;
-              float: right;
-              width: 200px;
-              height: 200px;
-              background: blueviolet;
+            .nav, .ads {{'{'}}
+              /* 两个边栏的宽度设为12em */
+              flex: 0 0 12em;
             {{'}'}}
           </code>
         </pre>

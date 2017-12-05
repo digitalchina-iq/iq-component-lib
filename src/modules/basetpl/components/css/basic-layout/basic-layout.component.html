@@ -253,9 +253,9 @@
              <showcode>
                 <div class="shows" style="margin-left:-130px;">
                   &lt;div class="wrapper"&gt;
-                  &lt;div class="left"&gt;左&lt;/div&gt;
-                  &lt;div class="center"&gt;中&lt;/div&gt;
-                  &lt;div class="right"&gt;右&lt;/div&gt;
+                    &lt;div class="left"&gt;左&lt;/div&gt;
+                    &lt;div class="center"&gt;中&lt;/div&gt;
+                    &lt;div class="right"&gt;右&lt;/div&gt;
                   &lt;/div&gt;
                   .wrapper{{'{'}}
                       display: flex;
@@ -266,9 +266,8 @@
                       background: green;
                   {{'}'}}
                   .center{{'{'}}
-                      width: 100%;
+                      flex:1;
                       background: red;
-                      marign: 0 200px;
                   {{'}'}}
                   .right{{'{'}}
                       width: 200px;
@@ -289,7 +288,6 @@
                 &lt;/div&gt;
                 .m-center {{'{'}} 
                   z-index: 2; 
-                  background-color: #666; 
                   width: 500px; 
                   margin-left: -250px; 
                   position: absolute;
@@ -305,12 +303,10 @@
                 .left {{'{'}} left: 0; {{'}'}}
                 .left .main {{'{'}} 
                   margin-right: 250px; 
-                  background-color: #ccc;
                 {{'}'}}
                 .right {{'{'}} right: 0; {{'}'}}
                 .right .main {{'{'}} 
                   margin-left: 250px; 
-                  background-color: #ccc; 
                 {{'}'}}
               </div>
             </showcode>
@@ -326,9 +322,6 @@
                   &lt;div class="m-box m-box3"&gt;中&lt;/div&gt;
                   .left,.right,.center {{'{'}}
                       height: 200px; 
-                      line-height:200px; 
-                      text-align:center; 
-                      background:yellow;
                   {{'}'}}
                   .warp1{{'{'}}
                     float:left; 
@@ -337,7 +330,6 @@
                   {{'}'}}
                   .warp2{{'{'}}
                     margin-left:50%; 
-                    text-align:right; 
                     margin-left:0; 
                     zoom:1;
                   {{'}'}}
@@ -348,7 +340,6 @@
                     margin-left:100px;
                   {{'}'}}
                   .m-box3{{'{'}}
-                    background:red;
                     width:200px; 
                     position:absolute; 
                     left:50%; 
