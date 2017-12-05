@@ -1,0 +1,16 @@
+<div [@flyIn]="'in'">
+  <div id="content">
+    <div class="container-fluid">
+        <h1 class="page-title">项目排期<small>一次有趣的排期</small></h1>
+        <div class="row-fluid">
+          <loading [show]="loading" type="round2" [style]="{background:'rgba(0,0,0,0)'}"></loading>
+          <div class="widget">
+            <button type="button" class="m-btn-success" (click)="showItem()">新增项目排期</button>
+            <ul class="taskname clearfix">
+              <li *ngFor="let item of planList" (click)="showItem(item.objectId)">{{item.taskname}}</li>
+            </ul>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>

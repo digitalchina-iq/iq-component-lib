@@ -67,7 +67,7 @@ export class PlanTrackingComponent implements OnInit{
     let recordArr = this.planList.filter(item => item.objectId === this.id)[0].file || [];
     let notTodayRecordArr = recordArr.filter(item => item.time !== this.newRecord.time);
     this.hasSubmitted = notTodayRecordArr.length < recordArr.length;
-    if(!this.hasSubmitted) {
+    if(!this.hasSubmitted && notTodayRecordArr[0]) {
       this.newRecord.thisrecord = JSON.parse(JSON.stringify(notTodayRecordArr[0].nextrecord));
     }
     return notTodayRecordArr.concat(this.newRecord);

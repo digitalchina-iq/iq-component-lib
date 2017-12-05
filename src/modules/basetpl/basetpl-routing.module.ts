@@ -13,7 +13,7 @@ import { BasetplContainerComponent,
   IeCompatibilityComponent,BasicLayoutComponent,FlexComponent,
   AngularSelectorComponent, IqNum2ChinesePipeComponent, InterfaceVsClassComponent,
   ArrJsComponent, ObjJsComponent, StrJsComponent, CodeReviewComponent,SettingComponent,
-  IqPersonSelectDemoComponent, PlanTrackingComponent
+  IqPersonSelectDemoComponent, PlanTrackingComponent, ItemPlanComponent
 } from './index';
 
 const routes: Routes = [//定义路由
@@ -90,6 +90,9 @@ const routes: Routes = [//定义路由
     },
     {
       path: "plan-tracking", component: PlanTrackingComponent
+    },
+    {
+      path: "item-plan", component: ItemPlanComponent
     },
     {
       path: "setting", component: SettingComponent

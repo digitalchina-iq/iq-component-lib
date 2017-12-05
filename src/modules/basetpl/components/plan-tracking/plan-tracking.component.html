@@ -26,13 +26,13 @@
                         <td width="6%">{{plan.time}}</td>
                         <td width="44%">
                           <ol>
-                            <li *ngFor="let pre of plan.thisrecord">{{pre.content}}{{pre.progress?'('+pre.progress+')':''}}</li>
+                            <li *ngFor="let pre of plan?.thisrecord">{{pre.content}}{{pre.progress?'('+pre.progress+')':''}}</li>
                           </ol>
                         </td>
                         <td width="3%">{{plan.degree}}</td>
                         <td width="44%">
                           <ol>
-                            <li *ngFor="let next of plan.nextrecord">{{next.content}}{{next.progress?'('+next.progress+')':''}}</li>
+                            <li *ngFor="let next of plan?.nextrecord">{{next.content}}{{next.progress?'('+next.progress+')':''}}</li>
                           </ol>
                         </td>
                         <td width="3%">{{plan.ndegree}}</td>

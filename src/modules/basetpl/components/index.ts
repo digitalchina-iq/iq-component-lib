@@ -52,6 +52,10 @@ import { CodeReviewComponent } from './code-review/code-review.component';
 //plan-tracking
 import { PlanTrackingComponent } from './plan-tracking/plan-tracking.component';
 
+//项目排期
+import { ItemPlanComponent } from './item-plan/item-plan.component';
+import { ItemPlanDetailComponent } from './item-plan/item-plan-detail.component';
+
 //setting
 import { SettingComponent } from './setting/setting.component';
 //暴露出所有Component
@@ -90,8 +94,13 @@ export {
   CodeReviewComponent,
   SettingComponent,
   IqPersonSelectDemoComponent,
-  PlanTrackingComponent
+  PlanTrackingComponent,
+  ItemPlanComponent
 };
+
+export let Basetpl_entry_COMPONENTS = [
+  ItemPlanDetailComponent
+]
 
 //模块内部Components列表
 export let Basetpl_COMPONENTS =
@@ -129,5 +138,7 @@ export let Basetpl_COMPONENTS =
   CodeReviewComponent,
   SettingComponent,
   IqPersonSelectDemoComponent,
-  PlanTrackingComponent
+  PlanTrackingComponent,
+  ItemPlanComponent,
+  ItemPlanDetailComponent
 ];
