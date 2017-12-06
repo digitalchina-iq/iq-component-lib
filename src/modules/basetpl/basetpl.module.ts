@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { BasetplRoutingModule } from './basetpl-routing.module';
 import { SharedModule } from 'shared/shared.module';
 
-import { Basetpl_COMPONENTS } from './index';
+import { Basetpl_COMPONENTS, Basetpl_entry_COMPONENTS } from './index';
 
 import { BasetplService } from './services/basetpl.service';
 
@@ -24,6 +24,9 @@ import { LoadingModule,ANIMATION_TYPES } from 'ngx-loading';
   ],
   declarations: [//模块内部Components/Directives/Pipes的列表，声明一下这个模块内部成员
     Basetpl_COMPONENTS
+  ],
+  entryComponents: [
+    Basetpl_entry_COMPONENTS
   ],
   providers:[//指定应用程序的根级别需要使用的service
     BasetplService
