@@ -33,17 +33,21 @@ export class ItemPlanComponent implements OnInit{
     this.initData();
 
     this.modal = this.xcModalService.createModal(ItemPlanDetailComponent);
+    this.modal.onHide().subscribe(data => {
+      if(data){
+        this.initData();
+      }
+    })
   }
 
   initData() {
     this.http.get(environment.server + 'classes/Overall').toPromise().then(response => response.json()).then(data => {
-      console.log(data);
       this.planList = data.results;
     })
   }
 
-  showItem(id?: string) {
-    this.modal.show(id);
+  showItem(item?: string) {
+    this.modal.show(item);
   }
 
 }

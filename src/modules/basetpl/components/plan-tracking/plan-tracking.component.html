@@ -23,14 +23,14 @@
                     </thead>
                     <tbody>
                       <tr *ngFor="let plan of item.file">
-                        <td width="6%">{{plan.time}}</td>
-                        <td width="44%">
+                        <td width="8%">{{plan.time}}</td>
+                        <td width="43%">
                           <ol>
                             <li *ngFor="let pre of plan?.thisrecord">{{pre.content}}{{pre.progress?'('+pre.progress+')':''}}</li>
                           </ol>
                         </td>
                         <td width="3%">{{plan.degree}}</td>
-                        <td width="44%">
+                        <td width="43%">
                           <ol>
                             <li *ngFor="let next of plan?.nextrecord">{{next.content}}{{next.progress?'('+next.progress+')':''}}</li>
                           </ol>

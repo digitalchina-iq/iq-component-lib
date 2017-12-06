@@ -1,38 +1,49 @@
 <div style="position: absolute;top: 50px;left: 50%;transform: translateX(-50%);width: 600px;z-index: 1032;background: #fff;color: #4a4a4a;">
+  <loading [show]="loading"></loading>
   <div class="m-dialog-head">
     <span>{{isNew?'新增项目排期':'查看排期内容'}}</span>
     <i class="iqon-close" (click)="hide()"></i>
   </div>
   <div style="padding: 20px;">
+    <div *ngIf="isNew">
+      <label style="display: inline-block;font-weight: bold;color: #4a4a4a;vertical-align: middle;">项目名称</label>
+      <input type="text" [(ngModel)]="objectName" name="objectName" placeholder="-请输入项目名称" style="background: #fff;color: #4a4a4a;width: 300px;margin-left: 10px;">
+    </div>
+    <div *ngIf="!isNew" style="text-align: center;">
+      <span style="display: inline-block;margin-bottom: 10px;font-size: 15px;font-weight: bold;">{{objectName}}</span>
+    </div>
     <table class="table table-bordered">
       <thead>
         <tr>
           <th style="font-weight: bold;">工作内容</th>
-          <th style="font-weight: bold;">时间/天</th>
-          <th style="font-weight: bold;">完成日期</th>
-          <th *ngIf="isNew" width="5%" style="cursor: pointer;"><i class="iqon-jia"></i></th>
+          <th style="font-weight: bold;" width="15%">时间/天</th>
+          <th style="font-weight: bold;" width="20%">完成日期</th>
+          <th *ngIf="isNew || isEdit" (click)="addItem()" width="5%" style="cursor: pointer;"><i class="iqon-jia"></i></th>
         </tr>
       </thead>
       <tbody style="font-weight: normal;">
-        <ng-container *ngIf="!isNew">
+        <ng-container *ngIf="!isNew && !isEdit">
           <tr *ngFor="let item of itemPlan">
             <td>{{item.content}}</td>
             <td>{{item.days}}</td>
-            <td>{{item.cloesdate}}</td>
+            <td>{{item.closedate}}</td>
           </tr>
         </ng-container>
-        <ng-container *ngIf="isNew;index as i">
-          <tr *ngFor="let item of itemPlan">
-            <td style="padding: 0;"><input type="text" [(ngModel)]="item.content" name="content" style="margin: 0;background: #fff;color: #4a4a4a;"></td>
-            <td style="padding: 0;"><input type="number" step="0.5" min="0" [(ngModel)]="item.days" name="days" style="margin: 0;width: 100%;height: 35px;background: #fff;color: #4a4a4a;"></td>
-            <td style="padding: 0;"><iq-datepicker [(ngModel)]="item.closedate" placeHolder="-请选择完成日期"></iq-datepicker></td>
-            <td [style.cursor]="itemPlan.length === 1?'not-allowed':'pointer'"><i class="iqon-jian"></i></td>
+        <ng-container *ngIf="isNew || isEdit">
+          <tr *ngFor="let item of itemPlan;index as i">
+            <td style="padding: 0;"><input type="text" [(ngModel)]="item.content" name="content" placeholder="-请输入工作内容" style="margin: 0;background: #fff;color: #4a4a4a;"></td>
+            <td style="padding: 0;"><input type="number" step="0.5" min="0" [(ngModel)]="item.days" placeholder="-请输入" name="days" style="margin: 0;width: 100%;height: 35px;background: #fff;color: #4a4a4a;"></td>
+            <td style="padding: 0;"><iq-datepicker [(ngModel)]="item.closedate" placeHolder="-请选择" format="YYYY-MM-DD"></iq-datepicker></td>
+            <td (click)="deleteItem(item, i)" [style.cursor]="itemPlan.length === 1?'not-allowed':'pointer'" style="padding: 0;"><i class="iqon-jian" style="display: block;line-height: 35px;text-align: center;"></i></td>
           </tr>
         </ng-container>
       </tbody>
     </table>
   </div>
-  <div>
-    <button type="button" class="m-btn-success"></button>
+  <div style="text-align: center;margin-bottom: 20px;">
+    <button type="button" class="m-btn-success" [hidden]="!isNew && !isEdit" (click)="save()" [disabled]="isDisabled" style="margin-right: 10px;">保存</button>
+    <button type="button" class="m-btn-success" [hidden]="isNew || isEdit" (click)="edit()" style="margin-right: 10px;">编辑</button>
+    <button type="button" class="m-btn-cancel" [hidden]="!isNew" (click)="hide()">取消</button>
+    <button type="button" class="m-btn-cancel" [hidden]="isNew || !isEdit" (click)="cancel()">取消</button>
   </div>
 </div>
