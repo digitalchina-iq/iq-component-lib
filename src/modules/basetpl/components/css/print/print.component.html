@@ -1,0 +1,341 @@
+<div [@flyIn]="'in'">
+  <showtem [stname]="'print打印样式'" [stnamedel]="'一个有趣的css'" >
+
+    <!-- overview -->
+    <ng-template [ngIf]="true" class='stview'>
+
+      <h3>概述</h3>
+      <p>
+        利用CSS控制print打印样式,可以非常方便的实现打印页面中的指定内容和分页打印。
+      </p>
+
+
+      <div style="margin-top:35px;">
+        <h3>media <span style="font-size:12px"></span></h3>
+        <div style="padding:0px 10px;">
+          <p>● <code>print</code>:指用于打印机的不透明介质。  @media print里面的内容只对打印出来的内容有效。</p>
+          <showcode>
+            <div class="shows" style="margin-left:-120px;">
+              @media print{{'{'}}
+                h1 {{'{'}}
+                  color: black;
+                {{'}'}}
+                h2{{'{'}}
+                  color: gray;
+                {{'}'}}
+              {{'}'}}
+            </div>
+          </showcode>
+        </div>
+      </div>
+
+      <div style="margin-top:35px;">
+        <h3>flex-direction <span style="font-size:12px">(项目的排列方向)</span></h3>
+        <div style="padding:0px 10px;">
+          <p>● <code>row</code>: 默认值,主轴为水平方向，起点在左端。</p>
+          <p>● <code>row-reverse</code>：主轴为水平方向，起点在右端.</p>
+          <p>● <code>column</code>: 主轴为垂直方向，起点在上沿.</p>
+          <p>● <code>column-reverse</code>：主轴为垂直方向，起点在下沿.</p>
+          <p style="margin-left:40px;width:70%"><img src="./assets/img/21.png" alt=""></p>
+          <showcode>
+            <div class="shows" style="margin-left:-120px;">
+            .box {{'{'}}
+                flex-direction: row | row-reverse | column | column-reverse;
+            {{'}'}}
+            </div>
+          </showcode>
+        </div>
+      </div>
+
+      <div style="margin-top:35px;">
+        <h3> flex-wrap <span style="font-size:12px">(项目是否换行)</span></h3>
+        <div style="padding:0px 10px;">
+          <p>● <code>nowrap</code>: 默认值,不换行。</p>
+          <p>● <code>wrap</code>: 换行，第一行在上方。</p>
+          <p>● <code>wrap-reverse</code>: 换行，第一行在下方。</p>
+          <p style="margin-left:40px;width:70%"><img src="./assets/img/22.png" alt=""></p>
+          <showcode>
+            <div class="shows" style="margin-left:-120px;">
+            .box {{'{'}}
+                 flex-wrap: nowrap | wrap | wrap-reverse;
+            {{'}'}}
+            </div>
+          </showcode>
+        </div>
+      </div>
+      <div style="margin-top:35px;">
+        <h3> flex-flow </h3>
+        <div style="padding:0px 10px;">
+          <p>● <code>flex-direction</code>属性和<code>flex-wrap</code>属性的简写形式，默认值为<code>row nowrap</code>。</p>
+          <showcode>
+            <div class="shows" style="margin-left:-120px;">
+            .box {{'{'}}
+                  flex-flow: (flex-direction) || (flex-wrap);
+            {{'}'}}
+            </div>
+          </showcode>
+        </div>
+      </div>
+      <div style="margin-top:35px;">
+        <h3>justify-content <span style="font-size:12px">(项目在主轴上的对齐方式)</span></h3>
+        <div style="padding:0px 10px;">
+          <p>● <code>flex-start</code>: 默认值,左对齐。</p>
+          <p>● <code>flex-end</code>: 右对齐。</p>
+          <p>● <code>center</code>: 居中。</p>
+          <p>● <code>space-between</code>: 两端对齐，项目之间的间隔都相等。</p>
+          <p>● <code>space-around</code>: 每个项目两侧的间隔相等。所以，项目之间的间隔比项目与边框的间隔大一倍。</p>
+          <p style="margin-left:40px;width:70%"><img src="./assets/img/23.png" alt=""></p>
+          <showcode>
+            <div class="shows" style="margin-left:-120px;">
+            .box {{'{'}}
+                 justify-content: flex-start | flex-end | center | space-between | space-around;
+            {{'}'}}
+            </div>
+          </showcode>
+        </div>
+      </div>
+      <div style="margin-top:35px;">
+        <h3>align-items <span style="font-size:12px">(项目在交叉轴上如何对齐)</span></h3>
+        <div style="padding:0px 10px;">
+          <p>● <code>flex-start</code>: 交叉轴的起点对齐。</p>
+          <p>● <code>flex-end</code>: 交叉轴的终点对齐。</p>
+          <p>● <code>center</code>: 交叉轴的中点对齐。</p>
+          <p>● <code>baseline</code>: 项目的第一行文字的基线对齐。</p>
+          <p>● <code>stretch</code>: 如果项目未设置高度或者设为auto,将占满整个容器的高度。</p>
+          <p style="margin-left:40px;width:70%"><img src="./assets/img/24.png" alt=""></p>
+          <showcode>
+            <div class="shows" style="margin-left:-120px;">
+            .box {{'{'}}
+                 align-items: flex-start | flex-end | center | baseline | stretch;
+            {{'}'}}
+            </div>
+          </showcode>
+        </div>
+      </div>
+      <div style="margin-top:35px;">
+        <h3>align-content <span style="font-size:12px">(多根轴线的对齐方式,若只有一条,该属性不起作用.)</span></h3>
+        <div style="padding:0px 10px;">
+          <p>● <code>flex-start</code>:与交叉轴的起点对齐。</p>
+          <p>● <code>flex-end</code>: 与交叉轴的终点对齐。</p>
+          <p>● <code>center</code>: 与交叉轴的中点对齐。</p>
+          <p>● <code>space-between</code>: 与交叉轴两端对齐，轴线之间的间隔平均分布。</p>
+          <p>● <code>space-around</code>: 每根轴线两侧的间隔都相等。所以，轴线之间的间隔比轴线与边框的间隔大一倍。</p>
+           <p>● <code>stretch</code>: 默认值,轴线占满整个交叉轴.</p>
+          <p style="margin-left:40px;width:70%"><img src="./assets/img/25.png" alt=""></p>
+          <showcode>
+            <div class="shows" style="margin-left:-120px;">
+            .box {{'{'}}
+                 align-content: flex-start | flex-end | center | space-between | space-around | stretch;
+            {{'}'}}
+            </div>
+          </showcode>
+        </div>
+      </div>
+      <div style="margin-top:35px;">
+        <h3>定义在子容器的六大属性</h3>
+        <div style="padding:0px 10px;">
+          <p>● <code>order</code></p>
+          <p>● <code>flex-grow</code></p>
+          <p>● <code>flex-shrink</code></p>
+          <p>● <code>flex-basis</code></p>
+          <p style="display: flex;">● <code style="height: 22px;">flex</code></p>
+          <p>● <code>align-self</code></p>
+        </div>
+      </div>
+
+      <div style="margin-top:35px;">
+        <h3>order <span style="font-size:12px">(项目的排列顺序)</span></h3>
+        <p>● 数值越小，排列越靠前，默认为0</p>
+        <div style="padding:0px 10px;">
+          <p style="margin-left:40px;width:70%"><img src="./assets/img/26.png" alt=""></p>
+          <showcode>
+            <div class="shows" style="margin-left:-120px;">
+            .item {{'{'}}
+                order: number;
+            {{'}'}}
+            </div>
+          </showcode>
+        </div>
+      </div>
+      <div style="margin-top:35px;">
+        <h3>flex-grow <span style="font-size:12px">(项目的放大比例，默认为0，即如果存在剩余空间，也不放大。)</span></h3>
+        <div style="padding:0px 10px;">
+          <p>● 如果所有项目的flex-grow属性都为1，则它们将等分剩余空间（如果有的话）。如果一个项目的flex-grow属性为2，其他项目都为1，则前者占据的剩余空间将比其他项多一倍。</p>
+          <p style="margin-left:40px;width:70%"><img src="./assets/img/27.png" alt=""></p>
+          <showcode>
+            <div class="shows" style="margin-left:-120px;">
+            .item {{'{'}}
+                flex-grow: (number); /* default 0 */
+            {{'}'}}
+            </div>
+          </showcode>
+        </div>
+      </div>
+      <div style="margin-top:35px;">
+        <h3>flex-shrink <span style="font-size:12px">(项目的缩小比例，默认为1，即如果空间不足，该项目将缩小)</span></h3>
+        <div style="padding:0px 10px;">
+          <p>● 如果所有项目的flex-shrink属性都为1，当空间不足时，都将等比例缩小。如果一个项目的flex-shrink属性为0，其他项目都为1，则空间不足时，前者不缩小。</p>
+          <p style="margin-left:40px;width:70%"><img src="./assets/img/28.png" alt=""></p>
+          <showcode>
+            <div class="shows" style="margin-left:-120px;">
+            .item {{'{'}}
+                flex-shrink: (number); /* default 1 */
+            {{'}'}}
+            </div>
+          </showcode>
+        </div>
+      </div> 
+      <div style="margin-top:35px;">
+        <h3>flex-basis </h3>
+        <div style="padding:0px 10px;">
+          <p>● 在分配多余空间之前，项目占据的主轴空间。浏览器根据这个属性，计算主轴是否有多余空间。它的默认值为auto，即项目的本来大小。</p>
+          <p>● 它可以设为跟width或height属性一样的值（比如350px），则项目将占据固定空间</p>
+          <showcode>
+            <div class="shows" style="margin-left:-120px;">
+            .item {{'{'}}
+                 flex-basis: (length) | auto; /* default auto */
+            {{'}'}}
+            </div>
+          </showcode>
+        </div>
+      </div> 
+      <div style="margin-top:35px;">
+        <h3>flex </h3>
+        <div style="padding:0px 10px;">
+          <p>● <code>flex-grow</code>, <code>flex-shrink</code> 和 <code>flex-basis</code>的简写，默认值为0 1 auto。后两个属性可选。</p>
+          <p>● <code>auto</code> (1 1 auto)和<code>none</code>(0 0 auto)是该属性的两个快捷键值.建议优先使用这个属性，而不是单独写三个分离的属性，因为浏览器会推算相关值。</p>
+          <showcode>
+            <div class="shows" style="margin-left:-120px;">
+            .item {{'{'}}
+              flex: none | [ <'flex-grow'> <'flex-shrink'>? || <'flex-basis'> ]
+            {{'}'}}
+            </div>
+          </showcode>
+        </div>
+      </div> 
+      <div style="margin-top:35px;">
+        <h3>align-self <span style="font-size:12px">(项目的缩小比例，默认为1，即如果空间不足，该项目将缩小)</span></h3>
+        <div style="padding:0px 10px;">
+          <p>● 允许单个项目有与其他项目不一样的对齐方式，可覆盖<code>align-items</code>属性。</p>
+          <p>● 默认值为<code>auto</code>，表示继承父元素的<code>align-items</code>属性，如果没有父元素，则等同于<code>stretch</code>。</p>
+          <p>● 该属性可能取6个值，除了auto，其他都与<code>align-items</code>属性完全一致。</p>
+          <p style="margin-left:40px;width:70%"><img src="./assets/img/29.png" alt=""></p>
+          <showcode>
+            <div class="shows" style="margin-left:-120px;">
+            .item {{'{'}}
+               align-self: auto | flex-start | flex-end | center | baseline | stretch;
+            {{'}'}}
+            </div>
+          </showcode>
+        </div>
+      </div> 
+    </ng-template>
+
+  <!-- API -->
+  <ng-template [ngIf]="true" class='stitemo'>
+
+    <showitemo [sitemotitle]="'属性'">
+      <ng-template [ngIf]="true" class="sitemocon">
+
+        <table class="table">
+          <thead>
+            <tr>
+              <th>参数</th>
+              <th>说明</th>
+              <th>类型</th>
+              <th>可选值</th>
+              <th>默认值</th>
+              <th>是否必选</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+
+      </ng-template>
+    </showitemo>
+
+  </ng-template>
+  <!-- stitemexample -->
+  <ng-template [ngIf]="true" class="stitemexample">
+
+    <showitemexample>
+
+      <ng-template [ngIf]="true" class="stitempcon">
+        <div class="showhow">
+
+          <p>简单示例：圣杯布局</p>
+          <p>(页面从上到下，分成三个部分：头部（header），躯干（body），尾部（footer）。其中躯干又水平分成三栏，从左到右为：导航、主栏、副栏。)</p>
+          <div style="width: 70%">
+            <img src="./assets/img/30.png">
+          </div>
+        </div>
+      </ng-template>
+
+      <ng-template [ngIf]="true" class="stitemphtml">
+        <pre iqhighlight>
+          <code class="html">
+            &lt;div class="HolyGrail"&gt;
+              &lt;header&gt;...&lt;/header&gt;
+              &lt;div class="body"&gt;
+                &lt;nav class="nav"&gt;...&lt;/nav&gt;
+                &lt;main class="content"&gt;...&lt;/main&gt;
+                &lt;aside class="ads"&gt;...&lt;/aside&gt;
+              &lt;/div&gt;
+              &lt;footer&gt;...&lt;/footer&gt;
+            &lt;/div&gt;
+          </code>
+        </pre>
+
+      </ng-template>
+
+      <ng-template [ngIf]="true" class="stitempts">
+        <pre iqhighlight>
+          <code  class="javascript">
+          </code>
+        </pre>
+      </ng-template>
+
+      <ng-template [ngIf]="true" class="stitempcss">
+        <pre iqhighlight>
+          <code class="css">
+            .HolyGrail {{'{'}}
+              display: flex;
+              min-height: 100vh;
+              flex-direction: column;
+            {{'}'}}
+
+            header,
+            footer {{'{'}}
+              flex: 1;
+            {{'}'}}
+
+            .body {{'{'}}
+              display: flex;
+              flex: 1;
+            {{'}'}}
+
+            .content {{'{'}}
+              flex: 1;
+            {{'}'}}
+
+            .nav, .ads {{'{'}}
+              /* 两个边栏的宽度设为12em */
+              flex: 0 0 12em;
+            {{'}'}}
+          </code>
+        </pre>
+      </ng-template>
+    </showitemexample>
+  </ng-template>
+
+  </showtem>
+</div>

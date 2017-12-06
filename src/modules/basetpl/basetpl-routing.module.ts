@@ -10,7 +10,7 @@ import { BasetplContainerComponent,
   IqDatePipeComponent, IqFileSizePipeComponent, IqBreadcrumbDemoComponent,
   IcheckDemoComponent, LoadingDemoComponent, IqPagerDemoComponent,
   TrimDemoComponent, TabSwitchDemoComponent, IqTimepickerDemoComponent,
-  IeCompatibilityComponent,BasicLayoutComponent,FlexComponent,
+  IeCompatibilityComponent,BasicLayoutComponent,FlexComponent,PrintComponent,
   AngularSelectorComponent, IqNum2ChinesePipeComponent, InterfaceVsClassComponent,
   ArrJsComponent, ObjJsComponent, StrJsComponent, CodeReviewComponent,SettingComponent,
   IqPersonSelectDemoComponent, PlanTrackingComponent
@@ -74,7 +74,8 @@ const routes: Routes = [//定义路由
       children: [
         { path: 'ie-compatibility', component: IeCompatibilityComponent },
         { path: 'basic-layout', component: BasicLayoutComponent },
-        { path: 'flex', component: FlexComponent }
+        { path: 'flex', component: FlexComponent },
+        { path:'print',component:PrintComponent}
       ]
     },
     {
