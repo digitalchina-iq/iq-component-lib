@@ -3,7 +3,24 @@
 <div id="sidebar" class="nav-collapse collapse">
   <ul class="nav">
 
-    <li [ngClass]="{'active':path=='/index'}"><a routerLink="/index"><i class="iqon-home"></i> index</a></li>
+    <li class="has-sub" *ngFor="let item of menuList" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+      <ng-container *ngIf="item.childmenu">
+        <a href="javascript:;"><i [ngClass]="item.icon"></i> {{item.name}} <span class="label">{{item.count}}</span></a>
+        <ul class="dropdown-menu">
+          <li routerLinkActive="active" *ngFor="let link of item.childmenu" [routerLinkActiveOptions]="{exact: true}">
+            <a [routerLink]="link.url">{{link.name}}</a>
+          </li>
+        </ul>
+      </ng-container>
+      <ng-container *ngIf="!item.childmenu && item.url">
+        <a [routerLink]="item.url"><i [ngClass]="item.icon"></i> {{item.name}} <span class="label">{{item.count}}</span></a>
+      </ng-container>
+      <ng-container *ngIf="!item.childmenu && !item.url">
+        <a href="javascript:;"><i [ngClass]="item.icon"></i> {{item.name}} <span class="label">{{item.count}}</span></a>
+      </ng-container>
+    </li>
+
+<!--     <li [ngClass]="{'active':path=='/index'}"><a routerLink="/index"><i class="iqon-home"></i> index</a></li>
 
     <li class="has-sub" routerLinkActive="active">
       <a href="#"><i class="iqon-ordinary"></i> 组件 <span class="label">6</span></a>
@@ -201,10 +218,7 @@
           <a routerLink="/index/services/window1">日志</a>
         </li>
       </ul>
-    </li>
-
-    
-
+    </li> -->
 
   </ul>
 </div><!-- end #sidebar -->

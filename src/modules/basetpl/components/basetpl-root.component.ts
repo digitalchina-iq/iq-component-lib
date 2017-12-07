@@ -2,43 +2,37 @@ import { Component, OnInit } from '@angular/core';
 import { Location} from '@angular/common';
 import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
 
+import { BasetplService } from '../services/basetpl.service';
+
 declare var $;
 
 @Component({
   templateUrl: './basetpl-root.component.html'
 })
 export class BasetplRootComponent implements OnInit {
-  constructor( private location:Location,
-    private router: Router){
-    }
+  constructor( 
+    private basetplService: BasetplService,
+    private location:Location,
+    private router: Router){}
 
     path = "";
-    open: boolean;
-    // textsuccess: false;
-    textsuccess: boolean = true;
-    mm="fffff";
+    menuList: any[] = [];
 
     ngOnInit() {
-      //  let _this = this;
-      //  let reg = /demo\/widget\/page-style/;
-      //  var resetPath = function(){
-      //    _this.path=_this.location.path();
-      //    _this.open = reg.test(_this.path);
-      //  }
-      //  this.router.events.subscribe(event => {
-      //    console.log("123123")
-      //    if (event instanceof NavigationEnd) {
-      //      resetPath();
-      //    }
-      //  });
-      //  resetPath();
+       this.basetplService.getNav().then(data => {
+         console.log(data);
+         this.menuList = data.results;
+         setTimeout(this.setNav);
+       })
+   }
 
-       $('#sidebar ul li.has-sub > a').click(function(e) {
-         e.preventDefault();
-         $('#sidebar ul.dropdown-menu').slideUp(200);
-         if($(this).next('ul.dropdown-menu').is(':hidden')) {
-           $(this).next('ul.dropdown-menu').slideToggle(200);
-         }
-       });
+   setNav() {
+     $('#sidebar ul li.has-sub > a').click(function(e) {
+       e.preventDefault();
+       $('#sidebar ul.dropdown-menu').slideUp(200);
+       if($(this).next('ul.dropdown-menu').is(':hidden')) {
+         $(this).next('ul.dropdown-menu').slideToggle(200);
+       }
+     });
    }
 }
