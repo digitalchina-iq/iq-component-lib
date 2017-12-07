@@ -24,18 +24,18 @@
                     <tbody>
                       <tr *ngFor="let plan of item.file">
                         <td width="8%">{{plan.time}}</td>
-                        <td width="43%">
+                        <td width="40%">
                           <ol>
                             <li *ngFor="let pre of plan?.thisrecord">{{pre.content}}{{pre.progress?'('+pre.progress+')':''}}</li>
                           </ol>
                         </td>
-                        <td width="3%">{{plan.degree}}</td>
-                        <td width="43%">
+                        <td width="6%" style="text-align: center;">{{plan.degree}}</td>
+                        <td width="40%">
                           <ol>
                             <li *ngFor="let next of plan?.nextrecord">{{next.content}}{{next.progress?'('+next.progress+')':''}}</li>
                           </ol>
                         </td>
-                        <td width="3%">{{plan.ndegree}}</td>
+                        <td width="6%" style="text-align: center;">{{plan.ndegree}}</td>
                       </tr>
                     </tbody>
                   </table>
