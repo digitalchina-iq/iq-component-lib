@@ -98,7 +98,7 @@ export class ItemPlanDetailComponent implements OnInit {
         if(item.objectId) {
           proList.push(this.http.put(environment.server + 'classes/Overalldtl/' + item.objectId, tempItem).toPromise().then(response => response.json()));
         } else {
-          proList.push(this.http.post(environment.server + 'classes/Overalldtl', item).toPromise().then(response => response.json()));
+          proList.push(this.http.post(environment.server + 'classes/Overalldtl', tempItem).toPromise().then(response => response.json()));
         }
 
       });
