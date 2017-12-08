@@ -31,10 +31,10 @@
         </ng-container>
         <ng-container *ngIf="isNew || isEdit">
           <tr *ngFor="let item of itemPlan;index as i">
-            <td style="padding: 0;"><input type="text" [(ngModel)]="item.content" name="content" placeholder="-请输入工作内容" style="margin: 0;background: #fff;color: #4a4a4a;"></td>
-            <td style="padding: 0;"><input type="number" step="0.5" min="0" [(ngModel)]="item.days" placeholder="-请输入" name="days" style="margin: 0;width: 100%;height: 35px;background: #fff;color: #4a4a4a;"></td>
-            <td style="padding: 0;"><iq-datepicker [(ngModel)]="item.closedate" placeHolder="-请选择" format="YYYY-MM-DD"></iq-datepicker></td>
-            <td (click)="deleteItem(item, i)" [style.cursor]="itemPlan.length === 1?'not-allowed':'pointer'" style="padding: 0;"><i class="iqon-jian" style="display: block;line-height: 35px;text-align: center;"></i></td>
+            <td style="padding: 5px;"><input type="text" [(ngModel)]="item.content" name="content" placeholder="-请输入工作内容" style="margin: 0;background: #fff;color: #4a4a4a;"></td>
+            <td style="padding: 5px;"><input type="number" step="0.5" min="0" [(ngModel)]="item.days" placeholder="-请输入" name="days" style="margin: 0;width: 100%;height: 35px;background: #fff;color: #4a4a4a;"></td>
+            <td style="padding: 5px;"><iq-datepicker [(ngModel)]="item.closedate" placeHolder="-请选择" format="YYYY-MM-DD"></iq-datepicker></td>
+            <td (click)="deleteItem(item, i)" [style.cursor]="itemPlan.length === 1?'not-allowed':'pointer'" style="padding: 0;"><i class="iqon-jian" style="display: block;line-height: 45px;text-align: center;"></i></td>
           </tr>
         </ng-container>
       </tbody>

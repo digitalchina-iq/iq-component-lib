@@ -207,11 +207,14 @@ export class DefindexComponent implements OnInit  {
     //   })
 
 
-    this.iqhttp.get(environment.server+"/cloudQuery?cql=select * from Product")
+    // this.iqhttp.get(environment.server+"/cloudQuery?cql=select count(*) from Product")
+    // this.iqhttp.get(environment.server+"/classes/Product?limit=2&ship=0")
+    this.iqhttp.get(environment.server+"/classes/Product?limit=2&ship=0&count=1")
     .map(res => res.json())
     .subscribe(res => {
         console.log("+++++");
         console.log(res)
+        console.log(res.results.length)
         console.log("+++++");
         // this.router.navigate(["/index"]);
     })
