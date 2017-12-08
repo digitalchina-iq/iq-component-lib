@@ -16,7 +16,7 @@ export class FileUploadComponent implements OnInit {
   @Input() upType: number = 0;//组件类型 0: 按钮上传，弹出框形式 1:附件上传，DOM节点形式
   @Input() maxFileNum: number = Infinity;//最大可上传数量
   @Input() hasUploaded: any[] = [];//已经上传过的文件数组
-  @Input() closeTime: number = Infinity;//上传成功后关闭弹出框的时间
+  @Input() closeTime: number|boolean = false;//上传成功后关闭弹出框的时间
 
   @Output() onSuccess = new EventEmitter();//上传成功触发
   @Output() onDeleteItem = new EventEmitter();//删除某个文件触发
@@ -102,9 +102,11 @@ export class FileUploadComponent implements OnInit {
         this.fileErrorMsg[i] = data.message;
       }
 
-      setTimeout(() => {
-        this.hide();
-      }, this.closeTime)
+      if(/^[0-9]+.?[0-9]*$/.test(String(this.closeTime))) {
+        setTimeout(() => {
+          this.hide();
+        }, this.closeTime)
+      }
     }
 
     item.onProgress = progress => {
