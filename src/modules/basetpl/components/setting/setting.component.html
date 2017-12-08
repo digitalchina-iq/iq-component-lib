@@ -1,18 +1,144 @@
- <div id="content">
-    <div class="container-fluid">
-      <div class="row-fluid">
-        <h1 class="page-title">人员基本信息设置 <small> basic information setting</small></h1>
-        <div class="widget" style="float:left;min-width:400px;width:100%;">
-          <div class="widget-header">
-            <h4>登录密码修改</h4>
-          </div>
-          <div style="padding:0px 10px;">
-            <p><span style="padding-right: 20px;">原&nbsp;&nbsp;密&nbsp;&nbsp;码:</span><input type="text" style="width:25%"></p>
-            <p><span style="padding-right: 20px;">新&nbsp;&nbsp;密&nbsp;&nbsp;码:</span><input type="text" style="width:25%"></p>
-            <p><span style="padding-right: 20px;">确认密码:</span><input type="text" style="width:25%"></p>
-          </div>
-        </div>
-      </div>
-    </div>
- </div>
-  
+
+
+
+  <div id="content">
+      <div class="container-fluid">
+        <h1 class="page-title">我的基本信息<small>一次有趣的旅行</small></h1>
+        <div class="row-fluid">
+          <div class="span12">
+            <div class="widget">
+              <div class="widget-header">
+              </div>
+              <div class="widget-content">
+                <ul class="nav nav-tabs">
+                  <li class="active"><a href="#overview" data-toggle="tab"><i class="iqon-salary-o"></i> <span class="hidden-phone">概述</span></a></li>
+                  <li><a href="#api" data-toggle="tab"><i class="iqon-office-o"></i> <span class="hidden-phone">修改头像</span></a></li>
+                  <li><a href="#examples" data-toggle="tab"><i class="iqon-plane-o"></i> <span class="hidden-phone">修改密码</span></a></li>
+                </ul>
+                <div class="tab-content">
+                  <div class="tab-pane fade active in" id="overview">
+                    <div class="user-profile">
+                      <div class="profile-header">
+                        <i class="iqon-star-empty"></i>Account Overview
+                      </div>
+                    </div>
+                    <div class="user-profile">
+                        <div class="user-profile" style="margin-top:-30px;">
+                            
+                                          <div class="profile-image" style="width:200px;">
+                                              <img [src]="imgSrc">
+                                          </div>
+                                          <div class="profile-info" style="margin-left:220px;">
+                                            <table class="table">
+                                              <tbody><tr>
+                                                <td><span class="field-name">Username:</span> <span class="detail">Sean</span></td>
+                                              </tr>
+                                              <tr>
+                                                <td><span class="field-name">First Name:</span> <span class="detail">Ngu</span></td>
+                                              </tr>
+                                              <tr>
+                                                <td><span class="field-name">Last Name:</span> <span class="detail">Nguok Siong</span></td>
+                                              </tr>
+                                              <tr>
+                                                <td><span class="field-name">Country:</span> <span class="detail">United State</span></td>
+                                              </tr>
+                                              <tr>
+                                                <td><span class="field-name">Birthday:</span> <span class="detail">04 Nov 1989</span></td>
+                                              </tr>
+                                              <tr>
+                                                <td><span class="field-name">Occupation:</span> <span class="detail">Web Developer</span></td>
+                                              </tr>
+                                              <tr>
+                                                <td><span class="field-name">Email:</span> <span class="detail">nguoksiong@live.co.uk</span></td>
+                                              </tr>
+                                              <tr>
+                                                <td><span class="field-name">Interests:</span> <span class="detail">Design, Web etc</span></td>
+                                              </tr>
+                                              <tr>
+                                                <td><span class="field-name">Website URL:</span> <span class="detail"><a href="#">http://www.website.com</a></span></td>
+                                              </tr>
+                                              <tr>
+                                                <td><span class="field-name">Mobile Number:</span> <span class="detail">+02030030200</span></td>
+                                              </tr>
+                                              <tr>
+                                                <td><span class="field-name">About:</span>
+                                                  <span class="detail">
+                                                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                                  Sed a libero at dolor convallis sollicitudin. Nam congue pulvinar nulla
+                                                  ac luctus. Maecenas sem ipsum, volutpat nec lectus sit amet, convallis
+                                                  fermentum nunc. Sed egestas leo eget cursus molestie. Donec in justo
+                                                  tristique, tincidunt tortor id, lobortis massa. Pellentesque vel rutrum
+                                                  nulla, et luctus augue. Aliquam erat volutpat. Vestibulum consequat justo
+                                                  ut elit aliquet viverra. Curabitur mattis neque vel lorem porttitor
+                                                  accumsan. Integer et bibendum orci. In congue ut libero sed ultricies.
+                                                  Sed felis nibh, sollicitudin eu dolor sit amet, pharetra viverra risus.
+                                                  Pellentesque id justo vel ligula sollicitudin varius. Nullam vitae nisi
+                                                  tortor. Nullam vel turpis pulvinar, ultricies libero non, tincidunt tellus.
+                                                  </span>
+                                                </td>
+                                              </tr>
+                                            </tbody></table>
+                                          </div>
+                                          <div class="profile-footer">
+                                            <a href="#" class="btn btn-large btn-primary">Update Profile</a>
+                                            <a href="#" class="btn btn-large">Delete This Account</a>
+                                          </div>
+                                        </div>
+                    </div>
+                  </div>
+                  <div class="tab-pane fade" id="api">
+                    <div class="user-profile">
+                        <form class="form-horizontal margin-bottom-0">
+                            <div class="profile-header">
+                              <i class="icon-picture"></i> Profile Image
+                            </div>
+                            <div class="control-group">
+                              <label class="control-label">Image</label>
+                              <div class="controls user-profile padding-0">
+                                <div class="profile-image" style="width:200px;">
+                                  <img [src]="imgSrc">
+                                </div>
+                              </div>
+                            </div>
+                            <div class="form-actions">
+                              <!-- <button type="submit" class="btn btn-primary"><i class="icon-ok-sign"></i> Update</button> -->
+                              <iq-file-upload [url]="uploadApi" [allowedFileType]="['image']" closeTime="1000" (onSuccess)="fileUploadSuccess($event)" text="修改头像"></iq-file-upload>
+                            </div>
+                          </form>
+                    </div>
+                  </div>
+                  <div class="tab-pane fade" id="examples">
+                    <div class="user-profile">
+    
+    
+                        <form class="form-horizontal margin-bottom-0">
+                            <div class="profile-header">
+                              <i class="icon-lock"></i> Change Password
+                            </div>
+                            <div class="control-group">
+                              <label class="control-label">Current Password</label>
+                              <div class="controls"><input type="password"></div>
+                            </div>
+                            <div class="control-group">
+                              <label class="control-label">New Password</label>
+                              <div class="controls"><input type="password"></div>
+                            </div>
+                            <div class="control-group">
+                              <label class="control-label">New Password Again</label>
+                              <div class="controls"><input type="password"></div>
+                            </div>
+                            <div class="form-actions">
+                              <button type="submit" class="btn btn-primary"><i class="icon-ok-sign"></i> Update</button>
+                            </div>
+                          </form>
+    
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div><!-- end span12 -->
+        </div><!-- end row-fluid -->
+      </div><!-- end container-fluid -->
+    </div><!-- end #content -->
+    
