@@ -25,65 +25,64 @@
                     <div class="user-profile">
                         <div class="user-profile" style="margin-top:-30px;">
                             
-                                          <div class="profile-image" style="width:200px;">
-                                              <img [src]="imgSrc">
-                                          </div>
-                                          <div class="profile-info" style="margin-left:220px;">
-                                            <table class="table">
-                                              <tbody><tr>
-                                                <td><span class="field-name">Username:</span> <span class="detail">Sean</span></td>
-                                              </tr>
-                                              <tr>
-                                                <td><span class="field-name">First Name:</span> <span class="detail">Ngu</span></td>
-                                              </tr>
-                                              <tr>
-                                                <td><span class="field-name">Last Name:</span> <span class="detail">Nguok Siong</span></td>
-                                              </tr>
-                                              <tr>
-                                                <td><span class="field-name">Country:</span> <span class="detail">United State</span></td>
-                                              </tr>
-                                              <tr>
-                                                <td><span class="field-name">Birthday:</span> <span class="detail">04 Nov 1989</span></td>
-                                              </tr>
-                                              <tr>
-                                                <td><span class="field-name">Occupation:</span> <span class="detail">Web Developer</span></td>
-                                              </tr>
-                                              <tr>
-                                                <td><span class="field-name">Email:</span> <span class="detail">nguoksiong@live.co.uk</span></td>
-                                              </tr>
-                                              <tr>
-                                                <td><span class="field-name">Interests:</span> <span class="detail">Design, Web etc</span></td>
-                                              </tr>
-                                              <tr>
-                                                <td><span class="field-name">Website URL:</span> <span class="detail"><a href="#">http://www.website.com</a></span></td>
-                                              </tr>
-                                              <tr>
-                                                <td><span class="field-name">Mobile Number:</span> <span class="detail">+02030030200</span></td>
-                                              </tr>
-                                              <tr>
-                                                <td><span class="field-name">About:</span>
-                                                  <span class="detail">
-                                                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                                  Sed a libero at dolor convallis sollicitudin. Nam congue pulvinar nulla
-                                                  ac luctus. Maecenas sem ipsum, volutpat nec lectus sit amet, convallis
-                                                  fermentum nunc. Sed egestas leo eget cursus molestie. Donec in justo
-                                                  tristique, tincidunt tortor id, lobortis massa. Pellentesque vel rutrum
-                                                  nulla, et luctus augue. Aliquam erat volutpat. Vestibulum consequat justo
-                                                  ut elit aliquet viverra. Curabitur mattis neque vel lorem porttitor
-                                                  accumsan. Integer et bibendum orci. In congue ut libero sed ultricies.
-                                                  Sed felis nibh, sollicitudin eu dolor sit amet, pharetra viverra risus.
-                                                  Pellentesque id justo vel ligula sollicitudin varius. Nullam vitae nisi
-                                                  tortor. Nullam vel turpis pulvinar, ultricies libero non, tincidunt tellus.
-                                                  </span>
-                                                </td>
-                                              </tr>
-                                            </tbody></table>
-                                          </div>
-                                          <div class="profile-footer">
-                                            <a href="#" class="btn btn-large btn-primary">Update Profile</a>
-                                            <a href="#" class="btn btn-large">Delete This Account</a>
-                                          </div>
-                                        </div>
+                          <div class="profile-image" style="width:200px;">
+                            <img [src]="userInfo?.headurl">
+                          </div>
+                          <div class="profile-info" style="margin-left:220px;">
+                            <table class="table">
+                              <tbody><tr>
+                                <td>
+                                  <span class="field-name">Nickname:</span>
+                                  <span *ngIf="!canSave" class="detail">{{userInfo.nickname}}</span>
+                                  <input *ngIf="canSave" [(ngModel)]="_userInfo.nickname" type="text" name="" style="width: 300px;margin-left: 20px;">
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>
+                                  <span class="field-name">City:</span> 
+                                  <span *ngIf="!canSave" class="detail">{{userInfo.city}}</span>
+                                  <input *ngIf="canSave" [(ngModel)]="_userInfo.city" type="text" name="" style="width: 300px;margin-left: 20px;">
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>
+                                  <span class="field-name">Birthday:</span>
+                                  <span *ngIf="!canSave" class="detail">{{userInfo.birthday}}</span>
+                                  <div class="field-datepicker" *ngIf="canSave">
+                                    <iq-datepicker [(ngModel)]="_userInfo.birthday" format="YYYY-MM-DD"></iq-datepicker>
+                                  </div>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>
+                                  <span class="field-name">Email:</span>
+                                  <span *ngIf="!canSave" class="detail">{{userInfo.email}}</span>
+                                  <input *ngIf="canSave" [(ngModel)]="_userInfo.email" type="text" name="" style="width: 300px;margin-left: 20px;">
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>
+                                  <span class="field-name">Mobile Number:</span>
+                                  <span *ngIf="!canSave" class="detail">{{userInfo.mobilePhoneNumber}}</span>
+                                  <input *ngIf="canSave" [(ngModel)]="_userInfo.mobilePhoneNumber" type="text" name="" style="width: 300px;margin-left: 20px;">
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>
+                                  <span class="field-name">About:</span>
+                                  <span *ngIf="!canSave" class="detail">{{userInfo.about}}</span>
+                                  <textarea *ngIf="canSave" [(ngModel)]="_userInfo.about" type="text" name="" style="width: 300px;margin-left: 20px;"></textarea>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                          </div>
+                          <div class="profile-footer">
+                            <button type="button" [hidden]="canSave" (click)="editUserInfo()" class="m-btn-confirm">更新个人信息</button>
+                            <button type="button" [hidden]="!canSave" (click)="save()" class="m-btn-success">保存</button>
+                            <button type="button" [hidden]="!canSave" (click)="cancel()" class="m-btn-default">取消</button>
+                          </div>
+                        </div>
                     </div>
                   </div>
                   <div class="tab-pane fade" id="api">
@@ -96,12 +95,11 @@
                               <label class="control-label">Image</label>
                               <div class="controls user-profile padding-0">
                                 <div class="profile-image" style="width:200px;">
-                                  <img [src]="imgSrc">
+                                  <img [src]="userInfo?.headurl">
                                 </div>
                               </div>
                             </div>
                             <div class="form-actions">
-                              <!-- <button type="submit" class="btn btn-primary"><i class="icon-ok-sign"></i> Update</button> -->
                               <iq-file-upload [url]="uploadApi" [allowedFileType]="['image']" closeTime="1000" (onSuccess)="fileUploadSuccess($event)" text="修改头像"></iq-file-upload>
                             </div>
                           </form>

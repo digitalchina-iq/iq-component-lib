@@ -105,8 +105,6 @@ export class DefindexComponent implements OnInit  {
       })
       .map(res => res.json())
       .subscribe(res => {
-          console.log("----");
-          console.log(res)
           // var session=JSON.stringify(res.sessionToken);
           
             // var session=res.sessionToken;
@@ -117,10 +115,6 @@ export class DefindexComponent implements OnInit  {
           var userinfo = JSON.stringify(res);
           window.localStorage.setItem('userinfo',userinfo);
 
-          console.log(JSON.parse(localStorage.getItem("userinfo")))
-          console.log(JSON.parse(localStorage.getItem("userinfo")).sessionToken)
-          
-          // console.log("++++");
            this.router.navigate(["/index"]);
       },err => {
         this.loading = false;
@@ -245,9 +239,6 @@ export class DefindexComponent implements OnInit  {
         console.log("+++++");
         // this.router.navigate(["/index"]);
     })
-
-
- 
 
   }
 

@@ -80,7 +80,7 @@ export class CodeReviewComponent implements OnInit {
         totalPages: Math.ceil(all / this.pager.pageSize)
       })
 
-      let lastRecord = this.recordList[this.recordList.length - 1];
+      let lastRecord = this.recordList[0];
       if(!lastRecord){return};
       if(moment(lastRecord.createdAt).format('YYYY-MM-DD') === this.today) {
         this.objId = lastRecord.objectId;
