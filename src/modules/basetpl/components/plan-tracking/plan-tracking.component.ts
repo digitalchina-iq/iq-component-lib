@@ -66,11 +66,11 @@ export class PlanTrackingComponent implements OnInit{
   }
 
   /**获取以前提交的记录内容*/
-  getNotTodyRecord(): Array<PlanRecord>{
+  getNotTodyRecord(submit: boolean = false): Array<PlanRecord>{
     let recordArr = this.planList.filter(item => item.objectId === this.id)[0].file || [];
     let notTodayRecordArr = recordArr.filter(item => item.time !== this.today);
     this.hasSubmitted = notTodayRecordArr.length < recordArr.length;
-    if(!this.hasSubmitted && notTodayRecordArr[0]) {
+    if(!this.hasSubmitted && notTodayRecordArr[0] && !submit) {
       this.newRecord.thisrecord = JSON.parse(JSON.stringify(notTodayRecordArr[0].nextrecord));
     }
     return notTodayRecordArr.concat(this.newRecord);
@@ -102,7 +102,7 @@ export class PlanTrackingComponent implements OnInit{
 
   save() {
     this.loading = true;
-    let requsetBody = this.getNotTodyRecord();
+    let requsetBody = this.getNotTodyRecord(true);
     this.planList.length = 0;
     this.http.put(environment.server + 'classes/Pt/' + this.id, {file:requsetBody}).toPromise().then(response => response.json).then(data => {
       this.loading = false;
