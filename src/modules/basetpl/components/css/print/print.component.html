@@ -11,7 +11,7 @@
 
 
       <div style="margin-top:35px;">
-        <h3>media <span style="font-size:12px"></span></h3>
+        <h3>@media <span style="font-size:12px"></span></h3>
         <div style="padding:0px 10px;">
           <p>● <code>print</code>:指用于打印机的不透明介质。  @media print里面的内容只对打印出来的内容有效。</p>
           <showcode>
@@ -30,17 +30,29 @@
       </div>
 
       <div style="margin-top:35px;">
-        <h3>flex-direction <span style="font-size:12px">(项目的排列方向)</span></h3>
+        <h3>@page规则 <span style="font-size:12px">(允许你指定页面盒子的许多方面)</span></h3>
         <div style="padding:0px 10px;">
-          <p>● <code>row</code>: 默认值,主轴为水平方向，起点在左端。</p>
-          <p>● <code>row-reverse</code>：主轴为水平方向，起点在右端.</p>
-          <p>● <code>column</code>: 主轴为垂直方向，起点在上沿.</p>
-          <p>● <code>column-reverse</code>：主轴为垂直方向，起点在下沿.</p>
-          <p style="margin-left:40px;width:70%"><img src="./assets/img/21.png" alt=""></p>
+          <p style="margin:10px 0 0">● 指定页面尺寸。</p>
           <showcode>
             <div class="shows" style="margin-left:-120px;">
-            .box {{'{'}}
-                flex-direction: row | row-reverse | column | column-reverse;
+            @page {{'{'}}
+              size: 5.5in 8.5in;
+            {{'}'}}
+            </div>
+          </showcode>
+          <p style="margin:10px 0 0">● 使用纸质尺寸关键字，例如<code>A4</code>或<code>legal</code>。</p>
+           <showcode>
+            <div class="shows" style="margin-left:-120px;">
+            @page {{'{'}}
+              size: A4;
+            {{'}'}}
+            </div>
+          </showcode>
+          <p style="margin:10px 0 0">● 使用关键字来指定页面方向, <code>portrait</code>或者<code>landscape</code></p>
+          <showcode>
+            <div class="shows" style="margin-left:-120px;">
+             @page {{'{'}}
+              size: A4 landscape;
             {{'}'}}
             </div>
           </showcode>
@@ -48,187 +60,203 @@
       </div>
 
       <div style="margin-top:35px;">
-        <h3> flex-wrap <span style="font-size:12px">(项目是否换行)</span></h3>
+        <h3> 使用伪类定义页面边距 <span style="font-size:12px"></span></h3>
         <div style="padding:0px 10px;">
-          <p>● <code>nowrap</code>: 默认值,不换行。</p>
-          <p>● <code>wrap</code>: 换行，第一行在上方。</p>
-          <p>● <code>wrap-reverse</code>: 换行，第一行在下方。</p>
-          <p style="margin-left:40px;width:70%"><img src="./assets/img/22.png" alt=""></p>
+          <p style="margin:10px 0 0">● <code>:left</code>: 页面左边距。</p>
+           <showcode>
+            <div class="shows" style="margin-left:-120px;">
+            @page :left {{'{'}}
+               margin-left: 3cm;
+            {{'}'}}
+            </div>
+          </showcode>
+          <p style="margin:10px 0 0">● <code>:right</code>: 页面右边距。</p>
           <showcode>
             <div class="shows" style="margin-left:-120px;">
-            .box {{'{'}}
-                 flex-wrap: nowrap | wrap | wrap-reverse;
+            @page :right {{'{'}}
+               margin-left: 4cm;
+            {{'}'}}
+            </div>
+          </showcode>
+           <p style="margin:10px 0 0">● <code>:first</code>: 页面第一页使用的样式。</p>
+          <showcode>
+            <div class="shows" style="margin-left:-120px;">
+            @page :first {{'{'}}
+              margin: 100px 200px;
+            {{'}'}}
+            </div>
+          </showcode>
+           <p style="margin:10px 0 0">● <code>:blank</code>: 故意左侧留白”的页面。可以使用目标是边距盒顶部中心的生成内容.</p>
+          <showcode>
+            <div class="shows" style="margin-left:-120px;">
+            @page :blank {{'{'}}
+              @top-center {{'{'}} content: "This page is intentionally left blank." {{'}'}}
+            {{'}'}}
+            </div>
+          </showcode>
+        </div>
+      </div>
+       <div style="margin-top:35px;">
+        <h3>打印显示链接url信息</h3>
+        <div style="padding:0px 10px;">
+          <p>● 利用<code>:after</code>和<code>content</code>把不在屏幕上显示的文本打印在一个样式元素的末端。</p>
+          <p>● 方法:给打印样式表添加一个样式，在每个链接后面打印出绝对的URL（即以http://开头的那些）</p>
+          <showcode>
+            <div class="shows" style="margin-left:-120px;">
+              a[href^="http://"]:after {{'{'}} content: " (" attr(href) ") ";{{'}'}}
+            </div>
+          </showcode>
+        </div>
+      </div>
+      <div style="margin-top:35px;">
+        <h3> 分页符 </h3>
+        <div style="padding:0px 10px;">
+          <p style="margin:10px 0 0">● <code>page-break-before</code> 在一个指定样式之前插入一个分页符</p>
+          <p style="margin:10px 0 0 15px"> <code>auto</code>：在对象之前自动插入页分割符。</p>
+          <p style="margin:10px 0 0 15px"> <code>always</code>：始终在对象之前插入页分割符。</p>
+          <showcode>
+            <div class="shows" style="margin-left:-120px;">
+            h1 {{'{'}}
+               page-break-before: always;
+            {{'}'}}
+            </div>
+          </showcode>
+        </div>
+        <div style="padding:0px 10px;">
+          <p style="margin:10px 0 0">● <code>page-break-after</code> 设置对象后出现页分割符</p>
+          <p style="margin:10px 0 0 15px"> <code>auto</code>：在对象之后自动插入页分割符。</p>
+          <p style="margin:10px 0 0 15px"> <code>always</code>：始终在对象之后插入页分割符。</p>
+          <p style="margin:10px 0 0 15px"> <code>avoid</code>：避免在对象后面插入分割符。</p>
+          <showcode>
+            <div class="shows" style="margin-left:-120px;">
+            h1, h2, h3, h4, h5 {{'{'}}
+               page-break-after: avoid;
+            {{'}'}}
+            </div>
+          </showcode>
+        </div>
+        <div style="padding:0px 10px;">
+          <p style="margin:10px 0 0">● <code>page-break-inside</code> 避免断开图像和表格</p>
+          <showcode>
+            <div class="shows" style="margin-left:-120px;">
+            table, figure {{'{'}}
+               page-break-inside: avoid;
             {{'}'}}
             </div>
           </showcode>
         </div>
       </div>
       <div style="margin-top:35px;">
-        <h3> flex-flow </h3>
+        <h3>计数器</h3>
         <div style="padding:0px 10px;">
-          <p>● <code>flex-direction</code>属性和<code>flex-wrap</code>属性的简写形式，默认值为<code>row nowrap</code>。</p>
+          <p style="margin:10px 0 0"> ● 把页码放在奇数页的右下角和偶数页的左下角。</p>
           <showcode>
             <div class="shows" style="margin-left:-120px;">
-            .box {{'{'}}
-                  flex-flow: (flex-direction) || (flex-wrap);
+            @page:right{{'{'}} 
+              @bottom-right {{'{'}} content: counter(page); {{'}'}}
+            {{'}'}} 
+            @page:left{{'{'}} 
+              @bottom-left {{'{'}} content: counter(page); {{'}'}}
+            {{'}'}}
+            </div>
+          </showcode>
+          <p style="margin:10px 0 0"> ● <code>pages</code>:计数器,可以输出任意你想要的页数.</p>
+          <showcode>
+            <div class="shows" style="margin-left:-120px;">
+            @page:left{{'{'}} 
+              @bottom-left {{'{'}} content: "Page " counter(page) " of " counter(pages) {{'}'}}
+            {{'}'}}
+            </div>
+          </showcode>
+          <p style="margin:10px 0 0">创建一个计数器</p>
+          <p style="margin:10px 0 0"> ● <code>counter-reset</code>进行创建,<code>counter-increment</code>增加.</p>
+          <p style="margin:10px 0 0">创建一个叫chapternum的计数器,每出现h1增加。</p>
+          <showcode>
+            <div class="shows" style="margin-left:-120px;">
+            body {{'{'}}  
+              counter-reset: chapternum; 
+            {{'}'}}
+            h1.chapter:before {{'{'}}  
+              counter-increment: chapternum; 
+              content: counter(chapternum) ". "; 
             {{'}'}}
             </div>
           </showcode>
         </div>
       </div>
       <div style="margin-top:35px;">
-        <h3>justify-content <span style="font-size:12px">(项目在主轴上的对齐方式)</span></h3>
+        <h3>脚注</h3>
         <div style="padding:0px 10px;">
-          <p>● <code>flex-start</code>: 默认值,左对齐。</p>
-          <p>● <code>flex-end</code>: 右对齐。</p>
-          <p>● <code>center</code>: 居中。</p>
-          <p>● <code>space-between</code>: 两端对齐，项目之间的间隔都相等。</p>
-          <p>● <code>space-around</code>: 每个项目两侧的间隔相等。所以，项目之间的间隔比项目与边框的间隔大一倍。</p>
-          <p style="margin-left:40px;width:70%"><img src="./assets/img/23.png" alt=""></p>
+          <p>● <code>float</code>: 给脚注类创建规则.</p>
+          <showcode>
+            <div class="shows" >
+              &lt;p&gt;Footnotes
+                &lt;span class="footnotes"&gt;Footnotes and notes placed in the footer of a document to reference the text. The footnote will be 
+                removed from the flow when the page is created.&lt;/span&gt; 
+                are useful in books and printed documents.
+              &lt;/p&gt;
+              .fn{{'{'}} 
+                float: footnote;
+              {{'}'}}
+            </div>
+          </showcode>
+          <p style="margin:10px 0 0">● 脚注有一个预定义计数器表现和页面计数器一样。通常，你想让计数器每次fn类出现时增加1并且在每一章开始时被重置.</p>
           <showcode>
             <div class="shows" style="margin-left:-120px;">
-            .box {{'{'}}
-                 justify-content: flex-start | flex-end | center | space-between | space-around;
+              .fn{{'{'}} 
+                counter-increment: footnote;
+              {{'}'}}
+              h1{{'{'}} 
+                counter-reset: footnote;
+              {{'}'}}
+            </div>
+          </showcode>
+        </div>
+      </div>
+      <div style="margin-top:35px;">
+        <h3>交叉引用 </h3>
+        <p>在网页中，我们通过添加链接交叉引用。在书和其他打印文档中，通常依靠页码寻找引用。因为页码也许会随着书的不同版本打印形式的变化而改变 - 通过CSS实现让我们不需要检查和改变所有数字。</p>
+        <div style="padding:0px 10px;">
+          <p>● <code>target-counter</code>:添加数字。在文档中创建链接时，赋予它们<code>href</code>，值为你想要标记的文档中的元素的ID.此外，增加一个类来识别它们是交叉引用，而不是一个外部链接；此处用<code>xref</code>。</p>
+          <showcode>
+            <div class="shows" style="margin-left:-120px;">
+              &lt;a class="xref" href="#ch1" title="Chapter 1"&gt;Chapter 1&lt;/a&gt;
+            </div>
+          </showcode>
+        </div>
+        <p style="margin:10px 0 10px">在这个链接后，再一次使用生成内容输出<code>(page x)</code>，<code>x</code>是ID在书中位置的数值。</p>
+        <div style="padding:0px 10px;">
+          <p>● <code>target-counter</code>:添加数字。在文档中创建链接时，赋予它们<code>href</code>，值为你想要标记的文档中的元素的ID.此外，增加一个类来识别它们是交叉引用，而不是一个外部链接；此处用<code>xref</code>。</p>
+          <showcode>
+            <div class="shows" style="margin-left:-120px;">
+            a.xref:after {{'{'}}  
+               content: " (page " target-counter(attr(href, url), page) ")";
             {{'}'}}
             </div>
           </showcode>
         </div>
       </div>
       <div style="margin-top:35px;">
-        <h3>align-items <span style="font-size:12px">(项目在交叉轴上如何对齐)</span></h3>
+        <h3>注意事项</h3>
         <div style="padding:0px 10px;">
-          <p>● <code>flex-start</code>: 交叉轴的起点对齐。</p>
-          <p>● <code>flex-end</code>: 交叉轴的终点对齐。</p>
-          <p>● <code>center</code>: 交叉轴的中点对齐。</p>
-          <p>● <code>baseline</code>: 项目的第一行文字的基线对齐。</p>
-          <p>● <code>stretch</code>: 如果项目未设置高度或者设为auto,将占满整个容器的高度。</p>
-          <p style="margin-left:40px;width:70%"><img src="./assets/img/24.png" alt=""></p>
+          <p>● 打印样式中不推荐使用背景.因为浏览器默认情况下并不能打印出CSS中的背景内容，只有当浏览器被
+  设置可以打印背景的情况下才能打印出背（ie的高级选项中可选）。即使背景可以打印，它也可能盖过叠在它上面的任何文本。</p>
+          <p>● 如果需要在打印内容中出现图片，请在HTML代码中加入。</p>
+          <p>● 打印设置使用的是物理单位，所以尺寸最好不要用像素(px)，可以用pt也可以用cm；</p>
+          <p>● <code>display：none</code>隐藏不需要的或是次要的内容。</p>
+          <p>● 尽量不要让内容浮动.基于Gecko的浏览器（例如Netscape 6+），当用户用它来浏览一个打印输出页面时，它会截去浮动元素中的内容。
+ 这些内容就不会被传送到打印机，下一个页面也不会有它的踪影――它消失了。</p>
+          <p>● 尽可能的在HTML代码中做好内容重要的先后次序，这样在打印样式中可以节省不少的麻烦。</p>
+          <p>● 确保页面上的所有文本以黑色打印，通配选择器<code>*</code>和<code>!important</code>来创建单个样式：。</p>
           <showcode>
             <div class="shows" style="margin-left:-120px;">
-            .box {{'{'}}
-                 align-items: flex-start | flex-end | center | baseline | stretch;
+            *{{'{'}} 
+              color: ##000# !important 
             {{'}'}}
             </div>
           </showcode>
         </div>
       </div>
-      <div style="margin-top:35px;">
-        <h3>align-content <span style="font-size:12px">(多根轴线的对齐方式,若只有一条,该属性不起作用.)</span></h3>
-        <div style="padding:0px 10px;">
-          <p>● <code>flex-start</code>:与交叉轴的起点对齐。</p>
-          <p>● <code>flex-end</code>: 与交叉轴的终点对齐。</p>
-          <p>● <code>center</code>: 与交叉轴的中点对齐。</p>
-          <p>● <code>space-between</code>: 与交叉轴两端对齐，轴线之间的间隔平均分布。</p>
-          <p>● <code>space-around</code>: 每根轴线两侧的间隔都相等。所以，轴线之间的间隔比轴线与边框的间隔大一倍。</p>
-           <p>● <code>stretch</code>: 默认值,轴线占满整个交叉轴.</p>
-          <p style="margin-left:40px;width:70%"><img src="./assets/img/25.png" alt=""></p>
-          <showcode>
-            <div class="shows" style="margin-left:-120px;">
-            .box {{'{'}}
-                 align-content: flex-start | flex-end | center | space-between | space-around | stretch;
-            {{'}'}}
-            </div>
-          </showcode>
-        </div>
-      </div>
-      <div style="margin-top:35px;">
-        <h3>定义在子容器的六大属性</h3>
-        <div style="padding:0px 10px;">
-          <p>● <code>order</code></p>
-          <p>● <code>flex-grow</code></p>
-          <p>● <code>flex-shrink</code></p>
-          <p>● <code>flex-basis</code></p>
-          <p style="display: flex;">● <code style="height: 22px;">flex</code></p>
-          <p>● <code>align-self</code></p>
-        </div>
-      </div>
-
-      <div style="margin-top:35px;">
-        <h3>order <span style="font-size:12px">(项目的排列顺序)</span></h3>
-        <p>● 数值越小，排列越靠前，默认为0</p>
-        <div style="padding:0px 10px;">
-          <p style="margin-left:40px;width:70%"><img src="./assets/img/26.png" alt=""></p>
-          <showcode>
-            <div class="shows" style="margin-left:-120px;">
-            .item {{'{'}}
-                order: number;
-            {{'}'}}
-            </div>
-          </showcode>
-        </div>
-      </div>
-      <div style="margin-top:35px;">
-        <h3>flex-grow <span style="font-size:12px">(项目的放大比例，默认为0，即如果存在剩余空间，也不放大。)</span></h3>
-        <div style="padding:0px 10px;">
-          <p>● 如果所有项目的flex-grow属性都为1，则它们将等分剩余空间（如果有的话）。如果一个项目的flex-grow属性为2，其他项目都为1，则前者占据的剩余空间将比其他项多一倍。</p>
-          <p style="margin-left:40px;width:70%"><img src="./assets/img/27.png" alt=""></p>
-          <showcode>
-            <div class="shows" style="margin-left:-120px;">
-            .item {{'{'}}
-                flex-grow: (number); /* default 0 */
-            {{'}'}}
-            </div>
-          </showcode>
-        </div>
-      </div>
-      <div style="margin-top:35px;">
-        <h3>flex-shrink <span style="font-size:12px">(项目的缩小比例，默认为1，即如果空间不足，该项目将缩小)</span></h3>
-        <div style="padding:0px 10px;">
-          <p>● 如果所有项目的flex-shrink属性都为1，当空间不足时，都将等比例缩小。如果一个项目的flex-shrink属性为0，其他项目都为1，则空间不足时，前者不缩小。</p>
-          <p style="margin-left:40px;width:70%"><img src="./assets/img/28.png" alt=""></p>
-          <showcode>
-            <div class="shows" style="margin-left:-120px;">
-            .item {{'{'}}
-                flex-shrink: (number); /* default 1 */
-            {{'}'}}
-            </div>
-          </showcode>
-        </div>
-      </div> 
-      <div style="margin-top:35px;">
-        <h3>flex-basis </h3>
-        <div style="padding:0px 10px;">
-          <p>● 在分配多余空间之前，项目占据的主轴空间。浏览器根据这个属性，计算主轴是否有多余空间。它的默认值为auto，即项目的本来大小。</p>
-          <p>● 它可以设为跟width或height属性一样的值（比如350px），则项目将占据固定空间</p>
-          <showcode>
-            <div class="shows" style="margin-left:-120px;">
-            .item {{'{'}}
-                 flex-basis: (length) | auto; /* default auto */
-            {{'}'}}
-            </div>
-          </showcode>
-        </div>
-      </div> 
-      <div style="margin-top:35px;">
-        <h3>flex </h3>
-        <div style="padding:0px 10px;">
-          <p>● <code>flex-grow</code>, <code>flex-shrink</code> 和 <code>flex-basis</code>的简写，默认值为0 1 auto。后两个属性可选。</p>
-          <p>● <code>auto</code> (1 1 auto)和<code>none</code>(0 0 auto)是该属性的两个快捷键值.建议优先使用这个属性，而不是单独写三个分离的属性，因为浏览器会推算相关值。</p>
-          <showcode>
-            <div class="shows" style="margin-left:-120px;">
-            .item {{'{'}}
-              flex: none | [ <'flex-grow'> <'flex-shrink'>? || <'flex-basis'> ]
-            {{'}'}}
-            </div>
-          </showcode>
-        </div>
-      </div> 
-      <div style="margin-top:35px;">
-        <h3>align-self <span style="font-size:12px">(项目的缩小比例，默认为1，即如果空间不足，该项目将缩小)</span></h3>
-        <div style="padding:0px 10px;">
-          <p>● 允许单个项目有与其他项目不一样的对齐方式，可覆盖<code>align-items</code>属性。</p>
-          <p>● 默认值为<code>auto</code>，表示继承父元素的<code>align-items</code>属性，如果没有父元素，则等同于<code>stretch</code>。</p>
-          <p>● 该属性可能取6个值，除了auto，其他都与<code>align-items</code>属性完全一致。</p>
-          <p style="margin-left:40px;width:70%"><img src="./assets/img/29.png" alt=""></p>
-          <showcode>
-            <div class="shows" style="margin-left:-120px;">
-            .item {{'{'}}
-               align-self: auto | flex-start | flex-end | center | baseline | stretch;
-            {{'}'}}
-            </div>
-          </showcode>
-        </div>
-      </div> 
     </ng-template>
 
   <!-- API -->
