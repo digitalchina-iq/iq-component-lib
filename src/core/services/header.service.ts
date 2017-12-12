@@ -7,6 +7,10 @@ export class HeaderService {
     "nickname": ''
   }
   constructor() {
+    this.initData();
+  }
+
+  initData() {
     let userInfo = JSON.parse(window.localStorage.getItem("userinfo"));
     if(userInfo) {
       this._config['headurl'] = userInfo.headurl||"assets/img/user-profile-pic-0.png";
@@ -18,6 +22,7 @@ export class HeaderService {
     return this._config;
   }
   set config(_config:any){
+    this.initData();
     Object.assign(this._config,_config);
   }
 }
