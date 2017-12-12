@@ -17,6 +17,7 @@ table{
   }
   tbody>tr>td{
     border: $border;
+    padding: 0 5px;
 
     .m-select{
       width: 70px;
