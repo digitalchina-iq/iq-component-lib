@@ -5,6 +5,7 @@ import * as moment from 'moment';
 
 import { environment } from 'environments/environment';
 import { WindowService } from 'core';
+import { Pager } from 'shared/index';
 
 declare var window;
 
@@ -45,6 +46,7 @@ export class CodeReviewComponent implements OnInit {
   recordList: Record[];
   recordItem: Record;
   users: any[];
+  pager: Pager = new Pager();
 
   constructor(private http: Http, private windowService: WindowService){}
 
@@ -56,8 +58,6 @@ export class CodeReviewComponent implements OnInit {
     this.http.get(environment.server + 'users').toPromise().then(response => response.json()).then(data => {
       this.users = data.results;
     })
-
-    this.getData();
   }
 
   /**获取登录人信息*/
@@ -71,9 +71,14 @@ export class CodeReviewComponent implements OnInit {
   /**获取记录数据列表*/
   getData() {
     this.loading = true;
-    this.http.get(environment.server + 'classes/Cr').toPromise().then(response => response.json()).then(data => {
+    this.http.get(environment.server + 'classes/Cr', {params:{order: '-createdAt', limit: this.pager.pageSize, skip: (this.pager.pageNo - 1) * this.pager.pageSize, count: 1}}).toPromise().then(response => response.json()).then(data => {
       this.loading = false;
       this.recordList = data.results;
+      let all = data.count;
+      this.pager.set({
+        total: all,
+        totalPages: Math.ceil(all / this.pager.pageSize)
+      })
 
       let lastRecord = this.recordList[this.recordList.length - 1];
       if(!lastRecord){return};
@@ -84,6 +89,14 @@ export class CodeReviewComponent implements OnInit {
         this.getUser();
       }
     })
+  }
+
+  //切换分页
+  pagerChange(e: Pager) {
+    this.pager.pageNo = e.pageNo;
+    this.pager.pageSize = e.pageSize;
+
+    this.getData();
   }
 
   //获取并设置非空列表

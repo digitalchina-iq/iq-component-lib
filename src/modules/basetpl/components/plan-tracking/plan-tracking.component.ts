@@ -35,6 +35,7 @@ class UserPlan {
 })
 export class PlanTrackingComponent implements OnInit{
 
+  today: string = moment().format('YYYY-MM-DD');
   newRecord: PlanRecord;
   planList: UserPlan[] = [];
   loading: boolean;
@@ -50,22 +51,24 @@ export class PlanTrackingComponent implements OnInit{
 
   initNewRecord(){
     this.newRecord = new PlanRecord();
-    this.newRecord.time = moment().format('YYYY-MM-DD');
+    this.newRecord.time = this.today;
   }
 
   initData() {
     this.loading = true;
     this.http.get(environment.server + 'classes/Pt').toPromise().then(response => response.json()).then(data => {
+      console.log(data);
       this.loading =false;
       this.planList = data.results;
-      this.id = this.planList[0].objectId;
+      this.id = this.planList[0].objectId;//初始化id为第一个人的id
       this.getNotTodyRecord();      
     })
   }
 
+  /**获取以前提交的记录内容*/
   getNotTodyRecord(): Array<PlanRecord>{
     let recordArr = this.planList.filter(item => item.objectId === this.id)[0].file || [];
-    let notTodayRecordArr = recordArr.filter(item => item.time !== this.newRecord.time);
+    let notTodayRecordArr = recordArr.filter(item => item.time !== this.today);
     this.hasSubmitted = notTodayRecordArr.length < recordArr.length;
     if(!this.hasSubmitted && notTodayRecordArr[0]) {
       this.newRecord.thisrecord = JSON.parse(JSON.stringify(notTodayRecordArr[0].nextrecord));
@@ -73,6 +76,16 @@ export class PlanTrackingComponent implements OnInit{
     return notTodayRecordArr.concat(this.newRecord);
   }
 
+  checkDate() {
+    if(this.newRecord.time === this.today) {
+      this.getNotTodyRecord();
+    } else {
+      this.hasSubmitted = false;
+      this.newRecord.thisrecord = [new Record()];
+    }
+  }
+
+  /**获取用户id*/
   getUserId(e){
     this.id = e;
     this.initNewRecord();

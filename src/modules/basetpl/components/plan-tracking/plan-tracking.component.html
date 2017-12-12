@@ -45,7 +45,7 @@
             <div class="new-record">
               <div class="date">
                 <label>日期：</label>
-                <iq-datepicker [(ngModel)]="newRecord.time" format="YYYY-MM-DD"></iq-datepicker>
+                <iq-datepicker [(ngModel)]="newRecord.time" (ngModelChange)="checkDate()" format="YYYY-MM-DD"></iq-datepicker>
               </div>
               <div class="record-plan">
                 <label>上次任务：</label>

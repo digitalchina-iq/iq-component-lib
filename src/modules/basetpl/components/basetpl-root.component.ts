@@ -20,7 +20,6 @@ export class BasetplRootComponent implements OnInit {
 
     ngOnInit() {
        this.basetplService.getNav().then(data => {
-         console.log(data);
          this.menuList = data.results;
          setTimeout(this.setNav);
        })

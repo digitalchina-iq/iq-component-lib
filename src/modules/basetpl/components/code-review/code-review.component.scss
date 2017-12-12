@@ -17,6 +17,7 @@ table{
   }
   tbody>tr>td{
     border: $border;
+    padding: 0 5px;
 
     .m-select{
       width: 70px;
@@ -38,6 +39,55 @@ table{
           margin: 0;
           width: 225px;
         }
+      }
+    }
+  }
+}
+
+.container-fluid>.row-fluid>.span12>.widget /deep/ .page{
+  background: none;
+  color: #fff;
+
+  .page-size>a{
+    color: #fff;
+
+    &.active{
+      color: #57b9f8;
+    }
+  }
+
+  .page-center{
+    >.pagination>ul>li{
+
+      &:first-child>a,&:first-child>a{
+        border: none!important;
+      }
+
+      >a{
+        color: #fff;
+        background: none;
+        border-color: #999!important;
+
+        &.disable>i{
+          color: #4a4a4a;
+        }
+
+        >i{
+          color: #aaa;
+        }
+      }
+    }
+
+    >.page-go{
+
+      >input{
+        background: none;
+        border-color: #999!important;
+      }
+
+      >button.m-btn-default{
+        background: none;
+        color: #fff;
       }
     }
   }
