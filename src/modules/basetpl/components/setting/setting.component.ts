@@ -29,8 +29,6 @@ class UserInfo {
   }
 }
 
-let loaclInfo = JSON.parse(window.localStorage.getItem('userinfo'));
-
 @Component({
   templateUrl: './setting.component.html',
   styles: [`.field-datepicker{
@@ -51,8 +49,8 @@ export class SettingComponent {
   uploadApi: string;
   canSave: boolean;
 
-  userInfo: UserInfo = new UserInfo(loaclInfo);
-  _userInfo: UserInfo = new UserInfo(loaclInfo);
+  userInfo: UserInfo;
+  _userInfo: UserInfo;
 
   constructor(
     private iqhttp: Http,
@@ -60,6 +58,10 @@ export class SettingComponent {
     private headerService: HeaderService){}
 
   ngOnInit() {
+    let loaclInfo = JSON.parse(window.localStorage.getItem('userinfo'));
+    this.userInfo = new UserInfo(loaclInfo);
+    this._userInfo = new UserInfo(loaclInfo);
+
     this.uploadApi = environment.server + 'files/upload';
   }
 
