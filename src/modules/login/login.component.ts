@@ -209,7 +209,34 @@ export class DefindexComponent implements OnInit  {
 
     // this.iqhttp.get(environment.server+"/cloudQuery?cql=select count(*) from Product")
     // this.iqhttp.get(environment.server+"/classes/Product?limit=2&ship=0")
-    this.iqhttp.get(environment.server+"/classes/Product?limit=2&ship=0&count=1")
+    this.iqhttp.get(environment.server+"/classes/Cr?limit=10&skip=10&count=1")
+    .map(res => res.json())
+    .subscribe(res => {
+        console.log("+++++");
+        console.log(res)
+        console.log(res.results.length)
+        console.log("+++++");
+        // this.router.navigate(["/index"]);
+    })
+    this.iqhttp.get(environment.server+"/classes/Cr?limit=10&skip=0&count=1")
+    .map(res => res.json())
+    .subscribe(res => {
+        console.log("+++++");
+        console.log(res)
+        console.log(res.results.length)
+        console.log("+++++");
+        // this.router.navigate(["/index"]);
+    })
+    this.iqhttp.get(environment.server+"/classes/Cr?limit=2&skip=0&count=1")
+    .map(res => res.json())
+    .subscribe(res => {
+        console.log("+++++");
+        console.log(res)
+        console.log(res.results.length)
+        console.log("+++++");
+        // this.router.navigate(["/index"]);
+    })
+    this.iqhttp.get(environment.server+"/classes/Cr?limit=2&skip=2&count=1")
     .map(res => res.json())
     .subscribe(res => {
         console.log("+++++");
@@ -219,6 +246,8 @@ export class DefindexComponent implements OnInit  {
         // this.router.navigate(["/index"]);
     })
 
+
+ 
 
   }
 
