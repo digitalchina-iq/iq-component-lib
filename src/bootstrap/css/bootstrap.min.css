@@ -1009,7 +1009,13 @@ pre {
 pre.prettyprint {
   margin-bottom: 20px;
 }
-
+.hljs {
+    display: block;
+    overflow-x: auto;
+    padding: .5em;
+    color: #333;
+    background: #f8f8f8;
+}
 pre code {
   padding: 0;
   color: inherit;

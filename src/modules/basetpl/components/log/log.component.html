@@ -1,0 +1,129 @@
+<div [@flyIn]="'in'">
+  <showtem [stname]="'更新日志'" [stnamedel]="'一个有趣的日志'" >
+
+    <!-- overview -->
+      <ng-template [ngIf]="true" class='stview'>
+        
+        <showitemo >
+          <ng-template [ngIf]="true" class="sitemocon">
+            <div>
+              <h3>2017年12月18日 </h3>
+              <h3 style="font-size:16px">FEFL1.2 版本</h3>
+              <div style="padding:0px 10px;">
+                <p>● 日期选择组件增加选择周功能.</p>
+                <p>● 增加项目排期模块</p>
+                <p>● CSS增加打印模块</p>
+                <p>● 添加个人设置模块，包括个人信息更新，头像更新，密码更新</p>
+                <p>● 增加代码审查提示功能</p>
+                <p>● 优化代码结构</p>
+                <p>● 解决历史遗留等已知bug</p>
+              </div>
+            </div>
+          </ng-template>
+        </showitemo>
+
+        <showitemo >
+          <ng-template [ngIf]="true" class="sitemocon">
+            <div>
+              <h3>2017年12月3日 </h3>
+              <h3 style="font-size:16px">FEFL1.1 版本 </h3>
+              <div style="padding:0px 10px;">
+                <p>● css部分增加flex布局.</p>
+                <p>● 公共组件：增加 选人组件</p>
+                <p>● 增加 计划跟踪，代码审查 模块</p>
+                <p>● 优化组件库放大显示等问题</p>
+                <p>● 修改其他历史问题</p>
+              </div>
+            </div>
+          </ng-template>
+        </showitemo>
+
+        <showitemo >
+          <ng-template [ngIf]="true" class="sitemocon">
+            <div>
+              <h3>2017年11月 22 日 </h3>
+              <h3 style="font-size:16px">FEFL 1.0版本 </h3>
+              <div style="padding:0px 10px;">
+                <p>● 公共组件： 日期选择组件，时间选择组件，附件上传组件，带搜索下拉组件，开关组件，面包屑组件，加载中组件，分页器组件，选项卡组件。</p>
+                <p>● 指令：ichcek ,自动高度，自动去除空格，阻止父级触发点击事件</p>
+                <p>● 管道：工厂管道，日期管道，文件大小管道，数字转成大写中文</p>
+                <p>● 服务：弹出提示框服务</p>
+                <p>● angular碎片:angular选择器，interface-vs-class</p>
+                <p>● javascript:数组方法，对象方法，字符串方法</p>
+                <p>● css:ie10兼容Hack，基础布局</p>
+              </div>
+            </div>
+          </ng-template>
+        </showitemo>
+      
+    </ng-template>
+
+  <!-- API -->
+  <ng-template [ngIf]="true" class='stitemo'>
+
+    <showitemo [sitemotitle]="'属性'">
+      <ng-template [ngIf]="true" class="sitemocon">
+
+        <table class="table">
+          <thead>
+            <tr>
+              <th>参数</th>
+              <th>说明</th>
+              <th>类型</th>
+              <th>可选值</th>
+              <th>默认值</th>
+              <th>是否必选</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+
+      </ng-template>
+    </showitemo>
+
+  </ng-template>
+  <!-- stitemexample -->
+  <ng-template [ngIf]="true" class="stitemexample">
+
+    <showitemexample>
+
+      <ng-template [ngIf]="true" class="stitempcon">
+        <div class="showhow">
+        </div>
+      </ng-template>
+
+      <ng-template [ngIf]="true" class="stitemphtml">
+        <pre iqhighlight>
+          <code class="html">
+          </code>
+        </pre>
+
+      </ng-template>
+
+      <ng-template [ngIf]="true" class="stitempts">
+        <pre iqhighlight>
+          <code  class="javascript">
+          </code>
+        </pre>
+      </ng-template>
+
+      <ng-template [ngIf]="true" class="stitempcss">
+        <pre iqhighlight>
+          <code class="css">
+          </code>
+        </pre>
+      </ng-template>
+    </showitemexample>
+  </ng-template>
+
+  </showtem>
+</div>
