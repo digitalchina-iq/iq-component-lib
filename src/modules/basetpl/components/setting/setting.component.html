@@ -25,8 +25,8 @@
                     <div class="user-profile">
                         <div class="user-profile" style="margin-top:-30px;">
                             
-                          <div class="profile-image" style="width:200px;">
-                            <img [src]="userInfo?.headurl">
+                          <div class="profile-image" style="max-width: 185px; width: auto;">
+                            <img [src]="userInfo?.headurl == null ? 'assets/default-user.png' : userInfo?.headurl">
                           </div>
                           <div class="profile-info" style="margin-left:220px;">
                             <table class="table">
@@ -94,8 +94,8 @@
                             <div class="control-group">
                               <label class="control-label">Image</label>
                               <div class="controls user-profile padding-0">
-                                <div class="profile-image" style="width:200px;">
-                                  <img [src]="userInfo?.headurl">
+                                <div class="profile-image" style="max-width: 185px;width:auto;">
+                                  <img [src]="userInfo?.headurl == null ? 'assets/default-user.png' : userInfo?.headurl">
                                 </div>
                               </div>
                             </div>
