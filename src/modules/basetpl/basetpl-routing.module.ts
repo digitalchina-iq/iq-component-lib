@@ -14,7 +14,7 @@ import { BasetplContainerComponent,
   AngularSelectorComponent, IqNum2ChinesePipeComponent, InterfaceVsClassComponent,
   ArrJsComponent, ObjJsComponent, StrJsComponent, CodeReviewComponent,SettingComponent,
   IqPersonSelectDemoComponent, PlanTrackingComponent, ItemPlanComponent, DragDemoComponent,
-  LogComponent
+  LogComponent,BugAnalyComponent
 } from './index';
 
 const routes: Routes = [//定义路由
@@ -89,7 +89,11 @@ const routes: Routes = [//定义路由
       ]
     },
     {
-      path: "code-review", component: CodeReviewComponent
+      path: "assurance",
+      children: [
+        { path: 'code-review', component: CodeReviewComponent },
+        { path: 'bug-analy', component: BugAnalyComponent }
+      ]
     },
     {
       path: "plan-tracking", component: PlanTrackingComponent

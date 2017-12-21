@@ -48,8 +48,9 @@ import { ArrJsComponent } from './js/arr/arr.component';
 import { ObjJsComponent } from './js/obj/obj.component';
 import { StrJsComponent } from './js/str/str.component';
 
-//code-review
-import { CodeReviewComponent } from './code-review/code-review.component';
+//assurance
+import { CodeReviewComponent } from './assurance/code-review/code-review.component';
+import { BugAnalyComponent } from './assurance/bug-analy/bug-analy.component';
 
 //plan-tracking
 import { PlanTrackingComponent } from './plan-tracking/plan-tracking.component';
@@ -104,7 +105,8 @@ export {
   PlanTrackingComponent,
   ItemPlanComponent,
   DragDemoComponent,
-  LogComponent
+  LogComponent,
+  BugAnalyComponent
 };
 
 export let Basetpl_entry_COMPONENTS = [
@@ -152,5 +154,6 @@ export let Basetpl_COMPONENTS =
   ItemPlanComponent,
   ItemPlanDetailComponent,
   DragDemoComponent,
-  LogComponent
+  LogComponent,
+  BugAnalyComponent
 ];

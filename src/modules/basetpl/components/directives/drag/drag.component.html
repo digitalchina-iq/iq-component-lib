@@ -51,6 +51,24 @@
       </div>
 
       <div style="margin-top:35px;">
+        <h3>delay</h3>
+        <div style="padding:0px 10px;">
+          <p>按下之后可拖动的延迟毫秒数</p>
+          <input type="number" [(ngModel)]="delayTime" name="delayTime">
+          <div style="position: relative;width: 100px;height: 100px;background: #ccc">
+            <div drag [delay]="delayTime" style="width: 30px;height: 30px;background: red;"></div>
+          </div>
+          <showcode>
+            <div class="shows">
+&lt;div style="position: relative;width: 100px;height: 100px;background: #ccc"&gt;
+  &lt;div drag [delay]="delayTime" style="width: 30px;height: 30px;background: red;"&gt;&lt;/div&gt;
+&lt;/div&gt;
+            </div>
+          </showcode>
+        </div>
+      </div>
+
+      <div style="margin-top:35px;">
         <h3>dragStart,dragMove,dragEnd</h3>
         <div style="padding:0px 10px;">
           <p>拖拽过程中的事件，开始、过程、结束</p>

@@ -10,6 +10,7 @@ import { flyIn } from 'animations/fly-in';
 
 export class DragDemoComponent {
   stop: boolean;
+  delayTime: number = 500;
   
   constructor(){}
 
