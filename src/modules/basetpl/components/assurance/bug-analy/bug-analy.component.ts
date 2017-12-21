@@ -66,4 +66,10 @@ export class BugAnalyComponent implements OnInit {
   //更新数据
   putData() {
   }
+
+  edit(){}
+
+  delete(){}
+
+  add(){}
 }
