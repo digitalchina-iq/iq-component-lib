@@ -60,6 +60,10 @@ import { ItemPlanDetailComponent } from './item-plan/item-plan-detail.component'
 
 //setting
 import { SettingComponent } from './setting/setting.component';
+
+//log
+import { LogComponent } from './log/log.component';
+
 //暴露出所有Component
 export { 
   BasetplContainerComponent,
@@ -99,7 +103,8 @@ export {
   IqPersonSelectDemoComponent,
   PlanTrackingComponent,
   ItemPlanComponent,
-  DragDemoComponent
+  DragDemoComponent,
+  LogComponent
 };
 
 export let Basetpl_entry_COMPONENTS = [
@@ -146,5 +151,6 @@ export let Basetpl_COMPONENTS =
   PlanTrackingComponent,
   ItemPlanComponent,
   ItemPlanDetailComponent,
-  DragDemoComponent
+  DragDemoComponent,
+  LogComponent
 ];

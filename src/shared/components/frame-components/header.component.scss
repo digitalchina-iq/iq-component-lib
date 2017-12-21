@@ -10,3 +10,21 @@
     float: left;
     margin: 0 10px 0 0;
 }
+
+.hover:hover .head-portrait{
+    transform: rotate(360deg);
+}
+.hover .head-portrait{
+    transition:3s ease-in;
+}
+// .hover:hover .head-portrait{
+//     animation: rotation 2s linear infinite;
+// }
+// .hover .head-portrait{
+//     transition:   
+// }
+// @keyframes rotation{
+//     from {transform: rotate(0deg);}
+//     to {transform: rotate(360deg);}
+// }
+

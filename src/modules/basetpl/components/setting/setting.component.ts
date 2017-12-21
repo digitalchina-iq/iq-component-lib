@@ -52,6 +52,9 @@ export class SettingComponent {
   userInfo: UserInfo;
   _userInfo: UserInfo;
 
+  old_password: string;
+  new_password: string;
+
   constructor(
     private iqhttp: Http,
     private windowService: WindowService, 
@@ -90,6 +93,25 @@ export class SettingComponent {
   cancel() {
     this.canSave = false;
     this._userInfo = JSON.parse(JSON.stringify(this.userInfo));
+  }
+
+  updatepwd() {
+    this.iqhttp.put(environment.server + 'users/' + this.userInfo['objectId']+ "/updatePassword", 
+    {
+      "old_password":this.old_password, 
+      "new_password":this.new_password
+    }
+    ).map(data => data.json()).subscribe(data => {
+      let loaclInfos = JSON.parse(window.localStorage.getItem('userinfo'));
+      loaclInfos.sessionToken=data.sessionToken;
+      window.localStorage.setItem('userinfo', JSON.stringify(loaclInfos));
+      let loaclInfo = JSON.parse(window.localStorage.getItem('userinfo'));
+      this.userInfo = new UserInfo(loaclInfo);
+      this._userInfo = new UserInfo(loaclInfo);
+      this.old_password="";
+      this.new_password="";
+      this.windowService.alert({message:"修改密码成功",type:"success"});
+    });
   }
 
 
