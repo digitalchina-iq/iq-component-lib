@@ -13,7 +13,7 @@ import { BasetplContainerComponent,
   IeCompatibilityComponent,BasicLayoutComponent,FlexComponent,PrintComponent,
   AngularSelectorComponent, IqNum2ChinesePipeComponent, InterfaceVsClassComponent,
   ArrJsComponent, ObjJsComponent, StrJsComponent, CodeReviewComponent,SettingComponent,
-  IqPersonSelectDemoComponent, PlanTrackingComponent, ItemPlanComponent
+  IqPersonSelectDemoComponent, PlanTrackingComponent, ItemPlanComponent, DragDemoComponent
 } from './index';
 
 const routes: Routes = [//定义路由
@@ -44,7 +44,8 @@ const routes: Routes = [//定义路由
         { path: 'autoheight', component: AutoheightDemoComponent },
         { path: 'stop-parent-click', component: StopParentClickDemoComponent },
         { path: 'icheck', component: IcheckDemoComponent },
-        { path: 'trim', component: TrimDemoComponent }
+        { path: 'trim', component: TrimDemoComponent },
+        { path: 'drag', component: DragDemoComponent }
       ]
     },
     {

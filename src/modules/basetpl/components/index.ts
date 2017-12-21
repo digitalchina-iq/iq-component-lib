@@ -22,6 +22,7 @@ import { AutoheightDemoComponent } from './directives/autoheight/autoheight.comp
 import { StopParentClickDemoComponent } from './directives/stopParentClick/stop-parent-click.component';
 import { IcheckDemoComponent } from './directives/icheck/icheck.component';
 import { TrimDemoComponent } from './directives/trim/trim.component';
+import { DragDemoComponent } from './directives/drag/drag.component';
 
 //pipes
 import { IqRefactorPipeComponent } from './pipes/iq-refactor/iq-refactor.component';
@@ -97,7 +98,8 @@ export {
   SettingComponent,
   IqPersonSelectDemoComponent,
   PlanTrackingComponent,
-  ItemPlanComponent
+  ItemPlanComponent,
+  DragDemoComponent
 };
 
 export let Basetpl_entry_COMPONENTS = [
@@ -143,5 +145,6 @@ export let Basetpl_COMPONENTS =
   IqPersonSelectDemoComponent,
   PlanTrackingComponent,
   ItemPlanComponent,
-  ItemPlanDetailComponent
+  ItemPlanDetailComponent,
+  DragDemoComponent
 ];

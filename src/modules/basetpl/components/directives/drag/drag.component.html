@@ -1,0 +1,117 @@
+<div [@flyIn]="'in'">
+  <showtem [stname]="'拖拽指令'" [stnamedel]="'一个有趣的指令'" >
+
+    <!-- overview -->
+    <ng-template [ngIf]="true" class='stview'>
+
+      <h3>概述</h3>
+      <p>
+        该指令使宿主元素可被拖动
+      </p>
+
+
+      <div style="margin-top:35px;">
+        <h3>drag, dragX, dragY</h3>
+        <div style="padding:0px 10px;">
+          <p>三个指令选一个即可，drag：可拖动x轴和y轴，dragX：可拖动x轴，dragY：可拖动y轴</p>
+          <div style="position: relative;width: 200px;height: 200px;background: #ccc">
+            <div dragY style="width: 40px;height: 40px;background: blue;"></div>
+            <div dragX style="width: 40px;height: 40px;background: green;"></div>
+            <div drag style="width: 40px;height: 40px;background: red;"></div>
+          </div>
+          <showcode>
+            <div class="shows">
+&lt;div style="position: relative;width: 200px;height: 200px;background: #ccc"&gt;
+  &lt;div dragY style="width: 40px;height: 40px;background: blue;"&gt;&lt;/div&gt;
+  &lt;div dragX style="width: 40px;height: 40px;background: green;"&gt;&lt;/div&gt;
+  &lt;div drag style="width: 40px;height: 40px;background: red;"&gt;&lt;/div&gt;
+&lt;/div&gt;
+            </div>
+          </showcode>
+        </div>
+      </div>
+
+      <div style="margin-top:35px;">
+        <h3>stopDrag</h3>
+        <div style="padding:0px 10px;">
+          <p>停止拖拽</p>
+          <div style="position: relative;width: 100px;height: 100px;background: #ccc">
+            <div drag [stopDrag]="stop" style="width: 30px;height: 30px;background: red;"></div>
+          </div>
+          <button class="m-btn-success" (click)="stop=!stop">{{stop?'置为可拖拽':'置为不可拖拽'}}</button>
+          <showcode>
+            <div class="shows">
+&lt;div style="position: relative;width: 100px;height: 100px;background: #ccc"&gt;
+  &lt;div drag [stopDrag]="stop" style="width: 30px;height: 30px;background: red;"&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;button class="m-btn-success" (click)="stop=!stop"&gt;{{'{'}}{{'{'}}stop?'置为可拖拽':'置为不可拖拽'{{'}'}}{{'}'}}&lt;/button&gt;
+            </div>
+          </showcode>
+        </div>
+      </div>
+
+      <div style="margin-top:35px;">
+        <h3>dragStart,dragMove,dragEnd</h3>
+        <div style="padding:0px 10px;">
+          <p>拖拽过程中的事件，开始、过程、结束</p>
+          <div style="position: relative;width: 100px;height: 100px;background: #ccc">
+            <div drag (dragStart)="start($event)" (dragMove)="move($event)" (dragEnd)="end($event)" style="width: 30px;height: 30px;background: red;"></div>
+          </div>
+          <showcode>
+            <div class="shows">
+&lt;div style="position: relative;width: 100px;height: 100px;background: #ccc"&gt;
+  &lt;div drag (dragStart)="start($event)" (dragMove)="move($event)" (dragEnd)="end($event)" style="width: 30px;height: 30px;background: red;"&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+start(e){{'{'}}
+  console.log(e);
+{{'}'}}
+move(e){{'{'}}
+  console.log(e);
+{{'}'}}
+end(e){{'{'}}
+  console.log(e);
+{{'}'}}
+            </div>
+          </showcode>
+        </div>
+      </div>
+
+    </ng-template>
+
+  <!-- API -->
+  <ng-template [ngIf]="true" class='stitemo'>
+
+    <showitemo [sitemotitle]="'属性'">
+      <ng-template [ngIf]="true" class="sitemocon">
+
+        <table class="table">
+          <thead>
+            <tr>
+              <th>参数</th>
+              <th>说明</th>
+              <th>类型</th>
+              <th>可选值</th>
+              <th>默认值</th>
+              <th>是否必选</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+
+      </ng-template>
+    </showitemo>
+
+  </ng-template>
+
+  </showtem>
+</div>
