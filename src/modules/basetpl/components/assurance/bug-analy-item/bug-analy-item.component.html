@@ -1,7 +1,7 @@
 <div [@flyIn]="'in'">
   <div id="content">
     <div class="container-fluid">
-      <h1 class="page-title">代码审查<small>一次有趣的检查</small></h1>
+      <h1 class="page-title">bug管理分析<small>一次有趣的分析</small></h1>
       <div class="row-fluid">
         <div class="span12">
           <div class="widget">
@@ -49,7 +49,21 @@
                   <iq-datepicker [(ngModel)]="query.triggerdate" format="YYYY-MM-DD" placeHolder="-请选择日期"></iq-datepicker>
                 </div>
               </div>
-              <div class="m-form-item" style="text-align: center;">
+              <div class="m-form-item">
+                <label>状态</label>
+                <div class="m-select">
+                  <i class="iqon-xia"></i>
+                  <select [(ngModel)]="query.state" name="state">
+                    <option [ngValue]="undefined" hidden>-请选择状态</option>
+                    <option value="新建">新建</option>
+                    <option value="正在修改">正在修改</option>
+                    <option value="待测试">待测试</option>
+                    <option value="驳回">驳回</option>
+                    <option value="重新打开">重新打开</option>
+                  </select>
+                </div>
+              </div>
+              <div style="margin-bottom: 20px;text-align: center;">
                 <button class="m-btn-confirm" type="button" (click)="search()" style="margin-right: 15px;">搜索</button>
                 <button class="m-btn-cancel" type="button" (click)="reset()">重置</button>
               </div>
@@ -62,6 +76,7 @@
                   <th>类型</th>
                   <th>子类型</th>
                   <th>严重等级</th>
+                  <th>状态</th>
                   <th>产生日期</th>
                   <th>图片说明</th>
                   <th>操作</th>
@@ -74,6 +89,7 @@
                   <td>{{item.type}}</td>
                   <td>{{item.childtype}}</td>
                   <td>{{item.grade}}</td>
+                  <td>{{item.state}}</td>
                   <td>{{item.triggerdate}}</td>
                   <td>
                     <ul class="pic-list">
@@ -113,6 +129,18 @@
                   </td>
                   <td><input [(ngModel)]="newBug.grade" type="text" name=""></td>
                   <td>
+                    <div class="m-select">
+                      <i class="iqon-xia"></i>
+                      <select [(ngModel)]="newBug.state" name="state">
+                        <option value="新建">新建</option>
+                        <option value="正在修改">正在修改</option>
+                        <option value="待测试">待测试</option>
+                        <option value="驳回">驳回</option>
+                        <option value="重新打开">重新打开</option>
+                      </select>
+                    </div>
+                  </td>
+                  <td>
                     <iq-datepicker [(ngModel)]="newBug.triggerdate" format="YYYY-MM-DD"></iq-datepicker>
                   </td>
                   <td>
@@ -129,7 +157,7 @@
     </div>
   </div>
 </div>
-<div style="position: fixed;top: 0;background: #ccc;z-index: 9999;" [hidden]="!imgSrc">
+<div style="position: fixed;background: #ccc;z-index: 9999;" [hidden]="!imgSrc">
   <loading [show]="imgLoading"></loading>
   <img #img [src]="imgSrc" (load)="imgLoaded()" alt="加载失败" style="max-height: 98vh">
 </div>

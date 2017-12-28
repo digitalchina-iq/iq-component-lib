@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Http } from '@angular/http';
 import { Router, ActivatedRoute } from '@angular/router';
+import * as moment from 'moment';
 
 import { flyIn } from 'animations/fly-in';
 
@@ -23,6 +24,7 @@ class BugRecord {
   type: string;
   grade: string;
   triggerdate: string;
+  state: string;
   file: Array<{name: string, url: string}> = [];
 }
 
@@ -68,7 +70,8 @@ export class BugAnalyItemComponent implements OnInit {
     private windowService: WindowService){}
 
   ngOnInit() {
-    console.log(this.fileUpload);
+    this.newBug.state = '新建';
+    this.newBug.triggerdate = moment().format('YYYY-MM-DD');
     this.objId = this.activedRoute.snapshot.params['id'];
     this.http.get(environment.server + 'users').toPromise().then(response => response.json()).then(data => {
       this.users = data.results;
@@ -122,6 +125,8 @@ export class BugAnalyItemComponent implements OnInit {
       this.getData();
       this.newBug = new BugRecord();
       this.clearFile();
+      this.newBug.state = '新建';
+      this.newBug.triggerdate = moment().format('YYYY-MM-DD');
     })
   }
 
@@ -187,8 +192,11 @@ export class BugAnalyItemComponent implements OnInit {
   imgLoaded() {
     this.imgLoading = false;
 
-    let parentEle = this.img.nativeElement.parentElement;
+    let parentEle = this.img.nativeElement.parentElement,
+        top = this.mousePosition.y - parentEle.offsetHeight/2;
+    if(top < 0) {top = 0};
+    if(top > window.innerHeight - parentEle.offsetHeight) {top = window.innerHeight - parentEle.offsetHeight};
     parentEle.style.right = window.innerWidth - this.mousePosition.x + 30 + 'px';
-    parentEle.style.top = this.mousePosition.y - parentEle.offsetHeight/2 + 'px';
+    parentEle.style.top = top + 'px';
   }
 }

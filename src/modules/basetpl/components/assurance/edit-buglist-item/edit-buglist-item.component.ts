@@ -17,6 +17,8 @@ class BugRecord {
   type: string;
   grade: string;
   triggerdate: string;
+  state: string;
+  file: Array<{name: string, url: string}> = [];
 }
 
 @Component({
@@ -64,5 +66,9 @@ export class EditBugListItemComponent implements OnInit {
       this.isDisabled = false;
       this.hide(true);
     })
+  }
+
+  deleteFile(i) {
+    this.record.file.splice(i, 1);
   }
 }
