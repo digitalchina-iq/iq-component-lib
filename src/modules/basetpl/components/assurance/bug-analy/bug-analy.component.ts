@@ -1,20 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { Http } from '@angular/http';
+import { Router } from '@angular/router';
+
 import { flyIn } from 'animations/fly-in';
 
 import { environment } from 'environments/environment';
 import { WindowService } from 'core';
-import { Pager } from 'shared/index';
 
 declare var window;
 
-class BugRecord {
+class BugItem {
   describe: string;
-  username: string;
-  type: string;
-  grade: string;
-  project: string;
-  triggerdate: string;
+  objectId: string;
 }
 
 @Component({
@@ -26,50 +23,42 @@ class BugRecord {
 })
 export class BugAnalyComponent implements OnInit {
   loading: boolean;
-  objId: string;
-  bugList: BugRecord[] = [];
-  newBug: BugRecord = new BugRecord();
-  pager: Pager = new Pager();
+  itemList: BugItem[] = [];
 
-  constructor(private http: Http, private windowService: WindowService){}
+  constructor(
+    private http: Http,
+    private router: Router,
+    private windowService: WindowService){}
 
   ngOnInit() {
-
+    this.getData();
   }
 
   /**获取记录数据列表*/
   getData() {
     this.loading = true;
-    this.http.get(environment.server + 'classes/Bugma', {params:{order: '-createdAt', limit: this.pager.pageSize, skip: (this.pager.pageNo - 1) * this.pager.pageSize, count: 1}}).toPromise().then(response => response.json()).then(data => {
-      this.loading = false;
-      let all = data.count;
-      this.pager.set({
-        total: all,
-        totalPages: Math.ceil(all / this.pager.pageSize)
-      })
-      this.bugList = data.results;
-    });
+    this.http.get(environment.server + 'classes/Bugp')
+             .toPromise().then(response => response.json())
+             .then(data => {
+                this.loading = false;
+                this.itemList = data.results;
+              });
   }
 
-  //切换分页
-  pagerChange(e: Pager) {
-    this.pager.pageNo = e.pageNo;
-    this.pager.pageSize = e.pageSize;
-
-    this.getData();
+  //新增
+  addNewItem() {
+    this.windowService.prompt({message: '请输入项目名称'}).subscribe(v => {
+      if(!v){return};
+      this.http.post(environment.server + 'classes/Bugp', {name: v})
+               .map(response => response.json())
+               .subscribe(data => {
+                 this.getData();
+               })
+    })
   }
 
-  //提交数据
-  postData() {
+  //查看详情
+  showDetail(id: string) {
+    this.router.navigate(['index/assurance/bug-analy', id]);
   }
-
-  //更新数据
-  putData() {
-  }
-
-  edit(){}
-
-  delete(){}
-
-  add(){}
 }

@@ -1,0 +1,122 @@
+<div [@flyIn]="'in'">
+  <div id="content">
+    <div class="container-fluid">
+      <h1 class="page-title">代码审查<small>一次有趣的检查</small></h1>
+      <div class="row-fluid">
+        <div class="span12">
+          <div class="widget">
+            <!--内容开始-->
+            <loading [show]="loading" [style]="{background: 'rgba(0,0,0,.3)'}"></loading>
+            <button class="m-btn-success" style="margin-bottom: 10px;" (click)="goBack()">返回</button>
+            <div class="clearfix">
+              <div class="m-form-item">
+                <label>责任人</label>
+                <div class="m-select">
+                  <i class="iqon-xia"></i>
+                  <select [(ngModel)]="query.username" name="username">
+                    <option [ngValue]="undefined" hidden>-请选择责任人</option>
+                    <option *ngFor="let user of users" [ngValue]="user.nickname">{{user.nickname}}</option>
+                  </select>
+                </div>
+              </div>
+              <div class="m-form-item">
+                <label>类型</label>
+                <div class="m-select">
+                  <i class="iqon-xia"></i>
+                  <select [(ngModel)]="query.type" (ngModelChange)="queryTypeChange($event)" name="type">
+                    <option [ngValue]="undefined" hidden>-请选择类型</option>
+                    <option *ngFor="let item of bugType" [ngValue]="item.type">{{item.type}}</option>
+                  </select>
+                </div>
+              </div>
+              <div class="m-form-item">
+                <label>子类型</label>
+                <div class="m-select">
+                  <i class="iqon-xia"></i>
+                  <select [(ngModel)]="query.childtype" name="childtype">
+                    <option [ngValue]="undefined" hidden>-请选择子类型</option>
+                    <option *ngFor="let item of queryChildType" [ngValue]="item">{{item}}</option>
+                  </select>
+                </div>
+              </div>
+              <div class="m-form-item">
+                <label>严重等级</label>
+                <input type="text" [(ngModel)]="query.grade" name="grade">
+              </div>
+              <div class="m-form-item">
+                <label>产生日期</label>
+                <div style="display: inline-block;width: 250px;">
+                  <iq-datepicker [(ngModel)]="query.triggerdate" format="YYYY-MM-DD" placeHolder="-请选择日期"></iq-datepicker>
+                </div>
+              </div>
+              <div class="m-form-item" style="text-align: center;">
+                <button class="m-btn-confirm" type="button" (click)="search()" style="margin-right: 15px;">搜索</button>
+                <button class="m-btn-cancel" type="button" (click)="reset()">重置</button>
+              </div>
+            </div>
+            <table>
+              <thead>
+                <tr>
+                  <th>描述</th>
+                  <th>责任人</th>
+                  <th>类型</th>
+                  <th>子类型</th>
+                  <th>严重等级</th>
+                  <th>产生日期</th>
+                  <th>操作</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of bugList">
+                  <td>{{item.describe}}</td>
+                  <td>{{item.username}}</td>
+                  <td>{{item.type}}</td>
+                  <td>{{item.childtype}}</td>
+                  <td>{{item.grade}}</td>
+                  <td>{{item.triggerdate}}</td>
+                  <td class="operate">
+                    <button class="m-btn-text" (click)="edit(item)">编辑</button>
+                    <button class="m-btn-text" (click)="delete(item)">删除</button>
+                  </td>
+                </tr>
+                <tr class="bug-new">
+                  <td><input [(ngModel)]="newBug.describe" type="text" name=""></td>
+                  <td>
+                    <div class="m-select">
+                      <i class="iqon-xia"></i>
+                      <select [(ngModel)]="newBug.username" name="username">
+                        <option *ngFor="let user of users" [ngValue]="user.nickname">{{user.nickname}}</option>
+                      </select>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="m-select">
+                      <i class="iqon-xia"></i>
+                      <select [(ngModel)]="newBug.type" (ngModelChange)="bugTypeChange($event)" name="type">
+                        <option *ngFor="let item of bugType" [ngValue]="item.type">{{item.type}}</option>
+                      </select>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="m-select">
+                      <i class="iqon-xia"></i>
+                      <select [(ngModel)]="newBug.childtype" name="childtype">
+                        <option *ngFor="let item of childType" [ngValue]="item">{{item}}</option>
+                      </select>
+                    </div>
+                  </td>
+                  <td><input [(ngModel)]="newBug.grade" type="text" name=""></td>
+                  <td>
+                    <iq-datepicker [(ngModel)]="newBug.triggerdate" format="YYYY-MM-DD"></iq-datepicker>
+                  </td>
+                  <td class="operate"><button class="m-btn-text" (click)="add()">增加</button></td>
+                </tr>
+              </tbody>
+            </table>
+            <iq-pager [data]="pager" (onChange)="pagerChange($event)"></iq-pager>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

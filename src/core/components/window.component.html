@@ -37,3 +37,14 @@
     </div>
   </div>
 </div>
+
+<div class="modal fade" bsModal #promptModal="bs-modal" [config]="{backdrop: 'static'}">
+  <div class="modal-dialog modal-sm">
+    <div class="m-alert-confirm" style="width: auto;height: auto;padding: 0 20px 20px;">
+      <p style="line-height: 60px;">{{options.message}}</p>
+      <textarea class="m-textarea" autoheight [(ngModel)]="promptvalue" type="text" name="promptvalue" style="margin-bottom: 15px;background: #fff;color: #000;"></textarea>
+      <button class="m-btn-confirm" (click)="hideDialog(promptvalue)">确定</button>
+      <button class="m-btn-cancel" (click)="hideDialog(false)">取消</button>
+    </div>
+  </div>
+</div>

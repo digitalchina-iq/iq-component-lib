@@ -61,4 +61,11 @@ export class WindowService {
       option: p
     });
   }
+  //prompt调用
+  prompt(p): Observable<any> {
+    return this.show({
+      type: "prompt",
+      option: p
+    });
+  }
 }

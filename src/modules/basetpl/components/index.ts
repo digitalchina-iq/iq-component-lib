@@ -51,6 +51,8 @@ import { StrJsComponent } from './js/str/str.component';
 //assurance
 import { CodeReviewComponent } from './assurance/code-review/code-review.component';
 import { BugAnalyComponent } from './assurance/bug-analy/bug-analy.component';
+import { BugAnalyItemComponent } from './assurance/bug-analy-item/bug-analy-item.component';
+import { EditBugListItemComponent } from './assurance/edit-buglist-item/edit-buglist-item.component';
 
 //plan-tracking
 import { PlanTrackingComponent } from './plan-tracking/plan-tracking.component';
@@ -106,16 +108,19 @@ export {
   ItemPlanComponent,
   DragDemoComponent,
   LogComponent,
-  BugAnalyComponent
+  BugAnalyComponent,
+  BugAnalyItemComponent
 };
 
 export let Basetpl_entry_COMPONENTS = [
-  ItemPlanDetailComponent
+  ItemPlanDetailComponent,
+  EditBugListItemComponent
 ]
 
 //模块内部Components列表
 export let Basetpl_COMPONENTS =
-[ BasetplContainerComponent,
+[ 
+  BasetplContainerComponent,
   BasetplRootComponent,
   PrepareT1Component,
   PrepareT2Component,
@@ -155,5 +160,7 @@ export let Basetpl_COMPONENTS =
   ItemPlanDetailComponent,
   DragDemoComponent,
   LogComponent,
-  BugAnalyComponent
+  BugAnalyComponent,
+  BugAnalyItemComponent,
+  EditBugListItemComponent
 ];

@@ -1,0 +1,51 @@
+<div style="position: absolute;top: 50px;left: 50%;transform: translateX(-50%);width: 400px;z-index: 1032;background: #fff;color: #4a4a4a;">
+  <div class="m-dialog-head">
+    <span>编辑</span>
+    <i class="iqon-close" (click)="hide()"></i>
+  </div>
+  <div class="clearfix" style="padding: 20px 10px;">
+    <div class="m-form-item-w100">
+      <label>描述</label>
+      <input [(ngModel)]="record.describe" type="text" name="describe">
+    </div>
+    <div class="m-form-item-w100">
+      <label>责任人</label>
+      <div class="m-select">
+        <i class="iqon-xia"></i>
+        <select [(ngModel)]="record.username" name="username">
+          <option *ngFor="let user of users" [ngValue]="user.nickname">{{user.nickname}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="m-form-item">
+      <label>类型</label>
+      <div class="m-select">
+        <i class="iqon-xia"></i>
+        <select [(ngModel)]="record.type" (ngModelChange)="bugTypeChange($event)" name="type">
+          <option *ngFor="let item of bugType" [ngValue]="item.type">{{item.type}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="m-form-item">
+      <label>子类型</label>
+      <div class="m-select">
+        <i class="iqon-xia"></i>
+        <select [(ngModel)]="record.childtype" name="childtype">
+          <option *ngFor="let item of childType" [ngValue]="item">{{item}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="m-form-item-w100">
+      <label>严重等级</label>
+      <input [(ngModel)]="record.grade" type="text" name="grade">
+    </div>
+    <div class="m-form-item-w100">
+      <label>产生日期</label>
+      <iq-datepicker [(ngModel)]="record.triggerdate" format="YYYY-MM-DD"></iq-datepicker>
+    </div>
+  </div>
+  <div style="text-align: center;margin-bottom: 20px;">
+    <button type="button" class="m-btn-success" (click)="save()" [disabled]="isDisabled" style="margin-right: 10px;">保存</button>
+    <button type="button" class="m-btn-cancel" (click)="hide()">关闭</button>
+  </div>
+</div>

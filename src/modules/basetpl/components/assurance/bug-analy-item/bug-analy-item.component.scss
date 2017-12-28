@@ -1,0 +1,138 @@
+$border: 1px solid #fff;
+
+table{
+  width: 100%;
+  
+  thead>tr>th{
+    border: $border;
+  }
+  tbody>tr{
+    &.bug-new>td{
+      padding: 0;
+
+      >input{
+        margin: 0;
+      }
+
+      /deep/ .my-datepicker .m-input{
+        color: #fff;
+        background: rgba(0,0,0,.2);
+      }
+    }
+
+    >td{
+      border: $border;
+      padding: 0 5px;
+
+      &.operate{
+        text-align: center;
+        width: 90px;
+
+        button{
+          margin: 0;
+          color: #57b9f8;
+
+          &:hover{
+            color: orange;
+          }
+        }
+      }
+
+      .m-select{
+        display: inline-block;
+        width: 100%;
+        min-width: 70px;
+        select{
+          margin: 0;
+          padding: 0 4px;
+          border: none;
+          color: #fff;
+          background: #323232;
+        }
+      }
+    }
+  }
+}
+
+.m-form-item{
+  width: 32%;
+
+  label{
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 5px;
+    width: 50px;
+  }
+
+  input{
+    width: 250px;
+    margin: 0;
+  }
+
+  .m-select{
+    display: inline-block;
+    width: 250px;
+
+    select{
+      margin: 0;
+      background: #323232;
+      color: #fff;
+      border: 1px solid rgba(0,0,0,.2);
+      border-radius: 0;
+    }
+  }
+
+  /deep/ .my-datepicker>input.m-input{
+    background: rgba(0,0,0,.2);
+    color: #fff;
+  }
+}
+
+.container-fluid>.row-fluid>.span12>.widget /deep/ .page{
+  background: none;
+  color: #fff;
+
+  .page-size>a{
+    color: #fff;
+
+    &.active{
+      color: #57b9f8;
+    }
+  }
+
+  .page-center{
+    >.pagination>ul>li{
+
+      &:first-child>a,&:first-child>a{
+        border: none!important;
+      }
+
+      >a{
+        color: #fff;
+        background: none;
+        border-color: #999!important;
+
+        &.disable>i{
+          color: #4a4a4a;
+        }
+
+        >i{
+          color: #aaa;
+        }
+      }
+    }
+
+    >.page-go{
+
+      >input{
+        background: none;
+        border-color: #999!important;
+      }
+
+      >button.m-btn-default{
+        background: none;
+        color: #fff;
+      }
+    }
+  }
+}

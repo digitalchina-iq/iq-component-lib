@@ -1,52 +1,14 @@
 <div [@flyIn]="'in'">
   <div id="content">
     <div class="container-fluid">
-      <h1 class="page-title">代码审查<small>一次有趣的检查</small></h1>
+      <h1 class="page-title">bug管理<small>一次有趣的管理</small></h1>
       <div class="row-fluid">
-        <div class="span12">
-          <div class="widget">
-            <!--内容开始-->
-            <loading [show]="loading" [style]="{background: 'rgba(0,0,0,.3)'}"></loading>
-            <table>
-              <thead>
-                <tr>
-                  <th>描述</th>
-                  <th>责任人</th>
-                  <th>类型</th>
-                  <th>严重等级</th>
-                  <th>项目</th>
-                  <th>产生日期</th>
-                  <th>操作</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr *ngFor="let item of bugList">
-                  <td>{{item.describe}}</td>
-                  <td>{{item.username}}</td>
-                  <td>{{item.type}}</td>
-                  <td>{{item.grade}}</td>
-                  <td>{{item.project}}</td>
-                  <td>{{item.triggerdate}}</td>
-                  <td class="operate">
-                    <button class="m-btn-text" (click)="edit(item)">编辑</button>
-                    <button class="m-btn-text" (click)="delete(item)">删除</button>
-                  </td>
-                </tr>
-                <tr class="bug-new">
-                  <td><input [(ngModel)]="newBug.describe" type="text" name=""></td>
-                  <td><input [(ngModel)]="newBug.username" type="text" name=""></td>
-                  <td><input [(ngModel)]="newBug.type" type="text" name=""></td>
-                  <td><input [(ngModel)]="newBug.grade" type="text" name=""></td>
-                  <td><input [(ngModel)]="newBug.project" type="text" name=""></td>
-                  <td>
-                    <iq-datepicker [(ngModel)]="newBug.triggerdate" format="YYYY-MM-DD"></iq-datepicker>
-                  </td>
-                  <td class="operate"><button class="m-btn-text" (click)="add()">增加</button></td>
-                </tr>
-              </tbody>
-            </table>
-            <iq-pager [data]="pager" (onChange)="pagerChange($event)"></iq-pager>
-          </div>
+        <loading [show]="loading" type="round2" [style]="{background:'rgba(0,0,0,0)'}"></loading>
+        <div class="widget">
+          <button type="button" class="m-btn-success" (click)="addNewItem()">新增项目bug管理</button>
+          <ul class="taskname clearfix">
+            <li *ngFor="let item of itemList" (click)="showDetail(item.objectId)">{{item.name}}</li>
+          </ul>
         </div>
       </div>
     </div>
