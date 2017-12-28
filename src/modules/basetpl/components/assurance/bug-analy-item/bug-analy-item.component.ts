@@ -55,6 +55,7 @@ export class BugAnalyItemComponent implements OnInit {
   childType: string[];
   queryChildType: string[];
   fileUploadUrl: string = environment.server + 'files/upload';
+  mousePosition: {x: number, y: number};
 
   @ViewChild('fileUpload') fileUpload: any;
   @ViewChild('img') img: ElementRef;
@@ -146,6 +147,7 @@ export class BugAnalyItemComponent implements OnInit {
         queryObj[i] = val;
       }
     }
+    delete queryObj['file'];
     this.loading = true;
     this.http.get(environment.server + `classes/Bugma`, {params: {limit: this.pager.pageSize, skip: (this.pager.pageNo - 1) * this.pager.pageSize, count: 1, where: Object.assign({pid: this.objId}, queryObj)}}).subscribe(result => {
       let data = result.json();
@@ -177,12 +179,16 @@ export class BugAnalyItemComponent implements OnInit {
   }
 
   loadImage(ev, url: string) {
-    console.log(this.img);
-    let nativeEle = this.img.nativeElement;
-    let parentStyle = nativeEle.parentElement.style;
-    parentStyle.right = window.innerWidth - ev.clientX + 30 + 'px';
-    parentStyle.top = ev.clientY - 100 + 'px';
+    this.mousePosition = {x: ev.clientX, y: ev.clientY};
     this.imgSrc = url;
-    this.imgLoading = !nativeEle.complete
+    this.imgLoading = !this.img.nativeElement.complete
+  }
+
+  imgLoaded() {
+    this.imgLoading = false;
+
+    let parentEle = this.img.nativeElement.parentElement;
+    parentEle.style.right = window.innerWidth - this.mousePosition.x + 30 + 'px';
+    parentEle.style.top = this.mousePosition.y - parentEle.offsetHeight/2 + 'px';
   }
 }

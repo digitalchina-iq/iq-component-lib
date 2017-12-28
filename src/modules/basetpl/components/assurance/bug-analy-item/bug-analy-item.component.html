@@ -129,7 +129,7 @@
     </div>
   </div>
 </div>
-<div style="position: fixed;top: 0;padding: 10px;background: #ccc;z-index: 9999;" [hidden]="!imgSrc">
+<div style="position: fixed;top: 0;background: #ccc;z-index: 9999;" [hidden]="!imgSrc">
   <loading [show]="imgLoading"></loading>
-  <img #img [src]="imgSrc" (load)="imgLoading=false" alt="加载失败">
+  <img #img [src]="imgSrc" (load)="imgLoaded()" alt="加载失败" style="max-height: 98vh">
 </div>
