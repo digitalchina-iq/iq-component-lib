@@ -15,7 +15,7 @@ import { ShowitemexampleComponent } from "./widgets/showitemexample/showitemexam
 import { IqTabComponent } from './widgets/tab-switch/iq-tab.component';
 import { IqTabIndexComponent } from './widgets/tab-switch/iq-tab-index.component';
 import { IqTabContentComponent } from './widgets/tab-switch/iq-tab-content.component';
-
+import { IqStarRatingComponent } from './widgets/star-rating/star-rating.component';
 import { IqDatePickerComponent } from "./widgets/iq-datepicker/iq-datepicker.component";
 import { IqTimePickerComponent } from './widgets/iq-timepicker/iq-timepicker.component';
 import { FileUploadComponent } from './widgets/file-upload/file-upload.component';
@@ -33,7 +33,7 @@ export {
   IqTlrFrameComponent,IqTbFrameComponent,HeaderComponent,
     PageErrorComponent, PageNotFoundComponent,IqSwitcherComponent,ShowcodeComponent,ShowtemComponent,ShowitemoComponent,
     IqDatePickerComponent,ShowitemexampleComponent,FileUploadComponent,IqSelectComponent,IqBreadCrumbComponent,
-    LoadingComponent,PagerPageComponent,Pager, IqTabComponent, IqTabIndexComponent, IqTabContentComponent,
+    LoadingComponent,PagerPageComponent,Pager, IqTabComponent, IqTabIndexComponent, IqTabContentComponent,IqStarRatingComponent,
     IqTimePickerComponent,UserImageHeadComponent,UserImageComponent,IqPersonSelectComponent,IqDialogPersonSelectComponent,IqPopoverPersonSelectComponent
 }
 
@@ -42,6 +42,6 @@ export let SHARED_ENTRY_COMPONENTS = [IqDialogPersonSelectComponent];
 export let SHARED_COMPONENTS = [IqTlrFrameComponent,IqTbFrameComponent,HeaderComponent,
   PageErrorComponent, PageNotFoundComponent,IqSwitcherComponent,ShowcodeComponent,ShowtemComponent,ShowitemoComponent,
   IqDatePickerComponent,ShowitemexampleComponent,FileUploadComponent,IqSelectComponent,IqBreadCrumbComponent,
-  LoadingComponent,PagerPageComponent, IqTabComponent, IqTabIndexComponent, IqTabContentComponent,
+  LoadingComponent,PagerPageComponent, IqTabComponent, IqTabIndexComponent, IqTabContentComponent,IqStarRatingComponent,
   IqTimePickerComponent,UserImageHeadComponent,UserImageComponent,IqPersonSelectComponent,IqDialogPersonSelectComponent,IqPopoverPersonSelectComponent
 ];

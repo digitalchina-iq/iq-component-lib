@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Http } from '@angular/http';
 import { Router, ActivatedRoute } from '@angular/router';
 
@@ -23,6 +23,7 @@ class BugRecord {
   type: string;
   grade: string;
   triggerdate: string;
+  file: Array<{name: string, url: string}> = [];
 }
 
 @Component({
@@ -49,8 +50,14 @@ export class BugAnalyItemComponent implements OnInit {
     {type: '测试', childType: ['测试不准确', '理解偏差']},
     {type: '后端', childType: ['权限', '接口不完整']}
   ];
+  imgSrc: string;
+  imgLoading: boolean;
   childType: string[];
   queryChildType: string[];
+  fileUploadUrl: string = environment.server + 'files/upload';
+
+  @ViewChild('fileUpload') fileUpload: any;
+  @ViewChild('img') img: ElementRef;
 
   constructor(
     private http: Http,
@@ -60,6 +67,7 @@ export class BugAnalyItemComponent implements OnInit {
     private windowService: WindowService){}
 
   ngOnInit() {
+    console.log(this.fileUpload);
     this.objId = this.activedRoute.snapshot.params['id'];
     this.http.get(environment.server + 'users').toPromise().then(response => response.json()).then(data => {
       this.users = data.results;
@@ -103,7 +111,7 @@ export class BugAnalyItemComponent implements OnInit {
 
   queryTypeChange(e) {
     this.queryChildType = this.bugType.filter(item => item.type === e)[0].childType;
-    this.query.childtype = this.queryChildType[0];
+    this.query.childtype = undefined;
   }
 
   //增加数据
@@ -112,6 +120,7 @@ export class BugAnalyItemComponent implements OnInit {
     this.http.post(environment.server + 'classes/Bugma', this.newBug).map(res => res.json()).subscribe(data => {
       this.getData();
       this.newBug = new BugRecord();
+      this.clearFile();
     })
   }
 
@@ -156,5 +165,24 @@ export class BugAnalyItemComponent implements OnInit {
 
   goBack() {
     this.router.navigate(['index/assurance/bug-analy']);
+  }
+
+  fileUploadSuccess(e) {
+    this.newBug.file.push({name: e.name, url: e.url})
+  }
+
+  clearFile() {
+    this.newBug.file.length = 0;
+    this.fileUpload.uploader.queue.length = 0;
+  }
+
+  loadImage(ev, url: string) {
+    console.log(this.img);
+    let nativeEle = this.img.nativeElement;
+    let parentStyle = nativeEle.parentElement.style;
+    parentStyle.right = window.innerWidth - ev.clientX + 30 + 'px';
+    parentStyle.top = ev.clientY - 100 + 'px';
+    this.imgSrc = url;
+    this.imgLoading = !nativeEle.complete
   }
 }

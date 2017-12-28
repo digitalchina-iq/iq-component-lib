@@ -63,6 +63,7 @@
                   <th>子类型</th>
                   <th>严重等级</th>
                   <th>产生日期</th>
+                  <th>图片说明</th>
                   <th>操作</th>
                 </tr>
               </thead>
@@ -74,6 +75,11 @@
                   <td>{{item.childtype}}</td>
                   <td>{{item.grade}}</td>
                   <td>{{item.triggerdate}}</td>
+                  <td>
+                    <ul class="pic-list">
+                      <li *ngFor="let file of item.file" (mouseover)="loadImage($event,file.url)" (mouseout)="imgSrc=''">{{file.name}}</li>
+                    </ul>
+                  </td>
                   <td class="operate">
                     <button class="m-btn-text" (click)="edit(item)">编辑</button>
                     <button class="m-btn-text" (click)="delete(item)">删除</button>
@@ -109,6 +115,9 @@
                   <td>
                     <iq-datepicker [(ngModel)]="newBug.triggerdate" format="YYYY-MM-DD"></iq-datepicker>
                   </td>
+                  <td>
+                    <iq-file-upload #fileUpload upType="1" [url]="fileUploadUrl" [allowedFileType]="['image']" closeTime="1000" (onSuccess)="fileUploadSuccess($event)" text="上传图片"></iq-file-upload>
+                  </td>
                   <td class="operate"><button class="m-btn-text" (click)="add()">增加</button></td>
                 </tr>
               </tbody>
@@ -119,4 +128,8 @@
       </div>
     </div>
   </div>
+</div>
+<div style="position: fixed;top: 0;padding: 10px;background: #ccc;z-index: 9999;" [hidden]="!imgSrc">
+  <loading [show]="imgLoading"></loading>
+  <img #img [src]="imgSrc" (load)="imgLoading=false" alt="加载失败">
 </div>

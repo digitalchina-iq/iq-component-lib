@@ -1,5 +1,15 @@
 $border: 1px solid #fff;
 
+ul.pic-list>li{
+  position: relative;
+  list-style: none;
+  cursor: pointer;
+
+  &:hover{
+    color: #57b9f8;
+  }  
+}
+
 table{
   width: 100%;
   
@@ -17,6 +27,26 @@ table{
       /deep/ .my-datepicker .m-input{
         color: #fff;
         background: rgba(0,0,0,.2);
+      }
+
+      /deep/ .file-upload-type1{
+        background: transparent;
+
+        .m-enclosure{
+
+          >li.uploaded{
+            color: #fff;
+            white-space: nowrap;
+
+            .filename{
+              color: #fff;
+            }
+          }
+
+          >li.not-upload>input{
+            width: 100%;
+          }
+        }
       }
     }
 
