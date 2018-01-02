@@ -145,6 +145,7 @@ export class BugAnalyItemComponent implements OnInit {
   }
 
   search() {
+    this.query.grade = String(this.query.grade||'');
     let queryObj = {};
     for(let i in this.query){
       let val = this.query[i];

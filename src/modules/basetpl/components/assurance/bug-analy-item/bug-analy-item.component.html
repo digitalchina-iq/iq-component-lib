@@ -39,9 +39,10 @@
                   </select>
                 </div>
               </div>
-              <div class="m-form-item">
+              <div class="m-form-item" style="line-height: 35px;">
                 <label>严重等级</label>
-                <input type="text" [(ngModel)]="query.grade" name="grade">
+                <!-- <input type="text" [(ngModel)]="query.grade" name="grade"> -->
+                <iq-star-rating [(ngModel)]="query.grade" name="grade" [style]="{fontSize: '16px',padding: '0 3px'}"></iq-star-rating>
               </div>
               <div class="m-form-item">
                 <label>产生日期</label>
@@ -88,7 +89,7 @@
                   <td>{{item.username}}</td>
                   <td>{{item.type}}</td>
                   <td>{{item.childtype}}</td>
-                  <td>{{item.grade}}</td>
+                  <td><iq-star-rating [(ngModel)]="item.grade" disabled name="grade"></iq-star-rating></td>
                   <td>{{item.state}}</td>
                   <td>{{item.triggerdate}}</td>
                   <td>
@@ -127,7 +128,9 @@
                       </select>
                     </div>
                   </td>
-                  <td><input [(ngModel)]="newBug.grade" type="text" name=""></td>
+                  <td>
+                    <iq-star-rating [(ngModel)]="newBug.grade" (ngModelChange)="newBug.grade=''+$event" name="grade"></iq-star-rating>
+                  </td>
                   <td>
                     <div class="m-select">
                       <i class="iqon-xia"></i>
@@ -144,7 +147,7 @@
                     <iq-datepicker [(ngModel)]="newBug.triggerdate" format="YYYY-MM-DD"></iq-datepicker>
                   </td>
                   <td>
-                    <iq-file-upload #fileUpload upType="1" [url]="fileUploadUrl" [allowedFileType]="['image']" closeTime="1000" (onSuccess)="fileUploadSuccess($event)" text="上传图片"></iq-file-upload>
+                    <iq-file-upload #fileUpload upType="1" [url]="fileUploadUrl" [allowedFileType]="['image']" (onSuccess)="fileUploadSuccess($event)" text="上传图片"></iq-file-upload>
                   </td>
                   <td class="operate"><button class="m-btn-text" (click)="add()">增加</button></td>
                 </tr>
@@ -159,5 +162,5 @@
 </div>
 <div style="position: fixed;background: #ccc;z-index: 9999;" [hidden]="!imgSrc">
   <loading [show]="imgLoading"></loading>
-  <img #img [src]="imgSrc" (load)="imgLoaded()" alt="加载失败" style="max-height: 98vh">
+  <img #img [src]="imgSrc" (load)="imgLoaded()" alt="加载失败" style="max-height: 100vh">
 </div>

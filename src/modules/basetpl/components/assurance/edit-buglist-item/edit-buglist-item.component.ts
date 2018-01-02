@@ -33,6 +33,7 @@ export class EditBugListItemComponent implements OnInit {
   record: BugRecord = new BugRecord();
   childType: string[];
   isDisabled: boolean;
+  fileUploadUrl: string = environment.server + 'files/upload';
 
   constructor(
     private http: Http,
@@ -46,7 +47,12 @@ export class EditBugListItemComponent implements OnInit {
       this.users = config.users;
       this.bugType = config.bugType;
       this.record = JSON.parse(JSON.stringify(data.record));
-      this.childType = this.bugType.filter(item => item.type === this.record.type)[0].childType;
+      let parentType = this.bugType.filter(item => item.type === this.record.type)[0];
+      if(parentType){
+        this.childType = parentType.childType;
+      } else {
+        this.childType = [];
+      }
     })
   }
 
@@ -61,6 +67,7 @@ export class EditBugListItemComponent implements OnInit {
 
   save() {
     delete this.record['createdAt'];
+    this.record.grade = String(this.record.grade||'');
     this.isDisabled = true;
     this.http.put(environment.server + 'classes/Bugma/' + this.record.objectId, this.record).subscribe(data => {
       this.isDisabled = false;
@@ -70,5 +77,9 @@ export class EditBugListItemComponent implements OnInit {
 
   deleteFile(i) {
     this.record.file.splice(i, 1);
+  }
+
+  fileUploadSuccess(e){
+    this.record.file.push({name: e.name, url: e.url});
   }
 }

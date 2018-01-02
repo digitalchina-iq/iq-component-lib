@@ -1,3 +1,14 @@
-<svg preserveAspectRatio="xMinYMin meet" viewBox="0,0,180,180" width="180" height="180">  
+<div style="display: inline-block;vertical-align: middle;">
+  <ng-template #star let-i="index" let-v="value" let-style="style">
+    <i [ngClass]="i < v ? 'iqon-star-full' : 'iqon-star-o'" [ngStyle]="style"></i>
+  </ng-template>
+  <ul style="display: flex;" (mouseout)="value=_value">
+    <li *ngFor="let item of titles;index as i" [title]="item" (mouseover)="isDisabled?null:value=i+1" (mousedown)="setValue(i)" style="list-style: none;cursor: pointer;">
+      <ng-template [ngTemplateOutlet]="customTemplate || star"
+                   [ngTemplateOutletContext]="{index: i, value: value, style: style}">
+      </ng-template>
+    </li>
+  </ul></div>
+<!-- <svg preserveAspectRatio="xMinYMin meet" viewBox="0,0,180,180" width="180" height="180">  
   <polygon points="90,0 110,60 180,60 125,104 150,180 90,130 30,180 55,104 0,60 70,60 90,0" style="fill:transparent;stroke:orange;stroke-width:2;"/>  
-</svg>
+</svg> -->

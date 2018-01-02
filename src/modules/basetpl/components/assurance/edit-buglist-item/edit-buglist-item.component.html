@@ -1,73 +1,79 @@
-<div style="position: fixed;top: 50px;left: 50%;transform: translateX(-50%);width: 400px;z-index: 1032;background: #fff;color: #4a4a4a;">
-  <div class="m-dialog-head">
-    <span>编辑</span>
-    <i class="iqon-close" (click)="hide()"></i>
-  </div>
-  <div class="clearfix" style="padding: 20px 10px;">
-    <div class="m-form-item-w100">
-      <label>描述</label>
-      <input [(ngModel)]="record.describe" type="text" name="describe">
+<div style="position: fixed;top: 0;left: 0;width: 100vw;height: 100vh;overflow: auto;z-index: 1032;">
+  <div style="position: absolute;top: 50px;left: 50%;transform: translateX(-50%);width: 400px;background: #fff;color: #4a4a4a;">
+    <div class="m-dialog-head">
+      <span>编辑</span>
+      <i class="iqon-close" (click)="hide()"></i>
     </div>
-    <div class="m-form-item-w100">
-      <label>责任人</label>
-      <div class="m-select">
-        <i class="iqon-xia"></i>
-        <select [(ngModel)]="record.username" name="username">
-          <option *ngFor="let user of users" [ngValue]="user.nickname">{{user.nickname}}</option>
-        </select>
+    <div class="clearfix" style="padding: 20px 10px;">
+      <div class="m-form-item-w100">
+        <label>描述</label>
+        <input [(ngModel)]="record.describe" type="text" name="describe">
+      </div>
+      <div class="m-form-item-w100">
+        <label>责任人</label>
+        <div class="m-select">
+          <i class="iqon-xia"></i>
+          <select [(ngModel)]="record.username" name="username">
+            <option *ngFor="let user of users" [ngValue]="user.nickname">{{user.nickname}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="m-form-item">
+        <label>类型</label>
+        <div class="m-select">
+          <i class="iqon-xia"></i>
+          <select [(ngModel)]="record.type" (ngModelChange)="bugTypeChange($event)" name="type">
+            <option *ngFor="let item of bugType" [ngValue]="item.type">{{item.type}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="m-form-item">
+        <label>子类型</label>
+        <div class="m-select">
+          <i class="iqon-xia"></i>
+          <select [(ngModel)]="record.childtype" name="childtype">
+            <option *ngFor="let item of childType" [ngValue]="item">{{item}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="m-form-item-w100" style="padding: 10px;">
+        <label style="display: inline-block;">严重等级</label>
+        <!-- <input [(ngModel)]="record.grade" type="text" name="grade"> -->
+        <iq-star-rating [(ngModel)]="record.grade" [style]="{color:'orange'}" name="grade"></iq-star-rating>
+      </div>
+      <div class="m-form-item">
+        <label>状态</label>
+        <div class="m-select">
+          <i class="iqon-xia"></i>
+          <select [(ngModel)]="record.state" name="state">
+            <option value="新建">新建</option>
+            <option value="正在修改">正在修改</option>
+            <option value="待测试">待测试</option>
+            <option value="驳回">驳回</option>
+            <option value="重新打开">重新打开</option>
+          </select>
+        </div>
+      </div>
+      <div class="m-form-item">
+        <label>产生日期</label>
+        <iq-datepicker [(ngModel)]="record.triggerdate" format="YYYY-MM-DD"></iq-datepicker>
+      </div>
+      <div class="m-form-item-w100">
+        <label>图片说明</label>
+        <ul class="clearfix">
+          <li *ngFor="let item of record.file;index as i" style="float: left;margin: 0 15px;list-style: none;line-height: 35px;">
+            {{item.name}}
+            <i class="iqon-close" (click)="deleteFile(i)" style="margin-left: 5px;color: #999;cursor: pointer;"></i>
+          </li>
+          <li style="float: left;margin: 0;list-style: none;">
+            <iq-file-upload [url]="fileUploadUrl" [allowedFileType]="['image']" closeTime="0" (onSuccess)="fileUploadSuccess($event)" text="上传图片"></iq-file-upload>
+          </li>
+        </ul>
       </div>
     </div>
-    <div class="m-form-item">
-      <label>类型</label>
-      <div class="m-select">
-        <i class="iqon-xia"></i>
-        <select [(ngModel)]="record.type" (ngModelChange)="bugTypeChange($event)" name="type">
-          <option *ngFor="let item of bugType" [ngValue]="item.type">{{item.type}}</option>
-        </select>
-      </div>
+    <div style="text-align: center;margin-bottom: 20px;">
+      <button type="button" class="m-btn-success" (click)="save()" [disabled]="isDisabled" style="margin-right: 10px;">保存</button>
+      <button type="button" class="m-btn-cancel" (click)="hide()">关闭</button>
     </div>
-    <div class="m-form-item">
-      <label>子类型</label>
-      <div class="m-select">
-        <i class="iqon-xia"></i>
-        <select [(ngModel)]="record.childtype" name="childtype">
-          <option *ngFor="let item of childType" [ngValue]="item">{{item}}</option>
-        </select>
-      </div>
-    </div>
-    <div class="m-form-item-w100">
-      <label>严重等级</label>
-      <input [(ngModel)]="record.grade" type="text" name="grade">
-    </div>
-    <div class="m-form-item">
-      <label>状态</label>
-      <div class="m-select">
-        <i class="iqon-xia"></i>
-        <select [(ngModel)]="record.state" name="state">
-          <option value="新建">新建</option>
-          <option value="正在修改">正在修改</option>
-          <option value="待测试">待测试</option>
-          <option value="驳回">驳回</option>
-          <option value="重新打开">重新打开</option>
-        </select>
-      </div>
-    </div>
-    <div class="m-form-item">
-      <label>产生日期</label>
-      <iq-datepicker [(ngModel)]="record.triggerdate" format="YYYY-MM-DD"></iq-datepicker>
-    </div>
-    <div class="m-form-item-w100">
-      <label>图片说明</label>
-      <ul class="clearfix">
-        <li *ngFor="let item of record.file;index as i" style="float: left;margin: 0 15px;list-style: none;">
-          {{item.name}}
-          <i class="iqon-close" (click)="deleteFile(i)" style="margin-left: 5px;color: #999;cursor: pointer;"></i>
-        </li>
-      </ul>
-    </div>
-  </div>
-  <div style="text-align: center;margin-bottom: 20px;">
-    <button type="button" class="m-btn-success" (click)="save()" [disabled]="isDisabled" style="margin-right: 10px;">保存</button>
-    <button type="button" class="m-btn-cancel" (click)="hide()">关闭</button>
   </div>
 </div>
