@@ -59,8 +59,10 @@
                     <option value="新建">新建</option>
                     <option value="正在修改">正在修改</option>
                     <option value="待测试">待测试</option>
+                    <option value="被拒绝">被拒绝</option>
                     <option value="驳回">驳回</option>
                     <option value="重新打开">重新打开</option>
+                    <option value="关闭">关闭</option>
                   </select>
                 </div>
               </div>
@@ -79,6 +81,7 @@
                   <th>严重等级</th>
                   <th>状态</th>
                   <th>产生日期</th>
+                  <th>关闭日期</th>
                   <th>图片说明</th>
                   <th>操作</th>
                 </tr>
@@ -92,13 +95,14 @@
                   <td><iq-star-rating [(ngModel)]="item.grade" disabled name="grade"></iq-star-rating></td>
                   <td>{{item.state}}</td>
                   <td>{{item.triggerdate}}</td>
+                  <td>{{item.closedate}}</td>
                   <td>
                     <ul class="pic-list">
                       <li *ngFor="let file of item.file" (mouseover)="loadImage($event,file.url)" (mouseout)="imgSrc=''">{{file.name}}</li>
                     </ul>
                   </td>
                   <td class="operate">
-                    <button class="m-btn-text" (click)="edit(item)">编辑</button>
+                    <button class="m-btn-text" *ngIf="item.state !== '关闭'" (click)="edit(item)">编辑</button>
                     <button class="m-btn-text" (click)="delete(item)">删除</button>
                   </td>
                 </tr>
@@ -138,15 +142,20 @@
                         <option value="新建">新建</option>
                         <option value="正在修改">正在修改</option>
                         <option value="待测试">待测试</option>
+                        <option value="被拒绝">被拒绝</option>
                         <option value="驳回">驳回</option>
                         <option value="重新打开">重新打开</option>
+                        <option value="关闭">关闭</option>
                       </select>
                     </div>
                   </td>
-                  <td>
+                  <td width="10%">
                     <iq-datepicker [(ngModel)]="newBug.triggerdate" format="YYYY-MM-DD"></iq-datepicker>
                   </td>
-                  <td>
+                  <td width="10%">
+                    <iq-datepicker [(ngModel)]="newBug.closedate" format="YYYY-MM-DD"></iq-datepicker>
+                  </td>
+                  <td width="10%">
                     <iq-file-upload #fileUpload upType="1" [url]="fileUploadUrl" [allowedFileType]="['image']" (onSuccess)="fileUploadSuccess($event)" text="上传图片"></iq-file-upload>
                   </td>
                   <td class="operate"><button class="m-btn-text" (click)="add()">增加</button></td>

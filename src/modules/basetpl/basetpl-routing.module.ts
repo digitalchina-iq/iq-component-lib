@@ -14,7 +14,7 @@ import { BasetplContainerComponent,
   AngularSelectorComponent, IqNum2ChinesePipeComponent, InterfaceVsClassComponent,
   ArrJsComponent, ObjJsComponent, StrJsComponent, CodeReviewComponent,SettingComponent,
   IqPersonSelectDemoComponent, PlanTrackingComponent, ItemPlanComponent, DragDemoComponent,
-  LogComponent,BugAnalyComponent,BugAnalyItemComponent
+  LogComponent,BugAnalyComponent,BugAnalyItemComponent, BugStatisticComponent
 } from './index';
 
 const routes: Routes = [//定义路由
@@ -93,7 +93,8 @@ const routes: Routes = [//定义路由
       children: [
         { path: 'code-review', component: CodeReviewComponent },
         { path: 'bug-analy', component: BugAnalyComponent },
-        { path: 'bug-analy/:id', component: BugAnalyItemComponent }
+        { path: 'bug-analy/:id', component: BugAnalyItemComponent },
+        { path: 'bug-statistic', component: BugStatisticComponent }
       ]
     },
     {

@@ -53,6 +53,7 @@ import { CodeReviewComponent } from './assurance/code-review/code-review.compone
 import { BugAnalyComponent } from './assurance/bug-analy/bug-analy.component';
 import { BugAnalyItemComponent } from './assurance/bug-analy-item/bug-analy-item.component';
 import { EditBugListItemComponent } from './assurance/edit-buglist-item/edit-buglist-item.component';
+import { BugStatisticComponent } from './assurance/bug-statistic/bug-statistic.component';
 
 //plan-tracking
 import { PlanTrackingComponent } from './plan-tracking/plan-tracking.component';
@@ -109,7 +110,8 @@ export {
   DragDemoComponent,
   LogComponent,
   BugAnalyComponent,
-  BugAnalyItemComponent
+  BugAnalyItemComponent,
+  BugStatisticComponent
 };
 
 export let Basetpl_entry_COMPONENTS = [
@@ -162,5 +164,6 @@ export let Basetpl_COMPONENTS =
   LogComponent,
   BugAnalyComponent,
   BugAnalyItemComponent,
-  EditBugListItemComponent
+  EditBugListItemComponent,
+  BugStatisticComponent
 ];

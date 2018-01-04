@@ -17,6 +17,7 @@ class BugRecord {
   type: string;
   grade: string;
   triggerdate: string;
+  closedate: string;
   state: string;
   file: Array<{name: string, url: string}> = [];
 }
@@ -66,6 +67,10 @@ export class EditBugListItemComponent implements OnInit {
   }
 
   save() {
+    if(this.record.state === '关闭' && !this.record.closedate) {
+      this.windowService.alert({message: '请选择关闭日期', type: 'fail'});
+      return;
+    }
     delete this.record['createdAt'];
     this.record.grade = String(this.record.grade||'');
     this.isDisabled = true;

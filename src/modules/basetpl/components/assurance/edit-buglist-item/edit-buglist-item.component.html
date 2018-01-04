@@ -49,14 +49,16 @@
             <option value="新建">新建</option>
             <option value="正在修改">正在修改</option>
             <option value="待测试">待测试</option>
+            <option value="被拒绝">被拒绝</option>
             <option value="驳回">驳回</option>
             <option value="重新打开">重新打开</option>
+            <option value="关闭">关闭</option>
           </select>
         </div>
       </div>
       <div class="m-form-item">
-        <label>产生日期</label>
-        <iq-datepicker [(ngModel)]="record.triggerdate" format="YYYY-MM-DD"></iq-datepicker>
+        <label>关闭日期</label>
+        <iq-datepicker [(ngModel)]="record.closedate" format="YYYY-MM-DD"></iq-datepicker>
       </div>
       <div class="m-form-item-w100">
         <label>图片说明</label>

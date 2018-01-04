@@ -24,6 +24,7 @@ class BugRecord {
   type: string;
   grade: string;
   triggerdate: string;
+  closedate: string;
   state: string;
   file: Array<{name: string, url: string}> = [];
 }
@@ -82,8 +83,27 @@ export class BugAnalyItemComponent implements OnInit {
       if(data){
         this.getData();
       }
-    })
+    });
+
+    //this.foooo();
   }
+
+  /*foooo() {
+    let str = $('#div1').text();
+    let arr = str.split(/\n/);
+
+    let addItem = (item: BugRecord) => {
+      item.pid = this.objId;
+      return this.http.post(environment.server + 'classes/Bugma', item).toPromise().then(data => data.json());
+    }
+
+    let arr2: BugRecord[] = arr.map(item => item.split(',')).map(item => {
+      return <BugRecord>{describe: item[0], username: item[1], type: 'css', childtype: '不规范', grade: '1', state: item[2], closedate: moment(item[3].split(' ')[0]).format('YYYY-MM-DD'), triggerdate: moment(item[4].split(' ')[0]).format('YYYY-MM-DD')}
+    });
+    Promise.all(arr2.map(item => addItem(item))).then(data => {
+      console.log(data);
+    })
+  }*/
 
   /**获取记录数据列表*/
   getData() {
