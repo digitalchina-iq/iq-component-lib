@@ -26,11 +26,25 @@
               {{'}'}}
             </div>
           </showcode>
+          <p style="margin:10px 0 0">● 隐藏不需要的或是次要的内容</p>
+          <showcode>
+            <div class="shows" style="margin-left:-120px;">
+              @media print{{'{'}}
+                 body {{'{'}}
+                  color:#000;
+                  background:#fff;
+                {{'}'}}
+                .footer{{'{'}}
+                  display:none;
+                {{'}'}}
+              {{'}'}}
+            </div>
+          </showcode>
         </div>
       </div>
 
       <div style="margin-top:35px;">
-        <h3>@page规则 <span style="font-size:12px">(允许你指定页面盒子的许多方面)</span></h3>
+        <h3>@page规则 <span style="font-size:12px">(允许你指定页面盒子的尺寸,页边距,页眉页脚等)</span></h3>
         <div style="padding:0px 10px;">
           <p style="margin:10px 0 0">● 指定页面尺寸。</p>
           <showcode>
@@ -240,12 +254,10 @@
         <h3>注意事项</h3>
         <div style="padding:0px 10px;">
           <p>● 打印样式中不推荐使用背景.因为浏览器默认情况下并不能打印出CSS中的背景内容，只有当浏览器被
-  设置可以打印背景的情况下才能打印出背（ie的高级选项中可选）。即使背景可以打印，它也可能盖过叠在它上面的任何文本。</p>
+  设置可以打印背景的情况下才能打印出来（ie的高级选项中可选）。即使背景可以打印，它也可能盖过叠在它上面的任何文本。</p>
           <p>● 如果需要在打印内容中出现图片，请在HTML代码中加入。</p>
-          <p>● 打印设置使用的是物理单位，所以尺寸最好不要用像素(px)，可以用pt也可以用cm；</p>
-          <p>● <code>display：none</code>隐藏不需要的或是次要的内容。</p>
-          <p>● 尽量不要让内容浮动.基于Gecko的浏览器（例如Netscape 6+），当用户用它来浏览一个打印输出页面时，它会截去浮动元素中的内容。
- 这些内容就不会被传送到打印机，下一个页面也不会有它的踪影――它消失了。</p>
+          <p>● 打印设置使用的是物理单位，所以尺寸最好不要用像素(px)，可以用<code>pt</code>也可以用<code>cm</code>；</p>
+          <p>● 尽量不要让内容浮动.基于Gecko的浏览器（例如Netscape 6+），当用户用它来浏览一个打印输出页面时，它会截去浮动元素中的内容。</p>
           <p>● 尽可能的在HTML代码中做好内容重要的先后次序，这样在打印样式中可以节省不少的麻烦。</p>
           <p>● 确保页面上的所有文本以黑色打印，通配选择器<code>*</code>和<code>!important</code>来创建单个样式：。</p>
           <showcode>
@@ -298,14 +310,127 @@
     <showitemexample>
 
       <ng-template [ngIf]="true" class="stitempcon">
-        <div class="showhow">
-
-          <p>简单示例：圣杯布局</p>
-          <p>(页面从上到下，分成三个部分：头部（header），躯干（body），尾部（footer）。其中躯干又水平分成三栏，从左到右为：导航、主栏、副栏。)</p>
-          <div style="width: 70%">
-            <img src="./assets/img/30.png">
+          <div class="table-body">
+            <table class="table" border="1">
+              <thead>
+                <tr>
+                  <th>公司名称</th>
+                  <th>平台名称</th>
+                  <th>模版名称 <i></i></th>
+                  <th>公司地址 <i></i></th>
+                  <th>网址</th>
+                  <th>公司邮编</th>
+                  <th>公司名称</th>
+                  <th>公司地址</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>123456</td>
+                  <td>xxx</td>
+                  <td>xxxxxxxxx</td>
+                  <td>xxxxxxxxxxxxx</td>
+                  <td>https://www.cnblogs.com/xiaominwu/p/4347984.html</td>
+                  <td>xxxx</td>
+                  <td>xxxxxxxx</td>
+                  <td>xxxxxxxx</td>
+                </tr>
+                <tr>
+                  <td>123456</td>
+                  <td>xxx</td>
+                  <td>xxxxxxxxx</td>
+                  <td>xxxxxxxxxxxxx</td>
+                  <td>http://xxxxxxxx</td>
+                  <td>xxxx</td>
+                  <td>xxxxxxxx</td>
+                  <td>xxxxxxxx</td>
+                </tr>
+                <tr>
+                  <td>123456</td>
+                  <td>xxx</td>
+                  <td>xxxxxxxxx</td>
+                  <td>xxxxxxxxxxxxx</td>
+                  <td>http://xxxxxxxx</td>
+                  <td>xxxx</td>
+                  <td>xxxxxxxx</td>
+                  <td>xxxxxxxx</td>
+                </tr>
+                <tr>
+                  <td>神州数码</td>
+                  <td>哈哈哈哈</td>
+                  <td>xxxxxxxxx</td>
+                  <td>xxxxxxxxxxxxx</td>
+                  <td>https://www.cnblogs.com/xiaominwu/p/4347984.html</td>
+                  <td>xxxx</td>
+                  <td>的健康减肥经历的</td>
+                  <td>xxxxxxxx</td>
+                </tr>
+                <tr>
+                  <td>123456</td>
+                  <td>xxx</td>
+                  <td>xxxxxxxxx</td>
+                  <td>xxxxxxxxxxxxx</td>
+                  <td>https://www.cnblogs.com/xiaominwu/p/4347984.html</td>
+                  <td>xxxx</td>
+                  <td>xxxxxxxx</td>
+                  <td>xxxxxxxx</td>
+                </tr>
+                <tr>
+                  <td>123456</td>
+                  <td>xxx</td>
+                  <td>xxxxxxxxx</td>
+                  <td>xxxxxxxxxxxxx</td>
+                  <td>http://xxxxxxxx</td>
+                  <td>xxxx</td>
+                  <td>xxxxxxxx</td>
+                  <td>xxxxxxxx</td>
+                </tr>
+                <tr>
+                  <td>123456</td>
+                  <td>xxx</td>
+                  <td>xxxxxxxxx</td>
+                  <td>xxxxxxxxxxxxx</td>
+                  <td>http://xxxxxxxx</td>
+                  <td>xxxx</td>
+                  <td>xxxxxxxx</td>
+                  <td>xxxxxxxx</td>
+                </tr>
+                <tr>
+                  <td>神州数码</td>
+                  <td>哈哈哈哈</td>
+                  <td>xxxxxxxxx</td>
+                  <td>xxxxxxxxxxxxx</td>
+                  <td>https://www.cnblogs.com/xiaominwu/p/4347984.html</td>
+                  <td>xxxx</td>
+                  <td>的健康减肥经历的</td>
+                  <td>xxxxxxxx</td>
+                </tr>
+                <tr>
+                  <td>123456</td>
+                  <td>xxx</td>
+                  <td>xxxxxxxxx</td>
+                  <td>xxxxxxxxxxxxx</td>
+                  <td>https://www.cnblogs.com/xiaominwu/p/4347984.html</td>
+                  <td>xxxx</td>
+                  <td>xxxxxxxx</td>
+                  <td>xxxxxxxx</td>
+                </tr>
+                <tr>
+                  <td>123456</td>
+                  <td>xxx</td>
+                  <td>xxxxxxxxx</td>
+                  <td>xxxxxxxxxxxxx</td>
+                  <td>http://xxxxxxxx</td>
+                  <td>xxxx</td>
+                  <td>xxxxxxxx</td>
+                  <td>xxxxxxxx</td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="m-import-foot text-center" (click)="print()">
+              <button class="m-btn-confirm">打印</button>
+            </div>
           </div>
-        </div>
       </ng-template>
 
       <ng-template [ngIf]="true" class="stitemphtml">
