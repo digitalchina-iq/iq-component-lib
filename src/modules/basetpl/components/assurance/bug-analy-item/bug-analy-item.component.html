@@ -8,6 +8,7 @@
             <!--内容开始-->
             <loading [show]="loading" [style]="{background: 'rgba(0,0,0,.3)'}"></loading>
             <button class="m-btn-success" style="margin-bottom: 10px;" (click)="goBack()">返回</button>
+            <button class="m-btn-text" style="float: right;color: #57b9f8;" (click)="viewChart()">图表</button>
             <div class="clearfix">
               <div class="m-form-item">
                 <label>责任人</label>
@@ -102,7 +103,7 @@
                     </ul>
                   </td>
                   <td class="operate">
-                    <button class="m-btn-text" *ngIf="item.state !== '关闭'" (click)="edit(item)">编辑</button>
+                    <button class="m-btn-text" (click)="edit(item)">编辑</button>
                     <button class="m-btn-text" (click)="delete(item)">删除</button>
                   </td>
                 </tr>

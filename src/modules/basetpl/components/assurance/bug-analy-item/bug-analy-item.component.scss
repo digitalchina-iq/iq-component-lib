@@ -72,12 +72,16 @@ table{
         display: inline-block;
         width: 100%;
         min-width: 70px;
+        background: rgba(0,0,0,.2);
+
         select{
           margin: 0;
           padding: 0 4px;
           border: none;
           color: #fff;
-          background: #323232;
+          option{
+            background: #323232;
+          }
         }
       }
     }
@@ -102,13 +106,16 @@ table{
   .m-select{
     display: inline-block;
     width: 250px;
+    background: rgba(0,0,0,.2);
 
     select{
       margin: 0;
-      background: #323232;
       color: #fff;
       border: 1px solid rgba(0,0,0,.2);
       border-radius: 0;
+      option{
+        background: #323232;
+      }
     }
   }
 

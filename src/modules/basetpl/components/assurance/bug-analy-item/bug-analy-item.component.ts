@@ -14,6 +14,15 @@ import { EditBugListItemComponent } from '../edit-buglist-item/edit-buglist-item
 
 declare var window;
 
+export const BUG_TYPE: Array<{type: string, childType: string[]}> = [
+  {type: 'css', childType: ['不规范', '兼容', '大布局']},
+  {type: '需求理解', childType: ['理解偏差', '需求不明确']},
+  {type: 'angular', childType: ['不规范', '兼容']},
+  {type: '架构', childType: ['不稳定', '单点登录']},
+  {type: '测试', childType: ['测试不准确', '理解偏差']},
+  {type: '后端', childType: ['权限', '接口不完整']}
+];
+
 class BugRecord {
   objectId: string;
   pid: string;
@@ -45,14 +54,7 @@ export class BugAnalyItemComponent implements OnInit {
   newBug: BugRecord = new BugRecord();
   pager: Pager = new Pager();
   query: BugRecord = new BugRecord();
-  bugType: Array<{type: string, childType: string[]}> = [
-    {type: 'css', childType: ['不规范', '兼容', '大布局']},
-    {type: '需求理解', childType: ['理解偏差', '需求不明确']},
-    {type: 'angular', childType: ['不规范', '兼容']},
-    {type: '架构', childType: ['不稳定', '单点登录']},
-    {type: '测试', childType: ['测试不准确', '理解偏差']},
-    {type: '后端', childType: ['权限', '接口不完整']}
-  ];
+  bugType: Array<{type: string, childType: string[]}> = BUG_TYPE;
   imgSrc: string;
   imgLoading: boolean;
   childType: string[];
@@ -77,6 +79,8 @@ export class BugAnalyItemComponent implements OnInit {
     this.http.get(environment.server + 'users').toPromise().then(response => response.json()).then(data => {
       this.users = data.results;
     });
+
+    this.query = Object.assign(this.query, this.activedRoute.snapshot.queryParams);
 
     this.modal = this.xcModalService.createModal(EditBugListItemComponent);
     this.modal.onHide().subscribe(data => {
@@ -106,7 +110,7 @@ export class BugAnalyItemComponent implements OnInit {
   }*/
 
   /**获取记录数据列表*/
-  getData() {
+  /*getData() {
     this.loading = true;
     this.http.get(environment.server + `cloudQuery?cql=select count(*), * from Bugma where pid='${this.objId}' limit ${this.pager.pageSize * (this.pager.pageNo - 1)},${this.pager.pageSize} order by createdAt`).toPromise().then(response => response.json()).then(data => {
       this.loading = false;
@@ -117,6 +121,12 @@ export class BugAnalyItemComponent implements OnInit {
       })
       this.bugList = data.results;
     });
+  }
+*/
+  
+  //查看图表
+  viewChart() {
+    this.router.navigate(['index/assurance/bug-statistic', this.objId]);
   }
 
   //切换分页
@@ -164,7 +174,7 @@ export class BugAnalyItemComponent implements OnInit {
     })
   }
 
-  search() {
+  getData() {
     this.query.grade = String(this.query.grade||'');
     let queryObj = {};
     for(let i in this.query){
@@ -175,7 +185,15 @@ export class BugAnalyItemComponent implements OnInit {
     }
     delete queryObj['file'];
     this.loading = true;
-    this.http.get(environment.server + `classes/Bugma`, {params: {limit: this.pager.pageSize, skip: (this.pager.pageNo - 1) * this.pager.pageSize, count: 1, where: Object.assign({pid: this.objId}, queryObj)}}).subscribe(result => {
+    this.http.get(environment.server + `classes/Bugma`, {
+      params: {
+        limit: this.pager.pageSize, 
+        skip: (this.pager.pageNo - 1) * this.pager.pageSize, 
+        count: 1, 
+        order: 'createdAt', 
+        where: Object.assign({pid: this.objId}, queryObj)
+      }
+    }).subscribe(result => {
       let data = result.json();
       this.loading = false;
       let all = data.count;
@@ -185,6 +203,10 @@ export class BugAnalyItemComponent implements OnInit {
       })
       this.bugList = data.results;
     })
+  }
+
+  search() {
+    this.getData();
   }
 
   reset() {
