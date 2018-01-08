@@ -89,20 +89,21 @@
               <tbody>
                 <tr *ngFor="let item of bugList">
                   <td>{{item.describe}}</td>
-                  <td>{{item.username}}</td>
-                  <td>{{item.type}}</td>
-                  <td>{{item.childtype}}</td>
-                  <td><iq-star-rating [(ngModel)]="item.grade" disabled name="grade"></iq-star-rating></td>
-                  <td>{{item.state}}</td>
-                  <td>{{item.triggerdate}}</td>
-                  <td>{{item.closedate}}</td>
+                  <td style="text-align:center;">{{item.username}}</td>
+                  <td style="text-align:center;">{{item.type}}</td>
+                  <td style="text-align:center;">{{item.childtype}}</td>
+                  <td style="text-align:center;"><iq-star-rating [(ngModel)]="item.grade" disabled name="grade"></iq-star-rating></td>
+                  <td style="text-align:center;">{{item.state}}</td>
+                  <td style="text-align:center;">{{item.triggerdate}}</td>
+                  <td style="text-align:center;">{{item.closedate}}</td>
                   <td>
                     <ul class="pic-list">
                       <li *ngFor="let file of item.file" (mouseover)="loadImage($event,file.url)" (mouseout)="imgSrc=''">{{file.name}}</li>
                     </ul>
                   </td>
                   <td class="operate">
-                    <button class="m-btn-text" *ngIf="item.state !== '关闭'" (click)="edit(item)">编辑</button>
+                  <!--*ngIf="item.state !== '关闭'" -->
+                    <button class="m-btn-text" (click)="edit(item)">编辑</button>
                     <button class="m-btn-text" (click)="delete(item)">删除</button>
                   </td>
                 </tr>

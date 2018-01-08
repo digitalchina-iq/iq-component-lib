@@ -46,12 +46,12 @@ export class BugAnalyItemComponent implements OnInit {
   pager: Pager = new Pager();
   query: BugRecord = new BugRecord();
   bugType: Array<{type: string, childType: string[]}> = [
-    {type: 'css', childType: ['不规范', '兼容', '大布局']},
-    {type: '需求理解', childType: ['理解偏差', '需求不明确']},
+    {type: 'css', childType: ['不规范', '兼容', '大布局','小布局']},
+    {type: '需求理解', childType: ['理解偏差', '需求不明确','新增需求']},
     {type: 'angular', childType: ['不规范', '兼容']},
     {type: '架构', childType: ['不稳定', '单点登录']},
-    {type: '测试', childType: ['测试不准确', '理解偏差']},
-    {type: '后端', childType: ['权限', '接口不完整']}
+    {type: '测试', childType: ['测试不准确', '理解偏差', '测试反馈新需求']},
+    {type: '后端', childType: ['权限', '接口不完整','返回字段不完整']}
   ];
   imgSrc: string;
   imgLoading: boolean;
