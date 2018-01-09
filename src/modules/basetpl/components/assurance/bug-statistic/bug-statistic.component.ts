@@ -73,9 +73,11 @@ export class BugStatisticComponent implements OnInit {
     });
 
     this.chart.on('click', params => {
-      console.log(params);
       if(params.seriesType === 'pie') {
         this.router.navigate(['index/assurance/bug-analy', this.objId], {queryParams: {[params.seriesName]: params.name}})
+      }
+      if(params.seriesType === 'scatter') {
+        this.router.navigate(['index/assurance/bug-analy', this.objId], {queryParams: {username: params.seriesName, type: params.data[0], grade: params.data[1]}})
       }
     })
 
@@ -252,7 +254,6 @@ export class BugStatisticComponent implements OnInit {
         },
         yAxis: {
           name: '严重等级',
-          data: [1,2,3,4,5],
           axisLine: {
             lineStyle: {
               color: '#fff'
@@ -264,9 +265,7 @@ export class BugStatisticComponent implements OnInit {
             inside: true
           },
           splitLine: {
-            lineStyle: {
-              type: 'dashed'
-            }
+            show: false
           }
         },
         series: getSeries()

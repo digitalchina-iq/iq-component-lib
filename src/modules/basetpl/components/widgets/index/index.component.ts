@@ -1,7 +1,11 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core'
 import { flyIn } from 'animations/fly-in';
 import {NgxChartsModule} from '@swimlane/ngx-charts';
 import { single, multi, single1 } from './data';
+
+// 引入 echarts 主模块。
+/*import * as echarts from 'echarts/lib/echarts';
+import 'echarts/lib/chart/scatter';*/
 
 declare var $: any;
 
@@ -21,33 +25,7 @@ declare var $: any;
 
 export class IndexComponent implements OnInit {
 
-  // single: any[];
-  // multi: any[];
-  //
-  // view: any[] = [700, 400];
-  //
-  // // options
-  // showXAxis = true;
-  // showYAxis = true;
-  // gradient = false;
-  // showLegend = true;
-  // showXAxisLabel = true;
-  // xAxisLabel = 'Country';
-  // showYAxisLabel = true;
-  // yAxisLabel = 'Population';
-  //
-  // colorScheme = {
-  //   domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA']
-  // };
-  //
-  // constructor() {
-  //   Object.assign(this, {single, multi})
-  // }
-  //
-  // onSelect(event) {
-  //   console.log(event);
-  // }
-
+  chart: any;
   single: any[];
   single1: any[];
   multi: any[];
@@ -64,6 +42,8 @@ export class IndexComponent implements OnInit {
     domain: ['green', 'red', '#C7B42C', 'pink' , '#618fb0']
   };
 
+  //@ViewChild('wrapper') wrapper: ElementRef;
+
   constructor() {
     Object.assign(this, {single,single1,multi});
     //  Object.assign(this, {single1, multi})
@@ -76,6 +56,8 @@ export class IndexComponent implements OnInit {
 
   ngOnInit() {
     console.log(single);
+    /*this.chart = echarts.init(this.wrapper.nativeElement);
+    this.chart.setOption*/
   }
 
 }

@@ -103,7 +103,7 @@
                     </ul>
                   </td>
                   <td class="operate">
-                    <button class="m-btn-text" (click)="edit(item)">编辑</button>
+                    <button class="m-btn-text" *ngIf="item.state !== '关闭'" (click)="edit(item)">编辑</button>
                     <button class="m-btn-text" (click)="delete(item)">删除</button>
                   </td>
                 </tr>
