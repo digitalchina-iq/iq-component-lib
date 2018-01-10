@@ -3,9 +3,20 @@
     <div class="container-fluid">
       <h1 class="page-title">bug统计<small>一次有趣的统计</small></h1>
       <div class="row-fluid">
-        <loading [show]="loading" type="round2" [style]="{background:'rgba(0,0,0,0)'}"></loading>
-        <div class="widget">
-          <div #abc style="width: 300px;height: 300px;"></div>
+        <div class="widget clearfix" style="position: relative;">
+          <loading [show]="loading" type="round2"></loading>
+          <div class="statistic-btn">
+            <button class="m-btn-refuse" (click)="goBack()">返回</button>
+            <h3>分类统计</h3>
+            <ul>
+              <li [class.active]="type === '总览'" (click)="toggle('总览')">总览</li>
+              <li [class.active]="type === '人员'" (click)="toggle('人员')">人员</li>
+              <li [class.active]="type === '类型'" (click)="toggle('类型')">类型</li>
+              <li [class.active]="type === '严重等级'" (click)="toggle('严重等级')">严重等级</li>
+              <li [class.active]="type === '状态'" (click)="toggle('状态')">状态</li>
+            </ul>
+          </div>
+          <div #wrapper style="float: right;width: calc(100% - 130px);height: 450px;"></div>
         </div>
       </div>
     </div>

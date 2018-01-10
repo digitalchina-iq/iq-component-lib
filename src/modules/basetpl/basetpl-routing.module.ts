@@ -94,7 +94,7 @@ const routes: Routes = [//定义路由
         { path: 'code-review', component: CodeReviewComponent },
         { path: 'bug-analy', component: BugAnalyComponent },
         { path: 'bug-analy/:id', component: BugAnalyItemComponent },
-        { path: 'bug-statistic', component: BugStatisticComponent }
+        { path: 'bug-statistic/:id', component: BugStatisticComponent }
       ]
     },
     {
