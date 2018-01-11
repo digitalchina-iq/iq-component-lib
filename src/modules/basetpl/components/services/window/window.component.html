@@ -52,6 +52,16 @@
 				</div>
 			</div>
 
+			<div style="margin-top:35px;">
+				<h3>prompt</h3>
+				<div style="padding:0px 10px;">
+					<p>弹出的prompt框</p>
+					<showcode [sttype]="'typescript'">
+						<div class="shows">this.windowservice.prompt({{'{'}}message:"填写的信息"{{'}'}})</div>
+					</showcode>
+				</div>
+			</div>
+
 		</ng-template>
 
 	<!-- API -->
@@ -73,20 +83,20 @@
 					</thead>
 					<tbody>
 						<tr>
-							<td>checked-value</td>
-							<td>绑定的值等于这个值，开关为开启状态</td>
-							<td>any</td>
 							<td></td>
-							<td>true</td>
-							<td>否</td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
 						</tr>
 						<tr>
-							<td>unchecked-value</td>
-							<td>绑定的值等于这个值，开关为关闭状态</td>
-							<td>any</td>
 							<td></td>
-							<td>false</td>
-							<td>否</td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
 						</tr>
 					</tbody>
 				</table>
@@ -97,9 +107,8 @@
 		<showitemo [sitemotitle]="'说明'">
 			<ng-template [ngIf]="true" class="sitemocon">
 
-				<h3>(ngModelChange)</h3>
+				<h3></h3>
 				<p>
-	        模板语法，可监听双向绑定的值变化
 	      </p>
 
 			</ng-template>
@@ -119,6 +128,9 @@
 					<button (click)="testalerts()" class="btn btn-success">success</button>
 					<button (click)="testalertf()" class="btn btn-success">fail</button>
 					<button (click)="testalertw()" class="btn btn-success">warn</button>
+					<button (click)="testalertn()" class="btn btn-success">notAutoClose</button>
+					<button (click)="testalertc()" class="btn btn-success">setCloseTime</button>
+					<button (click)="testalertd()" class="btn btn-success">countDown</button>
 
 	      </div>
 	    </ng-template>
@@ -132,6 +144,9 @@
 						this.windowservice.alert({{'{'}}message:"填写的信息",title:"标题",type:"success"{{'}'}})
 						this.windowservice.alert({{'{'}}message:"填写的信息",title:"标题",type:"fail"{{'}'}})
 						this.windowservice.alert({{'{'}}message:"填写的信息",title:"标题",type:"warn"{{'}'}})
+						this.windowservice.alert({{'{'}}message:"填写的信息",title:"标题",type:"warn"{{'}'}}, {{'{'}}autoClose: false{{'}'}})
+						this.windowservice.alert({{'{'}}message:"填写的信息",title:"标题",type:"warn"{{'}'}}, {{'{'}}closeTime: 1000{{'}'}})
+						this.windowservice.alert({{'{'}}message:"#{{'{'}}5{{'}'}}秒后关闭",title:"标题",type:"success"{{'}'}})
 					</code>
 				</pre>
 	    </ng-template>
@@ -159,6 +174,33 @@
 				<pre iqhighlight>
 	    		<code class="typescript">
 						this.windowservice.confirm({{'{'}}message:"填写的信息"{{'}'}})
+					</code>
+				</pre>
+	    </ng-template>
+
+	    <ng-template [ngIf]="true" class="stitempcss">
+	    </ng-template>
+
+	  </showitemexample>
+
+	  <showitemexample>
+
+			<ng-template [ngIf]="true" class="stitempcon">
+				<div class="showhow" style="margin-buttom:30px;">
+
+					<p>prompt简单示例</p>
+					<button (click)="testprompt()" class="btn btn-success">prompt</button>
+
+				</div>
+			</ng-template>
+
+	    <ng-template [ngIf]="true" class="stitemphtml">
+	    </ng-template>
+
+	    <ng-template [ngIf]="true" class="stitempts">
+				<pre iqhighlight>
+	    		<code class="typescript">
+						this.windowservice.prompt({{'{'}}message:"填写的信息"{{'}'}})
 					</code>
 				</pre>
 	    </ng-template>
