@@ -68,6 +68,9 @@ import { SettingComponent } from './setting/setting.component';
 //log
 import { LogComponent } from './log/log.component';
 
+//teaching
+import { ComComponent } from './teaching/components/com.component';
+
 //暴露出所有Component
 export { 
   BasetplContainerComponent,
@@ -111,7 +114,8 @@ export {
   LogComponent,
   BugAnalyComponent,
   BugAnalyItemComponent,
-  BugStatisticComponent
+  BugStatisticComponent,
+  ComComponent
 };
 
 export let Basetpl_entry_COMPONENTS = [
@@ -165,5 +169,6 @@ export let Basetpl_COMPONENTS =
   BugAnalyComponent,
   BugAnalyItemComponent,
   EditBugListItemComponent,
-  BugStatisticComponent
+  BugStatisticComponent,
+  ComComponent
 ];
