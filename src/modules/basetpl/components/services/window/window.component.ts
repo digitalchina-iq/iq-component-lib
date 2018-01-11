@@ -31,7 +31,7 @@ export class WindowDemoComponent implements OnInit {
   }
 
   testalerts() {
-    this.windowservice.alert({title:"标题",message:"填写的信息",type:"success",timer:"3000"})
+    this.windowservice.alert({title:"标题",message:"填写的信息",type:"success"})
   }
 
   testalertf() {
@@ -42,8 +42,24 @@ export class WindowDemoComponent implements OnInit {
     this.windowservice.alert({title:"标题",message:"填写的信息",type:"warn"})
   }
 
+  testalertn() {
+    this.windowservice.alert({title:"标题",message:"填写的信息",type:"success"}, {autoClose: false})
+  }
+
+  testalertc() {
+    this.windowservice.alert({title:"标题",message:"填写的信息",type:"success"}, {closeTime: 1000})
+  }
+
+  testalertd() {
+    this.windowservice.alert({title:"标题",message:"#{5}秒后关闭",type:"success"})
+  }
+
   testconfirm() {
     this.windowservice.confirm({message:"填写的信息"})
+  }
+
+  testprompt() {
+    this.windowservice.prompt({message: '填写的信息'});
   }
 
 }
