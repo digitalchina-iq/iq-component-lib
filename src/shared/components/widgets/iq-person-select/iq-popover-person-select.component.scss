@@ -35,11 +35,15 @@
                 padding-left: 10px;
             }
         }
-        .select-search
-        {
+        .select-search{
             float: left;
-
             width: 260px;
+            .m-search-input{
+                background: #fff;
+                border-color:#57b9f8!important;
+                box-shadow: none;
+                color: #333;
+            }
         }
     }
 }
