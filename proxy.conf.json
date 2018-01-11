@@ -5,5 +5,12 @@
     "pathRewrite": {"^/api/" : "/1.1/"},
     "changeOrigin": true,
     "logLevel": "debug"
+  },
+  "/inapi/*": {
+    "target": "http://10.7.10.252:8080",
+    "secure": false,
+    "pathRewrite": {"^/inapi/" : "/dbomsapi/"},
+    "changeOrigin": true,
+    "logLevel": "debug"
   }
 }
