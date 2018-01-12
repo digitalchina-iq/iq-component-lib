@@ -101,7 +101,7 @@ export class PersonService {
     return this.http.post(environment.serverin + "/login", {
       username:"admin",
       password:Base64.encode('12345678')
-    }).toPromise();
+    }).map(res => res.status === 200).toPromise();
   }
 
   get loginUser(){

@@ -9,7 +9,7 @@ export class PermissionService implements CanActivateChild {
   permission: Promise<boolean>;
 
   constructor(private personService: PersonService) {
-    this.permission = this.personService.login().then(() => true);
+    this.permission = this.personService.login();
   }
 
   canActivateChild() {
