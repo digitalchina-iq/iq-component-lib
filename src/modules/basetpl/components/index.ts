@@ -116,11 +116,7 @@ export {
   BugAnalyComponent,
   BugAnalyItemComponent,
   BugStatisticComponent,
-<<<<<<< HEAD
-  ComComponent
-=======
   UserImageDemoComponent
->>>>>>> 5ca809710e9bb820c7855e459bc59b9b354e7f66
 };
 
 export let Basetpl_entry_COMPONENTS = [
@@ -175,9 +171,5 @@ export let Basetpl_COMPONENTS =
   BugAnalyItemComponent,
   EditBugListItemComponent,
   BugStatisticComponent,
-<<<<<<< HEAD
-  ComComponent
-=======
   UserImageDemoComponent
->>>>>>> 5ca809710e9bb820c7855e459bc59b9b354e7f66
 ];
