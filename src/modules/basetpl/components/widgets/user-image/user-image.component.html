@@ -1,0 +1,162 @@
+<div [@flyIn]="'in'">
+  <showtem [stname]="'开关组件'" [stnamedel]="'一个有趣的组件'">
+    <!-- overview -->
+    <ng-template [ngIf]="true" class='stview'>
+
+      <h3>概述</h3>
+      <p>
+        显示人员信息的组件。
+      </p>
+
+      <div style="margin-top:35px;">
+        <h3>user</h3>
+        <div style="padding:0px 10px;">
+          <p>user: Person|string; Person对象或者人员id</p>
+          <div user-image [user]="someone"></div>
+          <showcode>
+            <div class="shows">&lt;div user-image [user]="someone" &gt;&lt;/div&gt;</div>
+          </showcode>
+        </div>
+      </div>
+
+      <div style="margin-top:35px;">
+        <h3>hasClose</h3>
+        <div style="padding:0px 10px;">
+          <p>hasClose: boolean; 是否能使用删除操作，配合onClose事件删除人员</p>
+          <div user-image [user]="someone" [hasClose]="true"></div>
+          <showcode>
+            <div class="shows">&lt;div user-image [user]="someone" [hasClose]="true" &gt;&lt;/div&gt;</div>
+          </showcode>
+        </div>
+      </div>
+
+      <div style="margin-top:35px;">
+        <h3>hasImg</h3>
+        <div style="padding:0px 10px;">
+          <p>hasImg: boolean; 是否显示人员头像，默认显示</p>
+          <div user-image [user]="someone" [hasImg]="false"></div>
+          <showcode>
+            <div class="shows">&lt;div user-image [user]="someone" [hasImg]="false"&gt;&lt;/div&gt;</div>
+          </showcode>
+        </div>
+      </div>
+
+      <div style="margin-top:35px;">
+        <h3>showHover</h3>
+        <div style="padding:0px 10px;">
+          <p>showHover: boolean; 是否显示hover详细信息</p>
+          <div user-image [user]="someone" [showHover]="true"></div>
+          <showcode>
+            <div class="shows">&lt;div user-image [user]="someone" [showHover]="true" &gt;&lt;/div&gt;</div>
+          </showcode>
+        </div>
+      </div>
+
+      <div style="margin-top:35px;">
+        <h3>onClose</h3>
+        <div style="padding:0px 10px;">
+          <p>onClose，点击删除触发的事件</p>
+          <div user-image [user]="someone" [hasClose]="true" (onClose)="deleteSomeOne()" ></div>
+          <showcode>
+            <div class="shows">&lt;div user-image [user]="someone" [hasClose]="true" (onClose)="deleteSomeOne()" &gt;&lt;/div&gt;</div>
+          </showcode>
+        </div>
+      </div>
+
+    </ng-template>
+
+  <!-- API -->
+  <ng-template [ngIf]="true" class='stitemo'>
+
+    <showitemo [sitemotitle]="'属性'">
+      <ng-template [ngIf]="true" class="sitemocon">
+
+        <table class="table">
+          <thead>
+            <tr>
+              <th>参数</th>
+              <th>说明</th>
+              <th>类型</th>
+              <th>可选值</th>
+              <th>默认值</th>
+              <th>是否必选</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+
+      </ng-template>
+    </showitemo>
+
+    <showitemo [sitemotitle]="'说明'">
+      <ng-template [ngIf]="true" class="sitemocon">
+
+        <h3></h3>
+        <p>
+          
+        </p>
+
+      </ng-template>
+    </showitemo>
+
+  </ng-template>
+
+  <!-- stitemexample -->
+  <ng-template [ngIf]="true" class="stitemexample">
+
+    <showitemexample>
+
+      <ng-template [ngIf]="true" class="stitempcon">
+        <div class="showhow">
+
+          <p></p>
+
+        </div>
+      </ng-template>
+
+      <ng-template [ngIf]="true" class="stitemphtml">
+
+        <pre iqhighlight>
+          <code class="html">
+          </code>
+        </pre>
+
+      </ng-template>
+
+      <ng-template [ngIf]="true" class="stitempts">
+        <pre iqhighlight>
+          <code  class="javascript">
+          </code>
+        </pre>
+      </ng-template>
+
+      <ng-template [ngIf]="true" class="stitempcss">
+        <pre iqhighlight>
+          <code class="css">
+          </code>
+        </pre>
+      </ng-template>
+
+    </showitemexample>
+
+  </ng-template>
+
+  </showtem>
+</div>

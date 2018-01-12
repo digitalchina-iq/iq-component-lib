@@ -7,6 +7,7 @@ import { Subject } from 'rxjs/Subject';
 import { environment } from 'environments/environment';
 
 import { PersonAPIConfig } from "environments/environment";
+import { Base64 } from 'utils/base64';
 
 const mapper = {"id":"userID","itcode":"userEN","name":"userCN"};
 class PersonMySQL{
@@ -94,11 +95,19 @@ export class PersonService {
   _loginUser:Person;
   requesting:Observable<Person>;
   personStorage = {};
-  constructor(private config:PersonConfig,private http:Http) { }
+  constructor(private config:PersonConfig,private http:Http) {}
+
+  login() {
+    return this.http.post(environment.serverin + "/login", {
+      username:"admin",
+      password:Base64.encode('12345678')
+    }).toPromise();
+  }
+
   get loginUser(){
     if(this.requesting){
     }else{
-      let url = environment.server+"login/user";
+      let url = environment.serverin+"login/user";
       this.requesting = this.http.get(url).map(response =>{
         let tmp = response.json();
         if(tmp.data){
@@ -124,7 +133,7 @@ export class PersonService {
         return Observable.from([storage["data"]]);
       }
     }
-    let url= environment.server+"person/"+id;
+    let url= environment.serverin+"person/"+id;
     storage = this.personStorage[id] = {
       timestamp:null,
       observable:new Subject,

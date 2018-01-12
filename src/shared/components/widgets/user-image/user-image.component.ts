@@ -5,19 +5,20 @@ import { PersonService,Person } from 'shared/services/person.service';
 @Component({
   selector: '[user-image]',
   templateUrl: 'user-image.component.html',
-  styleUrls: ['user-image.component.scss']
+  styleUrls: ['./user-image.component.scss']
 })
 export class UserImageComponent implements OnInit,OnChanges {
   constructor(private personService:PersonService) {  }
+  Obj:Person;
+
   @Input('url') url:string;
   @Input('user') user:Person|string;
-
-  @Input()
-  hasClose:boolean;
+  @Input() hasClose:boolean;
   @Input() hasImg: boolean = true;
+  @Input() showHover: boolean = false;
+
   @Output()
   onClose = new EventEmitter();
-  Obj:Person;
 
   closeClick(){
     this.onClose.emit();

@@ -16,6 +16,7 @@ import { LoadingDemoComponent } from './widgets/loading/loading.component';
 import { IqPagerDemoComponent } from './widgets/iq-pager/iq-pager.component';
 import { TabSwitchDemoComponent } from './widgets/tab-switch/tab-switch.component';
 import { IqPersonSelectDemoComponent } from './widgets/iq-person-select/iq-person-select.component';
+import { UserImageDemoComponent } from './widgets/user-image/user-image.component';
 
 //directives
 import { AutoheightDemoComponent } from './directives/autoheight/autoheight.component';
@@ -115,7 +116,11 @@ export {
   BugAnalyComponent,
   BugAnalyItemComponent,
   BugStatisticComponent,
+<<<<<<< HEAD
   ComComponent
+=======
+  UserImageDemoComponent
+>>>>>>> 5ca809710e9bb820c7855e459bc59b9b354e7f66
 };
 
 export let Basetpl_entry_COMPONENTS = [
@@ -170,5 +175,9 @@ export let Basetpl_COMPONENTS =
   BugAnalyItemComponent,
   EditBugListItemComponent,
   BugStatisticComponent,
+<<<<<<< HEAD
   ComComponent
+=======
+  UserImageDemoComponent
+>>>>>>> 5ca809710e9bb820c7855e459bc59b9b354e7f66
 ];
