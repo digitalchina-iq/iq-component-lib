@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { Routes, RouterModule, CanActivateChild } from '@angular/router';
+import { PermissionService } from './services/permission.service';
 
 //导入该模块所有的Component（组件）
 import { BasetplContainerComponent,
@@ -14,7 +15,7 @@ import { BasetplContainerComponent,
   AngularSelectorComponent, IqNum2ChinesePipeComponent, InterfaceVsClassComponent,
   ArrJsComponent, ObjJsComponent, StrJsComponent, CodeReviewComponent,SettingComponent,
   IqPersonSelectDemoComponent, PlanTrackingComponent, ItemPlanComponent, DragDemoComponent,
-  LogComponent,BugAnalyComponent,BugAnalyItemComponent, BugStatisticComponent
+  LogComponent,BugAnalyComponent,BugAnalyItemComponent, BugStatisticComponent, UserImageDemoComponent
 } from './index';
 
 const routes: Routes = [//定义路由
@@ -27,7 +28,6 @@ const routes: Routes = [//定义路由
       path: "widget",
       children: [
         { path: 't1', component: PrepareT1Component },
-        { path: 'iq-person-select', component: IqPersonSelectDemoComponent },
         { path: 'iq-switcher', component: IqSwitcherPageDemoComponent },
         { path: 'iq-datepicker', component: IqDatepickerDemoComponent },
         { path: 'iq-timepicker', component: IqTimepickerDemoComponent },
@@ -36,7 +36,14 @@ const routes: Routes = [//定义路由
         { path: 'iq-breadcrumb', data: {"breadcrumb": '面包屑导航组件'}, component: IqBreadcrumbDemoComponent },
         { path: 'loading', component: LoadingDemoComponent },
         { path: 'iq-pager', component: IqPagerDemoComponent },
-        { path: 'tab-switch', component: TabSwitchDemoComponent }
+        { path: 'tab-switch', component: TabSwitchDemoComponent },
+        { path: '', 
+          canActivateChild: [PermissionService],
+          children: [
+            { path: 'iq-person-select', component: IqPersonSelectDemoComponent },
+            { path: 'user-image', component: UserImageDemoComponent }
+          ]
+        }
       ]
     },
     {

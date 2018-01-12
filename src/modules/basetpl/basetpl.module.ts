@@ -6,7 +6,7 @@ import { SharedModule } from 'shared/shared.module';
 
 import { Basetpl_COMPONENTS, Basetpl_entry_COMPONENTS } from './index';
 
-import { BasetplService } from './services/basetpl.service';
+import { BASETPL_SERVICES } from './services';
 
 import { NgxChartsModule } from "@swimlane/ngx-charts";
 
@@ -29,7 +29,7 @@ import { LoadingModule,ANIMATION_TYPES } from 'ngx-loading';
     Basetpl_entry_COMPONENTS
   ],
   providers:[//指定应用程序的根级别需要使用的service
-    BasetplService
+    BASETPL_SERVICES
   ]
 })
 
