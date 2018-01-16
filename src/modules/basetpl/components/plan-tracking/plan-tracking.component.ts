@@ -56,12 +56,14 @@ export class PlanTrackingComponent implements OnInit{
 
   initData() {
     this.loading = true;
-    this.http.get(environment.server + 'classes/Pt').toPromise().then(response => response.json()).then(data => {
-      console.log(data);
+    this.http.get(environment.server + 'classes/Pt', {params: {order: '-createdAt'}}).toPromise().then(response => response.json()).then(data => {
       this.loading =false;
       this.planList = data.results;
+      this.planList.forEach(item => {
+        item.file.sort((p, c) => moment(c.time).valueOf() - moment(p.time).valueOf());
+      })
       this.id = this.planList[0].objectId;//初始化id为第一个人的id
-      this.getNotTodyRecord();      
+      this.getNotTodyRecord();
     })
   }
 
