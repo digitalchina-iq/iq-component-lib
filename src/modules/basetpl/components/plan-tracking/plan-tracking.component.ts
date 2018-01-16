@@ -56,7 +56,7 @@ export class PlanTrackingComponent implements OnInit{
 
   initData() {
     this.loading = true;
-    this.http.get(environment.server + 'classes/Pt', {params: {order: '-createdAt'}}).toPromise().then(response => response.json()).then(data => {
+    this.http.get(environment.server + 'classes/Pt').toPromise().then(response => response.json()).then(data => {
       this.loading =false;
       this.planList = data.results;
       this.planList.forEach(item => {
@@ -72,9 +72,8 @@ export class PlanTrackingComponent implements OnInit{
     let recordArr = this.planList.filter(item => item.objectId === this.id)[0].file || [];
     let notTodayRecordArr = recordArr.filter(item => item.time !== this.today);
     this.hasSubmitted = notTodayRecordArr.length < recordArr.length;
-    let len = notTodayRecordArr.length;
-    if(!this.hasSubmitted && notTodayRecordArr[len-1] && !submit) {
-      this.newRecord.thisrecord = JSON.parse(JSON.stringify(notTodayRecordArr[len-1].nextrecord));
+    if(!this.hasSubmitted && notTodayRecordArr[0] && !submit) {
+      this.newRecord.thisrecord = JSON.parse(JSON.stringify(notTodayRecordArr[0].nextrecord));
     }
     return notTodayRecordArr.concat(this.newRecord);
   }
