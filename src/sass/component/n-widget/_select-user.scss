@@ -59,14 +59,9 @@
     border: none;
     border-bottom: 1px solid $def-main-color;
     border-radius: 5px;
-
-    &:focus + .iqon-list{
-      display: block;
-    }
   }
 
   >i{
-    display: none;
     position: absolute;
     right: 10px;
     top: 8px;

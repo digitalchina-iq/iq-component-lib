@@ -1,7 +1,8 @@
 export const environment = {
   production: true,
   debounceTime:500,
-  server:'/cloudapi/'
+  server:'/cloudapi/',
+  serverin:'/inapi/'
 };
 
 export const PersonAPIConfig = {
