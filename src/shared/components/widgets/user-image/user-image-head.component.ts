@@ -31,7 +31,7 @@ export class UserImageHeadComponent implements OnInit ,OnChanges{
         let matchers = url.match(/\{\{(\w+)\}\}/g);
         this.url = url;
         matchers.forEach(k=>{
-          this.url = this.url.replace(new RegExp(k,"g"),k.substring(2,k.length-2));
+          this.url = this.url.replace(new RegExp(k,"g"), this.user.userEN);
         })
       }
       // 没有头像（图片）时，背景颜色

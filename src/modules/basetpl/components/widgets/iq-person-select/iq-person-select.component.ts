@@ -10,6 +10,9 @@ import { flyIn } from 'animations/fly-in';
 
 export class IqPersonSelectDemoComponent implements OnInit {
   one: any;
+  two: any;
+  three: any;
+  four: any;
   list: any[];
   
   ngOnInit() {
