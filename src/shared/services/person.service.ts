@@ -9,6 +9,142 @@ import { environment } from 'environments/environment';
 import { PersonAPIConfig } from "environments/environment";
 import { Base64 } from 'utils/base64';
 
+@Injectable()
+export class PersonConfig {
+  public searchUrlPattern;
+
+  constructor() {
+    this.searchUrlPattern = PersonAPIConfig.searchUrlPattern;
+  }
+}
+
+@Injectable()
+export class PersonService {
+  _loginUser:Person;
+  requesting:Observable<Person>;
+  personStorage = {};
+  constructor(private config:PersonConfig,private http:Http) { }
+  
+  login() {
+    return this.http.post(environment.serverin + "login", {
+      username:"zhangtaoz",
+      password:Base64.encode('12345678')
+    }).map(res => res.status === 200).toPromise();
+  }
+
+  get loginUser(){
+    if(this.requesting){
+    }else{
+      let url = environment.serverin+"login/user";
+      this.requesting = this.http.get(url).map(response =>{
+        let tmp = response.json();
+        if(tmp.data){
+          this._loginUser = new Person(tmp.data)
+        }else{
+          this.requesting = null;
+        }
+        return this._loginUser;
+      });
+    }
+    return this.requesting;
+  }
+  get(id?:string){
+
+    let storage = this.personStorage[id];
+    if(storage){
+      if(storage.observable){
+        //正在请求中
+        return storage.observable;
+      }
+      else if(storage.timestamp > new Date().getTime()){
+        //5分钟缓存
+        return Observable.from([storage["data"]]);
+      }
+    }
+    let url= environment.serverin+"person/"+id;
+    storage = this.personStorage[id] = {
+      timestamp:null,
+      observable:new Subject,
+      data:null
+    };
+
+    this.http.get(url).subscribe(response =>{
+      let tmp = response.json();
+      let resultSet=tmp.data?tmp.data:null;
+      let p = resultSet?new Person(resultSet):null;
+      storage.observable.next(p||{userCN:'未知'});
+      storage.observable.complete();
+      if(p){
+        storage.data = p;
+        storage.timestamp = new Date().getTime() + 5 * 60 * 60 * 1000;//请求到数据后开始计时,5min
+      }
+    },null,()=>{
+      storage.observable = null;
+    });
+    return storage.observable;
+  }
+  query(key:string){
+    if(!key){
+      return Observable.from([]);
+    }
+    let url = this.config.searchUrlPattern.replace(/{{search_key}}/g,key);
+    return this.http.get(url).map(response =>{
+      let tmp = response.json();
+      let resultSet:PersonMySQL[] = tmp.data? tmp.data.content:null;
+      let ret:Person[] = [];
+      if(resultSet){
+        resultSet.forEach( (k) => ret.push(new Person(k)));
+      }
+      return ret;
+    });
+  }
+
+  queryDepartments(key: string) {
+    if(!key){
+      return Observable.from([]);
+    }
+    return this.http.get(environment.serverin + `departments?search_LIKE_name=${key}&pageSize=40&pageNo=1&childNum=true`).map(response =>{
+      let tmp = response.json();
+      return tmp.data ? tmp.data.content : [];
+    });
+  }
+
+  /*获取所有人员数量*/
+  getPersonsCount() {
+    return this.http.get(environment.serverin + 'persons/count').map(response => response.json());
+  }
+
+  /*获取所有部门*/
+  getDepartments() {
+    return this.http.get(environment.serverin + 'departments-root/status-filter:1?childNum=true')
+  }
+
+  /*根据id获取指定部门*/
+  getDepartment(id: string) {
+    return this.http.get(environment.serverin + `department/${id}/children/status-filter:1?childNum=true`);
+  }
+
+  /*获取部门内所有人员*/
+  getDepartmentPersons(id: string) {
+    return this.http.get(environment.serverin + `persons?search_EQ_status_0=1&pageSize=2147483647&sort=ASC_pinyin&up_executive=1&search_Like_department.id_1=${id}&formula=0 AND 1`)
+    .map(response => {
+      let tmp = response.json();
+      let resultSet:PersonMySQL[] = tmp.data? tmp.data.content:null;
+      let ret:Person[] = [];
+      if(resultSet){
+        resultSet.forEach( (k) => ret.push(new Person(k)));
+      }
+      return ret;
+    })
+  }
+
+  /*获取所有部门数量*/
+  getDepartmentsCount() {
+    return this.http.get(environment.serverin + 'departments/count').map(response => response.json());
+  }
+
+}
+
 const mapper = {"id":"userID","itcode":"userEN","name":"userCN"};
 class PersonMySQL{
   "id":string;//userID
@@ -81,97 +217,3 @@ export class Person{
   "isTrialAccount":string;
   "department":any;
 }
-@Injectable()
-export class PersonConfig {
-  public searchUrlPattern;
-
-  constructor() {
-    this.searchUrlPattern = PersonAPIConfig.searchUrlPattern;
-  }
-}
-
-@Injectable()
-export class PersonService {
-  _loginUser:Person;
-  requesting:Observable<Person>;
-  personStorage = {};
-  constructor(private config:PersonConfig,private http:Http) {}
-
-  login() {
-    return this.http.post(environment.serverin + "/login", {
-      username:"admin",
-      password:Base64.encode('12345678')
-    }).map(res => res.status === 200).toPromise();
-  }
-
-  get loginUser(){
-    if(this.requesting){
-    }else{
-      let url = environment.serverin+"login/user";
-      this.requesting = this.http.get(url).map(response =>{
-        let tmp = response.json();
-        if(tmp.data){
-          this._loginUser = new Person(tmp.data)
-        }else{
-          this.requesting = null;
-        }
-        return this._loginUser;
-      });
-    }
-    return this.requesting;
-  }
-  get(id?:string){
-
-    let storage = this.personStorage[id];
-    if(storage){
-      if(storage.observable){
-        //正在请求中
-        return storage.observable;
-      }
-      else if(storage.timestamp > new Date().getTime()){
-        //5分钟缓存
-        return Observable.from([storage["data"]]);
-      }
-    }
-    let url= environment.serverin+"person/"+id;
-    storage = this.personStorage[id] = {
-      timestamp:null,
-      observable:new Subject,
-      data:null
-    };
-
-    this.http.get(url).subscribe(response =>{
-      let tmp = response.json();
-      let resultSet=tmp.data?tmp.data:null;
-      let p = resultSet?new Person(resultSet):null;
-      storage.observable.next(p);
-      storage.observable.complete();
-      if(p){
-        storage.data = p;
-        storage.timestamp = new Date().getTime() + 5 * 60 * 60 * 1000;//请求到数据后开始计时,5min
-      }
-    },null,()=>{
-      storage.observable = null;
-    });
-    return storage.observable;
-  }
-  query(key:string){
-    if(!key){
-      return Observable.from([]);
-    }
-    let url = this.config.searchUrlPattern.replace(/{{search_key}}/g,key);
-    return this.http.get(url).map(response =>{
-      let tmp = response.json();
-      let resultSet:PersonMySQL[] = tmp.data? tmp.data.content:null;
-      let ret:Person[] = [];
-      if(resultSet){
-        resultSet.forEach( (k) => ret.push(new Person(k)));
-      }
-      return ret;
-    });
-  }
-}
-
-
-
-

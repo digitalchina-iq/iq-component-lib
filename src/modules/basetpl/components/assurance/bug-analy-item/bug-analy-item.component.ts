@@ -24,10 +24,10 @@ export const BUG_TYPE: Array<{type: string, childType: string[]}> = [
 ];
 
 class BugRecord {
-  objectId: string;
+  id: string;
   pid: string;
   childtype: string;
-  describe: string;
+  des: string;
   userid: string;
   username: string;
   type: string;
@@ -36,6 +36,8 @@ class BugRecord {
   closedate: string;
   state: string;
   file: Array<{name: string, url: string}> = [];
+  pageSize: number = 10;
+  pageNo: number = 1;
 }
 
 @Component({
@@ -46,8 +48,8 @@ class BugRecord {
   ]
 })
 export class BugAnalyItemComponent implements OnInit {
+  id: string;
   loading: boolean;
-  objId: string;
   users: any[];
   modal: XcModalRef;
   bugList: BugRecord[] = [];
@@ -75,7 +77,7 @@ export class BugAnalyItemComponent implements OnInit {
   ngOnInit() {
     this.newBug.state = '新建';
     this.newBug.triggerdate = moment().format('YYYY-MM-DD');
-    this.objId = this.activedRoute.snapshot.params['id'];
+    this.id = this.activedRoute.snapshot.params['id'];
     this.http.get(environment.server + 'users').toPromise().then(response => response.json()).then(data => {
       this.users = data.results;
     });
@@ -88,51 +90,17 @@ export class BugAnalyItemComponent implements OnInit {
         this.getData();
       }
     });
-
-    //this.foooo();
   }
-
-  /*foooo() {
-    let str = $('#div1').text();
-    let arr = str.split(/\n/);
-
-    let addItem = (item: BugRecord) => {
-      item.pid = this.objId;
-      return this.http.post(environment.server + 'classes/Bugma', item).toPromise().then(data => data.json());
-    }
-
-    let arr2: BugRecord[] = arr.map(item => item.split(',')).map(item => {
-      return <BugRecord>{describe: item[0], username: item[1], type: 'css', childtype: '不规范', grade: '1', state: item[2], closedate: moment(item[3].split(' ')[0]).format('YYYY-MM-DD'), triggerdate: moment(item[4].split(' ')[0]).format('YYYY-MM-DD')}
-    });
-    Promise.all(arr2.map(item => addItem(item))).then(data => {
-      console.log(data);
-    })
-  }*/
-
-  /**获取记录数据列表*/
-  /*getData() {
-    this.loading = true;
-    this.http.get(environment.server + `cloudQuery?cql=select count(*), * from Bugma where pid='${this.objId}' limit ${this.pager.pageSize * (this.pager.pageNo - 1)},${this.pager.pageSize} order by createdAt`).toPromise().then(response => response.json()).then(data => {
-      this.loading = false;
-      let all = data.count;
-      this.pager.set({
-        total: all,
-        totalPages: Math.ceil(all / this.pager.pageSize)
-      })
-      this.bugList = data.results;
-    });
-  }
-*/
   
   //查看图表
   viewChart() {
-    this.router.navigate(['index/assurance/bug-statistic', this.objId]);
+    this.router.navigate(['index/assurance/bug-statistic', this.id]);
   }
 
   //切换分页
   pagerChange(e: Pager) {
-    this.pager.pageNo = e.pageNo;
-    this.pager.pageSize = e.pageSize;
+    this.query.pageNo = e.pageNo;
+    this.query.pageSize = e.pageSize;
 
     this.getData();
   }
@@ -150,8 +118,8 @@ export class BugAnalyItemComponent implements OnInit {
 
   //增加数据
   add() {
-    this.newBug.pid = this.objId;
-    this.http.post(environment.server + 'classes/Bugma', this.newBug).map(res => res.json()).subscribe(data => {
+    this.newBug.pid = this.id;
+    this.http.post(environment.nodeServer + `bug-item/${this.id}`, this.newBug).map(res => res.json()).subscribe(data => {
       this.getData();
       this.newBug = new BugRecord();
       this.clearFile();
@@ -167,7 +135,7 @@ export class BugAnalyItemComponent implements OnInit {
   delete(item: BugRecord){
     this.windowService.confirm({message: '确定删除？'}).subscribe(v => {
       if(v){
-        this.http.delete(environment.server + 'classes/Bugma/' + item.objectId).subscribe(data => {
+        this.http.delete(environment.nodeServer + 'bug-item-detail/' + item.id).subscribe(data => {
           this.getData();
         })
       }
@@ -175,37 +143,17 @@ export class BugAnalyItemComponent implements OnInit {
   }
 
   getData() {
-    this.query.grade = String(this.query.grade||'');
-    let queryObj = {};
-    for(let i in this.query){
-      let val = this.query[i];
-      if(val || val === 0){
-        queryObj[i] = val;
-      }
-    }
-    delete queryObj['file'];
     this.loading = true;
-    this.http.get(environment.server + `classes/Bugma`, {
-      params: {
-        limit: this.pager.pageSize, 
-        skip: (this.pager.pageNo - 1) * this.pager.pageSize, 
-        count: 1, 
-        order: 'createdAt', 
-        where: Object.assign({pid: this.objId}, queryObj)
-      }
-    }).subscribe(result => {
+    this.http.get(environment.nodeServer + `bug-item/${this.id}`, {params: this.query}).subscribe(result => {
       let data = result.json();
       this.loading = false;
-      let all = data.count;
-      this.pager.set({
-        total: all,
-        totalPages: Math.ceil(all / this.pager.pageSize)
-      })
+      this.pager.set(data.pager)
       this.bugList = data.results;
     })
   }
 
   search() {
+    this.pager.pageNo = 1;
     this.getData();
   }
 

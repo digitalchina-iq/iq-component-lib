@@ -7,7 +7,8 @@ export const environment = {
   debounceTime:500,
   production: false,
   server:'/api/',
-  serverin:'/inapi/'
+  serverin:'/inapi/',
+  nodeServer: '/localapi/'
 };
 
 export const PersonAPIConfig = {

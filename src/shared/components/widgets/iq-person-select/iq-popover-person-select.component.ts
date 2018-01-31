@@ -28,7 +28,7 @@ const getOffsetToBody = function(node) {
   templateUrl: 'iq-popover-person-select.component.html',
   styleUrls:['iq-popover-person-select.component.scss']
 })
-export class IqPopoverPersonSelectComponent implements OnInit,OnDestroy {
+export class IqPopoverDepartmentPersonSelectComponent implements OnInit,OnDestroy {
   constructor(private el: ElementRef) {  }
 
   _show = false;
