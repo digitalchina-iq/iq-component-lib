@@ -86,7 +86,8 @@
                     >span{
                         margin: 0;
                         padding: 4px;
-                        background: #fff;
+                        background: none;
+                        border-color: #999!important;
 
                         &:hover{
                             color: #4A4A4A;

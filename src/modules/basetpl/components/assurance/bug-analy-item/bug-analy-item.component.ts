@@ -118,13 +118,16 @@ export class BugAnalyItemComponent implements OnInit {
 
   //增加数据
   add() {
-    this.newBug.pid = this.id;
-    this.http.post(environment.nodeServer + `bug-item/${this.id}`, this.newBug).map(res => res.json()).subscribe(data => {
-      this.getData();
-      this.newBug = new BugRecord();
-      this.clearFile();
-      this.newBug.state = '新建';
-      this.newBug.triggerdate = moment().format('YYYY-MM-DD');
+    this.http.post(environment.nodeServer + `bug-items/${this.id}/details`, this.newBug).map(res => res.json()).subscribe(data => {
+      if(data.success) {
+        this.getData();
+        this.newBug = new BugRecord();
+        this.clearFile();
+        this.newBug.state = '新建';
+        this.newBug.triggerdate = moment().format('YYYY-MM-DD');
+      } else {
+        this.windowService.alert({message: data.message, type: 'fail'});
+      }
     })
   }
 
@@ -135,7 +138,8 @@ export class BugAnalyItemComponent implements OnInit {
   delete(item: BugRecord){
     this.windowService.confirm({message: '确定删除？'}).subscribe(v => {
       if(v){
-        this.http.delete(environment.nodeServer + 'bug-item-detail/' + item.id).subscribe(data => {
+        this.http.delete(environment.nodeServer + `bug-items/${this.id}/details/${item.id}`).subscribe(data => {
+          this.pager.pageNo = 1;
           this.getData();
         })
       }
@@ -144,7 +148,7 @@ export class BugAnalyItemComponent implements OnInit {
 
   getData() {
     this.loading = true;
-    this.http.get(environment.nodeServer + `bug-item/${this.id}`, {params: this.query}).subscribe(result => {
+    this.http.get(environment.nodeServer + `bug-items/${this.id}/details`, {params: this.query}).subscribe(result => {
       let data = result.json();
       this.loading = false;
       this.pager.set(data.pager)

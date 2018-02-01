@@ -37,7 +37,7 @@ export class BugAnalyComponent implements OnInit {
   /**获取记录数据列表*/
   getData() {
     this.loading = true;
-    this.http.get(environment.nodeServer + 'bug-item-list')
+    this.http.get(environment.nodeServer + 'bug-items')
              .toPromise().then(response => response.json())
              .then(data => {
                 this.loading = false;
@@ -53,7 +53,7 @@ export class BugAnalyComponent implements OnInit {
   addNewItem() {
     this.windowService.prompt({message: '请输入项目名称'}).subscribe(v => {
       if(!v){return};
-      this.http.post(environment.nodeServer + 'bug-item-list', {name: v})
+      this.http.post(environment.nodeServer + 'bug-items', {name: v})
                .map(response => response.json())
                .subscribe(data => {
                  this.getData();
