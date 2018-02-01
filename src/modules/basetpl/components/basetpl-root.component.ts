@@ -26,7 +26,7 @@ export class BasetplRootComponent implements OnInit {
         setTimeout(this.setNav);
       })
       this.basetplService.getCodeReviewUser().then(data => {
-        const USER_ORDER = ['隗合飞','郝建阳','郑柳燕','穆红敏','李晨','田玉平','齐少青','杨贵林'];
+        const USER_ORDER = ['隗合飞','郝建阳','郑柳燕','穆红敏','李晨','齐少青','杨贵林'];
         let order = (USER_ORDER.indexOf(data.results[0].username)+1)%USER_ORDER.length;
         const CURRENT_USER = JSON.parse(window.localStorage.getItem('userinfo')).nickname;
         if(CURRENT_USER === USER_ORDER[order] && new Date(data.results[0].createdAt).getDate() !== new Date().getDate()){

@@ -1,6 +1,6 @@
 <div class="select-container" [ngClass]="{hide:!_show}">
   <div class="select-box"
-  [ngStyle]="{'top': position == 'up'?'auto':'40px','bottom':position == 'up'?0:'auto'}"
+  [ngStyle]="{'top': position == 'up'?'auto':'40px','bottom':position == 'up'?0:'auto','left': rightOver ? 'auto' : '-70px', 'right': rightOver ? '0' : 'auto'}"
    (click)="stopClick($event)">
     <ul *ngIf="position == 'up'" class="select-list m-user-list">
       <li class="select-item m-user-info" (click)="choose(item)" user-image [user]="item" *ngFor="let item of queryObservable | async">

@@ -49,6 +49,19 @@ function sequenceArr(start, end) {{'{'}}
       </div>
 
       <div style="margin-top:35px;">
+        <h3>数组扁平化</h3>
+        <div style="padding:0px 10px;">
+          <showcode>
+            <div class="shows">
+function flatArr(arr) {{'{'}}
+  return arr.reduce((p,c) => [...p,...c]);;
+{{'}'}}
+            </div>
+          </showcode>
+        </div>
+      </div>
+
+      <div style="margin-top:35px;">
         <h3>去除B数组中在A数组里存在的项</h3>
         <div style="padding:0px 10px;">
           <showcode>
