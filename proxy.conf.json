@@ -7,9 +7,16 @@
     "logLevel": "debug"
   },
   "/inapi/*": {
-    "target": "http://10.7.10.252:8080",
+    "target": "http://dcg-testoa.digitalchina.com",
     "secure": false,
-    "pathRewrite": {"^/inapi/" : "/dbomsapi/"},
+    "pathRewrite": {"^/inapi/" : "/dcgapi/"},
+    "changeOrigin": true,
+    "logLevel": "debug"
+  },
+  "/localapi/*": {
+    "target": "http://10.125.8.247:3000",
+    "secure": false,
+    "pathRewrite": {"^/localapi/" : "/api/"},
     "changeOrigin": true,
     "logLevel": "debug"
   }

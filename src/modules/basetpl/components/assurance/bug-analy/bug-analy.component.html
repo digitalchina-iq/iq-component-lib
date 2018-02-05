@@ -7,7 +7,7 @@
         <div class="widget">
           <button type="button" class="m-btn-success" (click)="addNewItem()">新增项目bug管理</button>
           <ul class="taskname clearfix">
-            <li *ngFor="let item of itemList" (click)="showDetail(item.objectId)">{{item.name}}</li>
+            <li *ngFor="let item of itemList" (click)="showDetail(item.id)">{{item.name}}</li>
           </ul>
         </div>
       </div>

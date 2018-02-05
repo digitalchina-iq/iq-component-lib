@@ -1,9 +1,9 @@
 import { Component, forwardRef, ViewChild, OnInit, Input, Output, ComponentRef, EventEmitter } from '@angular/core';
 import { ControlValueAccessor,NG_VALUE_ACCESSOR, DefaultValueAccessor } from '@angular/forms';
 
-import { Person, PersonService } from '../../../services/person.service';
+import { Person, PersonService } from 'shared/services/index';
 import { XcBaseModal, XcModalService, XcModalRef } from 'shared/modules/xc-modal-module/index';
-import { IqDialogPersonSelectComponent } from './iq-dialog-person-select.component';
+import { IqDialogDepartmentPersonSelectComponent } from './iq-dialog-person-select.component';
 
 /**
 选人组件。包括单选多选功能
@@ -15,19 +15,28 @@ import { IqDialogPersonSelectComponent } from './iq-dialog-person-select.compone
   styleUrls: ['./iq-person-select.component.scss'],
   providers: [{
     provide: NG_VALUE_ACCESSOR,
-    useExisting: forwardRef(() => IqPersonSelectComponent),
+    useExisting: forwardRef(() => IqDepartmentPersonSelectComponent),
     multi: true
   }]
 })
-export class IqPersonSelectComponent implements OnInit, ControlValueAccessor {
+export class IqDepartmentPersonSelectComponent implements OnInit, ControlValueAccessor {
   constructor(private personService: PersonService, private modalService: XcModalService) { }
 
   list;//选中列表
   queryObservable: any;
   modal: XcModalRef;//multi select modal
 
-  private onChangeCallback:any={};
-  private onTouchedCallback:any={};
+  private onChangeCallback: Function = Function.prototype;
+  private onTouchedCallback: Function = Function.prototype;
+
+  @Input() which: 'person'|'department'|'all';
+  @Input() max: number;//数量最大值，用以限定能选择的人数
+
+  @Output() onChange = new EventEmitter();
+  @Output() onFocus = new EventEmitter();
+
+  @ViewChild("popoverselect") popoverselect
+
   writeValue(value) {
     //校验是数组
     if(value && value instanceof Array){
@@ -46,22 +55,10 @@ export class IqPersonSelectComponent implements OnInit, ControlValueAccessor {
     this.onTouchedCallback = fn;
   }
 
-  @ViewChild("popoverselect")
-  popoverselect
-
-  @Output()
-  onChange = new EventEmitter();
-
-  @Output()
-  onFocus = new EventEmitter();
 
   focus(){
     this.onFocus.emit();
   }
-
-  @Input("max")
-  max: number;//数量最大值，用以限定能选择的人数
-
 
   /** 人员查询方法，调用personService查询人员信息
   */
@@ -105,19 +102,14 @@ export class IqPersonSelectComponent implements OnInit, ControlValueAccessor {
     let modal = this.modal;
     if (!modal) {//如果没有弹出框、初始化弹出框
       let data = {
-        "list": this.list,
-        "title": "人员选择",
-        "KEY": "userID"
+        list: this.list,
+        title: this.which === 'department' ? "部门选择" : "人员选择",
+        KEY: "userID",
+        which: this.which
       };
-      this.modal = this.modalService.createModal(IqDialogPersonSelectComponent, data);
-      // modal = this.modal;
-      // let t_this = this;
-      // let c = <IqDialogPersonSelectComponent>modal._componentRef.instance;
-      // c.onQuery.subscribe((x) => {
-      //   t_this.query.call(t_this, x);
-      //   c["queryObservable"] = t_this.queryObservable;
-      // })
+      this.modal = this.modalService.createModal(IqDialogDepartmentPersonSelectComponent, data);
     }
+
     let ins = this.modal._componentRef.instance;
     ins["searchkey"] = term;
     // this.query(term);

@@ -14,11 +14,14 @@
         <div style="padding:0px 10px;">
           <showcode>
             <div class="shows">
-方法1：function copyObj(obj) {{'{'}}
+方法1：function copyObj(obj) {{'{'}}//深拷贝
   return JSON.parse(JSON.stringify(obj));
 {{'}'}}
-方法2：function copyObj(obj) {{'{'}}
+方法2：function copyObj(obj) {{'{'}}//浅拷贝
   return Object.assign(obj instanceof Array ? [] : {{'{'}}{{'}'}}, obj);
+{{'}'}}
+方法3: function copyObj(obj) {{'{'}}//浅拷贝
+  return obj instanceof Array ? [...obj] : {{'{'}}...obj{{'}'}};
 {{'}'}}
             </div>
           </showcode>

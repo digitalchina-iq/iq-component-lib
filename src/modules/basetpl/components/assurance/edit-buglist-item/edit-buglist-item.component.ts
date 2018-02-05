@@ -8,10 +8,10 @@ import { XcModalService, XcModalRef } from 'shared/modules';
 declare var window;
 
 class BugRecord {
-  objectId: string;
+  id: string;
   pid: string;
   childtype: string;
-  describe: string;
+  des: string;
   userid: string;
   username: string;
   type: string;
@@ -74,7 +74,7 @@ export class EditBugListItemComponent implements OnInit {
     delete this.record['createdAt'];
     this.record.grade = String(this.record.grade||'');
     this.isDisabled = true;
-    this.http.put(environment.server + 'classes/Bugma/' + this.record.objectId, this.record).subscribe(data => {
+    this.http.put(environment.nodeServer + `bug-items/${this.record.pid}/details/${this.record.id}`, this.record).subscribe(data => {
       this.isDisabled = false;
       this.hide(true);
     })

@@ -89,7 +89,7 @@
               </thead>
               <tbody>
                 <tr *ngFor="let item of bugList">
-                  <td>{{item.describe}}</td>
+                  <td>{{item.des}}</td>
                   <td style="text-align:center;">{{item.username}}</td>
                   <td style="text-align:center;">{{item.type}}</td>
                   <td style="text-align:center;">{{item.childtype}}</td>
@@ -108,7 +108,7 @@
                   </td>
                 </tr>
                 <tr class="bug-new">
-                  <td><input [(ngModel)]="newBug.describe" type="text" name=""></td>
+                  <td><input [(ngModel)]="newBug.des" type="text" name=""></td>
                   <td>
                     <div class="m-select">
                       <i class="iqon-xia"></i>

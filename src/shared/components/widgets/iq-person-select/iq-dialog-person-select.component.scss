@@ -1,15 +1,23 @@
-.m-user-list,.m-user-selected-list{
-  height: calc(100% - 38px);
-  overflow-x:hidden;
-  overflow-y:auto;
+.m-user-select .m-user-select-main .m-user-selected{
+  padding: 20px;
+  
+  .m-user-selected-list{
+    margin: 0;
+    padding: 10px;
+    height: calc(100% - 38px);
+    overflow-x:hidden;
+    overflow-y:auto;
+  }
 }
 .m-user-selected-list /deep/ li.m-user-info{
   white-space: nowrap;
+  padding-right: 20px;
 
   > i{
     right:0
   }
 }
+<<<<<<< HEAD
 .m-user-search>input{
   background: #fff;
   color: #333;
@@ -25,3 +33,20 @@
 .m-btn-cancel{
   width: 78px;
 }
+=======
+
+.menu-toggle{
+  margin-bottom: 5px;
+
+  >li{
+    list-style: none;
+    float: left;
+    padding: 0 10px;
+    cursor: pointer;
+
+    &.active{
+      color: #57b9f8;
+    }
+  }
+}
+>>>>>>> 79562ec61020f3e34a1d494dd9b15b55ad138985

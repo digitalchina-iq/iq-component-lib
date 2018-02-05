@@ -7,33 +7,18 @@ import { Subject } from 'rxjs/Subject';
 import { environment } from 'environments/environment';
 declare var $;
 
-const getOffsetToBody = function(node) {
-  var top = 0,
-      left = 0;
-  while(node){
-      top += node.offsetTop;
-      left += node.offsetLeft;
-      top -= node.scrollTop;
-      left -= node.scrollLeft;
-      node = node.offsetParent;
-  }
-  return {
-      top: top,
-      left: left
-  }
-}
-
 @Component({
   selector: 'iq-popover-select',
   templateUrl: 'iq-popover-person-select.component.html',
   styleUrls:['iq-popover-person-select.component.scss']
 })
-export class IqPopoverPersonSelectComponent implements OnInit,OnDestroy {
+export class IqPopoverDepartmentPersonSelectComponent implements OnInit,OnDestroy {
   constructor(private el: ElementRef) {  }
 
   _show = false;
   position = "down";
   maxHeight = 300;
+  rightOver: boolean;//是否超出浏览器右侧边框
 
   show(e){
     this._show = true;
@@ -43,17 +28,22 @@ export class IqPopoverPersonSelectComponent implements OnInit,OnDestroy {
       this.searchInput.val('');
     }
 
-    let p = getOffsetToBody(this.el.nativeElement);
-    let clientHeight = document.body.clientHeight;
+    let p = this.el.nativeElement.getBoundingClientRect();
+    let clientHeight = document.body.clientHeight,
+        clientWidth  = document.body.clientWidth;
     if(p.top > clientHeight - this.maxHeight){
       this.position = "up";
     }else{
       this.position = "down";
     }
+
     setTimeout(()=>{
+      const dom = this.el.nativeElement.children[0].children[0],
+          domRect = dom.getBoundingClientRect();
+      this.rightOver = domRect.right > clientWidth;
       //focus can not be set when element is hidden,so set focus after element be shown
       this.searchInput.focus();
-    })
+    },0)
   }
   hide(){
     this.clearStatusBeforeHide(this);

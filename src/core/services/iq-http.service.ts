@@ -57,7 +57,7 @@ export class iqHttpService extends Http {
           if(err.status==400){
             this.windowservice.alert({message:JSON.parse(err._body).error,type:"fail"});
           }else{
-            this.windowservice.alert({message:this.status['status.'+err.status],type:"fail"});
+            this.windowservice.alert({message:'请求发生错误',type:"fail"});
           }
 
           // console.log(this.windowservice);

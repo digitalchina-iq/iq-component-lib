@@ -21,6 +21,19 @@
       </div>
 
       <div style="margin-top:35px;">
+        <h3>which</h3>
+        <div style="padding:0px 10px;">
+          <p><code>which: 'person'|'department'|'all'</code>选人、选部门或都选，默认为'person'，即选人</p>
+          <iq-person-select [(ngModel)]="two" which="department"></iq-person-select>
+          <iq-person-select [(ngModel)]="three" which="all"></iq-person-select>
+          <showcode>
+            <div class="shows">&lt;iq-person-select [(ngModel)]="one" which="department"&gt;&lt;/iq-person-select&gt;
+&lt;iq-person-select [(ngModel)]="one" which="all"&gt;&lt;/iq-person-select&gt;</div>
+          </showcode>
+        </div>
+      </div>
+
+      <div style="margin-top:35px;">
         <h3>onChange</h3>
         <div style="padding:0px 10px;">
           <p>选人切换事件，$event为已选人员列表</p>

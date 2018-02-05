@@ -28,22 +28,20 @@
 
             .select-item
             {
-                z-index: 9052;
-
-                width: 100%;
                 margin-left: 0;
                 padding-left: 10px;
+                width: 100%;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                z-index: 9052;
             }
         }
-        .select-search{
+        .select-search
+        {
             float: left;
+
             width: 260px;
-            .m-search-input{
-                background: #fff;
-                border-color:#57b9f8!important;
-                box-shadow: none;
-                color: #333;
-            }
         }
         
     }
